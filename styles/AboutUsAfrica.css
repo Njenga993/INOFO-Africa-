@@ -1,0 +1,249 @@
+/* Layout Styles */
+.about-africa {
+  max-width: 1400px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 0 2rem;
+margin-top: 4.5rem;
+}
+
+/* Hero Header */
+.hero-header {
+  height: 60vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 4rem;
+}
+
+.hero-overlay {
+  background: #4c7031;
+  color: white;
+  padding: 3rem;
+  max-width: 800px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.hero-header h1 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-header .lead {
+  font-size: 1.4rem;
+  line-height: 1.6;
+}
+
+/* Alternating Content Sections */
+.content-section {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  margin: 5rem 0;
+  padding: 0 2rem;
+}
+
+.image-right {
+  flex-direction: row;
+}
+
+.image-left {
+  flex-direction: row-reverse;
+}
+
+.text-content {
+  flex: 1;
+  padding: 2rem;
+}
+
+.text-content h2 {
+  color: var(--jungle-green);
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.text-content p {
+  font-size: 2.5rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.image-content {
+  flex: 1;
+}
+
+.image-content img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Leadership Grid */
+.leaders-section {
+  padding: 4rem 2rem;
+  background-color: #4c7031;
+}
+
+.leaders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.leader-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.leader-image {
+  position: relative;
+  height: 300px;
+}
+
+.leader-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.leader-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  color: white;
+  padding: 1.5rem;
+}
+
+.leader-bio {
+  padding: 1.5rem;
+}
+
+/* Pillars */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.pillar-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.pillar-card:hover {
+  transform: translateY(-5px);
+}
+
+.pillar-icon {
+  font-size: 2.5rem;
+  color: var(--gold-accent);
+  margin-bottom: 1rem;
+}
+
+/* Impact Stats */
+.impact-section {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.impact-stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  min-width: 200px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  color: var(--gold-accent);
+  margin-bottom: 1rem;
+}
+
+.stat-card h3 {
+  font-size: 2.5rem;
+  color: var(--jungle-green);
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .content-section {
+    flex-direction: column;
+    gap: 2rem;
+
+  }
+  
+  .hero-header h1 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-header {
+    height: 50vh;
+    
+    
+  }
+  
+  .hero-overlay {
+    padding: 1.5rem;
+  }
+}
+    .hero-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-header .lead {
+        font-size: 1.2rem;
+    }
+    
+    .content-section {
+        padding: 0 1rem;
+    }
+    
+    .text-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .text-content p {
+        font-size: 1rem;
+    }
+    
+    .leaders-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .leader-image {
+        height: 250px;
+    }
+    @media (max-width: 768px) {
+  /* Adjustments for smaller screens */
+    .about-africa {
+        padding: 0 1rem;
+        margin-top: 6rem;
+
+    }
+}
+    

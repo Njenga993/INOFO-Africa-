@@ -39,12 +39,12 @@ const Footer = () => {
             <div className="footer-col">
               <h3 className="footer-title">Quick Links</h3>
               <ul className="footer-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Our Members</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">News & Events</a></li>
-                <li><a href="#">Get Involved</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/membership">Membership</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/newsevents">News & Events</a></li>
+                <li><a href="/contact">Get Involved & Contact Us</a></li>
               </ul>
             </div>
 
@@ -99,6 +99,7 @@ const Footer = () => {
         <div className="container">
           <div className="footer-bottom-content">
             <p>&copy; {new Date().getFullYear()} INOFO Africa. All rights reserved.</p>
+            
             <div className="footer-legal">
               <a href="#">Privacy Policy</a>
               <a href="#">Terms of Service</a>

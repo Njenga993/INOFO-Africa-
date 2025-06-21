@@ -158,7 +158,7 @@
   margin-right: -50px; /* Adjusts for the image overflow */
   transition: var(--transition);
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
-    
+
 }
 
 .image-overlay {
@@ -214,7 +214,7 @@
   .hero {
     flex-direction: column;
     min-height: auto;
-    padding-top: 5rem;
+    padding-top: 7rem;
   }
 
   .hero-content {

@@ -1,5 +1,4 @@
 import Hero from '../components/Herosection'; // Import the Hero component
-import React from 'react';
 import Pillars from '../components/Pillars';
 import ContactSection from '../components/ContactSection';
 import BlogGrid from '../components/BlogGrid';

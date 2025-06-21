@@ -73,13 +73,18 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
+              <Link to="/membership">
+                <b>Membership</b>
+              </Link>
+            </li>
+            <li>
               <Link to="/services">
                 <b>Services</b>
               </Link>
             </li>
             <li>
-              <Link to="/blog">
-                <b>Blog</b>
+              <Link to="/newsevents">
+                <b>News & Events</b>
               </Link>
             </li>
             <li>
@@ -118,13 +123,18 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
+              <Link to="/membership" onClick={toggleMenu}>
+                Membership
+              </Link>
+            </li>
+            <li>
               <Link to="/services" onClick={toggleMenu}>
                 Services
               </Link>
             </li>
             <li>
-              <Link to="/blog" onClick={toggleMenu}>
-                Blog
+              <Link to="/newsevents" onClick={toggleMenu}>
+                News & Events
               </Link>
             </li>
             <li>

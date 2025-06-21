@@ -1,0 +1,136 @@
+.contact-section {
+  padding: 4rem 1rem;
+  background-color: #f9fdfb;
+  margin-top: 7rem;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-direction: row; /* Default direction */
+}
+
+.contact-form-box {
+  flex: 1 1 500px;
+  order: 1;
+}
+
+.contact-form-box h2 {
+  color: black;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact-form-box p {
+  margin-bottom: 1.5rem;
+  color: black;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.9rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.contact-form .btn-primary {
+  background-color: #0f5132;
+  color: white;
+  border: none;
+  padding: 0.9rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact-form .btn-primary:hover {
+  background-color: #093f26;
+}
+
+.contact-image-box {
+  flex: 1 1 400px;
+  order: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-image-box img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Donate Section */
+.donate-section {
+  margin-top: 4rem;
+  background-color: #e0f3e6;
+  padding: 3rem 2rem;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.donate-section h2 {
+  color: #0f5132;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.donate-section p {
+  color: #333;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.donate-btn {
+  background-color: #ffc439;
+  color: #0f5132;
+  padding: 0.9rem 2rem;
+  font-weight: bold;
+  border-radius: 50px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.donate-btn:hover {
+  background-color: #ffe694;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .contact-form-box {
+    order: 1;
+  }
+
+  .contact-image-box {
+    order: 2;
+  }
+
+  .donate-section {
+    padding: 2rem 1rem;
+  }
+}
+/* Contact Section */
