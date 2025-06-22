@@ -4,6 +4,7 @@
   color: var(--cream);
   position: relative;
   overflow: hidden;
+  
 }
 
 .footer::before {

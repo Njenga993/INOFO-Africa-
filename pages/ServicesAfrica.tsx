@@ -1,6 +1,7 @@
 // src/pages/ServicesAfrica.tsx
 import { FaArrowRight, FaLeaf, FaUsers, FaHandshake } from 'react-icons/fa';
 import '../styles/ServicesAfrica.css';
+import { Link } from 'react-router-dom';
 
 const services = [
   {
@@ -70,7 +71,7 @@ const ServicesAfrica = () => (
           We partner with local hubs to conduct in-person and virtual training tailored to regional needs—covering composting, 
           agroforestry, value chain development, and organic certification processes.
         </p>
-        <a href="/about" className="btn-primary">Learn About Training</a>
+          <a><Link to="/about" className="btn-primary">Learn More <FaArrowRight /></Link></a>
       </div>
     </section>
 
@@ -80,7 +81,7 @@ const ServicesAfrica = () => (
         Join us as an implementing partner, donor, or farmer representative. Help us scale organic agriculture for food security,
         climate adaptation, and youth empowerment across Africa.
       </p>
-      <a href="/contact" className="btn-secondary">Get in Touch</a>
+         <a><Link to="/contact" className="btn-primary">Get Involved <FaHandshake /></Link></a>
     </section>
   </main>
 );

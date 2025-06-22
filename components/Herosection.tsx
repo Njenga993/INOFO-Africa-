@@ -18,7 +18,7 @@ const Hero = () => {
               <a><Link to="/about" className="btn-primary">Learn More <FaArrowRight /></Link>
                  
               </a>
-              <a><Link to="/about" className="btn-primary">Get Involved <FaHandshake /></Link>
+              <a><Link to="/contact" className="btn-primary">Get Involved <FaHandshake /></Link>
                  
               </a>
             </div>
