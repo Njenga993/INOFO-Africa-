@@ -62,7 +62,7 @@ const ServicesAfrica = () => (
 
     <section className="featured-services">
       <div className="featured-image">
-        <img src="/women-cultivating-crops-in-green-fields-4771650.jpg" alt="Training farmers" />
+        <img src="women-cultivating-crops-in-green-fields-4771650.jpg" alt="Training farmers" />
       </div>
       <div className="featured-content">
         <h2>Customized Training Programs</h2>

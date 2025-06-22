@@ -11,7 +11,7 @@ const Footer = () => {
             <div className="footer-col">
               <div className="footer-logo">
                 <img 
-                  src="/INOFO-LOGO-2.jpg" 
+                  src="INOFO-LOGO-2.jpg" 
                   alt="INOFO Africa" 
                   className="logo-img"
                 />

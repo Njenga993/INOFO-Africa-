@@ -9,7 +9,7 @@ const newsPosts = [
     location: "Dar es Salaam",
     excerpt: "INOFO proudly joined as the only organic international Farmer Organisation alongside partners from 9 regional farmers' organizations...",
     date: "May 2025",
-    image: "/networking-event-at-sunset-101213662.jpg",
+    image: "networking-event-at-sunset-101213662.jpg",
     type: "event"
   },
   {
@@ -17,7 +17,7 @@ const newsPosts = [
     title: "Global Assembly 2024 Concludes with Resounding Success",
     excerpt: "Successful conclusion of INOFO Global General Assembly 2024 with record participation from 42 countries...",
     date: "March 2024",
-    image: "/gathering-of-friends-enjoying-a-meal-together-4789782.jpg",
+    image: "gathering-of-friends-enjoying-a-meal-together-4789782.jpg",
     type: "event"
   },
   {
@@ -26,7 +26,7 @@ const newsPosts = [
     location: "Taiwan",
     excerpt: "INOFO delegation made significant impact through panel discussions and farmer-led workshops...",
     date: "February 2024",
-    image: "/farmers.jpg",
+    image: "farmers.jpg",
     type: "event"
   },
   {
@@ -34,7 +34,7 @@ const newsPosts = [
     title: "New Oceania Pasifika Council Convenors Announced",
     excerpt: "INOFO announces the election of new Council Convenors for Oceania Pasifika for the term 2024-2027...",
     date: "January 2024",
-    image: "/hands-holding-rich-soil-338230.jpg",
+    image: "hands-holding-rich-soil-338230.jpg",
     type: "news"
   },
   {
@@ -42,7 +42,7 @@ const newsPosts = [
     title: "October 2024 Newsletter Highlights",
     excerpt: "This month's newsletter spotlights inspiring achievements from our continental networks and upcoming initiatives...",
     date: "October 2024",
-    image: "/a-farmers-journey-through-the-cornfield-141617626.jpg",
+    image: "a-farmers-journey-through-the-cornfield-141617626.jpg",
     type: "news"
   },
   {
@@ -50,7 +50,7 @@ const newsPosts = [
     title: "Youth in Organic Farming Initiative Launched",
     excerpt: "Our new program aims to cultivate youth involvement in professional organic farming platforms across 3 continents...",
     date: "September 2024",
-    image: "/fresh-sprouts-in-agricultural-field-6165476.jpg",
+    image: "fresh-sprouts-in-agricultural-field-6165476.jpg",
     type: "news"
   },
   {
@@ -59,7 +59,7 @@ const newsPosts = [
     location: "Nairobi",
     excerpt: "Farmer-led workshop develops practical climate adaptation strategies for small-scale organic producers...",
     date: "August 2024",
-    image: "/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg",
+    image: "sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg",
     type: "event"
   },
   {
@@ -67,7 +67,7 @@ const newsPosts = [
     title: "Policy Advocacy Training Series",
     excerpt: "New training program equips member organizations with tools for effective policy advocacy at national levels...",
     date: "July 2024",
-    image: "/empowering-women-in-agriculture-111346581.jpg",
+    image: "empowering-women-in-agriculture-111346581.jpg",
     type: "news"
   },
   {
@@ -75,7 +75,7 @@ const newsPosts = [
     title: "Traditional Knowledge Documentation Project",
     excerpt: "Initiative launched to document and preserve indigenous organic farming practices across member regions...",
     date: "June 2024",
-    image: "/mesmerizing-african-sunset-over-the-savanna-71028880.jpg",
+    image: "mesmerizing-african-sunset-over-the-savanna-71028880.jpg",
     type: "news"
   },
   // Add 21 additional dummy entries with type alternating between news and event
@@ -129,7 +129,7 @@ const NewsEvents = () => {
             <div className="news-card" key={post.id}>
               <div 
                 className="news-image" 
-                style={{ backgroundImage: `url(${post.image})` }}
+               style={{ backgroundImage: `url(${import.meta.env.BASE_URL}farmers.jpg)` }}
               >
                 {post.location && <span className="location-badge">{post.location}</span>}
               </div>

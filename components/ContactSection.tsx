@@ -7,7 +7,7 @@ const ContactSection = () => {
         <div className="contact-grid">
           {/* Image Block */}
           <div className="contact-image">
-            <img src="/joyful-harvest-in-the-fields-101239609.jpg" alt="Contact Us" />
+            <img src="joyful-harvest-in-the-fields-101239609.jpg" alt="Contact Us" />
           </div>
 
           {/* Contact Form */}

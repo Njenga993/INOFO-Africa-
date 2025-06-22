@@ -24,7 +24,7 @@ const MembershipAfrica = () => (
             <li>Networking with continental peers</li>
             <li>Exclusive resource downloads</li>
           </ul>
-          <a href="/membership-form" className="btn-primary">
+          <a href="membership-form" className="btn-primary">
             Apply Now
           </a>
         </div>
@@ -38,7 +38,7 @@ const MembershipAfrica = () => (
             <li>Quarterly newsletter and reports</li>
             <li>Brand visibility on INOFO platforms</li>
           </ul>
-          <a href="/membership-form" className="btn-primary">
+          <a href="membership-form" className="btn-primary">
             Become Partner
           </a>
         </div>
@@ -50,7 +50,7 @@ const MembershipAfrica = () => (
       <p>
         Get detailed information and guidelines in our Membership & Affiliate Handbook:
       </p>
-      <a href="/INOFO-Africa-membership-handbook.docx" download className="btn-secondary">
+      <a href="INOFO-Africa-membership-handbook.docx" download className="btn-secondary">
         Download Handbook (DOCX)
       </a>
     </section>
