@@ -50,7 +50,7 @@ const MembershipAfrica = () => (
       <p>
         Get detailed information and guidelines in our Membership & Affiliate Handbook:
       </p>
-      <a href="../assets/INOFO-Africa-membership-handbook.docx" download className="btn-secondary">
+      <a href="/INOFO-Africa-membership-handbook.docx" download className="btn-secondary">
         Download Handbook (DOCX)
       </a>
     </section>

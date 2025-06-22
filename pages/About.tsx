@@ -9,19 +9,19 @@ const AboutUsAfrica = () => {
       name: "Daniel Wanjama",
       role: "East Africa Convenor",
       bio: "Daniel Wanjama, representing Seed Savers Network Kenya, is a dedicated advocate for seed sovereignty and food security in Eastern Africa. He has spearheaded efforts to preserve indigenous seed varieties and empower farmers to sustain their own seed systems. With a strong focus on biodiversity and sustainability, Daniel ensures smallholder farmers access locally adapted, organic seeds. As Eastern Africa's representative on the INOFO Global Council, he brings his expertise and commitment to protecting farmers' rights and promoting resilient agricultural practices.",
-      image: "../assets/wanjama.jpg"
+      image: "/wanjama.jpg"
     },
     {
       name: "Raoudath Bouaima",
       role: "West Africa Convenor",
       bio: "Raoudath Bouraima, from Benin, is a prominent advocate for sustainable agriculture and organic farming in Western Africa. Through Les Jardins de l’Espoir, she has advanced community-driven organic systems focused on resilience and food security. A strong proponent of women’s involvement in agriculture, Raoudath champions initiatives that empower rural communities and protect the environment. As Western Africa's representative, she strives to amplify farmers' voices and promote organic agriculture across the region.",
-      image: "../assets/Roudath.jpg"
+      image: "/Roudath.jpg"
     },
     {
       name: "Charles Mubanga",
       role: "Southern Africa Convenor",
       bio: "Charles K. Mubanga, representing the Mpongwe Bulima Cooperative in Zambia, is a committed advocate for sustainable farming and cooperative development. With extensive experience, he drives change by improving livelihoods and promoting ecological practices. As the Southern Africa Convenor, Charles will focus on strengthening cooperative systems and amplifying smallholder farmers’ voices in policy-making.",
-      image: "../assets/charles.jpg"
+      image: "/charles.jpg"
     }
   ];
 
@@ -46,7 +46,7 @@ const AboutUsAfrica = () => {
   return (
     <main className="about-africa">
       {/* Hero Section with Full-width Image */}
-      <header className="hero-header" style={{ backgroundImage: 'url(/assets/about-hero.jpg)' }}>
+      <header className="hero-header" style={{ backgroundImage: 'url(/dedicated-farmer-tending-to-vibrant-crops-328717.jpg)' }}>
         <div className="hero-overlay">
           <h1>About INOFO Africa</h1>
           <p className="lead">
@@ -71,14 +71,14 @@ const AboutUsAfrica = () => {
           </p>
         </div>
         <div className="image-content">
-          <img src="../assets/dedicated-farmer-tending-to-vibrant-crops-328717.jpg" alt="African farmers in discussion" />
+          <img src="/dedicated-farmer-tending-to-vibrant-crops-328717.jpg" alt="African farmers in discussion" />
         </div>
       </section>
 
       {/* Governance Section - Image Left */}
       <section className="content-section image-left">
         <div className="image-content">
-          <img src="../assets/lush-green-vegetable-field-under-a-clear-sky-4935857.jpg" alt="INOFO leadership meeting" />
+          <img src="/lush-green-vegetable-field-under-a-clear-sky-4935857.jpg" alt="INOFO leadership meeting" />
         </div>
         <div className="text-content">
           <h2>Governance Rooted in Representation</h2>
@@ -129,14 +129,14 @@ const AboutUsAfrica = () => {
           </div>
         </div>
         <div className="image-content">
-          <img src="../assets/modern-business-team-collaborating-on-data-analysis-37993.jpg" alt="INOFO strategic pillars visual" />
+          <img src="/modern-business-team-collaborating-on-data-analysis-37993.jpg" alt="INOFO strategic pillars visual" />
         </div>
       </section>
 
       {/* Secretariat Section - Image Left */}
       <section className="content-section image-left">
         <div className="image-content">
-          <img src="../assets/chaos-in-communication-a-call-centers-struggle-111332057.jpg" alt="INOFO Africa secretariat team" />
+          <img src="/chaos-in-communication-a-call-centers-struggle-111332057.jpg" alt="INOFO Africa secretariat team" />
         </div>
         <div className="text-content">
           <h2>The Nairobi Secretariat</h2>

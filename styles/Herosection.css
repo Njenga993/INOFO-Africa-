@@ -153,7 +153,7 @@
   right: 0;
   width: 50%;
   height: 100%;
-  background: url('assets/fresh-sprouts-in-agricultural-field-6165476.jpg') center/cover no-repeat;
+  background: url('/fresh-sprouts-in-agricultural-field-6165476.jpg') center/cover no-repeat;
   z-index: 1;
   margin-right: -50px; /* Adjusts for the image overflow */
   transition: var(--transition);
