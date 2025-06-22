@@ -129,7 +129,7 @@ const NewsEvents = () => {
             <div className="news-card" key={post.id}>
               <div 
                 className="news-image" 
-                style={{ backgroundImage: `url(/public/${post.image})` }}
+                style={{ backgroundImage: `url(${post.image})` }}
               >
                 {post.location && <span className="location-badge">{post.location}</span>}
               </div>

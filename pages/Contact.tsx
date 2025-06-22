@@ -25,7 +25,7 @@ const ContactSection = () => {
         </div>
 
         <div className="contact-image-box">
-          <img src="/chaos-in-communication-a-call-centers-struggle-111332057.jpg" alt="Farmers connecting" />
+          <img src="./chaos-in-communication-a-call-centers-struggle-111332057.jpg" alt="Farmers connecting" />
         </div>
       </div>
 

@@ -105,7 +105,7 @@ const BlogGrid = () => {
           <div className="featured-grid">
             {blogPosts.filter(post => post.featured).map(post => (
               <div className="featured-card" key={post.id}>
-                <div className="featured-image" style={{ backgroundImage: `url(/assets/${post.image})` }}>
+                <div className="featured-image" style={{ backgroundImage: `url(${post.image})` }}>
                   {post.location && <span className="location-badge">{post.location}</span>}
                 </div>
                 <div className="featured-content">
@@ -127,7 +127,7 @@ const BlogGrid = () => {
           <div className="blog-grid">
             {blogPosts.map(post => (
               <div className="blog-card" key={post.id}>
-                <div className="card-image" style={{ backgroundImage: `url(/assets/${post.image})` }}>
+                <div className="card-image" style={{ backgroundImage: `url(${post.image})` }}>
                   {post.location && <span className="location-badge">{post.location}</span>}
                 </div>
                 <div className="card-content">
