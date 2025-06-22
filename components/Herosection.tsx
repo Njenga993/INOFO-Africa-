@@ -1,5 +1,6 @@
 import { FaArrowRight, FaLeaf, FaUsers, FaHandshake } from 'react-icons/fa';
 import '../styles/Herosection.css';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -14,11 +15,11 @@ const Hero = () => {
               INOFO Africa connects organic farmer organisations on the ground, to represent them on international platforms. Grow the voice of farmers by joining our global community today.
             </p>
             <div className="hero-cta">
-              <a href="/about" className="btn-primary">
-                Learn More <FaArrowRight />
+              <a><Link to="/about" className="btn-primary">Learn More <FaArrowRight /></Link>
+                 
               </a>
-              <a href="/contact" className="btn-secondary">
-                Get Involved <FaHandshake />
+              <a><Link to="/about" className="btn-primary">Get Involved <FaHandshake /></Link>
+                 
               </a>
             </div>
           </div>

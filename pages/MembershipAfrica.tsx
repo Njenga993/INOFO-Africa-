@@ -25,7 +25,6 @@ const MembershipAfrica = () => (
             <li>Exclusive resource downloads</li>
           </ul>
           <a><Link to="/membership-form" className="btn-primary">Apply Now</Link>
-            Apply Now
           </a>
         </div>
         <div className="type-card">
@@ -38,8 +37,7 @@ const MembershipAfrica = () => (
             <li>Quarterly newsletter and reports</li>
             <li>Brand visibility on INOFO platforms</li>
           </ul>
-          <a><Link to="/membership-form" className="btn-primary">Apply Now</Link>
-            Become Partner
+          <a><Link to="/membership-form" className="btn-primary">Become Partner</Link>
           </a>
         </div>
       </div>
