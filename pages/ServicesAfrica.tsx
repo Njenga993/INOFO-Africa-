@@ -1,11 +1,10 @@
 // src/pages/ServicesAfrica.tsx
-import React from 'react';
 import { FaArrowRight, FaLeaf, FaUsers, FaHandshake } from 'react-icons/fa';
 import '../styles/ServicesAfrica.css';
 
 const services = [
   {
-    icon: <FaArrowRight/>, // replace with React icon
+    icon: <FaHandshake/>, // replace with React icon
     title: 'Advocacy & Policy Support',
     description:
       'Championing organic agriculture policies at national & continental forums, including land rights, certification standards, and climate justice.'

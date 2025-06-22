@@ -1,4 +1,4 @@
-import { FaLeaf, FaHandsHelping, FaGlobe, FaBookOpen, FaUserShield, FaUsers, FaArrowRight } from 'react-icons/fa';
+import { FaBookOpen, FaUserShield, FaUsers, FaArrowRight } from 'react-icons/fa';
 import '../styles/BlogGrid.css'
 
 const BlogGrid = () => {

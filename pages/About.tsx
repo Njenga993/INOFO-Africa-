@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { FaSeedling, FaHandsHelping, FaNetworkWired, FaMapMarkedAlt, FaUsers } from 'react-icons/fa';
 import '../styles/AboutUsAfrica.css';
 
