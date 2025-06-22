@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom';
 import '../styles/MembershipAfrica.css';
 
 const MembershipAfrica = () => (
@@ -24,7 +24,7 @@ const MembershipAfrica = () => (
             <li>Networking with continental peers</li>
             <li>Exclusive resource downloads</li>
           </ul>
-          <a href="membership-form" className="btn-primary">
+          <a><Link to="/membership-form" className="btn-primary">Apply Now</Link>
             Apply Now
           </a>
         </div>
@@ -38,7 +38,7 @@ const MembershipAfrica = () => (
             <li>Quarterly newsletter and reports</li>
             <li>Brand visibility on INOFO platforms</li>
           </ul>
-          <a href="membership-form" className="btn-primary">
+          <a><Link to="/membership-form" className="btn-primary">Apply Now</Link>
             Become Partner
           </a>
         </div>
@@ -60,7 +60,8 @@ const MembershipAfrica = () => (
       <p>
         Reach out to our Membership Coordinator for guidance, bulk applications, or custom partnership agreements.
       </p>
-      <a href="/contact" className="btn-primary">Contact Us</a>
+      <a><Link to="/contact" className="btn-primary">Contact Us</Link>
+</a>
     </section>
   </main>
 );
