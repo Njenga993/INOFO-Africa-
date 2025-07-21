@@ -1,5 +1,6 @@
 import { FaBookOpen, FaUserShield, FaUsers, FaArrowRight } from 'react-icons/fa';
 import '../styles/BlogGrid.css'
+import { Link } from 'react-router-dom';
 
 const BlogGrid = () => {
   // Ordered blog posts - newest first
@@ -80,7 +81,7 @@ const BlogGrid = () => {
       <div className="blog-grid-container">
         {/* 1. Section Header */}
         <div className="section-header">
-          <h2>African Organic Synergy</h2>
+          <h2>Who We Are </h2>
           <p className="subtitle">
             Cultivating African Collaboration for Sustainable Agriculture
           </p>
@@ -96,7 +97,18 @@ const BlogGrid = () => {
             knowledge keepers, and international allies, we co-create innovative, scalable
             solutions that uphold food sovereignty ensuring communities today can nourish 
             themselves while safeguarding the land for generations to come.
+
+            WE ascertain that the vertex of Accountability to the INOFO Africa membership and partners is 
+            attained through carefully choosing engagements that are farmer-centered, while ensuring 
+            transparency and equity, commitment, consistency and solidarityas cross-cutting principles
+            in all our operations and activities at all levels. WE aims at promoting solidarity among
+            organic farmers while contributing to their development and continued influence in preserving
+            mother earth.
           </p>
+            <div className="hero-cta-blog">
+              <a><Link to="/about" className="btn-primary">Learn More <FaArrowRight /></Link>   
+              </a>
+              </div>
         </div>
 
         {/* 2. Featured Blog Highlight */}

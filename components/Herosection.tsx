@@ -8,11 +8,12 @@ const Hero = () => {
       <div className="hero-content">
         <div className="container hero-layout">
           {/* Text Section */}
+          
           <div className="hero-text">
-            <h1>Coordinating Africa's Continent Strategies for Organic Farming</h1>
+            <h1>🌍 Empowering Communities, Cultivating Safe Food and Defending the Earth.</h1>
             <h2>Global representation for Africa's organic farmers</h2>
             <p>
-              INOFO Africa connects organic farmer organisations on the ground, to represent them on international platforms. Grow the voice of farmers by joining our global community today.
+              We are Africa’s organic farmers — proud smallholder families dedicated to nurturing the land without harmful chemicals. By working with nature, not against it, we protect our soils, our food, and our environment. We are the guardians of safe, healthy food — for today and for generations to come.
             </p>
             <div className="hero-cta">
               <a><Link to="/about" className="btn-primary">Learn More <FaArrowRight /></Link>
@@ -38,8 +39,8 @@ const Hero = () => {
               <div className="feature-icon">
                 <FaUsers />
               </div>
-              <h3>Global Network</h3>
-              <p>Connecting farmers across continents</p>
+              <h3>Farmer-Centered</h3>
+              <p>Putting organic farmers at the heart of everything we do</p>
             </div>
           </div>
         </div>

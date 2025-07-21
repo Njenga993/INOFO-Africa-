@@ -57,7 +57,7 @@ const Navbar = () => {
         <div className="container">
           <div className="logo-box">
             <Link to="/">
-              <img src="INOFO-LOGO-2.jpg" alt="INOFO Africa" />
+              <img src="Black_Day.png" alt="INOFO Africa" />
             </Link>
           </div>
 

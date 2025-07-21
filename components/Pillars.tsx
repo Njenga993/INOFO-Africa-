@@ -12,8 +12,7 @@ const MissionVision = () => {
           </div>
           <h2 className="mv-title">Our Mission</h2>
           <p className="mv-text">
-            To unite organic farmers and support their voices at all levels of food systems 
-            development towards producing healthy, nutritious food and preserving Mother Earth.
+            Empowering farming communities in Africa in organic agriculture for a just transformation towards sustainable food systems.
           </p>
         </div>
 
@@ -24,7 +23,7 @@ const MissionVision = () => {
           </div>
           <h2 className="mv-title">Our Vision</h2>
           <p className="mv-text">
-            A world of regenerative and sustainable food systems for all.
+           Improved livelihoods, healthy and resilient environment for current and future generations
           </p>
         </div>
       </div>
@@ -51,7 +50,14 @@ const MissionVision = () => {
             <div className="value-icon">
               <FaGlobeAfrica />
             </div>
-            <h4>Sustainability</h4>
+            <h4>Equity</h4>
+            <p>Commitment to ecological balance</p>
+          </div>
+          <div className="value-item">
+            <div className="value-icon">
+              <FaGlobeAfrica />
+            </div>
+            <h4>Transparency</h4>
             <p>Commitment to ecological balance</p>
           </div>
         </div>

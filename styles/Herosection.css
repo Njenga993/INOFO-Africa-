@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding-top: 80px; /* Prevents collision with fixed navbar */
+  padding-top: 90px; /* Prevents collision with fixed navbar */
 }
 
 .hero-content {
@@ -277,4 +277,49 @@
     width: 100%;
     justify-content: center;
   }
+  .hero-features {
+    grid-template-columns: 1fr;
+    margin-top: 1.5rem;
+  }
+  .feature-card {
+    padding: 1.5rem;
+  }
+  .feature-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+  .feature-card h3 {
+    font-size: 1.1rem;
+  }
+  .feature-card p {
+    font-size: 0.9rem;
+  }
+  .hero-image {
+    height: 300px;
+    margin-right: 2px;
+    margin-left: 2px;
+  }
+  .image-overlay {
+    background: linear-gradient(
+      0deg,
+      rgba(248, 249, 246, 0.9) 0%,
+      transparent 50%
+    );
+  }
+  .hero-text p {
+    font-size: 0.9rem;
+    margin-right: 0;
+  }
+  .hero-text h2 {
+    margin-right: 0;
+  }
+  .hero-text h1 {
+    margin-right: 0;
+  }
+  .hero-text {
+    text-align: center;
+  }
+
 }
+
