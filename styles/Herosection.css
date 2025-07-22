@@ -81,7 +81,7 @@
 }
 
 .btn-primary:hover {
-  background-color: var(--cream);
+  background-color: #4c7031;
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
 }
@@ -94,7 +94,7 @@
 
 .btn-secondary:hover {
   background-color: var(--jungle-green);
-  color: white;
+  color: #4c7031;
   transform: translateY(-3px);
 }
 
@@ -108,7 +108,7 @@
 }
 
 .feature-card {
-  background-color: white;
+  background-color: #4c7031;
   border-radius: 10px;
   padding: 2rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
@@ -136,14 +136,14 @@
 .feature-card h3 {
   font-size: 1.3rem;
   margin-bottom: 1rem;
-  color: var(--jungle-green);
+  color: var(--black);
 }
 
 .feature-card p {
-  font-size: 0.95rem;
+  font-size: 1.15rem;
   line-height: 1.6;
-  color: var(--text-dark);
-  opacity: 0.9;
+  color: white;
+  opacity: 1.9;
 }
 
 /* Background Image Section */
@@ -151,11 +151,11 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 50%;
+  width: 100%;
   height: 100%;
   background: url('/fresh-sprouts-in-agricultural-field-6165476.jpg') center/cover no-repeat;
   z-index: 1;
-  margin-right: -50px; /* Adjusts for the image overflow */
+  margin-right: 0px; /* Adjusts for the image overflow */
   transition: var(--transition);
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
 
@@ -181,32 +181,56 @@
   .hero-text h1 {
     font-size: 2.3rem;
     margin: 0 0 1rem 0;
+    justify-content: center;
+
   }
 .hero-text h2 {
     font-size: 1.4rem;
     margin: 0 0 1rem 0;
+    justify-content: center;
   }
     .hero-text p {
         font-size: 1rem;
         margin-right: 0;
+        justify-content: center;
     }
     .hero-cta {
-    flex-direction: column;
+    flex-direction: row;
     gap: 1rem;
+    justify-content: center;
+    padding-bottom: 2px;
     }
     .btn-primary,
     .btn-secondary {
         width: 100%;
         justify-content: center;
+
     }
     .hero-features {
-    grid-template-columns: 1fr;
-    margin-top: 2rem;
+    grid-template-rows: 1fr;
+    margin-top: -2rem;
+    justify-content: center;
     }
-    
+      .feature-card {
+    padding: 1.5rem;
+    margin-top: -2rem;
+    justify-content: center;
+  }
+  .feature-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+  .feature-card h3 {
+    font-size: 1.1rem;
+  }
+  .feature-card p {
+    font-size: 0.9rem;
+  }
 
   .hero-image {
     width: 40%;
+    margin-top: 0px;
   }
 }
 
@@ -224,7 +248,40 @@
   .hero-layout {
     flex-direction: column;
   }
+    .hero-cta {
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+  }
 
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+      .hero-features {
+    grid-template-rows: 1fr;
+    margin-top: -2rem;
+    justify-content: center;
+    }
+
+      .feature-card {
+    padding: 1.5rem;
+    margin-top: -8rem;
+    justify-content: center;
+    max-height: fit-content;
+  }
+  .feature-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+  .feature-card h3 {
+    font-size: 1.1rem;
+  }
+  .feature-card p {
+    font-size: 0.9rem;
+  }
   .hero-text {
     margin-bottom: 2rem;
     text-align: center;
@@ -242,6 +299,7 @@
     position: relative;
     width: 100%;
     height: 400px;
+    margin-top: -18rem;
   }
 
   .image-overlay {
@@ -252,10 +310,6 @@
     );
   }
 
-  .hero-features {
-    grid-template-columns: 1fr;
-    margin-top: 2rem;
-  }
 }
 
 @media (max-width: 480px) {
@@ -268,7 +322,7 @@
   }
 
   .hero-cta {
-    flex-direction: column;
+    flex-direction: row;
     gap: 1rem;
   }
 
@@ -278,11 +332,15 @@
     justify-content: center;
   }
   .hero-features {
-    grid-template-columns: 1fr;
-    margin-top: 1.5rem;
+    grid-template-rows: 1fr;
+    margin-top: -2rem;
+    justify-content: center;
   }
   .feature-card {
     padding: 1.5rem;
+    margin-top: -8rem;
+    justify-content: center;
+    max-height: fit-content;
   }
   .feature-icon {
     width: 50px;
@@ -299,6 +357,7 @@
     height: 300px;
     margin-right: 2px;
     margin-left: 2px;
+    margin-top: -17rem;
   }
   .image-overlay {
     background: linear-gradient(
@@ -322,4 +381,5 @@
   }
 
 }
+
 

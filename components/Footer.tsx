@@ -1,8 +1,83 @@
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaYoutube, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaLeaf } from 'react-icons/fa';
-import '../styles/footer.css'
+import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaYoutube, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaLeaf, FaPlus, FaMinus } from 'react-icons/fa';
+import '../styles/footer.css';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const Footer = () => {
+  const [faqOpen, setFaqOpen] = useState(false);
+  
+  // FAQ data
+  const faqs = [
+    [
+      { 
+        question: "What is INOFO Africa?", 
+        answer: "INOFO Africa is a network of organic farmers across Africa dedicated to promoting organic farming practices and sustainable agriculture." 
+      },
+      { 
+        question: "How can I become a member?", 
+        answer: "You can become a member by visiting our membership page and filling out the application form. We welcome all organic farmers and supporters." 
+      },
+      { 
+        question: "What are the benefits of membership?", 
+        answer: "Members gain access to training, resources, networking opportunities, and support in organic certification processes." 
+      },
+      { 
+        question: "Do you offer training programs?", 
+        answer: "Yes, we offer various training programs on organic farming techniques, certification, and sustainable practices throughout the year." 
+      },
+      { 
+        question: "How is organic certification obtained?", 
+        answer: "Organic certification is obtained through approved certification bodies after meeting specific organic standards and undergoing inspections." 
+      },
+      { 
+        question: "Can small-scale farmers join?", 
+        answer: "Absolutely! We specifically support smallholder farmers in transitioning to and maintaining organic farming practices." 
+      },
+      { 
+        question: "Where do you operate?", 
+        answer: "We operate across Africa with member organizations in multiple countries and regional coordination centers." 
+      },
+      { 
+        question: "How can I support your work?", 
+        answer: "You can support us by becoming a member, donating, volunteering, or partnering with our organization." 
+      }
+    ],
+    [
+      { 
+        question: "What crops do you focus on?", 
+        answer: "We support organic farming of all crops, with special attention to indigenous and traditional African crops." 
+      },
+      { 
+        question: "Is organic farming profitable?", 
+        answer: "Yes, organic farming can be highly profitable due to premium prices, lower input costs, and growing market demand." 
+      },
+      { 
+        question: "How do you ensure quality?", 
+        answer: "We maintain strict quality standards through training, peer reviews, and adherence to international organic regulations." 
+      },
+      { 
+        question: "Do you help with market access?", 
+        answer: "Yes, we facilitate market linkages for our members through partnerships with buyers and organic markets." 
+      },
+      { 
+        question: "What's your stance on GMOs?", 
+        answer: "We promote non-GMO agriculture in line with organic principles that prohibit genetically modified organisms." 
+      },
+      { 
+        question: "How do you handle pests organically?", 
+        answer: "We promote integrated pest management using natural predators, companion planting, and organic-approved treatments." 
+      },
+      { 
+        question: "Can urban farmers join?", 
+        answer: "Yes, we welcome urban farmers practicing organic methods in cities and peri-urban areas." 
+      },
+      { 
+        question: "How do I contact regional offices?", 
+        answer: "Visit our contact page for regional office details or email info@inofo-africa.org for assistance." 
+      }
+    ]
+  ];
+
   return (
     <footer className="footer">
       <div className="footer-top">
@@ -12,7 +87,7 @@ const Footer = () => {
             <div className="footer-col">
               <div className="footer-logo">
                 <img 
-                  src="INOFO-LOGO-2.jpg" 
+                  src="Black_Day.png" 
                   alt="INOFO Africa" 
                   className="logo-img"
                 />
@@ -23,9 +98,10 @@ const Footer = () => {
                 </div>
               </div>
               <p className="footer-about">
-                INOFO Africa is a continental platform uniting organic farmer organizations 
-                to advocate for policies, share knowledge, and promote sustainable 
-                agriculture across Africa.
+                  We are Africa's organic farmers - proud smallholder families dedicated to nurturing 
+                  the land without harmful chemicals. By working with nature, not against it, we 
+                  protect our soils, our food, and our environment. We are the guardians of safe,
+                   healthy food for today and for generations to come.
               </p>
               <div className="footer-social">
                 <a href="#" aria-label="Facebook"><FaFacebookF /></a>
@@ -94,10 +170,41 @@ const Footer = () => {
             </div>
           </div>
         </div>
+        <div className="container">
+          {/* FAQ Section */}
+          <div className="faq-section">
+            <button 
+              className="faq-toggle" 
+              onClick={() => setFaqOpen(!faqOpen)}
+              aria-expanded={faqOpen}
+              aria-controls="faq-content"
+            >
+              <h3>Frequently Asked Questions</h3>
+              <span className="faq-icon">
+                {faqOpen ? <FaMinus /> : <FaPlus />}
+              </span>
+            </button>
+            
+            {faqOpen && (
+              <div id="faq-content" className="faq-content">
+                <div className="faq-grid">
+                  {faqs.map((row, rowIndex) => (
+                    <div key={rowIndex} className="faq-row">
+                      {row.map((item, index) => (
+                        <div key={index} className="faq-item">
+                          <h4 className="faq-question">{item.question}</h4>
+                          <p className="faq-answer">{item.answer}</p>
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
       </div>
 
-      <div className="footer-bottom">
-        <div className="container">
+      <div className="footer-bottom"> 
           <div className="footer-bottom-content">
             <p>&copy; {new Date().getFullYear()} INOFO Africa. All rights reserved.</p>
             

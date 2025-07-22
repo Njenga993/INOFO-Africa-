@@ -1,6 +1,7 @@
 import Hero from '../components/Herosection'; // Import the Hero component
 import Pillars from '../components/Pillars';
 import ContactSection from '../components/ContactSection';
+import LogoCarousel from "../components/LogoCarousel";
 import BlogGrid from '../components/BlogGrid';
 
 const Home = () => {
@@ -10,6 +11,10 @@ const Home = () => {
       <Hero />
       <Pillars />
       <BlogGrid />
+      <div>
+      <h2 style={{ textAlign: "center", margin: "2rem 0" }}>Our Members</h2>
+      <LogoCarousel />
+    </div>
       <ContactSection />
       
       

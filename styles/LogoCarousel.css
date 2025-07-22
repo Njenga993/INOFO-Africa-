@@ -1,0 +1,69 @@
+.carousel-wrapper {
+  width: 100%;
+  height: fit-content;
+  overflow: hidden;
+  background: #4c7031;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.carousel-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 40s linear infinite;
+}
+
+.carousel-item {
+  display: inline-block;
+  margin: 0 40px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.carousel-item:hover {
+  transform: scale(1.05);
+}
+
+.carousel-logo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.carousel-item:nth-child(odd) {
+  animation: fade-in 1s ease-in-out;
+}
+.carousel-item:nth-child(even) {
+  animation: fade-in 1.5s ease-in-out;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.carousel-item:nth-child(odd) {
+  animation: fade-in 1s ease-in-out;
+}
+.carousel-item:nth-child(even) {
+  animation: fade-in 1.5s ease-in-out;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
