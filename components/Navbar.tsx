@@ -1,35 +1,117 @@
-import { useState, useEffect } from 'react';
-import '../styles/navbar.css';
-import { Link } from 'react-router-dom';
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaLinkedinIn,
-  FaBars,
-  FaTimes,
+import { useState, useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { 
+  FaFacebookF, 
+  FaTwitter, 
+  FaLinkedinIn, 
+  FaBars, 
+  FaTimes, 
   FaSearch,
+  FaChevronDown,
+  FaChevronUp
 } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
+import '../styles/navbar.css';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const location = useLocation();
+  const navbarRef = useRef(null);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const toggleSearch = () => setSearchOpen(!searchOpen);
+  const closeAll = () => {
+    setIsOpen(false);
+    setSearchOpen(false);
+    setActiveDropdown(null);
+  };
+
+  const toggleDropdown = (index) => {
+    setActiveDropdown(activeDropdown === index ? null : index);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
+    
+    const handleClickOutside = (event) => {
+      if (navbarRef.current && !navbarRef.current.contains(event.target)) {
+        closeAll();
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, []);
 
+  useEffect(() => {
+    closeAll();
+  }, [location]);
+
+  const navItems = [
+    { path: '/', label: 'Home' },
+    { 
+      path: '/about', 
+      label: 'Who We Are',
+      dropdown: [
+        { path: '/about/mission', label: 'Our Mission' },
+        { path: '/about/team', label: 'Our Team' },
+        { path: '/about/partners', label: 'Partners' }
+      ]
+    },
+    { 
+      path: '/membership', 
+      label: 'Membership',
+      dropdown: [
+        { path: '/membership/benefits', label: 'Benefits' },
+        { path: '/membership/apply', label: 'Apply Now' }
+      ]
+    },
+    { 
+      path: '/services', 
+      label: 'Our Work',
+      dropdown: [
+        { path: '/services/training', label: 'Training Programs' },
+        { path: '/services/advocacy', label: 'Policy Advocacy' },
+        { path: '/services/markets', label: 'Market Access' }
+      ]
+    },
+    { 
+      path: '/newsevents', 
+      label: 'Resources',
+      dropdown: [
+        { path: '/resources/news', label: 'News & Events' },
+        { path: '/resources/publications', label: 'Publications' },
+        { path: '/resources/tools', label: 'Farmer Tools' }
+      ]
+    },
+    { path: '/contact', label: 'Contact' }
+  ];
+
   return (
-    <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+    <header 
+      className={`header ${scrolled ? 'scrolled' : ''} ${isOpen ? 'menu-open' : ''}`}
+      ref={navbarRef}
+    >
       {/* TOP BAR */}
-      <div className="top-bar">
+      <motion.div 
+        className="top-bar"
+        initial={{ opacity: 1, height: 'auto' }}
+        animate={{ 
+          opacity: scrolled ? 0 : 1,
+          height: scrolled ? 0 : 'auto'
+        }}
+        transition={{ duration: 0.3 }}
+      >
         <div className="container">
           <div className="social-icons">
             <a href="#" aria-label="Facebook">
@@ -42,63 +124,81 @@ const Navbar = () => {
               <FaLinkedinIn />
             </a>
           </div>
-          <button
-            className="search-toggle"
-            onClick={toggleSearch}
-            aria-label="Toggle search"
-          >
-            <FaSearch />
-          </button>
+          
+          <div className="top-links">
+            <Link to="/contact">Support Us</Link>
+          </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* MAIN NAVIGATION */}
       <nav className="main-nav">
         <div className="container">
           <div className="logo-box">
             <Link to="/">
-              <img src="Black_Day.png" alt="INOFO Africa" />
+              <motion.img 
+                src="Black_Day.png" 
+                alt="INOFO Africa" 
+                initial={{ height: 70 }}
+                animate={{ height: scrolled ? 50 : 70 }}
+                transition={{ duration: 0.3 }}
+              />
             </Link>
           </div>
 
           <ul className="nav-links">
-            <li>
-              <Link to="/">
-                <b>Home</b>
-              </Link>
-            </li>
-            <li>
-              <Link to="/about">
-                <b>Who We Are</b>
-              </Link>
-            </li>
-            <li>
-              <Link to="/membership">
-                <b>Membership</b>
-              </Link>
-            </li>
-            <li>
-              <Link to="/services">
-                <b>Our Work</b>
-              </Link>
-            </li>
-            <li>
-              <Link to="/newsevents">
-                <b>Resources</b>
-              </Link>
-            </li>
-            <li>
-              <Link to="/contact">
-                <b>Contact</b>
-              </Link>
-            </li>
-            {/* TRANSLATOR */}
+            {navItems.map((item, index) => (
+              <li 
+                key={index}
+                className={item.dropdown ? 'has-dropdown' : ''}
+                onMouseEnter={() => item.dropdown && setActiveDropdown(index)}
+                onMouseLeave={() => item.dropdown && setActiveDropdown(null)}
+              >
+                <Link 
+                  to={item.path} 
+                  className={location.pathname === item.path ? 'active' : ''}
+                >
+                  {item.label}
+                  {item.dropdown && (
+                    activeDropdown === index ? <FaChevronUp /> : <FaChevronDown />
+                  )}
+                </Link>
+
+                {item.dropdown && (
+                  <AnimatePresence>
+                    {activeDropdown === index && (
+                      <motion.ul 
+                        className="dropdown-menu"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 20 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {item.dropdown.map((subItem, subIndex) => (
+                          <li key={subIndex}>
+                            <Link to={subItem.path}>{subItem.label}</Link>
+                          </li>
+                        ))}
+                      </motion.ul>
+                    )}
+                  </AnimatePresence>
+                )}
+              </li>
+            ))}
+            
             <li className="translate-li">
               <div id="google_translate_element" />
             </li>
           </ul>
 
           <div className="nav-actions">
+            <button
+              className="search-toggle"
+              onClick={toggleSearch}
+              aria-label="Toggle search"
+            >
+              <FaSearch />
+            </button>
             <button
               className="hamburger"
               onClick={toggleMenu}
@@ -110,76 +210,116 @@ const Navbar = () => {
         </div>
 
         {/* MOBILE SIDEBAR */}
-        <div className={`sidebar ${isOpen ? 'open' : ''}`}>
-          <ul className="sidebar-links">
-            <li>
-              <Link to="/" onClick={toggleMenu}>
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/about" onClick={toggleMenu}>
-                About
-              </Link>
-            </li>
-            <li>
-              <Link to="/membership" onClick={toggleMenu}>
-                Membership
-              </Link>
-            </li>
-            <li>
-              <Link to="/services" onClick={toggleMenu}>
-                Services
-              </Link>
-            </li>
-            <li>
-              <Link to="/newsevents" onClick={toggleMenu}>
-                News & Events
-              </Link>
-            </li>
-            <li>
-              <Link to="/contact" onClick={toggleMenu}>
-                Contact
-              </Link>
-            </li>
-            <li className="sidebar-social">
-              <a href="#" aria-label="Facebook">
-                <FaFacebookF />
-              </a>
-              <a href="#" aria-label="Twitter">
-                <FaTwitter />
-              </a>
-              <a href="#" aria-label="LinkedIn">
-                <FaLinkedinIn />
-              </a>
-            </li>
-            {/* TRANSLATOR IN SIDEBAR */}
-            <li className="sidebar-translate">
-              <div id="google_translate_element" />
-            </li>
-          </ul>
-        </div>
-
-        <div
-          className={`sidebar-overlay ${isOpen ? 'open' : ''}`}
-          onClick={toggleMenu}
-        />
+        <AnimatePresence>
+          {isOpen && (
+            <>
+              <motion.div 
+                className="sidebar-overlay"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={closeAll}
+              />
+              
+              <motion.div 
+                className="sidebar"
+                initial={{ x: '100%' }}
+                animate={{ x: 0 }}
+                exit={{ x: '100%' }}
+                transition={{ type: 'tween' }}
+              >
+                <ul className="sidebar-links">
+                  {navItems.map((item, index) => (
+                    <li key={index}>
+                      {item.dropdown ? (
+                        <div className="mobile-dropdown">
+                          <button 
+                            className={`mobile-dropdown-btn ${activeDropdown === index ? 'open' : ''}`}
+                            onClick={() => toggleDropdown(index)}
+                          >
+                            {item.label}
+                            {activeDropdown === index ? <FaChevronUp /> : <FaChevronDown />}
+                          </button>
+                          
+                          <AnimatePresence>
+                            {activeDropdown === index && (
+                              <motion.ul
+                                className="mobile-dropdown-content"
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: 'auto', opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.2 }}
+                              >
+                                {item.dropdown.map((subItem, subIndex) => (
+                                  <li key={subIndex}>
+                                    <Link to={subItem.path} onClick={closeAll}>
+                                      {subItem.label}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </motion.ul>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      ) : (
+                        <Link to={item.path} onClick={closeAll}>
+                          {item.label}
+                        </Link>
+                      )}
+                    </li>
+                  ))}
+                  
+                  <li className="sidebar-social">
+                    <a href="#" aria-label="Facebook">
+                      <FaFacebookF />
+                    </a>
+                    <a href="#" aria-label="Twitter">
+                      <FaTwitter />
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                      <FaLinkedinIn />
+                    </a>
+                  </li>
+                  
+                  <li className="sidebar-translate">
+                    <div id="google_translate_element" />
+                  </li>
+                </ul>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
 
         {/* SEARCH BAR */}
-        <div className={`search-bar ${searchOpen ? 'open' : ''}`}>
-          <input
-            type="text"
-            placeholder="Search..."
-            className="search-input"
-          />
-          <button
-            className="search-close"
-            onClick={toggleSearch}
-            aria-label="Close search"
-          >
-            <FaTimes />
-          </button>
-        </div>
+        <AnimatePresence>
+          {searchOpen && (
+            <motion.div 
+              className="search-bar"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+            >
+              <form className="search-form">
+                <input
+                  type="text"
+                  placeholder="Search for resources, news, or members..."
+                  className="search-input"
+                />
+                <button type="submit" className="search-submit">
+                  <FaSearch />
+                </button>
+                <button
+                  type="button"
+                  className="search-close"
+                  onClick={toggleSearch}
+                  aria-label="Close search"
+                >
+                  <FaTimes />
+                </button>
+              </form>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
     </header>
   );

@@ -1,43 +1,73 @@
+:root {
+  --jungle-green: #4c7031;
+  --light-jungle: #5a8a3a;
+  --muted-green: #e8f5e9;
+  --gold-accent: #ffc107;
+  --text-dark: #333;
+  --text-medium: #555;
+  --text-light: #777;
+  --shadow-light: 0 5px 15px rgba(0,0,0,0.08);
+  --shadow-medium: 0 8px 25px rgba(0,0,0,0.12);
+}
+
 /* Layout Styles */
 .about-africa {
   max-width: 1400px;
   margin: 0 auto;
   overflow: hidden;
   padding: 0 2rem;
-margin-top: 4.5rem;
+  margin-top: 4.5rem;
+  position: relative;
 }
 
 /* Hero Header */
 .hero-header {
-  height: 60vh;
+  height: 70vh;
   background-size: cover;
   background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   margin-top: 6rem;
+  background-attachment: fixed;
+}
 
+.hero-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
 }
 
 .hero-overlay {
-  background: #4c7031;
+  background: rgba(76, 112, 49, 0.9);
   color: white;
   padding: 3rem;
   max-width: 800px;
   text-align: center;
   border-radius: 8px;
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(2px);
 }
 
 .hero-header h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .hero-header .lead {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   line-height: 1.6;
+  font-weight: 400;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
 /* Alternating Content Sections */
@@ -45,7 +75,7 @@ margin-top: 4.5rem;
   display: flex;
   align-items: center;
   gap: 4rem;
-  margin: 5rem 0;
+  margin: 6rem 0;
   padding: 0 2rem;
 }
 
@@ -66,53 +96,123 @@ margin-top: 4.5rem;
   color: var(--jungle-green);
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
+  font-weight: 700;
+  position: relative;
+}
+
+.text-content h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background: var(--gold-accent);
 }
 
 .text-content p {
-  font-size: 2.5rem;
+  font-size: 1.2rem;
   line-height: 1.8;
   margin-bottom: 1.5rem;
+  color: var(--text-dark);
 }
 
 .image-content {
   flex: 1;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
 }
 
-.image-content img {
+.content-image {
   width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  height: auto;
+  border-radius: 12px;
+  box-shadow: var(--shadow-medium);
+  transition: transform 0.5s ease;
+}
+
+.image-content:hover .content-image {
+  transform: scale(1.03);
 }
 
 /* Leadership Grid */
 .leaders-section {
-  padding: 4rem 2rem;
-  background-color: #4c7031;
+  padding: 6rem 2rem;
+  background-color: var(--jungle-green);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.leaders-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==') repeat;
+  opacity: 0.5;
+}
+
+.leaders-section h2 {
+  font-size: 2.8rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.leaders-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: var(--gold-accent);
 }
 
 .leaders-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 3rem;
   margin-top: 3rem;
+  position: relative;
+  z-index: 1;
 }
 
 .leader-card {
   background: white;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  box-shadow: var(--shadow-medium);
+  transition: all 0.3s ease;
+  color: var(--text-dark);
+}
+
+.leader-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
 .leader-image {
   position: relative;
-  height: 300px;
+  height: 350px;
+  overflow: hidden;
 }
 
 .leader-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.leader-card:hover .leader-image img {
+  transform: scale(1.1);
 }
 
 .leader-overlay {
@@ -122,130 +222,403 @@ margin-top: 4.5rem;
   right: 0;
   background: linear-gradient(transparent, rgba(0,0,0,0.7));
   color: white;
-  padding: 1.5rem;
+  padding: 2rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.leader-card:hover .leader-overlay {
+  transform: translateY(0);
+}
+
+.leader-overlay h4 {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.leader-overlay p {
+  font-size: 1rem;
+  opacity: 0.9;
 }
 
 .leader-bio {
-  padding: 1.5rem;
+  padding: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
 }
 
 /* Pillars */
 .pillars-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
 }
 
 .pillar-card {
   background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  transition: transform 0.3s ease;
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow-light);
+  transition: all 0.3s ease;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.pillar-card:hover {
-  transform: translateY(-5px);
+.pillar-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: var(--gold-accent);
+  transition: height 0.3s ease;
+}
+
+.pillar-card:hover::before {
+  height: 10px;
 }
 
 .pillar-icon {
-  font-size: 2.5rem;
+  font-size: 3rem;
+  color: var(--jungle-green);
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.pillar-icon-svg {
+  width: 3rem;
+  height: 3rem;
+  color: var(--jungle-green);
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.pillar-card:hover .pillar-icon,
+.pillar-card:hover .pillar-icon-svg {
   color: var(--gold-accent);
-  margin-bottom: 1rem;
+  transform: scale(1.1);
+}
+
+.pillar-card h3 {
+  font-size: 1.5rem;
+  color: var(--jungle-green);
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+}
+
+.pillar-card p {
+  color: var(--text-medium);
+  line-height: 1.7;
+  font-size: 1.1rem;
 }
 
 /* Impact Stats */
 .impact-section {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 6rem 2rem;
+  background-color: var(--muted-green);
+  position: relative;
+}
+
+.impact-section h2 {
+  font-size: 2.8rem;
+  color: var(--jungle-green);
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.impact-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: var(--gold-accent);
 }
 
 .impact-stats {
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  gap: 3rem;
+  gap: 4rem;
   margin-top: 3rem;
   flex-wrap: wrap;
 }
 
 .stat-card {
   background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  min-width: 200px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  min-width: 220px;
+  box-shadow: var(--shadow-light);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-medium);
 }
 
 .stat-icon {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   color: var(--gold-accent);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .stat-card h3 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: var(--jungle-green);
   margin-bottom: 0.5rem;
+  font-weight: 700;
 }
 
-/* Responsive */
+.stat-card p {
+  color: var(--text-medium);
+  font-size: 1.2rem;
+}
+
+/* Blog Grid Section */
+.blog-grid-impact-section {
+  padding: 6rem 0;
+  background-color: #f8f9fa;
+}
+
+.blog-grid-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-header h2 {
+  font-size: 2.8rem;
+  color: var(--jungle-green);
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.section-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: var(--gold-accent);
+}
+
+.subtitle {
+  font-size: 1.4rem;
+  color: var(--light-jungle);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.intro-text {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--text-dark);
+}
+
+/* Featured Blogs */
+.featured-blogs {
+  margin-top: 4rem;
+}
+
+.featured-blogs h3 {
+  font-size: 2.2rem;
+  color: var(--jungle-green);
+  margin-bottom: 3rem;
+  text-align: center;
+  position: relative;
+}
+
+.featured-blogs h3::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: var(--gold-accent);
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.featured-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-light);
+  transition: all 0.3s ease;
+}
+
+.featured-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-medium);
+}
+
+.featured-image {
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.featured-content {
+  padding: 2rem;
+}
+
+.featured-content p {
+  color: var(--text-medium);
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .content-section {
+    gap: 3rem;
+  }
+  
+  .leader-image {
+    height: 300px;
+  }
+}
+
 @media (max-width: 992px) {
   .content-section {
     flex-direction: column;
     gap: 2rem;
+    margin: 4rem 0;
+  }
+  
+  .hero-header h1 {
+    font-size: 2.8rem;
+  }
+  
+  .hero-header .lead {
+    font-size: 1.4rem;
+  }
+  
+  .text-content, .image-content {
+    width: 100%;
+  }
+  
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .leaders-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
 
+@media (max-width: 768px) {
+  .about-africa {
+    padding: 0 1.5rem;
+    margin-top: 6rem;
+  }
+  
+  .hero-header {
+    height: 60vh;
+    margin-top: 5rem;
+  }
+  
+  .hero-overlay {
+    padding: 2rem;
   }
   
   .hero-header h1 {
     font-size: 2.2rem;
+  }
+  
+  .hero-header .lead {
+    font-size: 1.2rem;
+  }
+  
+  .text-content h2 {
+    font-size: 2rem;
+  }
+  
+  .text-content p {
+    font-size: 1.1rem;
+  }
+  
+  .impact-stats {
+    gap: 2rem;
+  }
+  
+  .stat-card {
+    min-width: 180px;
+    padding: 2rem 1.5rem;
+  }
+  
+  .stat-icon {
+    font-size: 2.5rem;
+  }
+  
+  .stat-card h3 {
+    font-size: 2.5rem;
   }
 }
 
 @media (max-width: 576px) {
   .hero-header {
     height: 50vh;
-    
-    
+    background-attachment: scroll;
+  }
+  
+  .hero-header h1 {
+    font-size: 1.8rem;
   }
   
   .hero-overlay {
     padding: 1.5rem;
+    width: 90%;
+  }
+  
+  .content-section {
+    padding: 0;
+  }
+  
+  .leaders-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .impact-stats {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .stat-card {
+    width: 100%;
+    max-width: 250px;
+  }
+  
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .featured-image {
+    height: 250px;
   }
 }
-    .hero-header h1 {
-        font-size: 1.8rem;
-    }
-    
-    .hero-header .lead {
-        font-size: 1.2rem;
-    }
-    
-    .content-section {
-        padding: 0 1rem;
-    }
-    
-    .text-content h2 {
-        font-size: 1.8rem;
-    }
-    
-    .text-content p {
-        font-size: 1rem;
-    }
-    
-    .leaders-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-    .leader-image {
-        height: 250px;
-    }
-    @media (max-width: 768px) {
-  /* Adjustments for smaller screens */
-    .about-africa {
-        padding: 0 1rem;
-        margin-top: 6rem;
-
-    }
-}
-    

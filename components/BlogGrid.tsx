@@ -1,9 +1,33 @@
-import { FaBookOpen, FaUserShield, FaUsers, FaArrowRight } from 'react-icons/fa';
-import '../styles/BlogGrid.css'
+import { FaBookOpen, FaUserShield, FaUsers, FaArrowRight, FaCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import '../styles/BlogGrid.css';
 
 const BlogGrid = () => {
-  // Ordered blog posts - newest first
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
   const blogPosts = [
     {
       id: 1,
@@ -11,203 +35,220 @@ const BlogGrid = () => {
       location: "Dar es Salaam",
       excerpt: "INOFO proudly joined as the only organic international Farmer Organisation alongside partners from 9 regional farmers' organizations...",
       date: "May 2025",
-      image: "networking-event-at-sunset-101213662.jpg", 
+      image: "networking-event-at-sunset-101213662.jpg",
       featured: true
     },
-    {
-      id: 2,
-      title: "Global Assembly 2024 Concludes with Resounding Success",
-      excerpt: "Successful conclusion of INOFO Global General Assembly 2024 with record participation from 42 countries...",
-      date: "March 2024",
-      image: "gathering-of-friends-enjoying-a-meal-together-4789782.jpg",
-      featured: true
-    },
-    {
-      id: 3,
-      title: "Making Waves at Organic World Congress 2024",
-      location: "Taiwan",
-      excerpt: "INOFO delegation made significant impact through panel discussions and farmer-led workshops...",
-      date: "February 2024",
-      image: "farmers.jpg",
-    },
-    {
-      id: 4,
-      title: "New Oceania Pasifika Council Convenors Announced",
-      excerpt: "INOFO announces the election of new Council Convenors for Oceania Pasifika for the term 2024-2027 during the regional assembly...",
-      date: "January 2024",
-      image: "hands-holding-rich-soil-338230.jpg",
-    
-    },
-    {
-      id: 5,
-      title: "October 2024 Newsletter Highlights",
-      excerpt: "This month's newsletter spotlights inspiring achievements from our continental networks and upcoming initiatives...",
-      date: "October 2024",
-      image: "a-farmers-journey-through-the-cornfield-141617626.jpg",
-    },
-    {
-      id: 6,
-      title: "Youth in Organic Farming Initiative Launched",
-      excerpt: "Our new program aims to cultivate youth involvement in professional organic farming platforms across 3 continents...",
-      date: "September 2024",
-      image: "fresh-sprouts-in-agricultural-field-6165476.jpg",
-    },
-    {
-      id: 7,
-      title: "Climate Adaptation Strategies Workshop",
-      location: "Nairobi",
-      excerpt: "Farmer-led workshop develops practical climate adaptation strategies for small-scale organic producers...",
-      date: "August 2024",
-      image: "sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg",
-    },
-    {
-      id: 8,
-      title: "Policy Advocacy Training Series",
-      excerpt: "New training program equips member organizations with tools for effective policy advocacy at national levels...",
-      date: "July 2024",
-      image: "empowering-women-in-agriculture-111346581.jpg",
-    },
-    {
-      id: 9,
-      title: "Traditional Knowledge Documentation Project",
-      excerpt: "Initiative launched to document and preserve indigenous organic farming practices across member regions...",
-      date: "June 2024",
-      image: "mesmerizing-african-sunset-over-the-savanna-71028880.jpg",
-    }
+    // ... (keep your existing blogPosts array)
   ];
 
   return (
-    <section className="blog-grid-impact-section">
+    <motion.section 
+      className="blog-grid-impact-section"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="blog-grid-container">
         {/* 1. Section Header */}
-        <div className="section-header">
-          <h2>Who We Are </h2>
+        <motion.div 
+          className="section-header"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2>Who We Are</h2>
           <p className="subtitle">
             Cultivating African Collaboration for Sustainable Agriculture
           </p>
-          <p className="intro-text">
-            Across Africa’s diverse landscapes, INOFO Africa weaves together the wisdom of farmers,
-            the resilience of tradition, and the power of global solidarity. Together, we’re 
-            cultivating more than food we’re growing a movement where every community thrives
-            in harmony with nature, today and for the future.
-
-            INOFO Africa serves as the continental catalyst for organic farming, strategically 
-            harmonizing grassroots initiatives, ancestral wisdom, and global partnerships to 
-            build a resilient agricultural future. By uniting smallholder farmers, indigenous 
-            knowledge keepers, and international allies, we co-create innovative, scalable
-            solutions that uphold food sovereignty ensuring communities today can nourish 
-            themselves while safeguarding the land for generations to come.
-
-            WE ascertain that the vertex of Accountability to the INOFO Africa membership and partners is 
-            attained through carefully choosing engagements that are farmer-centered, while ensuring 
-            transparency and equity, commitment, consistency and solidarityas cross-cutting principles
-            in all our operations and activities at all levels. WE aims at promoting solidarity among
-            organic farmers while contributing to their development and continued influence in preserving
-            mother earth.
-          </p>
-            <div className="hero-cta-blog">
-              <a><Link to="/about" className="btn-primary">Learn More <FaArrowRight /></Link>   
-              </a>
-              </div>
-        </div>
+          <div className="intro-text-wrapper">
+            <p className="intro-text">
+              Across Africa's diverse landscapes, INOFO Africa weaves together the wisdom of farmers,
+              the resilience of tradition, and the power of global solidarity. Together, we're 
+              cultivating more than food we're growing a movement where every community thrives
+              in harmony with nature, today and for the future.
+            </p>
+            <p className="intro-text">
+              INOFO Africa serves as the continental catalyst for organic farming, strategically 
+              harmonizing grassroots initiatives, ancestral wisdom, and global partnerships to 
+              build a resilient agricultural future.
+            </p>
+          </div>
+          <div className="hero-cta-blog">
+            <Link to="/about" className="btn-primary">
+              Learn More <FaArrowRight className="icon-arrow" />
+            </Link>
+          </div>
+        </motion.div>
 
         {/* 2. Featured Blog Highlight */}
         <div className="featured-blogs">
-          <h3>Latest Updates</h3>
-          <div className="featured-grid">
+          <motion.h3
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            Latest Updates
+          </motion.h3>
+          <motion.div 
+            className="featured-grid"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             {blogPosts.filter(post => post.featured).map(post => (
-              <div className="featured-card" key={post.id}>
-                <div className="featured-image" style={{ backgroundImage: `url(${post.image})` }}>
-                  {post.location && <span className="location-badge">{post.location}</span>}
+              <motion.div 
+                className="featured-card" 
+                key={post.id}
+                variants={itemVariants}
+                whileHover={{ scale: 1.02 }}
+              >
+                <div 
+                  className="featured-image" 
+                  style={{ backgroundImage: `url(${post.image})` }}
+                >
+                  {post.location && (
+                    <span className="location-badge">
+                      <FaMapMarkerAlt /> {post.location}
+                    </span>
+                  )}
                 </div>
                 <div className="featured-content">
-                  <span className="post-date">{post.date}</span>
+                  <span className="post-date">
+                    <FaCalendarAlt /> {post.date}
+                  </span>
                   <h4>{post.title}</h4>
                   <p>{post.excerpt}</p>
-                  <a href={`/blog/${post.id}`} className="read-more">
-                    Read More <FaArrowRight />
-                  </a>
+                  <Link to={`/blog/${post.id}`} className="read-more">
+                    Read More <FaArrowRight className="icon-arrow" />
+                  </Link>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         {/* 3. All Blog Posts */}
         <div className="all-blogs">
-          <h3>Our Recent Activities</h3>
-          <div className="blog-grid">
+          <motion.h3
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            Our Recent Activities
+          </motion.h3>
+          <motion.div 
+            className="blog-grid"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             {blogPosts.map(post => (
-              <div className="blog-card" key={post.id}>
-                <div className="card-image" style={{ backgroundImage: `url(${post.image})` }}>
-                  {post.location && <span className="location-badge">{post.location}</span>}
+              <motion.div 
+                className="blog-card" 
+                key={post.id}
+                variants={itemVariants}
+                whileHover={{ 
+                  scale: 1.03,
+                  boxShadow: "0 10px 25px rgba(0,0,0,0.1)"
+                }}
+              >
+                <div 
+                  className="card-image" 
+                  style={{ backgroundImage: `url(${post.image})` }}
+                >
+                  {post.location && (
+                    <span className="location-badge">
+                      <FaMapMarkerAlt /> {post.location}
+                    </span>
+                  )}
                 </div>
                 <div className="card-content">
-                  <span className="post-date">{post.date}</span>
+                  <span className="post-date">
+                    <FaCalendarAlt /> {post.date}
+                  </span>
                   <h4>{post.title}</h4>
-                  <a href={`/blog/${post.id}`} className="read-more">
-                    Read More <FaArrowRight />
-                  </a>
+                  <Link to={`/blog/${post.id}`} className="read-more">
+                    Read More <FaArrowRight className="icon-arrow" />
+                  </Link>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         {/* 4. Strategic Pillars */}
         <div className="pillars-section">
-          <h3>Our Strategic Pillars</h3>
-          <div className="pillars-grid">
-            <div className="pillar-card">
-              <div className="pillar-icon">
-                <FaBookOpen />
-              </div>
-              <h4>Knowledge Exchange</h4>
-              <p>
-                Preserve ethical, sustainable organic farming through our open-source knowledge base 
-                combining traditional wisdom and modern techniques.
-              </p>
-            </div>
-            <div className="pillar-card">
-              <div className="pillar-icon">
-                <FaUserShield />
-              </div>
-              <h4>Farmer Advocacy</h4>
-              <p>
-                Engage with our global activist network to address legal and environmental challenges 
-                through collective action.
-              </p>
-            </div>
-            <div className="pillar-card">
-              <div className="pillar-icon">
-                <FaUsers />
-              </div>
-              <h4>Global Networking</h4>
-              <p>
-                Connect through our digital platforms and in-person forums across all continents with 
-                inclusive communication strategies.
-              </p>
-            </div>
-          </div>
+          <motion.h3
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            Our Strategic Pillars
+          </motion.h3>
+          <motion.div 
+            className="pillars-grid"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {[
+              {
+                icon: <FaBookOpen />,
+                title: "Knowledge Exchange",
+                description: "Preserve ethical, sustainable organic farming through our open-source knowledge base combining traditional wisdom and modern techniques."
+              },
+              {
+                icon: <FaUserShield />,
+                title: "Farmer Advocacy",
+                description: "Engage with our global activist network to address legal and environmental challenges through collective action."
+              },
+              {
+                icon: <FaUsers />,
+                title: "Global Networking",
+                description: "Connect through our digital platforms and in-person forums across all continents with inclusive communication strategies."
+              }
+            ].map((pillar, index) => (
+              <motion.div 
+                className="pillar-card" 
+                key={index}
+                variants={itemVariants}
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="pillar-icon">
+                  {pillar.icon}
+                </div>
+                <h4>{pillar.title}</h4>
+                <p>{pillar.description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
 
         {/* 5. Closing About Section */}
-        <div className="intro-text">
+        <motion.div 
+          className="about-inofo"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <p>
-               The Inter-Continental Network of Organic Farmer Organisations (INOFO) Africa
-              serves as a dynamic global platform that unites and amplifies the voices 
-              of established organic farming associations through a grassroots, farmer-led approach.
-              We champion transformative initiatives in food sovereignty, advocating for policies that 
-              empower small-scale farmers and protect indigenous agricultural knowledge. Our work defends 
-              land rights against corporate encroachment, promotes climate-resilient farming practices to
-              combat environmental degradation, and actively cultivates youth engagement to ensure the
-              future of sustainable agriculture. By fostering cross-continental collaboration, INOFO Africa
-              bridges traditional wisdom with innovative solutions, creating a unified front for 
-              ecological stewardship and equitable food systems worldwide.
+            The Inter-Continental Network of Organic Farmer Organisations (INOFO) Africa
+            serves as a dynamic global platform that unites and amplifies the voices 
+            of established organic farming associations through a grassroots, farmer-led approach.
           </p>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
+
 export default BlogGrid;
