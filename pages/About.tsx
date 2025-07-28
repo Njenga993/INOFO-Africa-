@@ -1,6 +1,7 @@
 import { FaSeedling, FaMapMarkedAlt, FaUsers } from 'react-icons/fa';
-import { motion, Variants } from 'framer-motion';
-import { JSX } from 'react';
+import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
+import type { JSX } from 'react';
 import { Leaf, Users as UsersIcon, Globe, Landmark } from "lucide-react"; 
 import '../styles/AboutUsAfrica.css';
 

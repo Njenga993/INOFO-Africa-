@@ -1,5 +1,6 @@
 import { FaLeaf, FaUsers, FaHandshake, FaGlobeAfrica, FaBalanceScale, FaEye } from 'react-icons/fa';
-import { motion, Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 import '../styles/pillars.css';
 
 const MissionVision = () => {

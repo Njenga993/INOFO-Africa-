@@ -1,7 +1,8 @@
 import { FaBookOpen, FaUserShield, FaUsers, FaArrowRight, FaCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
-import { motion, Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { JSX } from 'react';
+import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
+import type { JSX } from 'react';
 import '../styles/BlogGrid.css';
 
 interface BlogPost {

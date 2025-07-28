@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { FaArrowRight, FaLeaf, FaUsers, FaHandshake, FaSeedling, FaBook, FaGlobeAfrica } from 'react-icons/fa';
 import { motion, useAnimation } from 'framer-motion';
-import { JSX } from 'react';
+import type { JSX } from 'react';
 import '../styles/ServicesAfrica.css';
 import { Link } from 'react-router-dom';
 
