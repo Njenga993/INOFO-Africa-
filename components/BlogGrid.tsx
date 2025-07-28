@@ -1,11 +1,28 @@
 import { FaBookOpen, FaUserShield, FaUsers, FaArrowRight, FaCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { JSX } from 'react';
 import '../styles/BlogGrid.css';
 
+interface BlogPost {
+  id: number;
+  title: string;
+  location: string;
+  excerpt: string;
+  date: string;
+  image: string;
+  featured: boolean;
+}
+
+interface Pillar {
+  icon: JSX.Element;
+  title: string;
+  description: string;
+}
+
 const BlogGrid = () => {
-  // Animation variants
-  const containerVariants = {
+  // Animation variants with proper typing
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -16,19 +33,19 @@ const BlogGrid = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: [0.6, -0.05, 0.01, 0.99] // Using easing array instead of string
       }
     }
   };
 
-  const blogPosts = [
+  const blogPosts: BlogPost[] = [
     {
       id: 1,
       title: "INOFO Shines at International FFORA Event 2025",
@@ -38,7 +55,25 @@ const BlogGrid = () => {
       image: "networking-event-at-sunset-101213662.jpg",
       featured: true
     },
-    // ... (keep your existing blogPosts array)
+    // Add other blog posts here
+  ];
+
+  const pillars: Pillar[] = [
+    {
+      icon: <FaBookOpen />,
+      title: "Knowledge Exchange",
+      description: "Preserve ethical, sustainable organic farming through our open-source knowledge base combining traditional wisdom and modern techniques."
+    },
+    {
+      icon: <FaUserShield />,
+      title: "Farmer Advocacy",
+      description: "Engage with our global activist network to address legal and environmental challenges through collective action."
+    },
+    {
+      icon: <FaUsers />,
+      title: "Global Networking",
+      description: "Connect through our digital platforms and in-person forums across all continents with inclusive communication strategies."
+    }
   ];
 
   return (
@@ -199,23 +234,7 @@ const BlogGrid = () => {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            {[
-              {
-                icon: <FaBookOpen />,
-                title: "Knowledge Exchange",
-                description: "Preserve ethical, sustainable organic farming through our open-source knowledge base combining traditional wisdom and modern techniques."
-              },
-              {
-                icon: <FaUserShield />,
-                title: "Farmer Advocacy",
-                description: "Engage with our global activist network to address legal and environmental challenges through collective action."
-              },
-              {
-                icon: <FaUsers />,
-                title: "Global Networking",
-                description: "Connect through our digital platforms and in-person forums across all continents with inclusive communication strategies."
-              }
-            ].map((pillar, index) => (
+            {pillars.map((pillar, index) => (
               <motion.div 
                 className="pillar-card" 
                 key={index}

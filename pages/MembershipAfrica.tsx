@@ -3,9 +3,9 @@ import { useEffect, useRef, useState } from 'react';
 import '../styles/MembershipAfrica.css';
 
 const MembershipAfrica = () => {
-  const [activeCard, setActiveCard] = useState(null);
+  const [activeCard, setActiveCard] = useState<number | null>(null);
   const [isHandbookDownloading, setIsHandbookDownloading] = useState(false);
-  const headerRef = useRef(null);
+  const headerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Smooth scroll to offset for fixed headers

@@ -1,9 +1,9 @@
 import { FaLeaf, FaUsers, FaHandshake, FaGlobeAfrica, FaBalanceScale, FaEye } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import '../styles/pillars.css';
 
 const MissionVision = () => {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -14,14 +14,14 @@ const MissionVision = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: [0.6, -0.05, 0.01, 0.99] // Using easing array instead of string
       }
     }
   };

@@ -13,13 +13,22 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import '../styles/navbar.css';
 
+interface NavItem {
+  path: string;
+  label: string;
+  dropdown?: Array<{
+    path: string;
+    label: string;
+  }>;
+}
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
   const location = useLocation();
-  const navbarRef = useRef(null);
+  const navbarRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const toggleSearch = () => setSearchOpen(!searchOpen);
@@ -29,8 +38,16 @@ const Navbar = () => {
     setActiveDropdown(null);
   };
 
-  const toggleDropdown = (index) => {
+  const toggleDropdown = (index: number) => {
     setActiveDropdown(activeDropdown === index ? null : index);
+  };
+
+  // Scroll to top function
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   };
 
   useEffect(() => {
@@ -38,8 +55,8 @@ const Navbar = () => {
       setScrolled(window.scrollY > 50);
     };
     
-    const handleClickOutside = (event) => {
-      if (navbarRef.current && !navbarRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navbarRef.current && !navbarRef.current.contains(event.target as Node)) {
         closeAll();
       }
     };
@@ -57,7 +74,7 @@ const Navbar = () => {
     closeAll();
   }, [location]);
 
-  const navItems = [
+  const navItems: NavItem[] = [
     { path: '/', label: 'Home' },
     { 
       path: '/about', 
@@ -135,7 +152,7 @@ const Navbar = () => {
       <nav className="main-nav">
         <div className="container">
           <div className="logo-box">
-            <Link to="/">
+            <Link to="/" onClick={scrollToTop}>
               <motion.img 
                 src="Black_Day.png" 
                 alt="INOFO Africa" 
@@ -157,6 +174,12 @@ const Navbar = () => {
                 <Link 
                   to={item.path} 
                   className={location.pathname === item.path ? 'active' : ''}
+                  onClick={() => {
+                    // Scroll to top if already on the same page
+                    if (location.pathname === item.path) {
+                      scrollToTop();
+                    }
+                  }}
                 >
                   {item.label}
                   {item.dropdown && (
@@ -176,7 +199,18 @@ const Navbar = () => {
                       >
                         {item.dropdown.map((subItem, subIndex) => (
                           <li key={subIndex}>
-                            <Link to={subItem.path}>{subItem.label}</Link>
+                            <Link 
+                              to={subItem.path}
+                              onClick={() => {
+                                closeAll();
+                                // Scroll to top if already on the same page
+                                if (location.pathname === subItem.path) {
+                                  scrollToTop();
+                                }
+                              }}
+                            >
+                              {subItem.label}
+                            </Link>
                           </li>
                         ))}
                       </motion.ul>
@@ -252,7 +286,16 @@ const Navbar = () => {
                               >
                                 {item.dropdown.map((subItem, subIndex) => (
                                   <li key={subIndex}>
-                                    <Link to={subItem.path} onClick={closeAll}>
+                                    <Link 
+                                      to={subItem.path} 
+                                      onClick={() => {
+                                        closeAll();
+                                        // Scroll to top if already on the same page
+                                        if (location.pathname === subItem.path) {
+                                          scrollToTop();
+                                        }
+                                      }}
+                                    >
                                       {subItem.label}
                                     </Link>
                                   </li>
@@ -262,7 +305,16 @@ const Navbar = () => {
                           </AnimatePresence>
                         </div>
                       ) : (
-                        <Link to={item.path} onClick={closeAll}>
+                        <Link 
+                          to={item.path} 
+                          onClick={() => {
+                            closeAll();
+                            // Scroll to top if already on the same page
+                            if (location.pathname === item.path) {
+                              scrollToTop();
+                            }
+                          }}
+                        >
                           {item.label}
                         </Link>
                       )}

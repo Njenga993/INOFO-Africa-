@@ -1,10 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
 import { FaArrowRight, FaLeaf, FaUsers, FaHandshake, FaSeedling, FaBook, FaGlobeAfrica } from 'react-icons/fa';
-import { motion, useAnimation, AnimatePresence } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
+import { JSX } from 'react';
 import '../styles/ServicesAfrica.css';
 import { Link } from 'react-router-dom';
 
-const services = [
+interface Service {
+  icon: JSX.Element;
+  title: string;
+  description: string;
+  color: string;
+}
+
+const services: Service[] = [
   {
     icon: <FaHandshake size={28} />,
     title: 'Advocacy & Policy Support',
@@ -44,10 +52,10 @@ const services = [
 ];
 
 const ServicesAfrica = () => {
-  const [hoveredCard, setHoveredCard] = useState(null);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const controls = useAnimation();
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(

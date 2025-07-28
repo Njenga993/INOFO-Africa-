@@ -1,11 +1,32 @@
-import { FaSeedling, FaHandsHelping, FaNetworkWired, FaMapMarkedAlt, FaUsers } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import { FaSeedling, FaMapMarkedAlt, FaUsers } from 'react-icons/fa';
+import { motion, Variants } from 'framer-motion';
+import { JSX } from 'react';
+import { Leaf, Users as UsersIcon, Globe, Landmark } from "lucide-react"; 
 import '../styles/AboutUsAfrica.css';
-import { Leaf, Users, Globe, Landmark } from "lucide-react"; 
+
+// Type definitions
+interface Leader {
+  name: string;
+  role: string;
+  bio: string;
+  image: string;
+}
+
+interface Pillar {
+  icon: JSX.Element;
+  title: string;
+  description: string;
+}
+
+interface StatItem {
+  icon: JSX.Element;
+  value: string;
+  label: string;
+}
 
 const AboutUsAfrica = () => {
-  // Animation variants
-  const containerVariants = {
+  // Animation variants with proper typing
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -16,31 +37,56 @@ const AboutUsAfrica = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: [0.6, -0.05, 0.01, 0.99] // Using easing array instead of string
       }
     }
   };
 
-  // Leadership data
-  const leaders = [
+  // Leadership data with proper typing
+  const leaders: Leader[] = [
     {
       name: "Daniel Wanjama",
       role: "East Africa Convenor",
       bio: "Daniel Wanjama, representing Seed Savers Network Kenya, is a dedicated advocate for seed sovereignty and food security in Eastern Africa. He has spearheaded efforts to preserve indigenous seed varieties and empower farmers to sustain their own seed systems. With a strong focus on biodiversity and sustainability, Daniel ensures smallholder farmers access locally adapted, organic seeds. As Eastern Africa's representative on the INOFO Global Council, he brings his expertise and commitment to protecting farmers' rights and promoting resilient agricultural practices.",
       image: "wanjama.jpg"
     },
-    // ... (keep your existing leaders array)
+    // Add other leaders here
   ];
 
-  const pillars = [
-    // ... (keep your existing pillars array)
+  const pillars: Pillar[] = [
+    {
+      icon: <UsersIcon className="pillar-icon-svg" />,
+      title: "Community Resilience",
+      description: "We empower farmer cooperatives and networks to build resilient rural economies and stronger local food systems."
+    },
+    {
+      icon: <Leaf className="pillar-icon-svg" />,
+      title: "Ecological Stewardship",
+      description: "Our farmers are caretakers of biodiversity — preserving soils, water sources, and traditional ecological knowledge."
+    },
+    {
+      icon: <Landmark className="pillar-icon-svg" />,
+      title: "Policy & Voice",
+      description: "We advocate for inclusive agricultural policies that support organic farmers, youth, and women-led movements."
+    },
+    {
+      icon: <Globe className="pillar-icon-svg" />,
+      title: "Global Solidarity",
+      description: "We connect grassroots African farmers with regional and international allies to amplify their voices and innovations."
+    }
+  ];
+
+  const stats: StatItem[] = [
+    { icon: <FaUsers className="stat-icon" />, value: "78+", label: "Member Organizations" },
+    { icon: <FaMapMarkedAlt className="stat-icon" />, value: "32", label: "African Countries" },
+    { icon: <FaSeedling className="stat-icon" />, value: "500+", label: "Documented Practices" }
   ];
 
   return (
@@ -50,7 +96,7 @@ const AboutUsAfrica = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Hero Section with Full-width Image */}
+      {/* Hero Section */}
       <motion.header 
         className="hero-header" 
         style={{ backgroundImage: 'url(dedicated-farmer-tending-to-vibrant-crops-328717.jpg)' }}
@@ -77,7 +123,7 @@ const AboutUsAfrica = () => {
         </div>
       </motion.header>
 
-      {/* History Section - Image Right */}
+      {/* History Section */}
       <motion.section 
         className="content-section image-right"
         initial="hidden"
@@ -107,7 +153,7 @@ const AboutUsAfrica = () => {
         </motion.div>
       </motion.section>
 
-      {/* Governance Section - Image Left */}
+      {/* Governance Section */}
       <motion.section 
         className="content-section image-left"
         initial="hidden"
@@ -144,7 +190,6 @@ const AboutUsAfrica = () => {
         variants={containerVariants}
       >
         <div className="blog-grid-container">
-          {/* Section Header */}
           <motion.div className="section-header" variants={itemVariants}>
             <h2>Why We Farm Organic in Africa</h2>
             <p className="subtitle">
@@ -158,7 +203,6 @@ const AboutUsAfrica = () => {
             </p>
           </motion.div>
 
-          {/* Strategic Pillars */}
           <div className="pillars-section">
             <motion.h3 variants={itemVariants}>Our Pillars of Impact</motion.h3>
             <motion.div 
@@ -168,28 +212,7 @@ const AboutUsAfrica = () => {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              {[
-                {
-                  icon: <Users className="pillar-icon-svg" />,
-                  title: "Community Resilience",
-                  description: "We empower farmer cooperatives and networks to build resilient rural economies and stronger local food systems."
-                },
-                {
-                  icon: <Leaf className="pillar-icon-svg" />,
-                  title: "Ecological Stewardship",
-                  description: "Our farmers are caretakers of biodiversity — preserving soils, water sources, and traditional ecological knowledge."
-                },
-                {
-                  icon: <Landmark className="pillar-icon-svg" />,
-                  title: "Policy & Voice",
-                  description: "We advocate for inclusive agricultural policies that support organic farmers, youth, and women-led movements."
-                },
-                {
-                  icon: <Globe className="pillar-icon-svg" />,
-                  title: "Global Solidarity",
-                  description: "We connect grassroots African farmers with regional and international allies to amplify their voices and innovations."
-                }
-              ].map((pillar, index) => (
+              {pillars.map((pillar, index) => (
                 <motion.div 
                   className="pillar-card" 
                   key={index}
@@ -209,7 +232,6 @@ const AboutUsAfrica = () => {
             </motion.div>
           </div>
 
-          {/* Chart Image */}
           <div className="featured-blogs">
             <motion.h3 variants={itemVariants}>Main Purposes of Organic Farmer Organizations</motion.h3>
             <motion.div 
@@ -277,7 +299,7 @@ const AboutUsAfrica = () => {
         </motion.div>
       </motion.section>
 
-      {/* Pillars Section - Image Right */}
+      {/* Pillars Section */}
       <motion.section 
         className="content-section image-right"
         initial="hidden"
@@ -317,7 +339,7 @@ const AboutUsAfrica = () => {
         </motion.div>
       </motion.section>
 
-      {/* Secretariat Section - Image Left */}
+      {/* Secretariat Section */}
       <motion.section 
         className="content-section image-left"
         initial="hidden"
@@ -366,11 +388,7 @@ const AboutUsAfrica = () => {
           className="impact-stats"
           variants={containerVariants}
         >
-          {[
-            { icon: <FaUsers className="stat-icon" />, value: "78+", label: "Member Organizations" },
-            { icon: <FaMapMarkedAlt className="stat-icon" />, value: "32", label: "African Countries" },
-            { icon: <FaSeedling className="stat-icon" />, value: "500+", label: "Documented Practices" }
-          ].map((stat, index) => (
+          {stats.map((stat, index) => (
             <motion.div 
               className="stat-card"
               key={index}

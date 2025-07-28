@@ -1,11 +1,49 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { FaArrowRight, FaArrowLeft, FaCheck, FaLeaf, FaUsers, FaHandshake } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import '../styles/MembershipForm.css';
 
+type FormData = {
+  organizationName: string;
+  country: string;
+  yearFounded: string;
+  legalStatus: string;
+  website: string;
+  address: string;
+  contactPerson: string;
+  position: string;
+  phone: string;
+  email: string;
+  membershipType: string;
+  expertise: string[];
+  whyJoin: string;
+  contribution: string;
+  declaration: boolean;
+};
+
+type FormErrors = {
+  organizationName?: string;
+  country?: string;
+  contactPerson?: string;
+  phone?: string;
+  email?: string;
+  membershipType?: string;
+  whyJoin?: string;
+  declaration?: string;
+};
+
+const expertiseOptions = [
+  'Organic Production',
+  'Agroecology',
+  'Research',
+  'Training & Capacity Building',
+  'Advocacy & Policy',
+  'Climate Action'
+] as const;
+
 const MembershipForm = () => {
   const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     organizationName: '',
     country: '',
     yearFounded: '',
@@ -22,7 +60,7 @@ const MembershipForm = () => {
     contribution: '',
     declaration: false
   });
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
@@ -38,18 +76,19 @@ const MembershipForm = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
+    const target = e.target as HTMLInputElement;
     
     if (type === 'checkbox') {
       if (name === 'declaration') {
-        setFormData(prev => ({ ...prev, [name]: checked }));
+        setFormData(prev => ({ ...prev, [name]: target.checked }));
       } else {
         setFormData(prev => ({
           ...prev,
-          expertise: checked 
-            ? [...prev.expertise, value]
-            : prev.expertise.filter(item => item !== value)
+          expertise: target.checked 
+            ? [...prev.expertise, target.value]
+            : prev.expertise.filter(item => item !== target.value)
         }));
       }
     } else {
@@ -57,9 +96,9 @@ const MembershipForm = () => {
     }
   };
 
-  const validateStep = (step) => {
+  const validateStep = (step: number) => {
     let valid = true;
-    const newErrors = {};
+    const newErrors: FormErrors = {};
     
     if (step === 1) {
       if (!formData.organizationName.trim()) {
@@ -94,18 +133,24 @@ const MembershipForm = () => {
       }
     }
     
+    if (step === 3) {
+      if (!formData.whyJoin.trim()) {
+        newErrors.whyJoin = 'Please explain why you want to join';
+        valid = false;
+      }
+      if (!formData.declaration) {
+        newErrors.declaration = 'You must accept the declaration';
+        valid = false;
+      }
+    }
+    
     setErrors(newErrors);
     return valid;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (validateStep(3)) {
-      if (!formData.declaration) {
-        setErrors(prev => ({ ...prev, declaration: 'You must accept the declaration' }));
-        return;
-      }
-      
       setIsSubmitting(true);
       
       // Simulate form submission
@@ -122,7 +167,7 @@ const MembershipForm = () => {
 
   // Form step animations
   const variants = {
-    enter: (direction) => ({
+    enter: (direction: number) => ({
       x: direction > 0 ? 100 : -100,
       opacity: 0
     }),
@@ -133,7 +178,7 @@ const MembershipForm = () => {
         duration: 0.3
       }
     },
-    exit: (direction) => ({
+    exit: (direction: number) => ({
       x: direction > 0 ? -100 : 100,
       opacity: 0,
       transition: {
@@ -401,89 +446,27 @@ const MembershipForm = () => {
                   <fieldset className="expertise-fieldset">
                     <legend>Areas of Work / Expertise:</legend>
                     <div className="checkbox-grid">
-                      <label className="checkbox-label">
-                        <input
-                          type="checkbox"
-                          name="expertise"
-                          value="Organic Production"
-                          checked={formData.expertise.includes('Organic Production')}
-                          onChange={handleChange}
-                        />
-                        <span className="checkbox-custom">
-                          <FaLeaf className="checkbox-icon" />
-                        </span>
-                        Organic Production
-                      </label>
-                      
-                      <label className="checkbox-label">
-                        <input
-                          type="checkbox"
-                          name="expertise"
-                          value="Agroecology"
-                          checked={formData.expertise.includes('Agroecology')}
-                          onChange={handleChange}
-                        />
-                        <span className="checkbox-custom">
-                          <FaLeaf className="checkbox-icon" />
-                        </span>
-                        Agroecology
-                      </label>
-                      
-                      <label className="checkbox-label">
-                        <input
-                          type="checkbox"
-                          name="expertise"
-                          value="Research"
-                          checked={formData.expertise.includes('Research')}
-                          onChange={handleChange}
-                        />
-                        <span className="checkbox-custom">
-                          <FaUsers className="checkbox-icon" />
-                        </span>
-                        Research
-                      </label>
-                      
-                      <label className="checkbox-label">
-                        <input
-                          type="checkbox"
-                          name="expertise"
-                          value="Training & Capacity Building"
-                          checked={formData.expertise.includes('Training & Capacity Building')}
-                          onChange={handleChange}
-                        />
-                        <span className="checkbox-custom">
-                          <FaUsers className="checkbox-icon" />
-                        </span>
-                        Training & Capacity Building
-                      </label>
-                      
-                      <label className="checkbox-label">
-                        <input
-                          type="checkbox"
-                          name="expertise"
-                          value="Advocacy & Policy"
-                          checked={formData.expertise.includes('Advocacy & Policy')}
-                          onChange={handleChange}
-                        />
-                        <span className="checkbox-custom">
-                          <FaHandshake className="checkbox-icon" />
-                        </span>
-                        Advocacy & Policy
-                      </label>
-                      
-                      <label className="checkbox-label">
-                        <input
-                          type="checkbox"
-                          name="expertise"
-                          value="Climate Action"
-                          checked={formData.expertise.includes('Climate Action')}
-                          onChange={handleChange}
-                        />
-                        <span className="checkbox-custom">
-                          <FaLeaf className="checkbox-icon" />
-                        </span>
-                        Climate Action
-                      </label>
+                      {expertiseOptions.map((option) => (
+                        <label key={option} className="checkbox-label">
+                          <input
+                            type="checkbox"
+                            name="expertise"
+                            value={option}
+                            checked={formData.expertise.includes(option)}
+                            onChange={handleChange}
+                          />
+                          <span className="checkbox-custom">
+                            {option === 'Organic Production' || option === 'Agroecology' || option === 'Climate Action' ? (
+                              <FaLeaf className="checkbox-icon" />
+                            ) : option === 'Research' || option === 'Training & Capacity Building' ? (
+                              <FaUsers className="checkbox-icon" />
+                            ) : (
+                              <FaHandshake className="checkbox-icon" />
+                            )}
+                          </span>
+                          {option}
+                        </label>
+                      ))}
                     </div>
                   </fieldset>
                 </div>
