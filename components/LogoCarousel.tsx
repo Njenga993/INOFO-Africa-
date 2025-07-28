@@ -16,17 +16,17 @@ const members: Member[] = [
   },
   {
     name: "Partner 2",
-    logoUrl: "/Black_Day.png",
+    logoUrl: "Black_Day.png",
     website: "https://partner2.com",
   },
   {
     name: "Partner 3",
-    logoUrl: "/Black_Day.png",
+    logoUrl: "Black_Day.png",
     website: "https://partner3.com",
   },
   {
     name: "Partner 4",
-    logoUrl: "/Black_Day.png",
+    logoUrl: "empowering-women-in-agriculture-111346581.jpg",
     website: "https://partner4.com",
   },
   // Add more members as needed

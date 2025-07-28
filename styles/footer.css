@@ -218,6 +218,16 @@
   gap: 1rem;
   text-align: center;
 }
+.footer-bottom-content a {
+  color: var(--cream);
+  text-decoration: none;
+  transition: var(--transition);
+  opacity: 0.8;
+}
+.footer-bottom-content a:hover {
+  color: var(--gold-accent);
+  opacity: 1;
+}
 
 .footer-legal {
   display: flex;

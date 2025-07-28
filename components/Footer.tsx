@@ -206,7 +206,7 @@ const Footer = () => {
 
       <div className="footer-bottom"> 
           <div className="footer-bottom-content">
-            <p>&copy; {new Date().getFullYear()} INOFO Africa. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} INOFO Africa. All rights reserved  |  Powered by <a href="https://njenga993.github.io/kspace/"> K-SPACE</a></p>
             
             <div className="footer-legal">
               <a href="#">Privacy Policy</a>

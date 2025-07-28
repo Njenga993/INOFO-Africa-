@@ -158,17 +158,11 @@ const ContactSection = () => {
                 <FaDonate className="btn-icon" />
                 <span>Donate Using PayPal</span>
               </a>
-              <a 
-                href="/other-donation-options" 
-                className="donate-btn secondary"
-              >
-                <span>Other Donation Options</span>
-              </a>
             </div>
           </div>
           <div className="donate-image">
             <img 
-              src="african-farmers-working-together.jpg" 
+              src="dedicated-farmer-tending-to-vibrant-crops-328717.jpg" 
               alt="African farmers working together" 
             />
           </div>

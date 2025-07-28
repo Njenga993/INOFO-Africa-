@@ -285,6 +285,31 @@
 }
 
 /* Sidebar */
+/* Blur effect when sidebar is open */
+.menu-open .main-content {
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+/* Ensure the blur effect works on the entire page except sidebar */
+.menu-open {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Sidebar overlay */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 999;
+}
 .sidebar-overlay {
   position: fixed;
   top: 0;
@@ -373,7 +398,7 @@
 
 .sidebar-social a {
   color: var(--jungle-green);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   padding: 0.5rem;
   display: flex;
   align-items: center;
@@ -381,8 +406,8 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--cream);
-  transition: var(--transition-base);
+  background: #4c7031;
+  transition:#4c7031;
 }
 
 .sidebar-social a:hover {
