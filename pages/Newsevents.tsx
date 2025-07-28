@@ -21,7 +21,7 @@ const newsPosts: NewsPost[] = [
     title: "INOFO Africa Annual Conference 2023",
     excerpt: "Join us for the biggest gathering of organic farmers in Africa",
     date: "2023-11-15",
-    image: "conference.jpg",
+    image: "hands-holding-rich-soil-338230.jpg",
     type: "event",
     location: "Nairobi, Kenya"
   },

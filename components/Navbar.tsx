@@ -30,19 +30,42 @@ const Navbar = () => {
   const location = useLocation();
   const navbarRef = useRef<HTMLDivElement>(null);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    document.body.style.overflow = isOpen ? 'auto' : 'hidden';
+  };
+
   const toggleSearch = () => setSearchOpen(!searchOpen);
+  
   const closeAll = () => {
     setIsOpen(false);
     setSearchOpen(false);
     setActiveDropdown(null);
+    document.body.style.overflow = 'auto';
   };
 
   const toggleDropdown = (index: number) => {
     setActiveDropdown(activeDropdown === index ? null : index);
   };
 
-  // Scroll to top function
+  const handleMobileNavClick = (item: NavItem, index: number, e: React.MouseEvent) => {
+    if (item.dropdown) {
+      // If we're already on this page, prevent navigation and toggle dropdown
+      if (location.pathname === item.path) {
+        e.preventDefault();
+        toggleDropdown(index);
+      } else {
+        // Otherwise, navigate to the page and close any open dropdowns
+        closeAll();
+      }
+    } else {
+      closeAll();
+      if (location.pathname === item.path) {
+        scrollToTop();
+      }
+    }
+  };
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -174,9 +197,11 @@ const Navbar = () => {
                 <Link 
                   to={item.path} 
                   className={location.pathname === item.path ? 'active' : ''}
-                  onClick={() => {
-                    // Scroll to top if already on the same page
-                    if (location.pathname === item.path) {
+                  onClick={(e) => {
+                    if (item.dropdown && location.pathname === item.path) {
+                      e.preventDefault();
+                      toggleDropdown(index);
+                    } else if (location.pathname === item.path) {
                       scrollToTop();
                     }
                   }}
@@ -203,7 +228,6 @@ const Navbar = () => {
                               to={subItem.path}
                               onClick={() => {
                                 closeAll();
-                                // Scroll to top if already on the same page
                                 if (location.pathname === subItem.path) {
                                   scrollToTop();
                                 }
@@ -267,13 +291,16 @@ const Navbar = () => {
                     <li key={index}>
                       {item.dropdown ? (
                         <div className="mobile-dropdown">
-                          <button 
+                          <Link
+                            to={item.path}
                             className={`mobile-dropdown-btn ${activeDropdown === index ? 'open' : ''}`}
-                            onClick={() => toggleDropdown(index)}
+                            onClick={(e) => handleMobileNavClick(item, index, e)}
                           >
                             {item.label}
-                            {activeDropdown === index ? <FaChevronUp /> : <FaChevronDown />}
-                          </button>
+                            {item.dropdown && (
+                              activeDropdown === index ? <FaChevronUp /> : <FaChevronDown />
+                            )}
+                          </Link>
                           
                           <AnimatePresence>
                             {activeDropdown === index && (
@@ -290,7 +317,6 @@ const Navbar = () => {
                                       to={subItem.path} 
                                       onClick={() => {
                                         closeAll();
-                                        // Scroll to top if already on the same page
                                         if (location.pathname === subItem.path) {
                                           scrollToTop();
                                         }
@@ -309,7 +335,6 @@ const Navbar = () => {
                           to={item.path} 
                           onClick={() => {
                             closeAll();
-                            // Scroll to top if already on the same page
                             if (location.pathname === item.path) {
                               scrollToTop();
                             }
