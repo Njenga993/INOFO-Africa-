@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  Leaf,
-  Users,
-  Globe,
-  Landmark,
-} from "lucide-react"; // Lucide icons
+
 
 const WhyWeFarmOrganic: React.FC = () => {
   return (
@@ -30,7 +25,7 @@ const WhyWeFarmOrganic: React.FC = () => {
           <div className="pillars-grid">
             <div className="pillar-card">
               <div className="pillar-icon">
-                <Users />
+                
               </div>
               <h4>Community Resilience</h4>
               <p>
@@ -40,7 +35,7 @@ const WhyWeFarmOrganic: React.FC = () => {
 
             <div className="pillar-card">
               <div className="pillar-icon">
-                <Leaf />
+                
               </div>
               <h4>Ecological Stewardship</h4>
               <p>
@@ -50,7 +45,7 @@ const WhyWeFarmOrganic: React.FC = () => {
 
             <div className="pillar-card">
               <div className="pillar-icon">
-                <Landmark />
+                
               </div>
               <h4>Policy & Voice</h4>
               <p>
@@ -60,7 +55,7 @@ const WhyWeFarmOrganic: React.FC = () => {
 
             <div className="pillar-card">
               <div className="pillar-icon">
-                <Globe />
+              
               </div>
               <h4>Global Solidarity</h4>
               <p>

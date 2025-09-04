@@ -166,7 +166,7 @@ const Navbar = () => {
           </div>
           
           <div className="top-links">
-            <Link to="/contact">Support Us</Link>
+            <Link to="">Info@inofoafrica.org</Link>
           </div>
         </div>
       </motion.div>

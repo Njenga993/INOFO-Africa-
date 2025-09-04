@@ -1,53 +1,114 @@
-import { FaArrowRight, FaLeaf, FaUsers, FaHandshake } from 'react-icons/fa';
-import '../styles/Herosection.css';
+import { FaArrowRight, FaHandshake } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import '../styles/Herosection.css';
 
 const Hero = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    {
+      image: "./fresh-sprouts-in-agricultural-field-6165476.jpg",
+      title: "Empowering communities, cultivating safe food & nurturing mother earth. ",
+      highlight: "Representation for Africa's organic farmers",
+      description: "We are Africa’s organic farmers  proud smallholder agroecological farmer owned organizations dedicated to nurturing the land without harmful chemicals. By working with nature, not against it, we protect our soils, our food, and our environment. We are the guardians of safe, healthy food  for today and for generations to come.",
+      cta: "Get Involved"
+    },
+    {
+      image: "./mesmerizing-african-sunset-over-the-savanna-71028880.jpg",
+      title: "Farmer-led policy advocacy ",
+      highlight: "Building resilience through organic farming practices",
+      description: "Together, we strengthen food sovereignty, protect biodiversity, and create better livelihoods for millions of farming families across Africa.",
+      cta: "Get Involved"
+    },
+   {
+    image: "./joyful-harvest-in-the-fields-101239609.jpg",
+    title: "Agroecology for Resilient Futures",
+    highlight: "Farming in harmony with nature",
+    description: "Agroecology integrates traditional knowledge with modern practices to build climate-resilient farms, restore ecosystems, and strengthen community food sovereignty.",
+    cta: "Learn More"
+   }
+  ];
+
+  // Auto-advance slides
+  useEffect(() => {
+    const slideInterval = setInterval(() => {
+      setCurrentSlide(prev => (prev + 1) % slides.length);
+    }, 8000);
+
+    return () => clearInterval(slideInterval);
+  }, []);
+
   return (
     <section className="hero">
+      <AnimatePresence mode='wait'>
+        <motion.div
+          key={currentSlide}
+          className="hero-image"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.5 }}
+          style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
+        >
+          <div className="image-overlay"></div>
+        </motion.div>
+      </AnimatePresence>
+
       <div className="hero-content">
-        <div className="container hero-layout">
-          {/* Text Section */}
-          
-          <div className="hero-text">
-            <h1>🌍 Empowering Communities, Cultivating Safe Food and Defending the Earth.</h1>
-            <h2>Global representation for Africa's organic farmers</h2>
-            <p>
-              We are Africa’s organic farmers — proud smallholder families dedicated to nurturing the land without harmful chemicals. By working with nature, not against it, we protect our soils, our food, and our environment. We are the guardians of safe, healthy food — for today and for generations to come.
-            </p>
-            <div className="hero-cta">
-              <a><Link to="/about" className="btn-primary">Learn More <FaArrowRight /></Link>
-                 
-              </a>
-              <a><Link to="/contact" className="btn-primary">Get Involved <FaHandshake /></Link>
-                 
-              </a>
-            </div>
-          </div>
+        <div className="container">
+          <div className="hero-blur-overlay">
+            <AnimatePresence mode='wait'>
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.8 }}
+                className="hero-text-content"
+              >
+                <h1 className="main-title">
+                  {slides[currentSlide].title}
+                </h1>
+                
+                <motion.div 
+                  className="highlight-container"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5, duration: 1 }}
+                >
+                  <span className="highlight-text">
+                    {slides[currentSlide].highlight}
+                  </span>
+                </motion.div>
 
-          {/* Feature Cards */}
-          <div className="hero-features">
-            <div className="feature-card">
-              <div className="feature-icon">
-                <FaLeaf />
-              </div>
-              <h3>Organic Advocacy</h3>
-              <p>Championing organic policies worldwide</p>
-            </div>
-
-            <div className="feature-card">
-              <div className="feature-icon">
-                <FaUsers />
-              </div>
-              <h3>Farmer-Centered</h3>
-              <p>Putting organic farmers at the heart of everything we do</p>
-            </div>
+                <motion.div
+                  className="description"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.8, duration: 1 }}
+                >
+                  {slides[currentSlide].description}
+                </motion.div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
-      </div>
-
-      <div className="hero-image">
-        <div className="image-overlay"></div>
+      
+        <motion.div 
+          className="h-hero-cta"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.2 }}
+        >
+          <Link to="/about" className="btn-primary">
+            Learn More <FaArrowRight />
+          </Link>
+          <Link to="/contact" className="btn-primary">
+            {slides[currentSlide].cta} <FaHandshake />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );
