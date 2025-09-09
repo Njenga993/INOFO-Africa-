@@ -120,7 +120,7 @@ const AboutUsAfrica = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            The continental catalyst uniting Africa's organic farming movements through strategy, innovation, and ancestral wisdom.
+            The continental catalyst uniting Africa's organic farmers through strategy, innovation, and ancestral wisdom.
           </motion.p>
         </div>
       </motion.header>

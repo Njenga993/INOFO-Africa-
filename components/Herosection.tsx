@@ -11,8 +11,8 @@ const Hero = () => {
     {
       image: "./fresh-sprouts-in-agricultural-field-6165476.jpg",
       title: "Empowering communities, cultivating safe food & nurturing mother earth. ",
-      highlight: "Representation for Africa's organic farmers",
-      description: "We are Africa’s organic farmers  proud smallholder agroecological farmer owned organizations dedicated to nurturing the land without harmful chemicals. By working with nature, not against it, we protect our soils, our food, and our environment. We are the guardians of safe, healthy food  for today and for generations to come.",
+      highlight: "Representation for Africa's organic farmers,",
+      description: "We are Africa’s organic farmers  proud smallholder agroecological farmer owned organizations dedicated to nurturing the land without harmful chemicals. By working...",
       cta: "Get Involved"
     },
     {
