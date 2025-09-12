@@ -104,8 +104,8 @@ const ContactSection = () => {
             </div>
             <h3>Partnership Inquiries</h3>
             <p>Explore collaboration opportunities with African organic farmer organizations.</p>
-            <a href="mailto:partnerships@inofo-africa.org" className="info-link">
-              partnerships@inofo-africa.org
+            <a href="mailto:partnerships@inofoafrica.org" className="info-link">
+              partnerships@inofoafrica.org
             </a>
           </div>
 
@@ -115,8 +115,8 @@ const ContactSection = () => {
             </div>
             <h3>Membership Questions</h3>
             <p>Learn how to join our continental network of organic farmer organizations.</p>
-            <a href="mailto:membership@inofo-africa.org" className="info-link">
-              membership@inofo-africa.org
+            <a href="mailto:membership@inofoafrica.org" className="info-link">
+              membership@inofoafrica.org
             </a>
           </div>
 
@@ -126,8 +126,8 @@ const ContactSection = () => {
             </div>
             <h3>General Inquiries</h3>
             <p>Contact our team for any other questions about our work and initiatives.</p>
-            <a href="mailto:info@inofo-africa.org" className="info-link">
-              info@inofo-africa.org
+            <a href="mailto:info@inofoafrica.org" className="info-link">
+              info@inofoafrica.org
             </a>
           </div>
         </motion.div>

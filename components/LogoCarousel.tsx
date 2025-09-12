@@ -9,43 +9,24 @@ type Member = {
 };
 
 const members: Member[] = [
-  {
-    name: "Partner 1",
-    logoUrl: "Black_Day.png",
-    website: "https://partner1.com",
-  },
-  {
-    name: "Partner 2",
-    logoUrl: "Black_Day.png",
-    website: "https://partner2.com",
-  },
-  {
-    name: "Partner 3",
-    logoUrl: "Black_Day.png",
-    website: "https://partner3.com",
-  },
-  {
-    name: "Partner 4",
-    logoUrl: "empowering-women-in-agriculture-111346581.jpg",
-    website: "https://partner4.com",
-  },
-  // Add more members as needed
+  { name: "Partner 1", logoUrl: "Black_Day.png", website: "https://partner1.com" },
+  { name: "Partner 2", logoUrl: "Black_Day.png", website: "https://partner2.com" },
+  { name: "Partner 3", logoUrl: "Black_Day.png", website: "https://partner3.com" },
+  { name: "Partner 4", logoUrl: "empowering-women-in-agriculture-111346581.jpg", website: "https://partner4.com" },
+  // Add more members
 ];
 
 const LogoCarousel: React.FC = () => {
-  // Duplicate members for seamless looping
   const duplicatedMembers = [...members, ...members];
-  
+
   return (
-    <div className="carousel-section">
-      <div className="carousel-wrapper">
-        <motion.div 
+    <section className="logo-carousel">
+      <div className="carousel-container">
+        <motion.div
           className="carousel-track"
-          animate={{
-            x: ["0%", "-50%"],
-          }}
+          animate={{ x: ["0%", "-50%"] }}
           transition={{
-            duration: 40,
+            duration: 35,
             ease: "linear",
             repeat: Infinity,
           }}
@@ -56,17 +37,10 @@ const LogoCarousel: React.FC = () => {
               href={member.website}
               target="_blank"
               rel="noopener noreferrer"
-              className="carousel-item"
+              className="carousel-logo-box"
               whileHover={{
                 scale: 1.1,
-                transition: { duration: 0.3 }
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ 
-                duration: 0.6,
-                delay: index * 0.1
+                transition: { duration: 0.3 },
               }}
             >
               <img
@@ -75,12 +49,11 @@ const LogoCarousel: React.FC = () => {
                 className="carousel-logo"
                 loading="lazy"
               />
-              <span className="partner-name">{member.name}</span>
             </motion.a>
           ))}
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

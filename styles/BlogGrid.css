@@ -7,12 +7,13 @@
   --text-medium: #555;
   --text-light: #777;
   --shadow-light: 0 5px 15px rgba(0,0,0,0.08);
-  --shadow-medium: 0 8px 25px rgba(0,0,0,0.12);
+  --shadow-medium: 0 10px 25px rgba(0,0,0,0.15);
 }
 
+/* Section Wrapper */
 .blog-grid-impact-section {
-  padding: 6rem 0;
-  background-color: #f8f9fa;
+  padding: 5rem 0;
+  background: #f8f9fa;
   position: relative;
   overflow: hidden;
 }
@@ -20,159 +21,78 @@
 .blog-grid-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 4rem;
-  position: relative;
   z-index: 1;
-}
-
-/* Section Header */
-.section-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.section-header h2 {
-  font-size: 2.8rem;
-  color: var(--jungle-green);
-  margin-bottom: 1.5rem;
-  font-weight: 700;
   position: relative;
-  display: inline-block;
 }
 
-.section-header h2::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
-  background: var(--gold-accent);
-}
-
-.subtitle {
-  font-size: 1.4rem;
-  color: var(--light-jungle);
-  margin-bottom: 2rem;
-  font-weight: 500;
-  line-height: 1.4;
-}
-
-.intro-text-wrapper {
-  max-width: 800px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.intro-text {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: var(--text-dark);
-  text-align: center;
-}
-
-.hero-cta-blog {
-  margin-top: 2.5rem;
-}
-
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: var(--jungle-green);
-  color: white;
-  padding: 0.8rem 1.8rem;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(15, 81, 50, 0.3);
-}
-
-.btn-primary:hover {
-  background-color: var(--light-jungle);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(15, 81, 50, 0.4);
-}
-
-.icon-arrow {
-  transition: transform 0.3s ease;
-}
-
-.btn-primary:hover .icon-arrow {
-  transform: translateX(3px);
-}
-
-/* Featured Blogs */
+/* Section Headings */
 .featured-blogs h3,
-.all-blogs h3,
-.pillars-section h3 {
-  font-size: 2.2rem;
-  color: var(--jungle-green);
-  margin-bottom: 3rem;
-  text-align: center;
+.all-blogs h3 {
+  font-size: 2rem;
   font-weight: 700;
+  color: var(--jungle-green);
+  text-align: center;
+  margin-bottom: 2rem;
   position: relative;
 }
 
 .featured-blogs h3::after,
-.all-blogs h3::after,
-.pillars-section h3::after {
-  content: '';
+.all-blogs h3::after {
+  content: "";
   position: absolute;
-  bottom: -15px;
+  bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
   width: 60px;
   height: 4px;
   background: var(--gold-accent);
+  border-radius: 2px;
 }
 
+/* Featured Blog Layout */
 .featured-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  gap: 2.5rem;
-  margin-bottom: 4rem;
+  grid-template-columns: 1fr;
+  gap: 2rem;
 }
 
 .featured-card {
-  background: white;
-  border-radius: 12px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  background: #fff;
+  border-radius: 14px;
   overflow: hidden;
   box-shadow: var(--shadow-light);
   transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
 }
 
 .featured-card:hover {
   box-shadow: var(--shadow-medium);
+  transform: translateY(-4px);
 }
 
 .featured-image {
-  height: 280px;
   background-size: cover;
   background-position: center;
+  min-height: 280px;
   position: relative;
 }
 
 .featured-content {
   padding: 2rem;
-  flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .featured-content h4 {
-  font-size: 1.5rem;
-  margin: 1rem 0;
+  font-size: 1.6rem;
   color: var(--jungle-green);
+  margin: 1rem 0;
   line-height: 1.4;
 }
 
@@ -183,40 +103,44 @@
   flex-grow: 1;
 }
 
-/* All Blog Posts */
+/* Recent Activities Grid */
 .blog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2.5rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
 }
 
 .blog-card {
-  background: white;
+  background: #fff;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: var(--shadow-light);
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .blog-card:hover {
   box-shadow: var(--shadow-medium);
+  transform: translateY(-5px);
 }
 
 .card-image {
-  height: 200px;
   background-size: cover;
   background-position: center;
+  height: 200px;
   position: relative;
 }
 
 .card-content {
-  padding: 1.8rem;
+  padding: 1.5rem;
+  flex-grow: 1;
 }
 
 .card-content h4 {
-  font-size: 1.3rem;
-  margin: 0.8rem 0 1.2rem;
+  font-size: 1.2rem;
   color: var(--jungle-green);
+  margin: 0.8rem 0 1rem;
   line-height: 1.4;
 }
 
@@ -225,24 +149,24 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background-color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.9);
   color: var(--jungle-green);
   padding: 0.4rem 1rem;
   border-radius: 50px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 600;
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .post-date {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  font-size: 0.9rem;
   color: var(--light-jungle);
-  font-size: 0.95rem;
   margin-bottom: 0.5rem;
 }
 
@@ -262,136 +186,47 @@
   gap: 0.8rem;
 }
 
-/* Strategic Pillars */
-.pillars-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
-}
-
-.pillar-card {
-  background: white;
-  padding: 2.5rem 2rem;
-  border-radius: 12px;
-  box-shadow: var(--shadow-light);
-  text-align: center;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.pillar-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-medium);
-}
-
-.pillar-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 5px;
-  background: var(--gold-accent);
-  transition: height 0.3s ease;
-}
-
-.pillar-card:hover::before {
-  height: 10px;
-}
-
-.pillar-icon {
-  width: 80px;
-  height: 80px;
-  background-color: var(--muted-green);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1.5rem;
-  color: var(--jungle-green);
-  font-size: 2rem;
-  transition: all 0.3s ease;
-}
-
-.pillar-card:hover .pillar-icon {
-  transform: scale(1.1);
-  background-color: var(--jungle-green);
-  color: white;
-}
-
-.pillar-card h4 {
-  font-size: 1.4rem;
-  color: var(--jungle-green);
-  margin-bottom: 1.2rem;
-}
-
-.pillar-card p {
-  color: var(--text-medium);
-  line-height: 1.7;
-}
-
-/* About INOFO */
-.about-inofo {
-  background-color: white;
-  padding: 3rem;
-  border-radius: 12px;
-  box-shadow: var(--shadow-light);
-  margin-top: 3rem;
-  text-align: center;
-  font-size: 1.1rem;
-  line-height: 1.8;
-}
-
 /* Responsive Design */
 @media (max-width: 992px) {
-  .featured-grid {
+  .featured-card {
     grid-template-columns: 1fr;
   }
-  
+
   .blog-grid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .section-header h2 {
-    font-size: 2.2rem;
+  .blog-grid-container {
+    padding: 0 1rem;
   }
-  
-  .subtitle {
-    font-size: 1.2rem;
+
+  .featured-content {
+    padding: 1.5rem;
   }
-  
-  .featured-image {
-    height: 220px;
-  }
-  
-  .pillars-grid {
+
+  .blog-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
   }
-  
-  .about-inofo {
-    padding: 2rem;
+
+  .featured-blogs h3,
+  .all-blogs h3 {
+    font-size: 1.6rem;
   }
 }
 
-@media (max-width: 576px) {
-  .blog-grid-container {
-    padding: 0 1.5rem;
+@media (max-width: 480px) {
+  .featured-content h4 {
+    font-size: 1.3rem;
   }
-  
-  .section-header h2 {
-    font-size: 2rem;
+
+  .card-content h4 {
+    font-size: 1.1rem;
   }
-  
-  .featured-content,
-  .card-content {
-    padding: 1.5rem;
-  }
-  
-  .about-inofo {
-    padding: 1.5rem;
+
+  .location-badge {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
   }
 }

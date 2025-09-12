@@ -43,7 +43,36 @@ const BlogGrid = () => {
       image: "networking-event-at-sunset-101213662.jpg",
       featured: true,
     },
-    // Add more blog posts
+    {
+      id: 2,
+      title: "Empowering Smallholder Farmers with Agroecology",
+      location: "Nairobi, Kenya",
+      excerpt:
+        "Training workshops focused on agroecological practices have equipped farmers with the tools to build climate resilience and food sovereignty.",
+      date: "April 2025",
+      image: "farmers-training-agroecology-102933829.jpg",
+      featured: false,
+    },
+    {
+      id: 3,
+      title: "Youth in Organic Farming: The Next Generation",
+      location: "Kigali, Rwanda",
+      excerpt:
+        "Young farmers are stepping up to embrace organic farming, driving innovation and sustainable growth across Africa.",
+      date: "March 2025",
+      image: "young-farmer-training-101345783.jpg",
+      featured: false,
+    },
+    {
+      id: 4,
+      title: "Strengthening Regional Networks for Seed Sovereignty",
+      location: "Accra, Ghana",
+      excerpt:
+        "A regional summit highlighted the importance of protecting indigenous seeds as the foundation of Africa’s food systems.",
+      date: "February 2025",
+      image: "seed-sovereignty-conference-102847392.jpg",
+      featured: false,
+    },
   ];
 
   return (
@@ -123,37 +152,39 @@ const BlogGrid = () => {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            {blogPosts.map((post) => (
-              <motion.div
-                className="blog-card"
-                key={post.id}
-                variants={itemVariants}
-                whileHover={{
-                  scale: 1.04,
-                  boxShadow: "0 12px 28px rgba(0,0,0,0.15)",
-                }}
-              >
-                <div
-                  className="card-image"
-                  style={{ backgroundImage: `url(${post.image})` }}
+            {blogPosts
+              .filter((post) => !post.featured)
+              .map((post) => (
+                <motion.div
+                  className="blog-card"
+                  key={post.id}
+                  variants={itemVariants}
+                  whileHover={{
+                    scale: 1.04,
+                    boxShadow: "0 12px 28px rgba(0,0,0,0.15)",
+                  }}
                 >
-                  {post.location && (
-                    <span className="location-badge">
-                      <FaMapMarkerAlt /> {post.location}
+                  <div
+                    className="card-image"
+                    style={{ backgroundImage: `url(${post.image})` }}
+                  >
+                    {post.location && (
+                      <span className="location-badge">
+                        <FaMapMarkerAlt /> {post.location}
+                      </span>
+                    )}
+                  </div>
+                  <div className="card-content">
+                    <span className="post-date">
+                      <FaCalendarAlt /> {post.date}
                     </span>
-                  )}
-                </div>
-                <div className="card-content">
-                  <span className="post-date">
-                    <FaCalendarAlt /> {post.date}
-                  </span>
-                  <h4>{post.title}</h4>
-                  <Link to={`/blog/${post.id}`} className="read-more">
-                    Read More <FaArrowRight className="icon-arrow" />
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
+                    <h4>{post.title}</h4>
+                    <Link to={`/blog/${post.id}`} className="read-more">
+                      Read More <FaArrowRight className="icon-arrow" />
+                    </Link>
+                  </div>
+                </motion.div>
+              ))}
           </motion.div>
         </div>
       </div>
