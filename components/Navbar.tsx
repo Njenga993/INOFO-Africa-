@@ -12,7 +12,8 @@ import {
 } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import '../styles/navbar.css';
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
+
 
 interface NavItem {
   path: string;
