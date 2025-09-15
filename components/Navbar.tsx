@@ -9,12 +9,6 @@ import {
   FaSearch,
   FaChevronDown,
   FaChevronUp,
-  FaLeaf,
-  FaUserTie,
-  FaHandshake,
-  FaBook,
-  FaNewspaper,
-  FaSeedling
 } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import '../styles/navbar.css';
