@@ -16,22 +16,24 @@
   margin: 0 auto;
   overflow: hidden;
   padding: 0 2rem;
-  margin-top: 4.5rem;
+  margin-top: -0.95rem;
   position: relative;
 }
 
 /* Hero Header */
 .hero-header {
-  height: 70vh;
+  height: 15vh;
   background-size: cover;
   background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  margin-bottom: 4rem;
-  margin-top: 6rem;
+  margin-bottom: -2rem;
+  margin-top: 1rem;
   background-attachment: fixed;
+  width: 100vw;
+  margin-left: -2rem;
 }
 
 .hero-header::before {
@@ -45,22 +47,24 @@
 }
 
 .hero-overlay {
-  background: rgba(76, 112, 49, 0.9);
+  
   color: white;
   padding: 3rem;
   max-width: 800px;
-  text-align: center;
-  border-radius: 8px;
+  text-align: left;
+  border-radius: 4px;
   position: relative;
   z-index: 1;
-  backdrop-filter: blur(2px);
+  align-items: left;
+  
 }
 
 .hero-header h1 {
   font-size: 3.5rem;
   margin-bottom: 1.5rem;
-  font-weight: 700;
+  font-weight: 900;
   text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  align-items: left;
 }
 
 .hero-header .lead {
@@ -249,10 +253,11 @@
 
 /* Pillars */
 .pillars-grid {
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2.5rem;
   margin-top: 3rem;
+  min-height: fit-content;
 }
 
 .pillar-card {
@@ -535,11 +540,11 @@
 @media (max-width: 768px) {
   .about-africa {
     padding: 0 1.5rem;
-    margin-top: 6rem;
+    margin-top: -5rem;
   }
   
   .hero-header {
-    height: 60vh;
+    height: 15vh;
     margin-top: 5rem;
   }
   
@@ -562,6 +567,10 @@
   .text-content p {
     font-size: 1.1rem;
   }
+    .pillar-card {
+    padding: 1.5rem 1rem;
+    display: block;
+  }
   
   .impact-stats {
     gap: 2rem;
@@ -582,22 +591,26 @@
 }
 
 @media (max-width: 576px) {
+  .about-africa {
+    padding: 0 1rem;
+    margin-top: -5rem;
+  }
   .hero-header {
-    height: 50vh;
+    height: 15vh;
     background-attachment: scroll;
   }
   
   .hero-header h1 {
     font-size: 1.8rem;
   }
-  
-  .hero-overlay {
-    padding: 1.5rem;
-    width: 90%;
-  }
+
   
   .content-section {
     padding: 0;
+  }
+  .pillar-card {
+    padding: 1.5rem 1rem;
+    display: block;
   }
   
   .leaders-grid {
@@ -622,3 +635,32 @@
     height: 250px;
   }
 }
+  @media screen and (max-width: 400px) {
+    .about-africa {
+      padding: 0 1rem;
+      margin-top: -5rem;
+    }
+    .hero-header {
+      height: 15vh;
+      width: 100vw;
+      margin-left: -2rem;
+    }
+    .hero-header h1 {
+      font-size: 1.5rem;
+    }
+    .pillar-card {
+      padding: 1rem 0.5rem;
+      display: block;
+    
+  }
+      .pillar-icon, .pillar-icon-svg {
+        font-size: 2.5rem;
+      }
+      .pillar-card h3 {
+        font-size: 1.3rem;
+      }
+      .pillar-card p {
+        font-size: 1rem;
+      }
+    }
+  

@@ -58,7 +58,24 @@ const AboutUsAfrica = () => {
       bio: "Daniel Wanjama, representing Seed Savers Network Kenya, is a dedicated advocate for seed sovereignty and food security in Eastern Africa. He has spearheaded efforts to preserve indigenous seed varieties and empower farmers to sustain their own seed systems. With a strong focus on biodiversity and sustainability, Daniel ensures smallholder farmers access locally adapted, organic seeds. As Eastern Africa's representative on the INOFO Global Council, he brings his expertise and commitment to protecting farmers' rights and promoting resilient agricultural practices.",
       image: "wanjama.jpg"
     },
-    
+        {
+      name: "Daniel Wanjama",
+      role: "East Africa Convenor",
+      bio: "Daniel Wanjama, representing Seed Savers Network Kenya, is a dedicated advocate for seed sovereignty and food security in Eastern Africa. He has spearheaded efforts to preserve indigenous seed varieties and empower farmers to sustain their own seed systems. With a strong focus on biodiversity and sustainability, Daniel ensures smallholder farmers access locally adapted, organic seeds. As Eastern Africa's representative on the INOFO Global Council, he brings his expertise and commitment to protecting farmers' rights and promoting resilient agricultural practices.",
+      image: "wanjama.jpg"
+    },
+        {
+      name: "Daniel Wanjama",
+      role: "East Africa Convenor",
+      bio: "Daniel Wanjama, representing Seed Savers Network Kenya, is a dedicated advocate for seed sovereignty and food security in Eastern Africa. He has spearheaded efforts to preserve indigenous seed varieties and empower farmers to sustain their own seed systems. With a strong focus on biodiversity and sustainability, Daniel ensures smallholder farmers access locally adapted, organic seeds. As Eastern Africa's representative on the INOFO Global Council, he brings his expertise and commitment to protecting farmers' rights and promoting resilient agricultural practices.",
+      image: "wanjama.jpg"
+    },
+        {
+      name: "Daniel Wanjama",
+      role: "East Africa Convenor",
+      bio: "Daniel Wanjama, representing Seed Savers Network Kenya, is a dedicated advocate for seed sovereignty and food security in Eastern Africa. He has spearheaded efforts to preserve indigenous seed varieties and empower farmers to sustain their own seed systems. With a strong focus on biodiversity and sustainability, Daniel ensures smallholder farmers access locally adapted, organic seeds. As Eastern Africa's representative on the INOFO Global Council, he brings his expertise and commitment to protecting farmers' rights and promoting resilient agricultural practices.",
+      image: "wanjama.jpg"
+    },
     // Add other leaders here
   ];
 
@@ -114,14 +131,6 @@ const AboutUsAfrica = () => {
           >
             About INOFO Africa
           </motion.h1>
-          <motion.p 
-            className="lead"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4 }}
-          >
-            The continental catalyst uniting Africa's organic farmers through strategy, innovation, and ancestral wisdom.
-          </motion.p>
         </div>
       </motion.header>
 
@@ -331,13 +340,6 @@ const AboutUsAfrica = () => {
               </motion.div>
             ))}
           </motion.div>
-        </motion.div>
-        <motion.div className="image-content" variants={itemVariants}>
-          <img 
-            src="modern-business-team-collaborating-on-data-analysis-37993.jpg" 
-            alt="INOFO strategic pillars visual" 
-            className="content-image"
-          />
         </motion.div>
       </motion.section>
 
