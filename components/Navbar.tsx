@@ -150,7 +150,7 @@ const Navbar = () => {
           <div className="top-bar-content">
             <div className="top-links">
                <Link to="mailto:Info@inofoafrica.org">
-                  <span className="link-icon">✉</span> Info@inofoafrica.org
+                  <span className="link-icon"></span> Info@inofoafrica.org
                 </Link>
             </div>
             
@@ -294,7 +294,6 @@ const Navbar = () => {
               >
                 <div className="sidebar-header">
                   <Link to="/" className="sidebar-logo" onClick={closeAll}>
-                    <img src="Black_Day.png" alt="INOFO Africa" />
                   </Link>
                   <button className="sidebar-close" onClick={closeAll}>
                     <FaTimes />
