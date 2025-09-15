@@ -150,7 +150,7 @@ const Navbar = () => {
           <div className="top-bar-content">
             <div className="top-links">
                <Link to="mailto:Info@inofoafrica.org">
-                  <span className="link-icon"></span> Info@inofoafrica.org
+                  <span className="link-icon"></span> info@inofoafrica.org
                 </Link>
             </div>
             
