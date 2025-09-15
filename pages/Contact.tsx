@@ -1,174 +1,272 @@
 import { motion } from 'framer-motion';
 import { FaPaperPlane, FaLeaf, FaHandshake, FaDonate } from 'react-icons/fa';
 import '../styles/contact.css';
+import { useRef } from 'react';
 
 const ContactSection = () => {
+  const containerRef = useRef(null);
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: [0.6, -0.05, 0.01, 0.99],
+      },
+    },
+  };
+
   return (
-    <motion.section 
-      className="contact-section"
+    <motion.main
+      className="contact-africa"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 0.5 }}
+      ref={containerRef}
     >
-      {/* Background elements */}
-      <div className="contact-bg-pattern">
-        <div className="organic-shape-1"></div>
-        <div className="organic-shape-2"></div>
-      </div>
-
-      <div className="contact-container">
-        <motion.div 
-          className="contact-form-box"
-          initial={{ x: -50, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h2>
-            <span className="title-gradient">Get in Touch With Us</span>
-          </h2>
-          <p className="lead">
-            We're here to support organic farmer organizations across Africa. Reach out for partnerships, questions, or collaboration.
-          </p>
-
-          <form 
-            action="https://formsubmit.co/your@email.com" 
-            method="POST" 
-            className="contact-form"
-          >
-            {/* Hidden fields */}
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_subject" value="New Contact Message from INOFO Africa Website" />
-            <input type="hidden" name="_next" value="https://inofo-africa.org/thank-you" />
-
-            <div className="form-group">
-              <label htmlFor="full-name">Full Name *</label>
-              <input 
-                type="text" 
-                id="full-name" 
-                name="Full Name" 
-                placeholder="Your full name" 
-                required 
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="email">Email Address *</label>
-              <input 
-                type="email" 
-                id="email" 
-                name="Email" 
-                placeholder="Your email address" 
-                required 
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="subject">Subject</label>
-              <input 
-                type="text" 
-                id="subject" 
-                name="Subject" 
-                placeholder="Message subject" 
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="message">Your Message *</label>
-              <textarea 
-                id="message" 
-                name="Message" 
-                placeholder="How can we help you?" 
-                rows={5} 
-                required
-              ></textarea>
-            </div>
-
-            <button type="submit" className="btn-primary">
-              <span>Send Message</span>
-              <FaPaperPlane className="btn-icon" />
-            </button>
-          </form>
-        </motion.div>
-
-        <motion.div 
-          className="contact-info-box"
-          initial={{ x: 50, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          <div className="info-card">
-            <div className="info-icon">
-              <FaLeaf />
-            </div>
-            <h3>Partnership Inquiries</h3>
-            <p>Explore collaboration opportunities with African organic farmer organizations.</p>
-            <a href="mailto:partnerships@inofoafrica.org" className="info-link">
-              partnerships@inofoafrica.org
-            </a>
-          </div>
-
-          <div className="info-card">
-            <div className="info-icon">
-              <FaHandshake />
-            </div>
-            <h3>Membership Questions</h3>
-            <p>Learn how to join our continental network of organic farmer organizations.</p>
-            <a href="mailto:membership@inofoafrica.org" className="info-link">
-              membership@inofoafrica.org
-            </a>
-          </div>
-
-          <div className="info-card">
-            <div className="info-icon">
-              <FaPaperPlane />
-            </div>
-            <h3>General Inquiries</h3>
-            <p>Contact our team for any other questions about our work and initiatives.</p>
-            <a href="mailto:info@inofoafrica.org" className="info-link">
-              info@inofoafrica.org
-            </a>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Donate Section */}
-      <motion.div 
-        className="donate-section"
-        initial={{ y: 50, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6 }}
+      {/* Hero Section */}
+      <motion.header
+        className="hero-header"
+        style={{
+          backgroundImage:
+            'url(dedicated-farmer-tending-to-vibrant-crops-328717.jpg)',
+        }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       >
-        <div className="donate-container">
-          <div className="donate-content">
-            <h2>Support the Voice of African Organic Farmers</h2>
-            <p>
-              Your donation fuels farmer-led solutions, sustainable agriculture, and food sovereignty across the continent.
-              Help us scale impact and nurture the land for generations to come.
-            </p>
-            <div className="donate-buttons">
-              <a 
-                href="https://www.paypal.com/donate" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="donate-btn"
-              >
-                <FaDonate className="btn-icon" />
-                <span>Donate Using PayPal</span>
-              </a>
-            </div>
-          </div>
-          <div className="donate-image">
-            <img 
-              src="dedicated-farmer-tending-to-vibrant-crops-328717.jpg" 
-              alt="African farmers working together" 
-            />
-          </div>
+        <div className="hero-overlay">
+          <motion.h1
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            Contact INOFO Africa
+          </motion.h1>
         </div>
-      </motion.div>
-    </motion.section>
+      </motion.header>
+
+      {/* Contact Section */}
+      <motion.section
+        className="contact-section"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-100px' }}
+      >
+        {/* Background elements */}
+        <div className="contact-bg-pattern">
+          <div className="organic-shape-1"></div>
+          <div className="organic-shape-2"></div>
+        </div>
+
+        <div className="contact-container">
+          {/* Contact Form */}
+          <motion.div
+            className="contact-form-box"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+          >
+            <motion.h2 variants={itemVariants}>
+              <span className="title-gradient">Get in Touch With Us</span>
+            </motion.h2>
+            <motion.p className="lead" variants={itemVariants}>
+              We're here to support organic farmer organizations across Africa.
+              Reach out for partnerships, questions, or collaboration.
+            </motion.p>
+
+            <form
+              action="https://formsubmit.co/your@email.com"
+              method="POST"
+              className="contact-form"
+            >
+              {/* Hidden fields */}
+              <input type="hidden" name="_captcha" value="false" />
+              <input
+                type="hidden"
+                name="_subject"
+                value="New Contact Message from INOFO Africa Website"
+              />
+              <input
+                type="hidden"
+                name="_next"
+                value="https://inofo-africa.org/thank-you"
+              />
+
+              <div className="form-group">
+                <label htmlFor="full-name">Full Name *</label>
+                <input
+                  type="text"
+                  id="full-name"
+                  name="Full Name"
+                  placeholder="Your full name"
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="email">Email Address *</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="Email"
+                  placeholder="Your email address"
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="subject">Subject</label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="Subject"
+                  placeholder="Message subject"
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="message">Your Message *</label>
+                <textarea
+                  id="message"
+                  name="Message"
+                  placeholder="How can we help you?"
+                  rows={5}
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" className="btn-primary">
+                <span>Send Message</span>
+                <FaPaperPlane className="btn-icon" />
+              </button>
+            </form>
+          </motion.div>
+
+          {/* Contact Info Cards */}
+          <motion.div
+            className="contact-info-box"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+          >
+            <motion.div
+              className="info-card"
+              variants={itemVariants}
+              whileHover={{ scale: 1.03 }}
+            >
+              <div className="info-icon">
+                <FaLeaf />
+              </div>
+              <h3>Partnership Inquiries</h3>
+              <p>
+                Explore collaboration opportunities with African organic farmer
+                organizations.
+              </p>
+              <a
+                href="mailto:partnerships@inofoafrica.org"
+                className="info-link"
+              >
+                partnerships@inofoafrica.org
+              </a>
+            </motion.div>
+
+            <motion.div
+              className="info-card"
+              variants={itemVariants}
+              whileHover={{ scale: 1.03 }}
+            >
+              <div className="info-icon">
+                <FaHandshake />
+              </div>
+              <h3>Membership Questions</h3>
+              <p>
+                Learn how to join our continental network of organic farmer
+                organizations.
+              </p>
+              <a
+                href="mailto:membership@inofoafrica.org"
+                className="info-link"
+              >
+                membership@inofoafrica.org
+              </a>
+            </motion.div>
+
+            <motion.div
+              className="info-card"
+              variants={itemVariants}
+              whileHover={{ scale: 1.03 }}
+            >
+              <div className="info-icon">
+                <FaPaperPlane />
+              </div>
+              <h3>General Inquiries</h3>
+              <p>
+                Contact our team for any other questions about our work and
+                initiatives.
+              </p>
+              <a href="mailto:info@inofoafrica.org" className="info-link">
+                info@inofoafrica.org
+              </a>
+            </motion.div>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Donate Section */}
+      <motion.section
+        className="content-section image-left donate-section"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-100px' }}
+      >
+        <motion.div className="text-content" variants={itemVariants}>
+          <h2>Support the Voice of African Organic Farmers</h2>
+          <p>
+            Your donation fuels farmer-led solutions, sustainable agriculture,
+            and food sovereignty across the continent. Help us scale impact and
+            nurture the land for generations to come.
+          </p>
+          <div className="donate-buttons">
+            <a
+              href="https://www.paypal.com/donate"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
+              <FaDonate className="btn-icon" />
+              <span>Donate Using PayPal</span>
+            </a>
+          </div>
+        </motion.div>
+
+        <motion.div className="image-content" variants={itemVariants}>
+          <img
+            src="dedicated-farmer-tending-to-vibrant-crops-328717.jpg"
+            alt="African farmers working together"
+            className="content-image"
+          />
+        </motion.div>
+      </motion.section>
+    </motion.main>
   );
 };
 

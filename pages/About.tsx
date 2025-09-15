@@ -4,6 +4,7 @@ import type { Variants } from 'framer-motion';
 import type { JSX } from 'react';
 import { Leaf, Users as UsersIcon, Globe, Landmark } from "lucide-react"; 
 import '../styles/AboutUsAfrica.css';
+import MembersTable from '../components/LogoCarousel';
 
 // Type definitions
 interface Leader {
@@ -103,8 +104,8 @@ const AboutUsAfrica = () => {
   ];
 
   const stats: StatItem[] = [
-    { icon: <FaUsers className="stat-icon" />, value: "78+", label: "Member Organizations" },
-    { icon: <FaMapMarkedAlt className="stat-icon" />, value: "32", label: "African Countries" },
+    { icon: <FaUsers className="stat-icon" />, value: "20+", label: "Member Organizations" },
+    { icon: <FaMapMarkedAlt className="stat-icon" />, value: "8", label: "African Countries" },
     { icon: <FaSeedling className="stat-icon" />, value: "500+", label: "Documented Practices" }
   ];
 
@@ -201,7 +202,7 @@ const AboutUsAfrica = () => {
         variants={containerVariants}
       >
         <div className="blog-grid-container">
-          <motion.div className="section-header" variants={itemVariants}>
+          <motion.div className="text-content" variants={itemVariants}>
             <h2>Why We Farm Organic in Africa</h2>
             <p className="subtitle">
               A regenerative approach rooted in community, culture, and climate resilience.
@@ -214,103 +215,10 @@ const AboutUsAfrica = () => {
             </p>
           </motion.div>
 
-          <div className="pillars-section">
-            <motion.h3 variants={itemVariants}>Our Pillars of Impact</motion.h3>
-            <motion.div 
-              className="pillars-grid"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              {pillars.map((pillar, index) => (
-                <motion.div 
-                  className="pillar-card" 
-                  key={index}
-                  variants={itemVariants}
-                  whileHover={{ 
-                    scale: 1.03,
-                    boxShadow: "0 10px 25px rgba(0,0,0,0.1)"
-                  }}
-                >
-                  <div className="pillar-icon">
-                    {pillar.icon}
-                  </div>
-                  <h4>{pillar.title}</h4>
-                  <p>{pillar.description}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-
-          <div className="featured-blogs">
-            <motion.h3 variants={itemVariants}>Main Purposes of Organic Farmer Organizations</motion.h3>
-            <motion.div 
-              className="featured-grid"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <motion.div 
-                className="featured-card"
-                variants={itemVariants}
-                whileHover={{ scale: 1.02 }}
-              >
-                <div
-                  className="featured-image"
-                  style={{
-                    backgroundImage: "url('/images/ofo-chart.png')",
-                  }}
-                ></div>
-                <div className="featured-content">
-                  <p>
-                    The illustration above summarizes the key priorities and
-                    unifying goals among African organic farming movements.
-                  </p>
-                </div>
-              </motion.div>
-            </motion.div>
-          </div>
         </div>
       </motion.section>
 
-      {/* Leadership Grid */}
-      <motion.section 
-        className="leaders-section"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={containerVariants}
-      >
-        <motion.h2 variants={itemVariants}>Meet Our Regional Convenors</motion.h2>
-        <motion.div 
-          className="leaders-grid"
-          variants={containerVariants}
-        >
-          {leaders.map((leader, index) => (
-            <motion.div 
-              className="leader-card" 
-              key={index}
-              variants={itemVariants}
-              whileHover={{ scale: 1.03 }}
-            >
-              <div className="leader-image">
-                <img src={leader.image} alt={leader.name} />
-                <div className="leader-overlay">
-                  <h4>{leader.name}</h4>
-                  <p>{leader.role}</p>
-                </div>
-              </div>
-              <div className="leader-bio">
-                <p>{leader.bio}</p>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </motion.section>
-
-      {/* Pillars Section */}
+       {/* Pillars Section */}
       <motion.section 
         className="content-section image-right"
         initial="hidden"
@@ -343,45 +251,44 @@ const AboutUsAfrica = () => {
         </motion.div>
       </motion.section>
 
-      {/* Secretariat Section */}
+      {/* Leadership Grid */}
       <motion.section 
-        className="content-section image-left"
+        className="text-content"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true }}
         variants={containerVariants}
       >
-        <motion.div className="image-content" variants={itemVariants}>
-          <img 
-            src="chaos-in-communication-a-call-centers-struggle-111332057.jpg" 
-            alt="INOFO Africa secretariat team" 
-            className="content-image"
-          />
-        </motion.div>
-        <motion.div className="text-content" variants={itemVariants}>
-          <h2>The Nairobi Secretariat</h2>
-          <p>
-            Our 12-member team coordinates continental strategy from Kenya, bridging global policy with local implementation. 
-            The secretariat houses:
-          </p>
-          <div className="stat-card">
-            <ul>
-              <li><b>Policy & Advocacy Unit</b></li>
-              <li><b>Knowledge Management Hub</b></li>
-              <li><b>Youth & Gender Program</b></li>
-              <li><b>Regional Coordination Desk</b></li>
-            </ul>
-          </div>
-          <p>
-            Through quarterly regional rotations, we ensure all voices inform our work while maintaining operational 
-            continuity.
-          </p>
+        <motion.h2 variants={itemVariants}>Meet Our Regional Convenors</motion.h2>
+        <motion.div 
+          className="leaders-grid"
+          variants={containerVariants}
+        >
+          {leaders.map((leader, index) => (
+            <motion.div 
+              className="leader-card" 
+              key={index}
+              variants={itemVariants}
+              whileHover={{ scale: 1.03 }}
+            >
+              <div className="leader-image">
+                <img src={leader.image} alt={leader.name} />
+                <div className="leader-overlay">
+                  <h4>{leader.name}</h4>
+                  <p>{leader.role}</p>
+                </div>
+              </div>
+              <div className="leader-bio">
+                <p>{leader.bio}</p>
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
       </motion.section>
 
-      {/* Impact Section */}
+     {/* Impact Section */}
       <motion.section 
-        className="impact-section"
+        className="text-content"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -406,6 +313,63 @@ const AboutUsAfrica = () => {
           ))}
         </motion.div>
       </motion.section>
+
+      <MembersTable />
+
+      {/* Secretariat Section */}
+<motion.section 
+  className="content-section image-left"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, margin: "-100px" }}
+  variants={containerVariants}
+>
+  <motion.div className="text-content" variants={itemVariants}>
+    <h2>The Nairobi Secretariat</h2>
+    <p>
+      Based in Nairobi, our <b>12-member Secretariat</b> serves as the nerve 
+      centre of continental coordination, linking <b>global policy frameworks</b> 
+      with <b>local implementation</b> across Africa. The team provides technical 
+      guidance, advocacy leadership, and knowledge sharing for partners in every 
+      region.
+    </p>
+
+    <div className="stat-card">
+      <h3>Our Core Units</h3>
+      <ul>
+        <li>
+          <b>Policy & Advocacy Unit</b> – Shapes continental positions and amplifies 
+          African voices in global forums.
+        </li>
+        <li>
+          <b>Knowledge Management Hub</b> – Curates data, research, and best practices 
+          to inform evidence-based action.
+        </li>
+        <li>
+          <b>Youth & Gender Program</b> – Ensures inclusivity and empowers the next 
+          generation of leaders.
+        </li>
+        <li>
+          <b>Regional Coordination Desk</b> – Facilitates collaboration across Africa’s 
+          sub-regions for cohesive impact.
+        </li>
+      </ul>
+    </div>
+
+    <p>
+      The Secretariat operates through <b>quarterly regional rotations</b> that bring 
+      together diverse perspectives while safeguarding operational stability. 
+      This model guarantees that strategies remain inclusive, agile, and firmly 
+      anchored in Africa’s realities.
+    </p>
+
+    <p>
+      By combining policy influence, technical expertise, and on-the-ground 
+      coordination, the Secretariat drives a shared vision of <b>resilient food 
+      systems, empowered communities, and sustainable futures</b> for Africa.
+    </p>
+  </motion.div>
+</motion.section>
     </motion.main>
   );
 };

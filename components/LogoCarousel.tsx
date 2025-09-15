@@ -1,60 +1,101 @@
-import React from "react";
-import { motion } from "framer-motion";
-import "../styles/LogoCarousel.css";
+import React, { useState } from "react";
+import "../styles/MembersTable.css";
 
 type Member = {
   name: string;
   logoUrl: string;
   website: string;
+  country: string;
 };
 
+// Sample data with country information
 const members: Member[] = [
-  { name: "Partner 1", logoUrl: "Black_Day.png", website: "https://partner1.com" },
-  { name: "Partner 2", logoUrl: "Black_Day.png", website: "https://partner2.com" },
-  { name: "Partner 3", logoUrl: "Black_Day.png", website: "https://partner3.com" },
-  { name: "Partner 4", logoUrl: "empowering-women-in-agriculture-111346581.jpg", website: "https://partner4.com" },
-  // Add more members
+  { name: "Organization 1", logoUrl: "logo1.png", website: "https://org1.com", country: "USA" },
+  { name: "Organization 2", logoUrl: "logo2.png", website: "https://org2.com", country: "USA" },
+  { name: "Organization 3", logoUrl: "logo3.png", website: "https://org3.com", country: "USA" },
+  { name: "Organization 4", logoUrl: "logo4.png", website: "https://org4.com", country: "Canada" },
+  { name: "Organization 5", logoUrl: "logo5.png", website: "https://org5.com", country: "Canada" },
+  { name: "Organization 6", logoUrl: "logo6.png", website: "https://org6.com", country: "Canada" },
+  { name: "Organization 7", logoUrl: "logo7.png", website: "https://org7.com", country: "UK" },
+  { name: "Organization 8", logoUrl: "logo8.png", website: "https://org8.com", country: "UK" },
+  { name: "Organization 9", logoUrl: "logo9.png", website: "https://org9.com", country: "UK" },
+  { name: "Organization 10", logoUrl: "logo10.png", website: "https://org10.com", country: "Australia" },
+  { name: "Organization 11", logoUrl: "logo11.png", website: "https://org11.com", country: "Australia" },
+  { name: "Organization 12", logoUrl: "logo12.png", website: "https://org12.com", country: "Australia" },
+  { name: "Organization 13", logoUrl: "logo13.png", website: "https://org13.com", country: "Germany" },
+  { name: "Organization 14", logoUrl: "logo14.png", website: "https://org14.com", country: "Germany" },
+  { name: "Organization 15", logoUrl: "logo15.png", website: "https://org15.com", country: "Germany" },
+  { name: "Organization 16", logoUrl: "logo16.png", website: "https://org16.com", country: "France" },
+  { name: "Organization 17", logoUrl: "logo17.png", website: "https://org17.com", country: "France" },
+  { name: "Organization 18", logoUrl: "logo18.png", website: "https://org18.com", country: "France" },
+  { name: "Organization 19", logoUrl: "logo19.png", website: "https://org19.com", country: "Japan" },
+  { name: "Organization 20", logoUrl: "logo20.png", website: "https://org20.com", country: "Japan" },
+  { name: "Organization 21", logoUrl: "logo21.png", website: "https://org21.com", country: "Japan" },
+  { name: "Organization 22", logoUrl: "logo22.png", website: "https://org22.com", country: "Japan" },
+  { name: "Organization 23", logoUrl: "logo23.png", website: "https://org23.com", country: "Japan" },
 ];
 
-const LogoCarousel: React.FC = () => {
-  const duplicatedMembers = [...members, ...members];
+// Group members by country
+const groupByCountry = (members: Member[]) => {
+  return members.reduce((groups: Record<string, Member[]>, member) => {
+    const country = member.country;
+    if (!groups[country]) {
+      groups[country] = [];
+    }
+    groups[country].push(member);
+    return groups;
+  }, {});
+};
+
+const MembersTable: React.FC = () => {
+  const [expandedCountries, setExpandedCountries] = useState<Record<string, boolean>>({});
+  const countryGroups = groupByCountry(members);
+  const countries = Object.keys(countryGroups);
+
+  const toggleCountry = (country: string) => {
+    setExpandedCountries(prev => ({
+      ...prev,
+      [country]: !prev[country]
+    }));
+  };
 
   return (
-    <section className="logo-carousel">
-      <div className="carousel-container">
-        <motion.div
-          className="carousel-track"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{
-            duration: 35,
-            ease: "linear",
-            repeat: Infinity,
-          }}
-        >
-          {duplicatedMembers.map((member, index) => (
-            <motion.a
-              key={index}
-              href={member.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="carousel-logo-box"
-              whileHover={{
-                scale: 1.1,
-                transition: { duration: 0.3 },
-              }}
-            >
-              <img
-                src={member.logoUrl}
-                alt={member.name}
-                className="carousel-logo"
-                loading="lazy"
-              />
-            </motion.a>
-          ))}
-        </motion.div>
+    <div className="text-content">
+      <h2>Member Organizations by Country</h2>
+      <div className="tables-container">
+        {countries.map(country => (
+          <div key={country} className="country-table">
+            <div className="country-header" onClick={() => toggleCountry(country)}>
+              <h3>{country}</h3>
+              <span className={`expand-icon ${expandedCountries[country] ? 'expanded' : ''}`}>
+                ▼
+              </span>
+            </div>
+            {expandedCountries[country] && (
+              <div className="members-grid">
+                {countryGroups[country].map((member, index) => (
+                  <a
+                    key={index}
+                    href={member.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="member-card"
+                  >
+                    <img
+                      src={member.logoUrl}
+                      alt={member.name}
+                      className="member-logo"
+                    />
+                    <p className="member-name">{member.name}</p>
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
       </div>
-    </section>
+    </div>
   );
 };
 
-export default LogoCarousel;
+export default MembersTable;

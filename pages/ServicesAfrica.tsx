@@ -81,106 +81,118 @@ const ServicesAfrica = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Organic background elements */}
-      <div className="services-bg-pattern">
-        <div className="organic-leaf-1"></div>
-        <div className="organic-leaf-2"></div>
-      </div>
-
-      <header className="services-hero">
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h1>
-            <span className="title-gradient">Our Services</span>
-          </h1>
-          <p className="lead">
-            INOFO Africa strengthens organic farming through policy, training, networking, market access and inclusive support.
-          </p>
-          <div className="scroll-hint">
-            <span>Explore our offerings</span>
-            <div className="bouncing-arrow"></div>
-          </div>
-        </motion.div>
-      </header>
-
-      <motion.section 
-        className="services-grid"
-        ref={sectionRef}
-        initial="hidden"
-        animate={controls}
-        variants={{
-          visible: {
-            transition: {
-              staggerChildren: 0.1
-            }
-          }
-        }}
+      {/* Hero Section - Aligned with About page */}
+      <motion.header 
+        className="hero-header" 
+        style={{ backgroundImage: 'url(women-cultivating-crops-in-green-fields-4771650.jpg)' }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
       >
-        {services.map((service, idx) => (
-          <motion.div
-            key={idx}
-            className={`service-card ${hoveredCard === idx ? 'active' : ''}`}
-            onMouseEnter={() => setHoveredCard(idx)}
-            onMouseLeave={() => setHoveredCard(null)}
-            variants={{
-              hidden: { y: 20, opacity: 0 },
-              visible: { 
-                y: 0, 
-                opacity: 1,
-                transition: { duration: 0.5 }
-              }
-            }}
+        <div className="hero-overlay">
+          <motion.h1
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
           >
-            <div 
-              className="card-icon"
-              style={{ color: service.color }}
+            Our Services
+          </motion.h1>
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="hero-subtitle"
+          >
+            INOFO Africa strengthens organic farming through policy, training, networking, market access and inclusive support.
+          </motion.p>
+        </div>
+      </motion.header>
+
+      {/* Services Grid Section */}
+      <motion.section 
+        className="content-section"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <motion.div className="text-content">
+          <h2>Our Offerings</h2>
+          <p>
+            We provide comprehensive support to organic farmers across Africa through these key services, 
+            designed to build capacity, create market opportunities, and advocate for favorable policies.
+          </p>
+        </motion.div>
+        
+        <motion.div 
+          className="services-grid"
+          ref={sectionRef}
+          initial="hidden"
+          animate={controls}
+          variants={{
+            visible: {
+              transition: {
+                staggerChildren: 0.1
+              }
+            }
+          }}
+        >
+          {services.map((service, idx) => (
+            <motion.div
+              key={idx}
+              className={`service-card ${hoveredCard === idx ? 'active' : ''}`}
+              onMouseEnter={() => setHoveredCard(idx)}
+              onMouseLeave={() => setHoveredCard(null)}
+              variants={{
+                hidden: { y: 20, opacity: 0 },
+                visible: { 
+                  y: 0, 
+                  opacity: 1,
+                  transition: { duration: 0.5 }
+                }
+              }}
             >
-              {service.icon}
-            </div>
-            <h3>{service.title}</h3>
-            <p>{service.description}</p>
-            <div className="card-hover-content">
-              <Link 
-                to="/services" 
-                className="card-link"
-                aria-label={`Learn more about ${service.title}`}
+              <div 
+                className="card-icon"
+                style={{ color: service.color }}
               >
-                Learn more
-                <FaArrowRight className="link-arrow" />
-              </Link>
-            </div>
-          </motion.div>
-        ))}
+                {service.icon}
+              </div>
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+              <div className="card-hover-content">
+                <Link 
+                  to="/services" 
+                  className="card-link"
+                  aria-label={`Learn more about ${service.title}`}
+                >
+                  Learn more
+                  <FaArrowRight className="link-arrow" />
+                </Link>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </motion.section>
 
-      <section className="featured-services">
-        <motion.div 
-          className="featured-image"
-          initial={{ x: -50, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true, margin: "-100px" }}
-        >
+      {/* Featured Services Section - Alternating layout like About page */}
+      <motion.section 
+        className="content-section image-left"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <motion.div className="image-content">
           <div className={`image-container ${isImageLoaded ? 'loaded' : ''}`}>
             <img 
               src="women-cultivating-crops-in-green-fields-4771650.jpg" 
               alt="African women farmers participating in training"
               onLoad={() => setIsImageLoaded(true)}
+              className="content-image"
             />
-            <div className="image-overlay"></div>
           </div>
         </motion.div>
         
-        <motion.div 
-          className="featured-content"
-          initial={{ x: 50, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true, margin: "-100px" }}
-        >
+        <motion.div className="text-content">
           <h2>Customized Training Programs</h2>
           <p>
             We partner with local hubs to conduct in-person and virtual training tailored to regional needs—covering composting, 
@@ -195,16 +207,17 @@ const ServicesAfrica = () => {
             <FaArrowRight className="btn-icon" />
           </Link>
         </motion.div>
-      </section>
+      </motion.section>
 
+      {/* CTA Section */}
       <motion.section 
-        className="cta-involved"
+        className="content-section"
         initial={{ scale: 0.98, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true, margin: "-100px" }}
       >
-        <div className="cta-container">
+        <div className="text-content centered-content">
           <h2>Want to Collaborate?</h2>
           <p>
             Join us as an implementing partner, donor, or farmer representative. Help us scale organic agriculture for food security,
@@ -220,13 +233,6 @@ const ServicesAfrica = () => {
           </Link>
         </div>
       </motion.section>
-
-      <div className="floating-cta">
-        <Link to="/contact" className="btn-primary">
-          <span>Start Partnership</span>
-          <FaHandshake className="btn-icon" />
-        </Link>
-      </div>
     </motion.main>
   );
 };

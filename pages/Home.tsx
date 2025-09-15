@@ -1,9 +1,10 @@
 import Hero from '../components/Herosection'; // Import the Hero component
 import Pillars from '../components/Pillars';
 
-import LogoCarousel from "../components/LogoCarousel";
+
 import BlogGrid from '../components/BlogGrid';
 import WhoWeAre from '../components/WhoWeAre';
+import MembersTable from '../components/LogoCarousel';
 
 const Home = () => {
   return (
@@ -13,15 +14,7 @@ const Home = () => {
       <WhoWeAre />
       <Pillars />
       <BlogGrid />
-      
-      
-      <div>
-      <h2 style={{ textAlign: "center", margin: "2rem 0" }}>Our Members</h2>
-      <LogoCarousel />
-    </div>
-      
-      
-      
+      <MembersTable />
       {/* You can add additional sections below */}
       <section className="about-section">
         {/* Your other page content goes here */}
