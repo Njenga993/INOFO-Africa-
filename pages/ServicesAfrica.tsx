@@ -83,7 +83,7 @@ const ServicesAfrica = () => {
     >
       {/* Hero Section - Aligned with About page */}
       <motion.header 
-        className="hero-header" 
+        className="service_hero-header" 
         style={{ backgroundImage: 'url(women-cultivating-crops-in-green-fields-4771650.jpg)' }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}

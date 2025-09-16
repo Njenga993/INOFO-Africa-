@@ -1,13 +1,14 @@
-import { motion } from 'framer-motion';
-import { FaPaperPlane, FaLeaf, FaHandshake, FaDonate } from 'react-icons/fa';
-import '../styles/contact.css';
-import { useRef } from 'react';
+import { motion, Variants } from "framer-motion";
+import { FaPaperPlane, FaLeaf, FaHandshake, FaDonate } from "react-icons/fa";
+import "../styles/contact.css";
+import { useRef } from "react";
+import Newsletter from "../components/Newsletter";
 
 const ContactSection = () => {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLElement | null>(null);
 
-  // Animation variants
-  const containerVariants = {
+  // Animation variants with proper TypeScript typing
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -18,14 +19,14 @@ const ContactSection = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: [0.6, -0.05, 0.01, 0.99],
+        ease: "easeOut",
       },
     },
   };
@@ -43,7 +44,7 @@ const ContactSection = () => {
         className="hero-header"
         style={{
           backgroundImage:
-            'url(dedicated-farmer-tending-to-vibrant-crops-328717.jpg)',
+            "url(dedicated-farmer-tending-to-vibrant-crops-328717.jpg)",
         }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -55,7 +56,7 @@ const ContactSection = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            Contact INOFO Africa
+            Contact Us.
           </motion.h1>
         </div>
       </motion.header>
@@ -66,7 +67,7 @@ const ContactSection = () => {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-100px' }}
+        viewport={{ once: true, margin: "-100px" }}
       >
         {/* Background elements */}
         <div className="contact-bg-pattern">
@@ -76,13 +77,7 @@ const ContactSection = () => {
 
         <div className="contact-container">
           {/* Contact Form */}
-          <motion.div
-            className="contact-form-box"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-100px' }}
-          >
+          <motion.div className="contact-form-box" variants={itemVariants}>
             <motion.h2 variants={itemVariants}>
               <span className="title-gradient">Get in Touch With Us</span>
             </motion.h2>
@@ -163,9 +158,6 @@ const ContactSection = () => {
           <motion.div
             className="contact-info-box"
             variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-100px' }}
           >
             <motion.div
               className="info-card"
@@ -236,7 +228,7 @@ const ContactSection = () => {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-100px' }}
+        viewport={{ once: true, margin: "-100px" }}
       >
         <motion.div className="text-content" variants={itemVariants}>
           <h2>Support the Voice of African Organic Farmers</h2>
@@ -266,6 +258,8 @@ const ContactSection = () => {
           />
         </motion.div>
       </motion.section>
+
+      <Newsletter />
     </motion.main>
   );
 };

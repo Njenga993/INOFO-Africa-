@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import '../styles/MembershipAfrica.css';
+import Newsletter from '../components/Newsletter';
+import MembersTable from '../components/LogoCarousel';
 
 const MembershipAfrica = () => {
   const [activeCard, setActiveCard] = useState<number | null>(null);
@@ -64,7 +66,7 @@ const MembershipAfrica = () => {
     >
       {/* Hero Section */}
       <motion.header 
-        className="hero-header" 
+        className="member_hero-header" 
         style={{ backgroundImage: 'url(dedicated-farmer-tending-to-vibrant-crops-328717.jpg)' }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -298,6 +300,8 @@ const MembershipAfrica = () => {
           </div>
         </motion.div>
       </motion.section>
+      <MembersTable />
+      <Newsletter/>
 
       <div className="floating-cta">
         <Link to="/membership-form" className="btn-primary">

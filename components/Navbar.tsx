@@ -6,7 +6,6 @@ import {
   FaLinkedinIn,
   FaBars,
   FaTimes,
-  FaSearch,
   FaChevronDown,
   FaChevronUp,
 } from "react-icons/fa";
@@ -27,7 +26,7 @@ interface NavItem {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
+  
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
   const location = useLocation();
   const navbarRef = useRef<HTMLDivElement>(null);
@@ -37,11 +36,10 @@ const Navbar = () => {
     document.body.style.overflow = !isOpen ? "hidden" : "auto";
   };
 
-  const toggleSearch = () => setSearchOpen(!searchOpen);
 
   const closeAll = () => {
     setIsOpen(false);
-    setSearchOpen(false);
+    
     setActiveDropdown(null);
     document.body.style.overflow = "auto";
   };
@@ -111,7 +109,7 @@ const Navbar = () => {
       dropdown: [
         { path: "/resources/news", label: "News & Events" },
         { path: "/resources/publications", label: "Publications" },
-        { path: "/resources/tools", label: "Farmer Tools" },
+        { path: "/resources/#tools", label: "Farmer Tools" },
       ],
     },
     { path: "/contact", label: "Contact" },

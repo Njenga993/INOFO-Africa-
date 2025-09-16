@@ -28,7 +28,7 @@
 
 /* Hero Section - Same as About page */
 .hero-header {
-  height: 20vh;
+  height: 30vh;
   width: 100vw;
   background-size: cover;
   background-position: center;
@@ -38,7 +38,6 @@
   justify-content: center;
   position: relative;
   margin-bottom: -3rem;
-  margin-top: 1rem;
   margin-left: -2rem;
 }
 

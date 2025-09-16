@@ -25,6 +25,20 @@
   margin-top: -0.95rem;
   position: relative;
 }
+.service_hero-header{
+  height: 30vh;
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 3rem;
+  margin-left: -2rem;
+}
+
 
 /* Hero subtitle */
 .hero-subtitle {

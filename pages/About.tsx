@@ -60,22 +60,16 @@ const AboutUsAfrica = () => {
       image: "wanjama.jpg"
     },
         {
-      name: "Daniel Wanjama",
-      role: "East Africa Convenor",
-      bio: "Daniel Wanjama, representing Seed Savers Network Kenya, is a dedicated advocate for seed sovereignty and food security in Eastern Africa. He has spearheaded efforts to preserve indigenous seed varieties and empower farmers to sustain their own seed systems. With a strong focus on biodiversity and sustainability, Daniel ensures smallholder farmers access locally adapted, organic seeds. As Eastern Africa's representative on the INOFO Global Council, he brings his expertise and commitment to protecting farmers' rights and promoting resilient agricultural practices.",
-      image: "wanjama.jpg"
+      name: "Raoudath Bouaima",
+      role: "West Africa Convenor",
+      bio: "Raoudath Bouraima, from Benin, is a prominent advocate for sustainable agriculture and organic farming in Western Africa. Through Les Jardins de l’Espoir, she has advanced community-driven organic systems focused on resilience and food security. A strong proponent of women’s involvement in agriculture, Raoudath champions initiatives that empower rural communities and protect the environment. As Western Africa's representative, she strives to amplify farmers' voices and promote organic agriculture across the region.",
+      image: "Roudath.jpg"
     },
         {
-      name: "Daniel Wanjama",
-      role: "East Africa Convenor",
-      bio: "Daniel Wanjama, representing Seed Savers Network Kenya, is a dedicated advocate for seed sovereignty and food security in Eastern Africa. He has spearheaded efforts to preserve indigenous seed varieties and empower farmers to sustain their own seed systems. With a strong focus on biodiversity and sustainability, Daniel ensures smallholder farmers access locally adapted, organic seeds. As Eastern Africa's representative on the INOFO Global Council, he brings his expertise and commitment to protecting farmers' rights and promoting resilient agricultural practices.",
-      image: "wanjama.jpg"
-    },
-        {
-      name: "Daniel Wanjama",
-      role: "East Africa Convenor",
-      bio: "Daniel Wanjama, representing Seed Savers Network Kenya, is a dedicated advocate for seed sovereignty and food security in Eastern Africa. He has spearheaded efforts to preserve indigenous seed varieties and empower farmers to sustain their own seed systems. With a strong focus on biodiversity and sustainability, Daniel ensures smallholder farmers access locally adapted, organic seeds. As Eastern Africa's representative on the INOFO Global Council, he brings his expertise and commitment to protecting farmers' rights and promoting resilient agricultural practices.",
-      image: "wanjama.jpg"
+      name: "Charles Mubanga",
+      role: "Southern Africa Convenor",
+      bio: "Charles K. Mubanga, representing the Mpongwe Bulima Cooperative in Zambia, is a committed advocate for sustainable farming and cooperative development. With extensive experience, he drives change by improving livelihoods and promoting ecological practices. As the Southern Africa Convenor, Charles will focus on strengthening cooperative systems and amplifying smallholder farmers’ voices in policy-making. His leadership aims to foster resilient agricultural communities across Southern Africa.",
+      image: "charles.jpg"
     },
     // Add other leaders here
   ];
@@ -118,7 +112,7 @@ const AboutUsAfrica = () => {
     >
       {/* Hero Section */}
       <motion.header 
-        className="hero-header" 
+        className="about_hero-header" 
         style={{ backgroundImage: 'url(dedicated-farmer-tending-to-vibrant-crops-328717.jpg)' }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -259,7 +253,7 @@ const AboutUsAfrica = () => {
         viewport={{ once: true }}
         variants={containerVariants}
       >
-        <motion.h2 variants={itemVariants}>Meet Our Regional Convenors</motion.h2>
+        <motion.h2 variants={itemVariants}>Meet Our Leadership Team</motion.h2>
         <motion.div 
           className="leaders-grid"
           variants={containerVariants}
@@ -325,9 +319,9 @@ const AboutUsAfrica = () => {
   variants={containerVariants}
 >
   <motion.div className="text-content" variants={itemVariants}>
-    <h2>The Nairobi Secretariat</h2>
+    <h2>Our Secretariat</h2>
     <p>
-      Based in Nairobi, our <b>12-member Secretariat</b> serves as the nerve 
+      Based at SeedSavers Network in Kenya , our <b>12-member Secretariat</b> serves as the nerve 
       centre of continental coordination, linking <b>global policy frameworks</b> 
       with <b>local implementation</b> across Africa. The team provides technical 
       guidance, advocacy leadership, and knowledge sharing for partners in every 

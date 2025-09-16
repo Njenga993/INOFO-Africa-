@@ -21,8 +21,8 @@
 }
 
 /* Hero Section */
-.hero-header {
-  height: 20vh;
+.about_hero-header {
+  height: 30vh;
   width: 100vw;
   background-size: cover;
   background-position: center;

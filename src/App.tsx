@@ -10,7 +10,8 @@ import About from '../pages/About';
 import ServicesAfrica from '../pages/ServicesAfrica';
 import MembershipAfrica from '../pages/MembershipAfrica';
 import Contact from '../pages/Contact';
-import Newsevents from '../pages/Newsevents';
+
+import ResourcesPage from '../pages/ResourcesPage';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -39,8 +40,9 @@ function App() {
             <Route path="/membership" element={<MembershipAfrica />} />
             <Route path="/membership-form" element={<MembershipForm />} />
             <Route path="/services" element={<ServicesAfrica />} />
+            <Route path="/resources" element={<ResourcesPage />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/newsevents" element={<Newsevents />} />
+            
 
             {/* Add more routes as needed */}
           </Routes>

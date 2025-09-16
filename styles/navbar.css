@@ -432,7 +432,7 @@ body.menu-open {
   }
 
   .top-bar-content {
-    flex-direction: column;
+    flex-direction: row;
     gap: 0.4rem;
     text-align: center;
   }
@@ -447,6 +447,11 @@ body.menu-open {
 @media (max-width: 480px) {
   .container {
     padding: 0 1rem;
+  }
+    .top-bar-content {
+    flex-direction: row;
+    gap: 0.4rem;
+    text-align: center;
   }
 
   .logo-img {

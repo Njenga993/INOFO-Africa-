@@ -156,9 +156,9 @@ const Footer = () => {
                 </li>
               </ul>
               
-              <div className="newsletter">
+              <div className="F-newsletter">
                 <h4>Subscribe to Newsletter</h4>
-                <form className="newsletter-form">
+                <form className="F-newsletter-form">
                   <input 
                     type="email" 
                     placeholder="Your email address" 
