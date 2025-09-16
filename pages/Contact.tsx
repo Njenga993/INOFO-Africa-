@@ -1,4 +1,5 @@
-import { motion, Variants } from "framer-motion";
+import { motion  } from "framer-motion";
+import type { Variants } from "framer-motion";
 import { FaPaperPlane, FaLeaf, FaHandshake, FaDonate } from "react-icons/fa";
 import "../styles/contact.css";
 import { useRef } from "react";
