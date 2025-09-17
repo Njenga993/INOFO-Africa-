@@ -5,6 +5,7 @@ import type { JSX } from 'react';
 import { Leaf, Users as UsersIcon, Globe, Landmark } from "lucide-react"; 
 import '../styles/AboutUsAfrica.css';
 import MembersTable from '../components/LogoCarousel';
+import Newsletter from '../components/Newsletter';
 
 // Type definitions
 interface Leader {
@@ -364,6 +365,7 @@ const AboutUsAfrica = () => {
     </p>
   </motion.div>
 </motion.section>
+<Newsletter/>
     </motion.main>
   );
 };

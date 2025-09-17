@@ -1,14 +1,4 @@
-:root {
-  --jungle-green: #4c7031;
-  --light-jungle: #5a8a3a;
-  --muted-green: #e8f5e9;
-  --gold-accent: #ffc107;
-  --text-dark: #333;
-  --text-medium: #555;
-  --text-light: #777;
-  --shadow-light: 0 5px 15px rgba(0,0,0,0.08);
-  --shadow-medium: 0 8px 25px rgba(0,0,0,0.12);
-}
+
 
 .resources-page {
   max-width: 1400px;

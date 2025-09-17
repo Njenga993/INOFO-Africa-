@@ -148,9 +148,9 @@ const ContactSection = () => {
                 ></textarea>
               </div>
 
-              <button type="submit" className="btn-primary">
+              <button type="submit" className="M_btn-primary">
                 <span>Send Message</span>
-                <FaPaperPlane className="btn-icon" />
+                <FaPaperPlane className="M_btn-icon" />
               </button>
             </form>
           </motion.div>
@@ -238,14 +238,14 @@ const ContactSection = () => {
             and food sovereignty across the continent. Help us scale impact and
             nurture the land for generations to come.
           </p>
-          <div className="donate-buttons">
+          <div className="M_donate-buttons">
             <a
               href="https://www.paypal.com/donate"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary"
+              className="M_btn-primary"
             >
-              <FaDonate className="btn-icon" />
+              <FaDonate className="M_btn-icon" />
               <span>Donate Using PayPal</span>
             </a>
           </div>

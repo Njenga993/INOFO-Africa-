@@ -4,6 +4,7 @@ import { motion, useAnimation } from 'framer-motion';
 import type { JSX } from 'react';
 import '../styles/ServicesAfrica.css';
 import { Link } from 'react-router-dom';
+import Newsletter from '../components/Newsletter';
 
 interface Service {
   icon: JSX.Element;
@@ -233,6 +234,7 @@ const ServicesAfrica = () => {
           </Link>
         </div>
       </motion.section>
+      <Newsletter/>
     </motion.main>
   );
 };

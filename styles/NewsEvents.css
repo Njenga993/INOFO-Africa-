@@ -1,8 +1,7 @@
 /* Hero Section */
 .news-hero {
   position: relative;
-  background: url("https://source.unsplash.com/1600x600/?nature,farm") center/cover no-repeat;
-  height: 50vh;
+  height: 40vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,7 +10,6 @@
 
 .news-hero-overlay {
   text-align: center;
-  background: rgba(0, 0, 0, 0.45);
   padding: 2rem;
   border-radius: 12px;
 }
@@ -20,7 +18,7 @@
   font-size: 3rem;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
-  color: #fff;
+  color: #2e7d32;
   border-bottom: 3px solid gold;
   display: inline-block;
   padding-bottom: 0.3rem;
@@ -28,6 +26,7 @@
 
 .news-hero p {
   font-size: 1.1rem;
+  color: black;
 }
 
 /* Featured Story */

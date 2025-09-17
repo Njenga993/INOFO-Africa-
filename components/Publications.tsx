@@ -58,12 +58,12 @@ const Publications: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 200 }}
             >
-              <div className="card-icon">
+              <div className="P_card-icon">
                 <FaFilePdf />
               </div>
               <h3>{pub.title}</h3>
               <p>{pub.description}</p>
-              <a href={pub.file} className="read-more">
+              <a href={pub.file} className="P_read-more">
                 <span>Read / Download</span>
                 <FaArrowRight />
               </a>

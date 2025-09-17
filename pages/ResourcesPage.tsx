@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 import "../styles/ResourcesPage.css";
+import Newsletter from "../components/Newsletter";
 
 // Temporary placeholders – we’ll build these next
 import NewsEvents from "../components/NewsEvents";
@@ -36,7 +37,7 @@ const ResourcesPage = () => {
       {/* Hero Section */}
       <motion.header
         className="R-hero-header"
-        style={{ backgroundImage: "url(resources-hero.jpg)" }}
+        style={{ backgroundImage: "url(dedicated-farmer-tending-to-vibrant-crops-328717.jpg)" }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -90,6 +91,7 @@ const ResourcesPage = () => {
           <FarmerTools/>
         </motion.div>
       </motion.section>
+      <Newsletter/>
     </motion.main>
   );
 };

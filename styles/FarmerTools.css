@@ -5,8 +5,7 @@
 
 /* Hero */
 .farmer-tools-hero {
-  background: url("../assets/farmertools-hero.jpg") center/cover no-repeat;
-  height: 60vh;
+  height: 40vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,7 +15,6 @@
 }
 
 .farmer-tools-hero .overlay {
-  background: rgba(0, 0, 0, 0.55);
   padding: 2rem;
   border-radius: 12px;
 }
@@ -25,12 +23,15 @@
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 0.8rem;
+  border-bottom: 3px solid gold;
+  color: #2e7d32;
 }
 
 .farmer-tools-hero p {
   font-size: 1.2rem;
   max-width: 700px;
   margin: 0 auto;
+  color: black;
 }
 
 /* Section Heading */
@@ -71,7 +72,7 @@
 
 .tool-icon {
   font-size: 2.5rem;
-  color: #006400;
+  color: var(--primary-green);
   margin-bottom: 1rem;
 }
 
@@ -91,7 +92,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: #006400;
+  background: var(--primary-green);
   color: #fff;
   padding: 0.6rem 1rem;
   border-radius: 8px;

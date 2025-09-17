@@ -154,11 +154,11 @@
 }
 
 /* Button Styles */
-.btn-primary {
+.M_btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--jungle-green);
+  background: #2e7d32;
   color: white;
   padding: 1rem 2rem;
   border-radius: 50px;
@@ -172,17 +172,17 @@
   margin-top: 1rem;
 }
 
-.btn-primary:hover {
+.M_btn-primary:hover {
   background: var(--light-jungle);
   transform: translateY(-2px);
   box-shadow: var(--shadow-medium);
 }
 
-.btn-primary .btn-icon {
+.M_btn-primary .btn-icon {
   transition: transform 0.3s ease;
 }
 
-.btn-primary:hover .btn-icon {
+.M_btn-primary:hover .btn-icon {
   transform: translateX(3px);
 }
 
@@ -258,11 +258,11 @@
 }
 
 /* Donate Section - Using content-section class from About page */
-.donate-section {
+.M_donate-section {
   margin: 6rem 0;
 }
 
-.donate-section .text-content h2 {
+.M_donate-section .text-content h2 {
   color: var(--jungle-green);
   font-size: 2.2rem;
   margin-bottom: 1.2rem;
@@ -270,7 +270,7 @@
   position: relative;
 }
 
-.donate-section .text-content h2::after {
+.M_donate-section .text-content h2::after {
   content: '';
   position: absolute;
   bottom: -8px;
@@ -280,14 +280,14 @@
   background: var(--gold-accent);
 }
 
-.donate-section .text-content p {
+.M_donate-section .text-content p {
   font-size: 1.1rem;
   line-height: 1.7;
   margin-bottom: 2rem;
   color: var(--text-dark);
 }
 
-.donate-buttons {
+.M_donate-buttons {
   display: flex;
   gap: 1rem;
 }
