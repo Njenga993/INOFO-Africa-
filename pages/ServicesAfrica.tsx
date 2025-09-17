@@ -85,7 +85,7 @@ const ServicesAfrica = () => {
       {/* Hero Section - Aligned with About page */}
       <motion.header 
         className="service_hero-header" 
-        style={{ backgroundImage: 'url(women-cultivating-crops-in-green-fields-4771650.jpg)' }}
+        style={{ backgroundImage: 'url(./_MG_0674.webp)' }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -98,14 +98,7 @@ const ServicesAfrica = () => {
           >
             Our Services
           </motion.h1>
-          <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="hero-subtitle"
-          >
-            INOFO Africa strengthens organic farming through policy, training, networking, market access and inclusive support.
-          </motion.p>
+          
         </div>
       </motion.header>
 
@@ -185,7 +178,7 @@ const ServicesAfrica = () => {
         <motion.div className="image-content">
           <div className={`image-container ${isImageLoaded ? 'loaded' : ''}`}>
             <img 
-              src="women-cultivating-crops-in-green-fields-4771650.jpg" 
+              src="./_MG_0824.webp" 
               alt="African women farmers participating in training"
               onLoad={() => setIsImageLoaded(true)}
               className="content-image"

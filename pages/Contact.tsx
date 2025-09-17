@@ -45,7 +45,7 @@ const ContactSection = () => {
         className="hero-header"
         style={{
           backgroundImage:
-            "url(dedicated-farmer-tending-to-vibrant-crops-328717.jpg)",
+            "url(./_MG_0674.webp)",
         }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -253,7 +253,7 @@ const ContactSection = () => {
 
         <motion.div className="image-content" variants={itemVariants}>
           <img
-            src="dedicated-farmer-tending-to-vibrant-crops-328717.jpg"
+            src="./_MG_0457.webp"
             alt="African farmers working together"
             className="content-image"
           />

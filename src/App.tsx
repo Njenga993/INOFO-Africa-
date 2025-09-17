@@ -10,7 +10,7 @@ import About from '../pages/About';
 import ServicesAfrica from '../pages/ServicesAfrica';
 import MembershipAfrica from '../pages/MembershipAfrica';
 import Contact from '../pages/Contact';
-
+import ScrollToTopButton from '../components/ScrollToTopButton';
 import ResourcesPage from '../pages/ResourcesPage';
 
 function App() {
@@ -46,6 +46,7 @@ function App() {
 
             {/* Add more routes as needed */}
           </Routes>
+          <ScrollToTopButton />
           <Footer/>
         </div>
       )}

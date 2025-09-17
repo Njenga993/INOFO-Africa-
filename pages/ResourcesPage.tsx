@@ -37,7 +37,7 @@ const ResourcesPage = () => {
       {/* Hero Section */}
       <motion.header
         className="R-hero-header"
-        style={{ backgroundImage: "url(dedicated-farmer-tending-to-vibrant-crops-328717.jpg)" }}
+        style={{ backgroundImage: "url(./_MG_0674.webp)" }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}

@@ -6,7 +6,7 @@ import "../styles/WhoWeAre.css";
 const WhoWeAre = () => {
   const stats = [
     { label: "Farmers Reached", value: "15K+" },
-    { label: "Countries Engaged", value: "20+" },
+    { label: "Countries Engaged", value: "10+" },
     { label: "Projects Implemented", value: "150+" },
     { label: "Years of Impact", value: "10+" },
   ];
@@ -29,7 +29,7 @@ const WhoWeAre = () => {
           transition={{ duration: 0.6 }}
         >
           <img
-            src="./a-farmers-journey-through-the-cornfield-141617626.jpg"
+            src="./_MG_0457.webp"
             alt="Farmers Working Together"
           />
         </motion.div>

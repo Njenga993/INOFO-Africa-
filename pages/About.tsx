@@ -100,7 +100,7 @@ const AboutUsAfrica = () => {
 
   const stats: StatItem[] = [
     { icon: <FaUsers className="stat-icon" />, value: "20+", label: "Member Organizations" },
-    { icon: <FaMapMarkedAlt className="stat-icon" />, value: "8", label: "African Countries" },
+    { icon: <FaMapMarkedAlt className="stat-icon" />, value: "10+", label: "African Countries" },
     { icon: <FaSeedling className="stat-icon" />, value: "500+", label: "Documented Practices" }
   ];
 
@@ -114,7 +114,7 @@ const AboutUsAfrica = () => {
       {/* Hero Section */}
       <motion.header 
         className="about_hero-header" 
-        style={{ backgroundImage: 'url(dedicated-farmer-tending-to-vibrant-crops-328717.jpg)' }}
+        style={{ backgroundImage: 'url(./_MG_0674.webp)' }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -142,7 +142,7 @@ const AboutUsAfrica = () => {
           <h2>Our African Journey</h2>
           <p>
             Born in 2008 under the global INOFO umbrella, INOFO Africa has blossomed into an independent force representing 
-            32 countries. From the baobab-dotted savannas to lush highland farms, we've woven a network that honors local 
+            20+ countries. From the baobab-dotted savannas to lush highland farms, we've woven a network that honors local 
             knowledge while confronting continental challenges.
           </p>
           <p>
@@ -153,7 +153,7 @@ const AboutUsAfrica = () => {
         </motion.div>
         <motion.div className="image-content" variants={itemVariants}>
           <img 
-            src="dedicated-farmer-tending-to-vibrant-crops-328717.jpg" 
+            src="./_MG_0674.webp" 
             alt="African farmers in discussion" 
             className="content-image"
           />
@@ -170,7 +170,7 @@ const AboutUsAfrica = () => {
       >
         <motion.div className="image-content" variants={itemVariants}>
           <img 
-            src="lush-green-vegetable-field-under-a-clear-sky-4935857.jpg" 
+            src="./_MG_0538.webp" 
             alt="INOFO leadership meeting" 
             className="content-image"
           />

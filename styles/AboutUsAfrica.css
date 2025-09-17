@@ -1,29 +1,39 @@
 :root {
   --jungle-green: #4c7031;
-  --light-jungle: #5a8a3a;
+  --jungle-green-light: #5a8a3a;
+  --jungle-green-dark: #2e4d1f;
+
   --muted-green: #e8f5e9;
   --gold-accent: #ffc107;
+
   --text-dark: #333;
   --text-medium: #555;
   --text-light: #777;
-  --shadow-light: 0 5px 15px rgba(0,0,0,0.08);
-  --shadow-medium: 0 8px 25px rgba(0,0,0,0.12);
+
+  --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.12);
+
+  --transition-base: all 0.3s ease;
 }
 
-/* Layout */
+/* =====================
+   Layout
+   ===================== */
 .about-africa {
   max-width: 1400px;
   margin: 0 auto;
-  overflow: hidden;
   padding: 0 2rem;
-  margin-top: -0.95rem;
   position: relative;
+  overflow-x: hidden;
 }
 
-/* Hero Section */
+/* =====================
+   Hero Section
+   ===================== */
 .about_hero-header {
-  height: 30vh;
-  width: 100vw;
+  height: clamp(15vh, 25vh, 35vh);
+  margin-top: 0.7rem;
+  width: 100%;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -31,16 +41,14 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  margin-bottom: 3rem;
-  margin-left: -2rem;
+  margin-bottom: 4rem;
 }
 
-.hero-header::before {
+.about_hero-header::before {
   content: '';
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.45);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
 }
 
 .hero-overlay {
@@ -52,13 +60,15 @@
   z-index: 1;
 }
 
-.hero-header h1 {
-  font-size: 3.2rem;
+.hero-overlay h1 {
+  font-size: clamp(2rem, 1rem + 4vw, 3.5rem);
   font-weight: 900;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
-/* Alternating Sections */
+/* =====================
+   Alternating Sections
+   ===================== */
 .content-section {
   display: flex;
   align-items: center;
@@ -77,7 +87,7 @@
 
 .text-content h2 {
   color: var(--jungle-green);
-  font-size: 2.2rem;
+  font-size: clamp(1.6rem, 1rem + 2vw, 2.2rem);
   margin-bottom: 1.2rem;
   font-weight: 700;
   position: relative;
@@ -115,10 +125,12 @@
 }
 
 .image-content:hover .content-image {
-  transform: scale(1.03);
+  transform: scale(1.04);
 }
 
-/* Leadership Section */
+/* =====================
+   Leadership Section
+   ===================== */
 .leaders-section {
   padding: 6rem 2rem;
   background: #f8f9fa;
@@ -155,7 +167,7 @@
   border-radius: 14px;
   padding: 2rem 1.5rem;
   box-shadow: var(--shadow-light);
-  transition: all 0.3s ease;
+  transition: var(--transition-base);
   max-width: 320px;
 }
 
@@ -171,7 +183,7 @@
   border-radius: 50%;
   overflow: hidden;
   border: 4px solid var(--jungle-green);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .leader-image img {
@@ -192,28 +204,29 @@
   color: var(--text-medium);
   line-height: 1.6;
 }
-/* =======================
-   STAT CARD (Secretariat Section)
-   ======================= */
+
+/* =====================
+   Secretariat Stat Cards
+   ===================== */
 .stat-card {
-  background: var(--neutral-light);
-  border-left: 4px solid var(--primary-green);
+  background: var(--muted-green);
+  border-left: 4px solid var(--jungle-green);
   border-radius: 8px;
   padding: 1.5rem;
   margin: 1.5rem 0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: var(--shadow-light);
   transition: var(--transition-base);
 }
 
 .stat-card:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-3px);
 }
 
 .stat-card h3 {
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--primary-dark-green);
+  color: var(--jungle-green-dark);
   margin-bottom: 1rem;
 }
 
@@ -232,27 +245,24 @@
   line-height: 1.5;
 }
 
-.stat-card li:last-child {
-  margin-bottom: 0;
-}
+.stat-card li:last-child { margin-bottom: 0; }
 
-/* Custom bullet icon */
 .stat-card li::before {
   content: "✔";
   position: absolute;
   left: 0;
   top: 0.1rem;
   font-size: 0.85rem;
-  color: var(--primary-green);
+  color: var(--jungle-green);
   font-weight: bold;
 }
 
-
-/* Pillars */
+/* =====================
+   Pillars Section
+   ===================== */
 .pillars-section {
   padding: 6rem 2rem;
   background-color: #f8f9fa;
-  position: relative;
 }
 
 .pillars-grid {
@@ -268,7 +278,7 @@
   border-radius: 12px;
   box-shadow: var(--shadow-light);
   text-align: center;
-  transition: all 0.3s ease;
+  transition: var(--transition-base);
 }
 
 .pillar-card:hover {
@@ -294,24 +304,33 @@
   line-height: 1.6;
 }
 
-/* Responsive */
+/* =====================
+   Responsive Fixes
+   ===================== */
 @media (max-width: 1024px) {
-  .content-section {
-    flex-direction: column;
-    gap: 2rem;
-  }
-  .hero-header { height: 25vh; }
-  .hero-header h1 { font-size: 2.4rem; }
+  .content-section { flex-direction: column; gap: 2rem; }
+  .about_hero-header { height: 35vh; margin-top: 0.7rem;}
+  
+  .hero-overlay h1 { font-size: 2.4rem; }
 }
 
 @media (max-width: 768px) {
   .about-africa { padding: 0 1rem; }
+  .hero-overlay h1 { font-size: 2rem; }
   .text-content h2 { font-size: 1.8rem; }
   .leaders-section h2 { font-size: 2.2rem; }
 }
 
 @media (max-width: 480px) {
-  .hero-header { height: 15vh; }
-  .hero-header h1 { font-size: 1.8rem; }
-  .leader-card { padding: 1.5rem; }
+  .about_hero-header {
+    height: 25vh;
+    margin: 0;
+    margin-top: 0.7rem;
+  }
+  .hero-overlay h1 { font-size: 1.6rem; }
+  .leader-card { padding: 1.2rem; }
+}
+@media (max-width: 360px) {
+  .hero-overlay h1 { font-size: 1.4rem; }
+  .text-content h2 { font-size: 1.6rem; }
 }

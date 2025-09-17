@@ -188,6 +188,11 @@ const BlogGrid = () => {
           </motion.div>
         </div>
       </div>
+       <div className="Bl-cta">
+            <Link to="/resources" className="bt0n-primary">
+              See More <FaArrowRight className="icon-arrow" />
+            </Link>
+          </div>
     </motion.section>
   );
 };

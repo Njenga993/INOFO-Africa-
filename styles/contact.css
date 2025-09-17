@@ -16,7 +16,7 @@
   --transition-slow: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Contact Page Styles - Aligned with About Page */
+/* Contact Page Container */
 .contact-africa {
   max-width: 1400px;
   margin: 0 auto;
@@ -26,10 +26,10 @@
   position: relative;
 }
 
-/* Hero Section - Same as About page */
+/* ✅ Hero Section - Fixed with clamp() and no small-screen gaps */
 .hero-header {
-  height: 30vh;
-  width: 100vw;
+  height: clamp(15vh, 25vh, 35vh);
+  width: 100%;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -38,7 +38,8 @@
   justify-content: center;
   position: relative;
   margin-bottom: -3rem;
-  margin-left: -2rem;
+  margin-top: 1.7rem;
+  
 }
 
 .hero-header::before {
@@ -59,7 +60,7 @@
 }
 
 .hero-header h1 {
-  font-size: 3.2rem;
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
   font-weight: 900;
   text-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
@@ -153,7 +154,7 @@
   resize: vertical;
 }
 
-/* Button Styles */
+/* Button */
 .M_btn-primary {
   display: inline-flex;
   align-items: center;
@@ -186,7 +187,7 @@
   transform: translateX(3px);
 }
 
-/* Contact Info Box */
+/* Info Cards */
 .contact-info-box {
   display: flex;
   flex-direction: column;
@@ -257,7 +258,7 @@
   transform: translateX(3px);
 }
 
-/* Donate Section - Using content-section class from About page */
+/* Donate Section */
 .M_donate-section {
   margin: 6rem 0;
 }
@@ -292,7 +293,7 @@
   gap: 1rem;
 }
 
-/* Background Elements */
+/* Background Shapes */
 .contact-bg-pattern {
   position: absolute;
   top: 0;
@@ -325,59 +326,22 @@
   filter: blur(60px);
 }
 
-/* Responsive Styles */
+/* Responsive */
 @media (max-width: 1024px) {
   .contact-container {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
-  
-  .hero-header { 
-    height: 25vh; 
-  }
-  
-  .hero-header h1 { 
-    font-size: 2.4rem; 
-  }
 }
 
 @media (max-width: 768px) {
-  .contact-africa { 
-    padding: 0 1rem; 
-  }
-  
-  .contact-form-box,
-  .info-card {
-    padding: 2rem;
-  }
-  
-  .contact-form-box h2,
-  .donate-section .text-content h2 {
-    font-size: 1.8rem;
-  }
-  
-  .donate-buttons {
-    flex-direction: column;
-  }
+  .contact-africa { padding: 0 1rem; }
+  .contact-form-box, .info-card { padding: 2rem; }
+  .contact-form-box h2, .donate-section .text-content h2 { font-size: 1.8rem; }
+  .donate-buttons { flex-direction: column; }
 }
 
 @media (max-width: 480px) {
-  .hero-header { 
-    height: 15vh; 
-  }
-  
-  .hero-header h1 { 
-    font-size: 1.8rem; 
-  }
-  
-  .contact-form-box,
-  .info-card {
-    padding: 1.5rem;
-  }
-  
-  .info-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
-  }
+  .contact-form-box, .info-card { padding: 1.5rem; }
+  .info-icon { width: 50px; height: 50px; font-size: 1.2rem; }
 }

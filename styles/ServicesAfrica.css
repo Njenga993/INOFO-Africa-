@@ -16,18 +16,21 @@
   --transition-slow: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Services Page Styles - Aligned with About page */
+/* Services Page - aligned with About Page */
 .services-africa {
   max-width: 1400px;
   margin: 0 auto;
   overflow: hidden;
-  padding: 0 2rem;
-  margin-top: -0.95rem;
+  padding: 0 clamp(1rem, 2vw, 2rem);
+  margin-top: -1rem;
   position: relative;
 }
-.service_hero-header{
-  height: 30vh;
-  width: 100vw;
+
+/* Hero Header */
+.service_hero-header {
+  height: clamp(15vh, 25vh, 35vh);
+  margin-top: 1.7rem;
+  width: 100%;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -35,35 +38,35 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  margin-bottom: 3rem;
-  margin-left: -2rem;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
 }
-
 
 /* Hero subtitle */
 .hero-subtitle {
-  font-size: 1.3rem;
+  font-size: clamp(1rem, 2vw, 1.3rem);
   max-width: 700px;
   margin: 1rem auto 0;
   color: white;
   line-height: 1.6;
+  text-align: center;
   text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 /* Services Grid */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2.5rem;
-  margin: 3rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1.5rem, 2.5vw, 2.5rem);
+  margin: clamp(2rem, 4vw, 3rem) 0;
 }
 
+/* Service Card */
 .service-card {
   background: white;
-  padding: 2.5rem 2rem;
+  padding: clamp(1.5rem, 2.5vw, 2.5rem);
   border-radius: 12px;
-  box-shadow: var(--shadow-light);
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-base);
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(0,0,0,0.05);
@@ -81,16 +84,12 @@
 }
 
 .service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow-medium);
-}
-
-.service-card.active {
-  transform: translateY(-10px);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-md);
 }
 
 .card-icon {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 2.5vw, 2.5rem);
   margin-bottom: 1.5rem;
   transition: var(--transition-base);
 }
@@ -100,7 +99,7 @@
 }
 
 .service-card h3 {
-  font-size: 1.4rem;
+  font-size: clamp(1.2rem, 1.6vw, 1.4rem);
   color: var(--jungle-green);
   margin-bottom: 1rem;
   font-weight: 600;
@@ -129,6 +128,7 @@
   margin-bottom: 1.5rem;
   line-height: 1.6;
   transition: var(--transition-base);
+  font-size: clamp(0.9rem, 1vw, 1rem);
 }
 
 .card-hover-content {
@@ -136,6 +136,11 @@
   overflow: hidden;
   transition: var(--transition-base);
   opacity: 0;
+}
+.S_text-content{
+  margin-bottom: 2rem;
+  text-align: center;
+
 }
 
 .service-card:hover .card-hover-content {
@@ -153,7 +158,7 @@
 }
 
 .card-link:hover {
-  color: var(--light-jungle);
+  color: var(--jungle-green-light);
 }
 
 .link-arrow {
@@ -165,7 +170,7 @@
   transform: translateX(3px);
 }
 
-/* Centered content for CTA */
+/* Centered CTA */
 .centered-content {
   text-align: center;
   max-width: 800px;
@@ -184,8 +189,8 @@
   justify-content: center;
   background: var(--jungle-green);
   color: white;
-  padding: 1rem 2rem;
-  border-radius: 4px;
+  padding: clamp(0.8rem, 1.2vw, 1rem) clamp(1.5rem, 2vw, 2rem);
+  border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
   border: none;
@@ -195,7 +200,7 @@
 }
 
 .btn-primary:hover {
-  background: var(--light-jungle);
+  background: var(--jungle-green-light);
   transform: translateY(-3px);
 }
 
@@ -212,42 +217,17 @@
   transform: translateX(5px);
 }
 
-/* Responsive Styles */
-@media (max-width: 1024px) {
-  .content-section {
-    flex-direction: column;
-    gap: 2rem;
-  }
-}
-
+/* Responsive Fixes */
 @media (max-width: 768px) {
-  .services-africa { 
-    padding: 0 1rem; 
+  .service_hero-header {
+    background-attachment: scroll; /* Prevents jumpiness on mobile */
   }
   
+  .service-card:hover {
+    transform: none;
+  }
+
   .services-grid {
     grid-template-columns: 1fr;
-  }
-  
-  .service-card {
-    padding: 2rem 1.5rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .service-card {
-    padding: 1.5rem;
-  }
-
-  .service-card:hover {
-    transform: translateY(0);
-  }
-  
-  .service-card.active {
-    transform: translateY(0);
   }
 }

@@ -67,7 +67,7 @@ const MembershipAfrica = () => {
       {/* Hero Section */}
       <motion.header 
         className="member_hero-header" 
-        style={{ backgroundImage: 'url(dedicated-farmer-tending-to-vibrant-crops-328717.jpg)' }}
+        style={{ backgroundImage: 'url(./_MG_0674.webp)' }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -81,14 +81,7 @@ const MembershipAfrica = () => {
           >
             Membership & Affiliates
           </motion.h1>
-          <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="hero-subtitle"
-          >
-            Join INOFO Africa — a collective of farmer organisations driving organic transformation across the continent.
-          </motion.p>
+          
         </div>
       </motion.header>
 

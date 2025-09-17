@@ -8,7 +8,7 @@ const newsData = [
     title: "Agroecology Conference 2025",
     date: "Sept 12, 2025",
     category: "Event",
-    image: "https://source.unsplash.com/800x500/?farm,conference",
+    image: "./_MG_0674.webp",
     excerpt: "Join experts and farmers in shaping the future of sustainable food systems.",
     link: "#"
   },
@@ -17,7 +17,7 @@ const newsData = [
     title: "Seed Fair Highlights",
     date: "Aug 28, 2025",
     category: "News",
-    image: "https://source.unsplash.com/800x500/?seeds,market",
+    image: "./fresh-sprouts-in-agricultural-field-6165476.jpg",
     excerpt: "A vibrant gathering of seed keepers and agroecology enthusiasts.",
     link: "#"
   },
@@ -26,7 +26,7 @@ const newsData = [
     title: "Policy Dialogue on Food Sovereignty",
     date: "Aug 10, 2025",
     category: "Press Release",
-    image: "https://source.unsplash.com/800x500/?policy,meeting",
+    image: "./fresh-sprouts-in-agricultural-field-6165476.jpg",
     excerpt: "Key stakeholders discuss frameworks for resilient food systems.",
     link: "#"
   },
@@ -35,7 +35,7 @@ const newsData = [
     title: "Youth in Agroecology Bootcamp",
     date: "July 30, 2025",
     category: "Story",
-    image: "https://source.unsplash.com/800x500/?youth,agriculture",
+    image: "./fresh-sprouts-in-agricultural-field-6165476.jpg",
     excerpt: "Empowering the next generation of agroecology leaders.",
     link: "#"
   }
