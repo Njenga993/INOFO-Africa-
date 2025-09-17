@@ -114,7 +114,7 @@ const AboutUsAfrica = () => {
       {/* Hero Section */}
       <motion.header 
         className="about_hero-header" 
-        style={{ backgroundImage: 'url(./_MG_0674.webp)' }}
+        style={{ backgroundImage: 'url(_MG_0674.webp)' }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -153,7 +153,7 @@ const AboutUsAfrica = () => {
         </motion.div>
         <motion.div className="image-content" variants={itemVariants}>
           <img 
-            src="./_MG_0674.webp" 
+            src="_MG_0674.webp" 
             alt="African farmers in discussion" 
             className="content-image"
           />
@@ -170,7 +170,7 @@ const AboutUsAfrica = () => {
       >
         <motion.div className="image-content" variants={itemVariants}>
           <img 
-            src="./_MG_0538.webp" 
+            src="_MG_0538.webp" 
             alt="INOFO leadership meeting" 
             className="content-image"
           />

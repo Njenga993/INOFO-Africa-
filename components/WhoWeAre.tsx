@@ -29,7 +29,7 @@ const WhoWeAre = () => {
           transition={{ duration: 0.6 }}
         >
           <img
-            src="./_MG_0457.webp"
+            src="_MG_0457.webp"
             alt="Farmers Working Together"
           />
         </motion.div>
