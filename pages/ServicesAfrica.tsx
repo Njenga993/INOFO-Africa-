@@ -85,7 +85,7 @@ const ServicesAfrica = () => {
       {/* Hero Section - Aligned with About page */}
       <motion.header 
         className="service_hero-header" 
-        style={{ backgroundImage: 'url(/_MG_0674.webp)' }}
+        style={{ backgroundImage: 'url(./_MG_0674.webp)' }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -178,7 +178,7 @@ const ServicesAfrica = () => {
         <motion.div className="image-content">
           <div className={`image-container ${isImageLoaded ? 'loaded' : ''}`}>
             <img 
-              src="/_MG_0824.webp" 
+              src="./_MG_0824.webp" 
               alt="African women farmers participating in training"
               onLoad={() => setIsImageLoaded(true)}
               className="content-image"
