@@ -2,7 +2,7 @@ import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaYoutube, FaMapMark
 import '../styles/footer.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-
+import LogoBlackDay from "../assets/Black_Day.png";
 const Footer = () => {
   const [faqOpen, setFaqOpen] = useState(false);
   
@@ -87,7 +87,7 @@ const Footer = () => {
             <div className="footer-col">
               <div className="footer-logo">
                 <img 
-                  src="Black_Day.png" 
+                  src= {LogoBlackDay}
                   alt="INOFO Africa" 
                   className="logo-img"
                 />

@@ -5,6 +5,7 @@ import type { Variants } from 'framer-motion';
 import '../styles/MembershipAfrica.css';
 import Newsletter from '../components/Newsletter';
 import MembersTable from '../components/LogoCarousel';
+import heroImg from "../assets/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg";
 
 const MembershipAfrica = () => {
   const [activeCard, setActiveCard] = useState<number | null>(null);
@@ -67,7 +68,7 @@ const MembershipAfrica = () => {
       {/* Hero Section */}
       <motion.header 
         className="member_hero-header" 
-        style={{ backgroundImage: 'url(/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg)' }}
+        style={{ backgroundImage: `url(${heroImg})` }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}

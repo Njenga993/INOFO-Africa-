@@ -4,9 +4,10 @@ import "../styles/ResourcesPage.css";
 import Newsletter from "../components/Newsletter";
 
 // Temporary placeholders – we’ll build these next
-import NewsEvents from "../components/NewsEvents";
+import Newsevents from "../components/Newsevents";
 import Publications from "../components/Publications";
 import FarmerTools from "../components/FarmerTools";
+import heroImg from "../assets/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg";
 
 const ResourcesPage = () => {
   // Animation variants
@@ -37,7 +38,7 @@ const ResourcesPage = () => {
       {/* Hero Section */}
       <motion.header
         className="R-hero-header"
-        style={{ backgroundImage: "url(/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg)" }}
+        style={{ backgroundImage: `url(${heroImg})` }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -62,7 +63,7 @@ const ResourcesPage = () => {
         variants={containerVariants}
       >
         <motion.div className="section-component" variants={itemVariants}>
-          <NewsEvents />
+          <Newsevents />
         </motion.div>
       </motion.section>
 

@@ -5,6 +5,7 @@ import type { JSX } from 'react';
 import '../styles/ServicesAfrica.css';
 import { Link } from 'react-router-dom';
 import Newsletter from '../components/Newsletter';
+import heroImg from "../assets/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg";
 
 interface Service {
   icon: JSX.Element;
@@ -85,7 +86,7 @@ const ServicesAfrica = () => {
       {/* Hero Section */}
       <motion.header 
         className="service_hero-header" 
-        style={{ backgroundImage: 'url(/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg)' }}  // ✅ WebP first
+        style={{ backgroundImage: `url(${heroImg})` }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}

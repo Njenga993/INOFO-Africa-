@@ -12,6 +12,9 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import "../styles/navbar.css";
 
+// ✅ Import your logo image from assets
+import LogoBlackDay from "../assets/Black_Day.png";
+
 interface NavItem {
   path: string;
   label: string;
@@ -26,8 +29,8 @@ interface NavItem {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
+
   const location = useLocation();
   const navbarRef = useRef<HTMLDivElement>(null);
 
@@ -36,10 +39,8 @@ const Navbar = () => {
     document.body.style.overflow = !isOpen ? "hidden" : "auto";
   };
 
-
   const closeAll = () => {
     setIsOpen(false);
-    
     setActiveDropdown(null);
     document.body.style.overflow = "auto";
   };
@@ -152,7 +153,7 @@ const Navbar = () => {
           <div className="logo-box">
             <Link to="/" onClick={scrollToTop} className="logo-link">
               <motion.img
-                src="Black_Day.png"
+                src={LogoBlackDay} // ✅ Imported image used here
                 alt="INOFO Africa"
                 className="logo-img"
                 initial={{ height: 70 }}
@@ -218,7 +219,6 @@ const Navbar = () => {
 
           {/* ACTIONS */}
           <div className="nav-actions">
-            
             <button className="hamburger" onClick={toggleMenu} aria-label="Menu">
               {isOpen ? <FaTimes /> : <FaBars />}
             </button>
@@ -244,7 +244,6 @@ const Navbar = () => {
                 transition={{ type: "tween" }}
               >
                 <div className="sidebar-header">
-          
                   <button
                     className="sidebar-close"
                     onClick={closeAll}

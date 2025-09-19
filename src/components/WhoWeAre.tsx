@@ -3,6 +3,9 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import "../styles/WhoWeAre.css";
 
+// ✅ Import the image from assets
+import WhoWeAreImage from "../assets/_MG_0457.webp";
+
 const WhoWeAre = () => {
   const stats = [
     { label: "Farmers Reached", value: "15K+" },
@@ -28,10 +31,7 @@ const WhoWeAre = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <img
-            src="_MG_0457.webp"
-            alt="Farmers Working Together"
-          />
+          <img src={WhoWeAreImage} alt="Farmers Working Together" />
         </motion.div>
 
         {/* Right: Content */}

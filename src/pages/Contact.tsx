@@ -4,6 +4,7 @@ import { FaPaperPlane, FaLeaf, FaHandshake, FaDonate } from "react-icons/fa";
 import "../styles/contact.css";
 import { useRef } from "react";
 import Newsletter from "../components/Newsletter";
+import heroImg from "../assets/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg";
 
 const ContactSection = () => {
   const containerRef = useRef<HTMLElement | null>(null);
@@ -43,10 +44,7 @@ const ContactSection = () => {
       {/* Hero Section */}
       <motion.header
         className="hero-header"
-        style={{
-          backgroundImage:
-            "url(/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg)",
-        }}
+        style={{ backgroundImage: `url(${heroImg})` }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}

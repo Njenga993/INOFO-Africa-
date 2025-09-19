@@ -4,6 +4,12 @@ import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 import "../styles/BlogGrid.css";
 
+// ✅ Import images from assets
+import networkingEvent from "../assets/networking-event-at-sunset-101213662.jpg";
+import farmersTraining from "../assets/networking-event-at-sunset-101213662.jpg";
+import youngFarmer from "../assets/networking-event-at-sunset-101213662.jpg";
+import seedSovereignty from "../assets/networking-event-at-sunset-101213662.jpg";
+
 interface BlogPost {
   id: number;
   title: string;
@@ -32,6 +38,7 @@ const BlogGrid = () => {
     },
   };
 
+  // ✅ Use imported images here
   const blogPosts: BlogPost[] = [
     {
       id: 1,
@@ -40,7 +47,7 @@ const BlogGrid = () => {
       excerpt:
         "INOFO proudly joined as the only organic international Farmer Organisation alongside partners from 9 regional farmers' organizations...",
       date: "May 2025",
-      image: "networking-event-at-sunset-101213662.jpg",
+      image: networkingEvent,
       featured: true,
     },
     {
@@ -50,7 +57,7 @@ const BlogGrid = () => {
       excerpt:
         "Training workshops focused on agroecological practices have equipped farmers with the tools to build climate resilience and food sovereignty.",
       date: "April 2025",
-      image: "farmers-training-agroecology-102933829.jpg",
+      image: farmersTraining,
       featured: false,
     },
     {
@@ -60,7 +67,7 @@ const BlogGrid = () => {
       excerpt:
         "Young farmers are stepping up to embrace organic farming, driving innovation and sustainable growth across Africa.",
       date: "March 2025",
-      image: "young-farmer-training-101345783.jpg",
+      image: youngFarmer,
       featured: false,
     },
     {
@@ -70,7 +77,7 @@ const BlogGrid = () => {
       excerpt:
         "A regional summit highlighted the importance of protecting indigenous seeds as the foundation of Africa’s food systems.",
       date: "February 2025",
-      image: "seed-sovereignty-conference-102847392.jpg",
+      image: seedSovereignty,
       featured: false,
     },
   ];
@@ -108,7 +115,10 @@ const BlogGrid = () => {
                   className="featured-card"
                   key={post.id}
                   variants={itemVariants}
-                  whileHover={{ scale: 1.03, boxShadow: "0 10px 25px rgba(0,0,0,0.15)" }}
+                  whileHover={{
+                    scale: 1.03,
+                    boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
+                  }}
                 >
                   <div
                     className="featured-image"
@@ -188,11 +198,12 @@ const BlogGrid = () => {
           </motion.div>
         </div>
       </div>
-       <div className="Bl-cta">
-            <Link to="/resources" className="bt0n-primary">
-              See More <FaArrowRight className="icon-arrow" />
-            </Link>
-          </div>
+
+      <div className="Bl-cta">
+        <Link to="/resources" className="bt0n-primary">
+          See More <FaArrowRight className="icon-arrow" />
+        </Link>
+      </div>
     </motion.section>
   );
 };

@@ -1,17 +1,17 @@
 // src/App.tsx
 import { useState, useEffect } from 'react';
-import AfricaLoader from '../components/AfricaLoader';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import MembershipForm from '../pages/MembershipForm';
+import AfricaLoader from './components/AfricaLoader';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import MembershipForm from './pages/MembershipForm';
 import { Routes, Route } from 'react-router-dom'
-import Home from '../pages/Home';
-import About from '../pages/About';
-import ServicesAfrica from '../pages/ServicesAfrica';
-import MembershipAfrica from '../pages/MembershipAfrica';
-import Contact from '../pages/Contact';
-import ScrollToTopButton from '../components/ScrollToTopButton';
-import ResourcesPage from '../pages/ResourcesPage';
+import Home from './pages/Home';
+import About from './pages/About';
+import ServicesAfrica from './pages/ServicesAfrica';
+import MembershipAfrica from './pages/MembershipAfrica';
+import Contact from './pages/Contact';
+import ScrollToTopButton from './components/ScrollToTopButton';
+import ResourcesPage from './pages/ResourcesPage';
 
 function App() {
   const [loading, setLoading] = useState(true);

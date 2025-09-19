@@ -7,6 +7,16 @@ import '../styles/AboutUsAfrica.css';
 import MembersTable from '../components/LogoCarousel';
 import Newsletter from '../components/Newsletter';
 
+// ✅ Import leader images from assets
+import wanjamaImg from "../assets/wanjama.jpg";
+import raoudathImg from "../assets/Roudath.jpg";
+import charlesImg from "../assets/charles.jpg";
+
+// ✅ Import section images from assets
+import journeyImg from "../assets/_MG_0674.jpg";
+import governanceImg from "../assets/_MG_0538.jpg";
+import heroImg from "../assets/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg";
+
 // Type definitions
 interface Leader {
   name: string;
@@ -58,19 +68,19 @@ const AboutUsAfrica = () => {
       name: "Daniel Wanjama",
       role: "East Africa Convenor",
       bio: "Daniel Wanjama, representing Seed Savers Network Kenya, is a dedicated advocate for seed sovereignty and food security in Eastern Africa. He has spearheaded efforts to preserve indigenous seed varieties and empower farmers to sustain their own seed systems. With a strong focus on biodiversity and sustainability, Daniel ensures smallholder farmers access locally adapted, organic seeds. As Eastern Africa's representative on the INOFO Global Council, he brings his expertise and commitment to protecting farmers' rights and promoting resilient agricultural practices.",
-      image: "wanjama.jpg"
+      image: wanjamaImg
     },
         {
       name: "Raoudath Bouaima",
       role: "West Africa Convenor",
       bio: "Raoudath Bouraima, from Benin, is a prominent advocate for sustainable agriculture and organic farming in Western Africa. Through Les Jardins de l’Espoir, she has advanced community-driven organic systems focused on resilience and food security. A strong proponent of women’s involvement in agriculture, Raoudath champions initiatives that empower rural communities and protect the environment. As Western Africa's representative, she strives to amplify farmers' voices and promote organic agriculture across the region.",
-      image: "Roudath.jpg"
+      image: raoudathImg
     },
         {
       name: "Charles Mubanga",
       role: "Southern Africa Convenor",
       bio: "Charles K. Mubanga, representing the Mpongwe Bulima Cooperative in Zambia, is a committed advocate for sustainable farming and cooperative development. With extensive experience, he drives change by improving livelihoods and promoting ecological practices. As the Southern Africa Convenor, Charles will focus on strengthening cooperative systems and amplifying smallholder farmers’ voices in policy-making. His leadership aims to foster resilient agricultural communities across Southern Africa.",
-      image: "charles.jpg"
+      image: charlesImg
     },
     // Add other leaders here
   ];
@@ -114,7 +124,7 @@ const AboutUsAfrica = () => {
       {/* Hero Section */}
       <motion.header 
         className="about_hero-header" 
-        style={{ backgroundImage: 'url(/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg)' }}
+        style={{ backgroundImage: `url(${heroImg})` }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -153,7 +163,7 @@ const AboutUsAfrica = () => {
         </motion.div>
         <motion.div className="image-content" variants={itemVariants}>
           <img 
-            src="./_MG_0674.jpg" 
+            src={journeyImg}
             alt="African farmers in discussion" 
             className="content-image"
           />
@@ -170,7 +180,7 @@ const AboutUsAfrica = () => {
       >
         <motion.div className="image-content" variants={itemVariants}>
           <img 
-            src="./_MG_0538.jpg" 
+            src={governanceImg} 
             alt="INOFO leadership meeting" 
             className="content-image"
           />
