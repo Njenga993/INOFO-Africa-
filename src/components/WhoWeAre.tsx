@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "../styles/WhoWeAre.css";
 
 // ✅ Import the image from assets
-import WhoWeAreImage from "../assets/_MG_0457.webp";
+import WhoWeAreImage from "../assets/MG_0457.webp";
 
 const WhoWeAre = () => {
   const stats = [

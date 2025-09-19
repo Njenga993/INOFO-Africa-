@@ -13,8 +13,8 @@ import raoudathImg from "../assets/Roudath.jpg";
 import charlesImg from "../assets/charles.jpg";
 
 // ✅ Import section images from assets
-import journeyImg from "../assets/_MG_0674.jpg";
-import governanceImg from "../assets/_MG_0538.jpg";
+import journeyImg from "../assets/MG_0674.jpg";
+import governanceImg from "../assets/MG_0538.jpg";
 import heroImg from "../assets/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg";
 
 // Type definitions
