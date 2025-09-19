@@ -67,7 +67,7 @@ const MembershipAfrica = () => {
       {/* Hero Section */}
       <motion.header 
         className="member_hero-header" 
-        style={{ backgroundImage: 'url(./_MG_0674.jpg)' }}
+        style={{ backgroundImage: 'url(/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg)' }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}

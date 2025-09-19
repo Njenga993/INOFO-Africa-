@@ -82,10 +82,10 @@ const ServicesAfrica = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Hero Section - Aligned with About page */}
+      {/* Hero Section */}
       <motion.header 
         className="service_hero-header" 
-        style={{ backgroundImage: 'url(./_MG_0674.jpg)' }}
+        style={{ backgroundImage: 'url(/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg)' }}  // ✅ WebP first
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -98,7 +98,6 @@ const ServicesAfrica = () => {
           >
             Our Services
           </motion.h1>
-          
         </div>
       </motion.header>
 
@@ -168,7 +167,7 @@ const ServicesAfrica = () => {
         </motion.div>
       </motion.section>
 
-      {/* Featured Services Section - Alternating layout like About page */}
+      {/* Featured Services Section */}
       <motion.section 
         className="content-section image-left"
         initial="hidden"
@@ -177,12 +176,17 @@ const ServicesAfrica = () => {
       >
         <motion.div className="image-content">
           <div className={`image-container ${isImageLoaded ? 'loaded' : ''}`}>
-            <img 
-              src="./_MG_0824.jpg" 
-              alt="African women farmers participating in training"
-              onLoad={() => setIsImageLoaded(true)}
-              className="content-image"
-            />
+            <picture>
+              {/* ✅ WebP first */}
+              <source srcSet="/_MG_0824.webp" type="image/webp" />
+              {/* ✅ Fallback for older browsers */}
+              <img 
+                src="/_MG_0824.jpg" 
+                alt="African women farmers participating in training"
+                onLoad={() => setIsImageLoaded(true)}
+                className="content-image"
+              />
+            </picture>
           </div>
         </motion.div>
         
@@ -227,6 +231,7 @@ const ServicesAfrica = () => {
           </Link>
         </div>
       </motion.section>
+
       <Newsletter/>
     </motion.main>
   );

@@ -45,7 +45,7 @@ const ContactSection = () => {
         className="hero-header"
         style={{
           backgroundImage:
-            "url(./_MG_0674.jpg)",
+            "url(/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg)",
         }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
