@@ -10,7 +10,7 @@ import {
   FaChevronUp,
 } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
-import "../styles/navbar.css";
+import "../styles/Navbar.css";
 
 // ✅ Import your logo image from assets
 import LogoBlackDay from "../assets/Black_Day.png";
@@ -116,6 +116,10 @@ const Navbar = () => {
     { path: "/contact", label: "Contact" },
   ];
 
+  // Split nav items into left and right wings
+  const leftNavItems = navItems.slice(0, 3);
+  const rightNavItems = navItems.slice(3);
+
   return (
     <header
       className={`header ${scrolled ? "scrolled" : ""} ${
@@ -149,23 +153,10 @@ const Navbar = () => {
 
       {/* MAIN NAVIGATION */}
       <nav className="main-nav">
-        <div className="container">
-          <div className="logo-box">
-            <Link to="/" onClick={scrollToTop} className="logo-link">
-              <motion.img
-                src={LogoBlackDay} // ✅ Imported image used here
-                alt="INOFO Africa"
-                className="logo-img"
-                initial={{ height: 70 }}
-                animate={{ height: scrolled ? 50 : 70 }}
-                transition={{ duration: 0.3 }}
-              />
-            </Link>
-          </div>
-
-          {/* DESKTOP NAV */}
-          <ul className="nav-links">
-            {navItems.map((item, index) => (
+        <div className="nav-container">
+          {/* LEFT WING */}
+          <ul className="nav-wing nav-wing--left">
+            {leftNavItems.map((item, index) => (
               <li
                 key={index}
                 className={`nav-item ${item.dropdown ? "has-dropdown" : ""} ${
@@ -217,7 +208,79 @@ const Navbar = () => {
             ))}
           </ul>
 
-          {/* ACTIONS */}
+          {/* CENTRAL LOGO WITH CREST */}
+          <div className="logo-crest">
+            <div className="crest-shape"></div>
+            <Link to="/" onClick={scrollToTop} className="logo-link">
+              <motion.img
+                src={LogoBlackDay}
+                alt="INOFO Africa"
+                className="logo-img"
+                initial={{ height: 70 }}
+                animate={{ height: scrolled ? 50 : 70 }}
+                transition={{ duration: 0.3 }}
+              />
+            </Link>
+          </div>
+
+          {/* RIGHT WING */}
+          <ul className="nav-wing nav-wing--right">
+            {rightNavItems.map((item, index) => {
+              const originalIndex = index + 3;
+              return (
+                <li
+                  key={originalIndex}
+                  className={`nav-item ${item.dropdown ? "has-dropdown" : ""} ${
+                    location.pathname === item.path ? "active" : ""
+                  }`}
+                  onMouseEnter={() => item.dropdown && setActiveDropdown(originalIndex)}
+                  onMouseLeave={() => item.dropdown && setActiveDropdown(null)}
+                >
+                  <Link
+                    to={item.path}
+                    className="nav-link"
+                    onClick={() => {
+                      closeAll();
+                      if (location.pathname === item.path) scrollToTop();
+                    }}
+                  >
+                    {item.label}
+                  </Link>
+                  {item.dropdown && (
+                    <AnimatePresence>
+                      {activeDropdown === originalIndex && (
+                        <motion.ul
+                          className="dropdown-menu"
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          {item.dropdown.map((subItem, subIndex) => (
+                            <li key={subIndex} className="dropdown-item">
+                              <Link
+                                to={subItem.path}
+                                className="dropdown-link"
+                                onClick={() => {
+                                  closeAll();
+                                  if (location.pathname === subItem.path)
+                                    scrollToTop();
+                                }}
+                              >
+                                {subItem.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </motion.ul>
+                      )}
+                    </AnimatePresence>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+
+          {/* MOBILE MENU TOGGLE */}
           <div className="nav-actions">
             <button className="hamburger" onClick={toggleMenu} aria-label="Menu">
               {isOpen ? <FaTimes /> : <FaBars />}
@@ -244,6 +307,8 @@ const Navbar = () => {
                 transition={{ type: "tween" }}
               >
                 <div className="sidebar-header">
+                  <div className="logo-crest-mobile">
+                  </div>
                   <button
                     className="sidebar-close"
                     onClick={closeAll}
