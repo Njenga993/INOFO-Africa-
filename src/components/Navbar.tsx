@@ -100,7 +100,7 @@ const Navbar = () => {
       label: "Our Work",
       dropdown: [
         { path: "/services/training", label: "Training Programs" },
-        { path: "/services/advocacy", label: "Policy Advocacy" },
+        { path: "/services/advocacy", label: "Polic Advocacy" },
         { path: "/services/markets", label: "Market Access" },
       ],
     },
