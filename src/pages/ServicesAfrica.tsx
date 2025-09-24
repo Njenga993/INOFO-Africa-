@@ -227,7 +227,7 @@ const ServicesAfrica = () => {
             className="btn-primary"
             aria-label="Get involved with INOFO Africa"
           >
-            <span>Get Involved</span>
+            <span>Get Involved Today!</span>
             <FaHandshake className="btn-icon" />
           </Link>
         </div>
