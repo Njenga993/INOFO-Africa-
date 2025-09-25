@@ -5,6 +5,7 @@ import "../styles/contact.css";
 import { useRef } from "react";
 import Newsletter from "../components/Newsletter";
 import heroImg from "../assets/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg";
+import journeyImg from "../assets/MG_0674.jpg";
 
 const ContactSection = () => {
   const containerRef = useRef<HTMLElement | null>(null);
@@ -251,7 +252,7 @@ const ContactSection = () => {
 
         <motion.div className="image-content" variants={itemVariants}>
           <img
-            src="./_MG_0457.jpg"
+            src= {journeyImg}
             alt="African farmers working together"
             className="content-image"
           />
