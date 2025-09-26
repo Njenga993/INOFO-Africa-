@@ -7,6 +7,7 @@ import Newsletter from '../components/Newsletter';
 import MembersTable from '../components/LogoCarousel';
 import heroImg from "../assets/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg";
 
+
 const MembershipAfrica = () => {
   const [activeCard, setActiveCard] = useState<number | null>(null);
   const [isHandbookDownloading, setIsHandbookDownloading] = useState(false);
@@ -227,8 +228,10 @@ const MembershipAfrica = () => {
         <motion.div className="text-content" variants={itemVariants}>
           <h2>Ready to Join?</h2>
           <p>
-            Get detailed information and guidelines in our Membership & Affiliate Handbook:
-          </p>
+            Get detailed information and guidelines in our Membership & Affiliate Handbook: </p>
+            <p>Download it Below,  Fill the Required Areas and then Send it via Email to <b>membership@inofoafrica.org .</b></p>
+          
+          
           <button 
             onClick={handleDownload} 
             className={`btn-primary ${isHandbookDownloading ? 'downloading' : ''}`}
@@ -253,16 +256,10 @@ const MembershipAfrica = () => {
             <svg className="file-icon" viewBox="0 0 24 24">
               <path d="M6,2A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2H6M6,4H13V9H18V20H6V4M8,12V14H16V12H8M8,16V18H13V16H8Z" />
             </svg>
-            <span>2.4 MB · Updated June 2023</span>
+            <span>2.4 MB · Updated June 2025</span>
           </div>
         </motion.div>
-        <motion.div className="image-content" variants={itemVariants}>
-          <div className="document-preview">
-            <div className="page"></div>
-            <div className="page"></div>
-            <div className="page"></div>
-          </div>
-        </motion.div>
+       
       </motion.section>
 
       {/* Contact CTA Section */}
@@ -279,7 +276,7 @@ const MembershipAfrica = () => {
             Our dedicated Membership Coordinator is ready to assist with guidance, bulk applications, or custom partnership agreements.
           </p>
           <div className="cta-buttons">
-            <Link to="/contact" className="btn-primary">
+            <Link to="mailto:membership@inofoafrica.org" className="btn-primary">
               <svg className="btn-icon" viewBox="0 0 24 24">
                 <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" />
               </svg>

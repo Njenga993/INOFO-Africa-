@@ -52,7 +52,7 @@ const WhoWeAre = () => {
             of global solidarity.
           </p>
           <p>
-            Together, we're cultivating more than food—we're growing a
+            Together, we're cultivating more than food we're growing a
             movement where every community thrives in harmony with nature,
             today and for the future.
           </p>

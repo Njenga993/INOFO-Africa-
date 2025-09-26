@@ -98,7 +98,7 @@ const ResourcesPage = () => {
                   transition={{ duration: 2, delay: 0.5 }}
                 />
               </div>
-              <div className="progress-percentage">65%</div>
+              <div className="progress-percentage">65% done</div>
             </div>
           </motion.div>
           

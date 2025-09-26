@@ -189,10 +189,10 @@ const AboutUsAfrica = () => {
           <h2>Governance Rooted in Representation</h2>
           <p>
             Our unique structure blends continental coordination with regional autonomy. The Continental Council of 
-            Convenors—elected every 3 years—guides strategy while Regional Assemblies ensure local needs shape our work.
+            Convenors elected every 3 years guides strategy while Regional Assemblies ensure local needs shape our work.
           </p>
           <p>
-            The Executive Secretariat based in Nairobi coordinates programs, while our Technical Advisory Circle 
+            The Executive Secretariat based in East Africa coordinates programs, while our Technical Advisory Circle 
             (45 experts across Africa) informs policy positions and training programs.
           </p>
         </motion.div>
@@ -213,7 +213,7 @@ const AboutUsAfrica = () => {
               A regenerative approach rooted in community, culture, and climate resilience.
             </p>
             <p className="intro-text">
-              Organic farming in Africa isn't just about avoiding chemicals —
+              Organic farming in Africa isn't just about avoiding chemicals 
               it's a people-powered solution to food security, soil regeneration,
               and economic justice. We believe in cultivating systems that nourish
               both the land and the livelihoods of those who steward it.
@@ -332,8 +332,8 @@ const AboutUsAfrica = () => {
   <motion.div className="text-content" variants={itemVariants}>
     <h2>Our Secretariat</h2>
     <p>
-      Based at SeedSavers Network in Kenya , our <b>12-member Secretariat</b> serves as the nerve 
-      centre of continental coordination, linking <b>global policy frameworks</b> 
+      Based at Seed Savers Network in Kenya , our <b>12-member Secretariat</b> serves as the nerve 
+      centre of continental coordination, linking <b>global policy frameworks </b> 
       with <b>local implementation</b> across Africa. The team provides technical 
       guidance, advocacy leadership, and knowledge sharing for partners in every 
       region.
