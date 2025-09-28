@@ -245,7 +245,7 @@ const ContactSection = () => {
               className="M_btn-primary"
             >
               <FaDonate className="M_btn-icon" />
-              <span>Donate Using PayPal </span>
+              <span>Donate Using PayPal- </span>
             </a>
           </div>
         </motion.div>
