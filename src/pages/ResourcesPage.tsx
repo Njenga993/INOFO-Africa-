@@ -3,7 +3,7 @@ import type { Variants } from "framer-motion";
 import "../styles/ResourcesPage.css";
 import Newsletter from "../components/Newsletter";
 import heroImg from "../assets/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg";
-import comingSoonImg from "../assets/dedicated-farmer-tending-to-vibrant-crops-328717.jpg"; // Add a relevant image
+import comingSoonImg from "../assets/talk.webp"; // Add a relevant image
 
 const ResourcesPage = () => {
   // Animation variants

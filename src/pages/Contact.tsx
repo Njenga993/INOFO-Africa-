@@ -5,7 +5,7 @@ import "../styles/contact.css";
 import { useRef } from "react";
 import Newsletter from "../components/Newsletter";
 import heroImg from "../assets/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg";
-import journeyImg from "../assets/MG_0674.jpg";
+import journeyImg from "../assets/feet.webp";
 
 const ContactSection = () => {
   const containerRef = useRef<HTMLElement | null>(null);

@@ -35,7 +35,7 @@ const Hero = () => {
       highlight: "Farming in harmony with nature",
       description:
         "Agroecology integrates traditional knowledge with modern practices to build climate-resilient farms, restore ecosystems, and strengthen community food sovereignty.",
-      cta: "Learn More",
+      cta: "Get Involved",
     },
   ];
 

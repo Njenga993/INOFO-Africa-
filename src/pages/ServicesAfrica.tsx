@@ -16,7 +16,8 @@ import Newsletter from "../components/Newsletter";
 
 // ✅ Imported images
 import heroImg from "../assets/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg";
-import journeyImg from "../assets/MG_0674.jpg";
+import journeyImg from "../assets/train.webp";
+import img from "../assets/about.webp";
 
 interface Service {
   icon: JSX.Element;
@@ -230,7 +231,7 @@ const ServicesAfrica = () => {
         <motion.div className="image-content">
           <div className={`image-container ${isImageLoaded ? "loaded" : ""}`}>
             <img
-              src={journeyImg}
+              src={ img }
               alt="African farmers collaborating"
               onLoad={() => setIsImageLoaded(true)}
               className="content-image"
