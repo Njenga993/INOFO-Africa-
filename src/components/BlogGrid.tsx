@@ -5,10 +5,9 @@ import type { Variants } from "framer-motion";
 import "../styles/BlogGrid.css";
 
 // ✅ Import images from assets
-import networkingEvent from "../assets/networking-event-at-sunset-101213662.jpg";
-import farmersTraining from "../assets/networking-event-at-sunset-101213662.jpg";
-import youngFarmer from "../assets/networking-event-at-sunset-101213662.jpg";
-import seedSovereignty from "../assets/networking-event-at-sunset-101213662.jpg";
+
+import farmersTraining from "../assets/african.webp";
+
 
 interface BlogPost {
   id: number;
@@ -42,44 +41,14 @@ const BlogGrid = () => {
   const blogPosts: BlogPost[] = [
     {
       id: 1,
-      title: "INOFO Shines at International FFORA Event 2025",
-      location: "Dar es Salaam",
-      excerpt:
-        "INOFO proudly joined as the only organic international Farmer Organisation alongside partners from 9 regional farmers' organizations...",
-      date: "May 2025",
-      image: networkingEvent,
-      featured: true,
-    },
-    {
-      id: 2,
-      title: "Empowering Smallholder Farmers with Agroecology",
-      location: "Nairobi, Kenya",
-      excerpt:
-        "Training workshops focused on agroecological practices have equipped farmers with the tools to build climate resilience and food sovereignty.",
-      date: "April 2025",
-      image: farmersTraining,
-      featured: false,
-    },
-    {
-      id: 3,
-      title: "Youth in Organic Farming: The Next Generation",
+      title: "INOFO AFRICA Shines at the 5th African Organic Conference",
       location: "Kigali, Rwanda",
       excerpt:
-        "Young farmers are stepping up to embrace organic farming, driving innovation and sustainable growth across Africa.",
-      date: "March 2025",
-      image: youngFarmer,
-      featured: false,
-    },
-    {
-      id: 4,
-      title: "Strengthening Regional Networks for Seed Sovereignty",
-      location: "Accra, Ghana",
-      excerpt:
-        "A regional summit highlighted the importance of protecting indigenous seeds as the foundation of Africa’s food systems.",
-      date: "February 2025",
-      image: seedSovereignty,
-      featured: false,
-    },
+        "The 5th African Organic Conference brought together over 500 participants from 40 countries to discuss the future of organic agriculture in Africa.",
+      date: "December 12th - 15th, 2023",
+      image: farmersTraining,
+      featured: true,
+    }
   ];
 
   return (
@@ -147,14 +116,7 @@ const BlogGrid = () => {
 
         {/* All Blog Posts */}
         <div className="all-blogs">
-          <motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            Our Recent Activities
-          </motion.h3>
+         
           <motion.div
             className="blog-grid"
             variants={containerVariants}
@@ -199,11 +161,7 @@ const BlogGrid = () => {
         </div>
       </div>
 
-      <div className="Bl-cta">
-        <Link to="/resources" className="bt0n-primary">
-          See More <FaArrowRight className="icon-arrow" />
-        </Link>
-      </div>
+      
     </motion.section>
   );
 };
