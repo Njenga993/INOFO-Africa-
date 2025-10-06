@@ -211,7 +211,7 @@ const Footer = () => {
             <div className="footer-legal">
               <a href="#">Privacy Policy</a>
               <a href="#">Terms of Service</a>
-              <a href="#">Sitemap</a>
+              <a href="#">Sitemaps</a>
             </div>
           </div>
         </div>
