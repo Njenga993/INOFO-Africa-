@@ -206,7 +206,7 @@ const ServicesAfrica = () => {
           <h2>Customized Training Programs</h2>
           <p>
             We partner with local hubs to conduct in-person and virtual training
-            tailored to regional needs—covering composting, agroforestry, value
+            tailored to regional needs covering composting, agroforestry, value
             chain development, and organic certification processes.
           </p>
           <Link
