@@ -171,7 +171,7 @@ const ServicesAfrica = () => {
               <p>{service.description}</p>
               <div className="card-hover-content">
                 <Link
-                  to="/services"
+                  to="/about"
                   className="card-link"
                   aria-label={`Learn more about ${service.title}`}
                 >
