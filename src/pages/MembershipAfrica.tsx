@@ -45,12 +45,11 @@ const MembershipAfrica = () => {
     }
   };
 
-
   const handleEOIClick = () => {
     setShowLanguagePopup(true);
   };
 
-  const handleLanguageSelect = (language: string, url: string) => {
+  const handleLanguageSelect = (url: string) => {
     window.open(url, '_blank');
     setShowLanguagePopup(false);
   };
@@ -146,7 +145,7 @@ const MembershipAfrica = () => {
       >
         <motion.div className="text-content" variants={itemVariants}>
           <h2>Choose Your Path</h2>
-          <p className="section-subtitle">Veiw the membership that aligns with your goals</p>
+          <p className="section-subtitle">View the membership that aligns with your goals</p>
           
           <div className="types-grid">
             <motion.div 
@@ -254,7 +253,6 @@ const MembershipAfrica = () => {
         </motion.div>
       </motion.section>
 
-
       {/* Contact CTA Section */}
       <motion.section 
         className="content-section"
@@ -307,7 +305,7 @@ const MembershipAfrica = () => {
             <div className="language-options">
               <button 
                 className="language-option"
-                onClick={() => handleLanguageSelect('English', 'https://ee.kobotoolbox.org/x/iVb7CbtM')}
+                onClick={() => handleLanguageSelect('https://ee.kobotoolbox.org/x/iVb7CbtM')}
               >
                 <span className="language-flag">🇬🇧</span>
                 <span className="language-name">English</span>
@@ -317,7 +315,7 @@ const MembershipAfrica = () => {
               </button>
               <button 
                 className="language-option"
-                onClick={() => handleLanguageSelect('French', 'https://ee.kobotoolbox.org/x/9UG0Pyuh')}
+                onClick={() => handleLanguageSelect('https://ee.kobotoolbox.org/x/9UG0Pyuh')}
               >
                 <span className="language-flag">🇫🇷</span>
                 <span className="language-name">Français</span>
@@ -327,7 +325,7 @@ const MembershipAfrica = () => {
               </button>
               <button 
                 className="language-option"
-                onClick={() => handleLanguageSelect('Portuguese', 'https://ee.kobotoolbox.org/x/ShrPiKPH')}
+                onClick={() => handleLanguageSelect('https://ee.kobotoolbox.org/x/ShrPiKPH')}
               >
                 <span className="language-flag">🇵🇹</span>
                 <span className="language-name">Português</span>
@@ -339,8 +337,6 @@ const MembershipAfrica = () => {
           </div>
         </div>
       )}
-
-    
     </motion.main>
   );
 };
