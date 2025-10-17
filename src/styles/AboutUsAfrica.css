@@ -256,6 +256,209 @@
   color: var(--jungle-green);
   font-weight: bold;
 }
+/* ===========================================
+   GOVERNANCE STRUCTURE SECTION
+   =========================================== */
+.governance-section {
+  text-align: center;
+  margin: 6rem 0;
+  position: relative;
+}
+
+.governance-section h2 {
+  font-size: clamp(1.8rem, 1rem + 2vw, 2.4rem);
+  color: #4c7031;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.governance-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+}
+
+/* LEVEL CONTAINERS */
+.governance-level {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  width: 100%;
+  max-width: 1000px;
+  position: relative;
+}
+
+/* CONTENT BOXES */
+.level-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 300px;
+}
+
+.title-box {
+  background: #4c7031;
+  color: #fff;
+  border-radius: 10px;
+  padding: 1.8rem 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-medium);
+  transition: transform 0.3s ease;
+  max-width: 800px;
+}
+
+.title-box:hover {
+  transform: translateY(-4px);
+}
+
+.title-box h3 {
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+}
+
+.desc-box {
+  background: #111;
+  color: #f5f5f5;
+  border-radius: 10px;
+  padding: 1.4rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: -0.9rem;
+}
+
+.desc-box:hover {
+  transform: translateY(-4px);
+}
+
+.desc-box p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ARROWS */
+.arrow-left, .arrow-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: -2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.arrow-up, .arrow-down {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 50%;
+  box-shadow: var(--shadow-light);
+  border: 2px solid var(--gold-accent);
+  color: var(--jungle-green);
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.arrow-up:hover, .arrow-down:hover {
+  background: var(--gold-accent);
+  transform: scale(1.1);
+}
+
+/* CONNECTION LINES */
+.connection-line {
+  position: absolute;
+  background: var(--gold-accent);
+  z-index: 1;
+}
+
+.vertical-line {
+  width: 3px;
+  height: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.horizontal-line {
+  height: 3px;
+  width: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Arrow positioning for different levels */
+.arrow-left .arrow-up { margin-bottom: -10px; }
+.arrow-left .arrow-down { margin-top: -10px; }
+.arrow-right .arrow-up { margin-bottom: -10px; }
+.arrow-right .arrow-down { margin-top: -10px; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .governance-level {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .desc-box {
+    max-width: 400px;
+  }
+  .level-content {
+    min-width: 90%;
+  }
+  
+  .arrow-left, .arrow-right {
+    flex-direction: row;
+    gap: 1rem;
+  }
+  
+  .arrow-up, .arrow-down {
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+  
+  .vertical-line {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-box {
+    padding: 1.2rem 1.5rem;
+  }
+  
+  .title-box h3 {
+    font-size: 1.1rem;
+  }
+  
+  .desc-box {
+    padding: 1rem 1.2rem;
+    margin-top: -0.5rem;
+    max-width: 300px;
+  }
+  
+  .desc-box p {
+    font-size: 0.9rem;
+  }
+  .arrow-down {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+    align-items: column;
+  }
+}
 
 /* =====================
    Pillars Section

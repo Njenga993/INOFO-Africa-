@@ -109,8 +109,8 @@ const AboutUsAfrica = () => {
   ];
 
   const stats: StatItem[] = [
-    { icon: <FaUsers className="stat-icon" />, value: "20+", label: "Member Organizations" },
-    { icon: <FaMapMarkedAlt className="stat-icon" />, value: "10+", label: "African Countries" },
+    { icon: <FaUsers className="stat-icon" />, value: "120+", label: "Member Organizations" },
+    { icon: <FaMapMarkedAlt className="stat-icon" />, value: "15+", label: "African Countries" },
     { icon: <FaSeedling className="stat-icon" />, value: "500+", label: "Documented Practices" }
   ];
 
@@ -219,7 +219,6 @@ const AboutUsAfrica = () => {
               both the land and the livelihoods of those who steward it.
             </p>
           </motion.div>
-
         </div>
       </motion.section>
 
@@ -255,6 +254,119 @@ const AboutUsAfrica = () => {
           </motion.div>
         </motion.div>
       </motion.section>
+      {/* ================================
+   Governance Structure Section
+   ================================ */}
+<motion.section
+  className="governance-section"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, margin: "-100px" }}
+  variants={containerVariants}
+>
+  <motion.h2 variants={itemVariants}>INOFO Africa Organizational Structure</motion.h2>
+
+  <motion.div className="governance-container" variants={containerVariants}>
+
+    {/* Level 1 */}
+    <motion.div className="governance-level" variants={itemVariants}>
+      <div className="arrow-left">
+        <div className="arrow-down">↓</div>
+      </div>
+      
+      <div className="level-content">
+        <div className="title-box">
+          <h3>The African General Assembly (A.G.A) of OFOS at community level</h3>
+        </div>
+        <div className="desc-box">
+          <p>OFO's form a National Chapter with an elected coordinating team led by the National Convenor.</p>
+        </div>
+      </div>
+      
+      <div className="arrow-right">
+        <div className="arrow-down">↑</div>
+      </div>
+    </motion.div>
+
+    {/* Level 2 */}
+    <motion.div className="governance-level" variants={itemVariants}>
+      <div className="arrow-left">
+        <div className="arrow-up">↓</div>
+      </div>
+      
+      <div className="level-content">
+        <div className="title-box">
+          <h3>The African Council of Convenors (A.C.C) represented by a National Convenor from each Active Country.</h3>
+        </div>
+        <div className="desc-box">
+          <p>The A.C.C is the principle governance oversight body between the African General Assembly Sessions</p>
+        </div>
+      </div>
+      
+      <div className="arrow-right">
+        <div className="arrow-up">↑</div>
+      </div>
+    </motion.div>
+
+
+    {/* Level 4 */}
+    <motion.div className="governance-level" variants={itemVariants}>
+      <div className="arrow-left">
+        <div className="arrow-up">↓</div>
+      </div>
+      
+      <div className="level-content">
+        <div className="title-box">
+          <h3>The Executive Committee of the African Council of Convenors<p>5 representatives from 5 Regions of Africa</p> </h3>
+        </div>
+        <div className="desc-box">
+          <p>Representatives from this committee elected by the (A.G.A) connects the Regional Body to INOFO Global in the Global Council of Convenors.</p>
+        </div>
+        <div className="desc-box">
+          <p>This Committee supports the INOFO Africa Secretariats to Execute the Decisions taken by the (A.G.A) and the (A.C.C) by providing the governance Oversight Role.</p>
+        </div>
+      </div>
+      
+      <div className="arrow-right">
+        <div className="arrow-up">↑</div>
+      </div>
+    </motion.div>
+
+    {/* Level 5 */}
+    <motion.div className="governance-level" variants={itemVariants}>
+      <div className="arrow-left">
+        <div className="arrow-down">↓</div>
+      </div>
+      
+      <div className="level-content">
+        <div className="title-box">
+          <h3>The secretariat<p> led by the Executive Director </p></h3>
+        </div>
+        <div className="desc-box">
+          <div className="secretariat-roles">
+            <div className="role-item">
+              <span className="role-title">The Secretariate Performs the following functions: </span>
+            </div>
+            <div className="role-item">
+              <span className="role-title">. Admin & Finance Role</span>
+            </div>
+            <div className="role-item">
+              <span className="role-title">. Sub region Coordinating Role (5 sub regions)</span>
+            </div>
+            <div className="role-item">
+              <span className="role-title">. Communications & IT Role</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="arrow-right">
+        <div className="arrow-down">↑</div>
+      </div>
+    </motion.div>
+
+  </motion.div>
+</motion.section>
 
       {/* Leadership Grid */}
       <motion.section 
