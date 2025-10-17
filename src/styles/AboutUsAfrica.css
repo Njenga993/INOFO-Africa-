@@ -371,6 +371,8 @@
   font-size: 1.5rem;
   font-weight: bold;
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: row;
 }
 
 .arrow-up:hover, .arrow-down:hover {
@@ -427,6 +429,8 @@
     width: 35px;
     height: 35px;
     font-size: 1.2rem;
+    display: flex;
+  flex-direction: row;
   }
   
   .vertical-line {
@@ -452,11 +456,12 @@
   .desc-box p {
     font-size: 0.9rem;
   }
-  .arrow-down {
+  .arrow-down, .arrow-up {
     width: 30px;
     height: 30px;
     font-size: 1rem;
-    align-items: column;
+    display: flex;
+  flex-direction: row;
   }
 }
 

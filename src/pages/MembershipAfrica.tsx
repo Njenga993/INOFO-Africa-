@@ -7,10 +7,9 @@ import Newsletter from '../components/Newsletter';
 import MembersTable from '../components/LogoCarousel';
 import heroImg from "../assets/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg";
 
-
 const MembershipAfrica = () => {
   const [activeCard, setActiveCard] = useState<number | null>(null);
-  const [isHandbookDownloading, setIsHandbookDownloading] = useState(false);
+  const [showLanguagePopup, setShowLanguagePopup] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -46,17 +45,14 @@ const MembershipAfrica = () => {
     }
   };
 
-  const handleDownload = () => {
-    setIsHandbookDownloading(true);
-    setTimeout(() => {
-      setIsHandbookDownloading(false);
-      const link = document.createElement('a');
-      link.href = 'INOFO-Africa-membership-handbook.docx';
-      link.download = 'INOFO-Africa-membership-handbook.docx';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }, 1500);
+
+  const handleEOIClick = () => {
+    setShowLanguagePopup(true);
+  };
+
+  const handleLanguageSelect = (language: string, url: string) => {
+    window.open(url, '_blank');
+    setShowLanguagePopup(false);
   };
 
   return (
@@ -83,9 +79,62 @@ const MembershipAfrica = () => {
           >
             Membership & Affiliates
           </motion.h1>
-          
         </div>
       </motion.header>
+
+      {/* Membership Process Section */}
+      <motion.section 
+        className="content-section"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={containerVariants}
+      >
+        <motion.div className="text-content" variants={itemVariants}>
+          <h2>Membership Process</h2>
+          <p className="section-subtitle">Join INOFO Africa through our streamlined membership process</p>
+          
+          <div className="process-steps">
+            <div className="process-step">
+              <div className="step-number">1</div>
+              <div className="step-content">
+                <h3>Eligibility</h3>
+                <p>Membership to INOFO Africa is through a legally registered farmers' organization, group, or association that practices organic agriculture or agroecology, which is hereby referred to as an OFO. Membership is not by individual farmers.</p>
+              </div>
+            </div>
+            
+            <div className="process-step">
+              <div className="step-number">2</div>
+              <div className="step-content">
+                <h3>Expression of Interest</h3>
+                <p>Interested OFOs shall fill in the Expression of Interest (EOI) form electronically and submit it to the INOFO Africa Secretariat for assessment, working closely with the sub-regional and national chapters to ensure proper verification and approval.</p>
+                <button className="eoi-btn" onClick={handleEOIClick}>
+                  <span>Click here to access EOI Form</span>
+                  <svg className="btn-icon" viewBox="0 0 24 24">
+                    <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            
+            <div className="process-step">
+              <div className="step-number">3</div>
+              <div className="step-content">
+                <h3>Membership Fee</h3>
+                <p>A mandatory one-time membership fee of ten US dollars (USD 10) or its equivalent in local currency shall be paid to the National Chapter to support the coordinating role at the national level.</p>
+              </div>
+            </div>
+            
+            <div className="process-step">
+              <div className="step-number">4</div>
+              <div className="step-content">
+                <h3>Certificate & Ongoing Support</h3>
+                <p>A copy of the payment shall be shared with the INOFO Africa Secretariat, which will issue a membership certificate. Voluntary periodic subscriptions and donations from members are also highly encouraged.</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </motion.section>
 
       {/* Membership Types Section */}
       <motion.section 
@@ -97,7 +146,7 @@ const MembershipAfrica = () => {
       >
         <motion.div className="text-content" variants={itemVariants}>
           <h2>Choose Your Path</h2>
-          <p className="section-subtitle">Select the membership that aligns with your goals</p>
+          <p className="section-subtitle">Veiw the membership that aligns with your goals</p>
           
           <div className="types-grid">
             <motion.div 
@@ -152,12 +201,6 @@ const MembershipAfrica = () => {
                   </li>
                 </ul>
               </div>
-              <Link to="/membership-form" className="btn-primary" aria-label="Apply for Organisational Membership">
-                <span>Apply Now</span>
-                <svg className="btn-icon" viewBox="0 0 24 24">
-                  <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
-                </svg>
-              </Link>
             </motion.div>
             
             <motion.div 
@@ -206,61 +249,11 @@ const MembershipAfrica = () => {
                   </li>
                 </ul>
               </div>
-              <Link to="/membership-form" className="btn-primary" aria-label="Become an Affiliate Partner">
-                <span>Become Partner</span>
-                <svg className="btn-icon" viewBox="0 0 24 24">
-                  <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
-                </svg>
-              </Link>
             </motion.div>
           </div>
         </motion.div>
       </motion.section>
 
-      {/* Downloads Section */}
-      <motion.section 
-        className="content-section image-left"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={containerVariants}
-      >
-        <motion.div className="text-content" variants={itemVariants}>
-          <h2>Ready to Join?</h2>
-          <p>
-            Get detailed information and guidelines in our Membership & Affiliate Handbook: </p>
-            <p>Download it Below,  Fill the Required Areas and then Send it via Email to <b>membership@inofoafrica.org .</b></p>
-          
-          
-          <button 
-            onClick={handleDownload} 
-            className={`btn-primary ${isHandbookDownloading ? 'downloading' : ''}`}
-            disabled={isHandbookDownloading}
-            aria-label="Download Membership Handbook"
-          >
-            {isHandbookDownloading ? (
-              <>
-                <span className="download-spinner"></span>
-                <span>Preparing Download...</span>
-              </>
-            ) : (
-              <>
-                <svg className="download-icon" viewBox="0 0 24 24">
-                  <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
-                </svg>
-                <span>Download Handbook (DOCX)</span>
-              </>
-            )}
-          </button>
-          <div className="file-info">
-            <svg className="file-icon" viewBox="0 0 24 24">
-              <path d="M6,2A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2H6M6,4H13V9H18V20H6V4M8,12V14H16V12H8M8,16V18H13V16H8Z" />
-            </svg>
-            <span>2.4 MB · Updated June 2025</span>
-          </div>
-        </motion.div>
-       
-      </motion.section>
 
       {/* Contact CTA Section */}
       <motion.section 
@@ -291,17 +284,63 @@ const MembershipAfrica = () => {
           </div>
         </motion.div>
       </motion.section>
+
       <MembersTable />
       <Newsletter/>
 
-      <div className="floating-cta">
-        <Link to="/membership-form" className="btn-primary">
-          <span>Start Your Application</span>
-          <svg className="btn-icon" viewBox="0 0 24 24">
-            <path d="M19,13H13V19H11V13H5V11H13V5H15V11H19V13Z" />
-          </svg>
-        </Link>
-      </div>
+      {/* Language Selection Popup */}
+      {showLanguagePopup && (
+        <div className="language-popup-overlay">
+          <div className="language-popup">
+            <div className="popup-header">
+              <h3>Select EOI Form Language</h3>
+              <button 
+                className="close-popup" 
+                onClick={() => setShowLanguagePopup(false)}
+                aria-label="Close language selection"
+              >
+                <svg viewBox="0 0 24 24">
+                  <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
+                </svg>
+              </button>
+            </div>
+            <div className="language-options">
+              <button 
+                className="language-option"
+                onClick={() => handleLanguageSelect('English', 'https://ee.kobotoolbox.org/x/iVb7CbtM')}
+              >
+                <span className="language-flag">🇬🇧</span>
+                <span className="language-name">English</span>
+                <svg className="external-link-icon" viewBox="0 0 24 24">
+                  <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" />
+                </svg>
+              </button>
+              <button 
+                className="language-option"
+                onClick={() => handleLanguageSelect('French', 'https://ee.kobotoolbox.org/x/9UG0Pyuh')}
+              >
+                <span className="language-flag">🇫🇷</span>
+                <span className="language-name">Français</span>
+                <svg className="external-link-icon" viewBox="0 0 24 24">
+                  <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" />
+                </svg>
+              </button>
+              <button 
+                className="language-option"
+                onClick={() => handleLanguageSelect('Portuguese', 'https://ee.kobotoolbox.org/x/ShrPiKPH')}
+              >
+                <span className="language-flag">🇵🇹</span>
+                <span className="language-name">Português</span>
+                <svg className="external-link-icon" viewBox="0 0 24 24">
+                  <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+    
     </motion.main>
   );
 };

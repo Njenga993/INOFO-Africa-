@@ -17,7 +17,7 @@ import Newsletter from "../components/Newsletter";
 // ✅ Imported images
 import heroImg from "../assets/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg";
 import journeyImg from "../assets/train.webp";
-import img from "../assets/about.webp";
+import img from "../assets/Tshawekazi_.jpg";
 
 interface Service {
   icon: JSX.Element;
