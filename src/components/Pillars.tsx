@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
+import { useState } from 'react';
 import '../styles/pillars.css';
 
 const MissionVision = () => {
+  const [touchedCard, setTouchedCard] = useState<string | null>(null);
+
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -71,6 +74,15 @@ const MissionVision = () => {
     { title: "Transparency", text: "Open and honest in all our dealings." }
   ];
 
+  // Touch event handlers
+  const handleTouchStart = (cardId: string) => {
+    setTouchedCard(cardId);
+  };
+
+  const handleTouchEnd = () => {
+    setTimeout(() => setTouchedCard(null), 150);
+  };
+
   return (
     <section className="mv-section">
       <motion.div 
@@ -87,10 +99,13 @@ const MissionVision = () => {
           whileHover="hover"
           initial="rest"
           animate="rest"
+          onTouchStart={() => handleTouchStart('mission')}
+          onTouchEnd={handleTouchEnd}
         >
           <motion.div 
             className="circular-overlay"
             variants={hoverVariants}
+            animate={touchedCard === 'mission' ? 'hover' : undefined}
           />
           <div className="card-content">
             <h2 className="mv-title">Our Mission</h2>
@@ -107,10 +122,13 @@ const MissionVision = () => {
           whileHover="hover"
           initial="rest"
           animate="rest"
+          onTouchStart={() => handleTouchStart('vision')}
+          onTouchEnd={handleTouchEnd}
         >
           <motion.div 
             className="circular-overlay"
             variants={hoverVariants}
+            animate={touchedCard === 'vision' ? 'hover' : undefined}
           />
           <div className="card-content">
             <h2 className="mv-title">Our Vision</h2>
@@ -148,10 +166,13 @@ const MissionVision = () => {
               whileHover="hover"
               initial="rest"
               animate="rest"
+              onTouchStart={() => handleTouchStart(`value-${i}`)}
+              onTouchEnd={handleTouchEnd}
             >
               <motion.div 
                 className="circular-overlay value-overlay"
                 variants={valueHoverVariants}
+                animate={touchedCard === `value-${i}` ? 'hover' : undefined}
               />
               <div className="card-content">
                 <h4>{val.title}</h4>

@@ -198,3 +198,20 @@
     font-size: 1rem;
   }
 }
+/* Add these to your existing pillars.css */
+
+/* Better touch support for mobile devices */
+.mv-block, .value-item {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Ensure text remains visible during touch on mobile */
+@media (max-width: 768px) {
+  .mv-block:active .card-content .mv-title,
+  .mv-block:active .card-content .mv-text,
+  .value-item:active .card-content h4,
+  .value-item:active .card-content p {
+    color: #fff;
+  }
+}
