@@ -31,10 +31,10 @@ const Hero = () => {
     },
     {
       image: HeroImage3,
-      title: "Agroecology for Resilient Futures",
-      highlight: "Farming in harmony with nature",
+      title: "Farming in harmony with nature",
+      highlight: "Organic Farming for a sustainable future",
       description:
-        "Agroecology integrates traditional knowledge with modern practices to build climate-resilient farms, restore ecosystems, and strengthen community food sovereignty.",
+        "Organic Farming integrates traditional knowledge with modern practices to build climate-resilient farms, restore ecosystems, and strengthen community food sovereignty.",
       cta: "Get Involved",
     },
   ];

@@ -1,6 +1,17 @@
+/* Update your pillars.css with these styles */
+:root {
+  --primary-green: #2ecc71; /* Your primary green color */
+  --secondary-green: #27ae60; /* Your secondary green */
+  --teal-accent: #1abc9c; /* Your teal color */
+  --text-dark: #333333;
+  --text-medium: #666666;
+}
+
+/* Update your pillars.css */
+
 .mv-section {
   padding: 5rem 0;
-  background: var(--light-bg);
+  background: #f9f9f9;
 }
 
 .mv-container {
@@ -21,6 +32,9 @@
   text-align: center;
   box-shadow: 0 6px 20px rgba(0,0,0,0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .mv-block:hover {
@@ -36,20 +50,49 @@
   border-top: 5px solid var(--teal-accent);
 }
 
+/* Circular Overlay - This will expand and morph to cover the card */
+.circular-overlay {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  width: 100px;
+  height: 100px;
+  background: var(--primary-green);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  z-index: 1;
+  pointer-events: none;
+  transform-origin: center;
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+/* Text styles that change on hover */
 .mv-title {
   font-size: 1.9rem;
   font-weight: 700;
   margin-bottom: 1rem;
   color: var(--primary-green);
+  transition: color 0.3s ease;
 }
 
 .mv-text {
   font-size: 1.05rem;
   color: var(--text-dark);
   line-height: 1.65;
+  transition: color 0.3s ease;
 }
 
-/* Values */
+/* Change text color to white when card is hovered */
+.mv-block:hover .card-content .mv-title,
+.mv-block:hover .card-content .mv-text {
+  color: #fff;
+}
+
 /* Values */
 .values-section {
   width: 100%;
@@ -76,17 +119,16 @@
   border-radius: 2px;
 }
 
-/* Large screens = flex row */
 .values-grid {
   display: flex;
   justify-content: center;
   align-items: stretch;
   gap: 2rem;
-  flex-wrap: wrap; /* allows wrapping if many items */
+  flex-wrap: wrap;
 }
 
 .value-item {
-  flex: 1 1 240px; /* grows but keeps min width */
+  flex: 1 1 240px;
   max-width: 300px;
   background: #fff;
   padding: 2rem 1.5rem;
@@ -94,6 +136,9 @@
   box-shadow: 0 4px 18px rgba(0,0,0,0.06);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: left;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .value-item:hover {
@@ -106,22 +151,30 @@
   font-weight: 600;
   margin-bottom: 0.6rem;
   color: var(--primary-green);
+  transition: color 0.3s ease;
 }
 
 .value-item p {
   font-size: 0.95rem;
   color: var(--text-medium);
   line-height: 1.55;
+  transition: color 0.3s ease;
 }
 
-/* Responsive: stack on small screens */
+/* Change text color to white when value item is hovered */
+.value-item:hover .card-content h4,
+.value-item:hover .card-content p {
+  color: #fff;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .values-title {
     font-size: 1.6rem;
   }
 
   .values-grid {
-    display: block; /* stack vertically */
+    display: block;
   }
 
   .value-item {

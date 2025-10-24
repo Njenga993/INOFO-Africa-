@@ -68,7 +68,7 @@ const BlogGrid = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Latest Updates
+             Updates
           </motion.h3>
           <motion.div
             className="featured-grid"

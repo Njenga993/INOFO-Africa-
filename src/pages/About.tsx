@@ -14,6 +14,7 @@ import charlesImg from "../assets/charles.jpg";
 
 // ✅ Import section images from assets
 import journeyImg from "../assets/p.webp";
+import governance from "../assets/uganda.jpg";
 import governanceImg from "../assets/all.webp";
 import heroImg from "../assets/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg";
 
@@ -142,14 +143,27 @@ const AboutUsAfrica = () => {
         <motion.div className="text-content" variants={itemVariants}>
           <h2>Our African Journey</h2>
           <p>
-            Born in 2008 under the global INOFO umbrella, INOFO Africa has blossomed into an independent force representing 
-            20+ countries. From the baobab-dotted savannas to lush highland farms, we've woven a network that honors local 
-            knowledge while confronting continental challenges.
+            Born in 2008 under the global INOFO umbrella, INOFO Africa has blossomed into an
+             autonomous regional entity  with its membership currently present in
+              20+ countries . From the baobab-dotted savannas to lush highland farms, 
+             we've woven a network that honors local knowledge while
+             confronting continental challenges in solidarity.
           </p>
           <p>
-            Our milestones include establishing regional hubs in East (2012), West (2015), and Southern Africa (2018), 
-            and launching the Pan-African Organic Policy Forum in 2020. Through assemblies, digital platforms, and 
-            farmer exchanges, we've amplified grassroots voices at AU and UN levels.
+            Our journey is one of resilience, innovation, and unwavering commitment to 
+            organic farmers across Africa. Together, we cultivate not just crops, but hope,
+            empowerment, and a sustainable future for generations to come.
+          </p>
+          <p>
+            Today, INOFO Africa stands as a vibrant coalition of farmer organizations,
+            NGOs, and advocates united by a shared vision: to champion organic agriculture
+            as a catalyst for social justice, environmental stewardship, and economic resilience
+            across the continent.
+          </p>
+          <p>
+            Through collaborative projects, policy advocacy, and capacity-building initiatives,
+            we strive to uplift smallholder farmers, preserve biodiversity, and promote food sovereignty
+            in every corner of Africa.
           </p>
         </motion.div>
         <motion.div className="image-content" variants={itemVariants}>
@@ -184,22 +198,37 @@ const AboutUsAfrica = () => {
           </p>
           <p>
             The Executive Secretariat based in East Africa coordinates programs, while our Technical Advisory Circle 
-            (45 experts across Africa) informs policy positions and training programs.
+             informs policy positions and training programs.
+
+          </p>
+          <p>
+            This multi-layered governance model ensures that every voice from the grassroots to the continental level
+            is heard and valued in our collective mission to advance organic agriculture across Africa.
+          </p>
+          <p>
+            Through transparent decision-making and inclusive leadership, we remain accountable to our members
+            and the communities we serve.
           </p>
         </motion.div>
       </motion.section>
 
       {/* Blog Grid Section */}
-      <motion.section 
-        className="blog-grid-impact-section"
+<motion.section 
+        className="content-section image-left"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "-100px" }}
         variants={containerVariants}
       >
-        <div className="blog-grid-container">
-          <motion.div className="text-content" variants={itemVariants}>
-            <h2>Why We Farm Organic in Africa</h2>
+        <motion.div className="image-content" variants={itemVariants}>
+          <img 
+            src={governance} 
+            alt="INOFO leadership meeting" 
+            className="content-image"
+          />
+        </motion.div>
+        <motion.div className="text-content" variants={itemVariants}>
+           <h2>Why We Farm Organic in Africa</h2>
             <p className="subtitle">
               A regenerative approach rooted in community, culture, and climate resilience.
             </p>
@@ -209,8 +238,22 @@ const AboutUsAfrica = () => {
               and economic justice. We believe in cultivating systems that nourish
               both the land and the livelihoods of those who steward it.
             </p>
-          </motion.div>
-        </div>
+            <p>
+              By embracing traditional knowledge alongside innovative practices,
+              our farmers are restoring ecosystems, enhancing biodiversity,
+              and building resilient communities capable of withstanding climate shocks.
+
+            </p>
+            <p>
+              Through organic agriculture, we're not only growing food but also
+              cultivating hope for a healthier, more equitable future for Africa's
+              farmers and their families.
+            </p>
+            <p>
+              Join us as we explore the transformative power of organic farming
+              across the continent  from soil to soul.
+            </p>
+        </motion.div>
       </motion.section>
 
        {/* Pillars Section */}

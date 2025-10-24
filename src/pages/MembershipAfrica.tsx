@@ -162,9 +162,9 @@ const MembershipAfrica = () => {
                   <path d="M12,3L2,12H5V20H19V12H22L12,3M12,7.7C14.1,7.7 15.8,9.4 15.8,11.5C15.8,13.6 14.1,15.3 12,15.3C9.9,15.3 8.2,13.6 8.2,11.5C8.2,9.4 9.9,7.7 12,7.7M7,18V10H17V18H7Z" />
                 </svg>
               </div>
-              <h3 id="org-member-title">Organisational Member</h3>
+              <h3 id="org-member-title">Organisational Affiliates</h3>
               <p>
-                Ideal for farmer organisations, cooperatives, or NGOs supporting organic agriculture.
+                Ideal for farmer organisations supporting organic agriculture.
               </p>
               <div className="benefits-dropdown">
                 <button className="benefits-toggle" aria-expanded={activeCard === 1}>

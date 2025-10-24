@@ -20,6 +20,50 @@ const MissionVision = () => {
     }
   };
 
+  // Hover animation variants for the circular effect
+  const hoverVariants: Variants = {
+    rest: {
+      scale: 0,
+      borderRadius: "50%",
+      opacity: 0,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut"
+      }
+    },
+    hover: {
+      scale: 4,
+      borderRadius: "24px", // Match the card border-radius
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  // For value items which have different border-radius
+  const valueHoverVariants: Variants = {
+    rest: {
+      scale: 0,
+      borderRadius: "50%",
+      opacity: 0,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut"
+      }
+    },
+    hover: {
+      scale: 4,
+      borderRadius: "12px", // Match the value item border-radius
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
   const values = [
     { title: "Farmer-Centered", text: "Putting organic farmers at the heart of everything we do." },
     { title: "Collaboration", text: "Working together for greater impact." },
@@ -37,19 +81,43 @@ const MissionVision = () => {
         variants={containerVariants}
       >
         {/* Mission */}
-        <motion.div className="mv-block mission-block" variants={itemVariants}>
-          <h2 className="mv-title">Our Mission</h2>
-          <p className="mv-text">
-            Empowering farming communities in Africa in organic agriculture for a just transition towards sustainable food systems.
-          </p>
+        <motion.div 
+          className="mv-block mission-block"
+          variants={itemVariants}
+          whileHover="hover"
+          initial="rest"
+          animate="rest"
+        >
+          <motion.div 
+            className="circular-overlay"
+            variants={hoverVariants}
+          />
+          <div className="card-content">
+            <h2 className="mv-title">Our Mission</h2>
+            <p className="mv-text">
+              Empowering farming communities in Africa in organic agriculture for a just transition towards sustainable food systems.
+            </p>
+          </div>
         </motion.div>
 
         {/* Vision */}
-        <motion.div className="mv-block vision-block" variants={itemVariants}>
-          <h2 className="mv-title">Our Vision</h2>
-          <p className="mv-text">
-            Improved livelihoods, healthy and resilient environments for current and future generations.
-          </p>
+        <motion.div 
+          className="mv-block vision-block"
+          variants={itemVariants}
+          whileHover="hover"
+          initial="rest"
+          animate="rest"
+        >
+          <motion.div 
+            className="circular-overlay"
+            variants={hoverVariants}
+          />
+          <div className="card-content">
+            <h2 className="mv-title">Our Vision</h2>
+            <p className="mv-text">
+              Improved livelihoods, healthy and resilient environments for current and future generations.
+            </p>
+          </div>
         </motion.div>
       </motion.div>
 
@@ -73,9 +141,22 @@ const MissionVision = () => {
           variants={containerVariants}
         >
           {values.map((val, i) => (
-            <motion.div key={i} className="value-item" variants={itemVariants}>
-              <h4>{val.title}</h4>
-              <p>{val.text}</p>
+            <motion.div 
+              key={i} 
+              className="value-item"
+              variants={itemVariants}
+              whileHover="hover"
+              initial="rest"
+              animate="rest"
+            >
+              <motion.div 
+                className="circular-overlay value-overlay"
+                variants={valueHoverVariants}
+              />
+              <div className="card-content">
+                <h4>{val.title}</h4>
+                <p>{val.text}</p>
+              </div>
             </motion.div>
           ))}
         </motion.div>

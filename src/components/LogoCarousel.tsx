@@ -21,35 +21,35 @@ const generateId = (name: string, country: string) => {
 
 // Complete extracted data from Excel
 const members: Member[] = [
-  // West Africa - Benin
-  { id: generateId("Agbagodo", "Benin"), name: "Agbagodo",  website: "", country: "Benin", subregion: "West Africa", category: "Association des agriculteurs biologiques", location: "ADJOHOUN/Azowlissè", membersCount: 12, acreage: 2, hasDelegate: true },
-  { id: generateId("ANaF-BENIN", "Benin"), name: "Association Nationale des femmes agricultrices du Bénin (ANaF-BENIN)",website: "", country: "Benin", subregion: "West Africa", category: "Association des agriculteurs biologiques", location: "Bénin,Bohicon, Honmého", membersCount: 205853, acreage: 12355, hasDelegate: false },
-  { id: generateId("APESS Benin", "Benin"), name: "APESS Benin",website: "", country: "Benin", subregion: "West Africa", category: "", location: "Parakou, Benin", membersCount: 0, acreage: 0, hasDelegate: true },
-  { id: generateId("CeVAD", "Benin"), name: "Centre de Valorisation pour l'Agriculture Durable (CeVAD)",website: "", country: "Benin", subregion: "West Africa", category: "Association des agriculteurs biologiques", location: "Ouidah", membersCount: 10, acreage: 24, hasDelegate: true },
-  { id: generateId("Convivium Mangeons Sain", "Benin"), name: "Convivium Mangeons Sain du Bénin", website: "", country: "Benin", subregion: "West Africa", category: "Coopérative d'agriculteurs biologiques", location: "C/1476 Gounouko, Djègan-Daho (Porto-Novo)", membersCount: 27, acreage: 5, hasDelegate: false },
-  { id: generateId("Fifonsi", "Benin"), name: "Fifonsi",  website: "", country: "Benin", subregion: "West Africa", category: "Coopérative d'agriculteurs biologiques", location: "Savalou GOBADA", membersCount: 17, acreage: 20, hasDelegate: true },
-  { id: generateId("FNC/CEVASTE", "Benin"), name: "FNC/CEVASTE",  website: "", country: "Benin", subregion: "West Africa", category: "", location: "BENIN", membersCount: 0, acreage: 0, hasDelegate: true },
-  { id: generateId("Interprofession Poisson", "Benin"), name: "Interprofession Poisson d'élevage du Bénin", website: "", country: "Benin", subregion: "West Africa", category: "Association des agriculteurs biologiques", location: "Abomey-calavi, Bénin", membersCount: 1600, acreage: 190, hasDelegate: true },
-  { id: generateId("JINUKUN", "Benin"), name: "JINUKUN", website: "", country: "Benin", subregion: "West Africa", category: "Association des agriculteurs biologiques", location: "Abomey-calavi", membersCount: 10, acreage: 10000, hasDelegate: true },
-  { id: generateId("LE TRAVAIL LIBERE L'HOMME", "Benin"), name: "LE TRAVAIL LIBERE L'HOMME",  website: "", country: "Benin", subregion: "West Africa", category: "Coopérative d'agriculteurs biologiques", location: "ATHIÉMÉ", membersCount: 22, acreage: 5, hasDelegate: true },
-  { id: generateId("LES JARDINS DE L'ESPOIR", "Benin"), name: "LES JARDINS DE L'ESPOIR",  website: "", country: "Benin", subregion: "West Africa", category: "Association des agriculteurs biologiques", location: "Abomey-calavi", membersCount: 12, acreage: 50000, hasDelegate: true },
-  { id: generateId("ONG Eco-care", "Benin"), name: "ONG Eco-care", website: "", country: "Benin", subregion: "West Africa", category: "Coopérative d'agriculteurs biologiques", location: "Zongo, Parakou", membersCount: 4, acreage: 4, hasDelegate: true },
+  // Western Africa - Benin
+  { id: generateId("Agbagodo", "Benin"), name: "Agbagodo",  website: "", country: "Benin", subregion: "Western Africa", category: "Association des agriculteurs biologiques", location: "ADJOHOUN/Azowlissè", membersCount: 12, acreage: 2, hasDelegate: true },
+  { id: generateId("ANaF-BENIN", "Benin"), name: "Association Nationale des femmes agricultrices du Bénin (ANaF-BENIN)",website: "", country: "Benin", subregion: "Western Africa", category: "Association des agriculteurs biologiques", location: "Bénin,Bohicon, Honmého", membersCount: 205853, acreage: 12355, hasDelegate: false },
+  { id: generateId("APESS Benin", "Benin"), name: "APESS Benin",website: "", country: "Benin", subregion: "Western Africa", category: "", location: "Parakou, Benin", membersCount: 0, acreage: 0, hasDelegate: true },
+  { id: generateId("CeVAD", "Benin"), name: "Centre de Valorisation pour l'Agriculture Durable (CeVAD)",website: "", country: "Benin", subregion: "Western Africa", category: "Association des agriculteurs biologiques", location: "Ouidah", membersCount: 10, acreage: 24, hasDelegate: true },
+  { id: generateId("Convivium Mangeons Sain", "Benin"), name: "Convivium Mangeons Sain du Bénin", website: "", country: "Benin", subregion: "Western Africa", category: "Coopérative d'agriculteurs biologiques", location: "C/1476 Gounouko, Djègan-Daho (Porto-Novo)", membersCount: 27, acreage: 5, hasDelegate: false },
+  { id: generateId("Fifonsi", "Benin"), name: "Fifonsi",  website: "", country: "Benin", subregion: "Western Africa", category: "Coopérative d'agriculteurs biologiques", location: "Savalou GOBADA", membersCount: 17, acreage: 20, hasDelegate: true },
+  { id: generateId("FNC/CEVASTE", "Benin"), name: "FNC/CEVASTE",  website: "", country: "Benin", subregion: "Western Africa", category: "", location: "BENIN", membersCount: 0, acreage: 0, hasDelegate: true },
+  { id: generateId("Interprofession Poisson", "Benin"), name: "Interprofession Poisson d'élevage du Bénin", website: "", country: "Benin", subregion: "Western Africa", category: "Association des agriculteurs biologiques", location: "Abomey-calavi, Bénin", membersCount: 1600, acreage: 190, hasDelegate: true },
+  { id: generateId("JINUKUN", "Benin"), name: "JINUKUN", website: "", country: "Benin", subregion: "Western Africa", category: "Association des agriculteurs biologiques", location: "Abomey-calavi", membersCount: 10, acreage: 10000, hasDelegate: true },
+  { id: generateId("LE TRAVAIL LIBERE L'HOMME", "Benin"), name: "LE TRAVAIL LIBERE L'HOMME",  website: "", country: "Benin", subregion: "Western Africa", category: "Coopérative d'agriculteurs biologiques", location: "ATHIÉMÉ", membersCount: 22, acreage: 5, hasDelegate: true },
+  { id: generateId("LES JARDINS DE L'ESPOIR", "Benin"), name: "LES JARDINS DE L'ESPOIR",  website: "", country: "Benin", subregion: "Western Africa", category: "Association des agriculteurs biologiques", location: "Abomey-calavi", membersCount: 12, acreage: 50000, hasDelegate: true },
+  { id: generateId("ONG Eco-care", "Benin"), name: "ONG Eco-care", website: "", country: "Benin", subregion: "Western Africa", category: "Coopérative d'agriculteurs biologiques", location: "Zongo, Parakou", membersCount: 4, acreage: 4, hasDelegate: true },
 
   // West Africa - Togo
-  { id: generateId("ANA-BIO TOGO", "Togo"), name: "ANA-BIO TOGO", website: "", country: "Togo", subregion: "West Africa", category: "Association des agriculteurs biologiques", location: "Togo", membersCount: 83, acreage: 186739, hasDelegate: true },
+  { id: generateId("ANA-BIO TOGO", "Togo"), name: "ANA-BIO TOGO", website: "", country: "Togo", subregion: "Western Africa", category: "Association des agriculteurs biologiques", location: "Togo", membersCount: 83, acreage: 186739, hasDelegate: true },
 
   // West Africa - Mali
-  { id: generateId("AMSD", "Mali"), name: "Association Malienne pour la Solidarité et le Développement (AMSD)", website: "", country: "Mali", subregion: "West Africa", category: "Association de producteurs en agroécologie et biologique", location: "Bamako, Mali kalaban Coro", membersCount: 1134, acreage: 195, hasDelegate: true },
+  { id: generateId("AMSD", "Mali"), name: "Association Malienne pour la Solidarité et le Développement (AMSD)", website: "", country: "Mali", subregion: "Western Africa", category: "Association de producteurs en agroécologie et biologique", location: "Bamako, Mali kalaban Coro", membersCount: 1134, acreage: 195, hasDelegate: true },
 
   // West Africa - Ghana
-  { id: generateId("NABOF AGRO", "Ghana"), name: "NABOF AGRO SERVICES AND TRAINING ASSOCIATION",  website: "", country: "Ghana", subregion: "West Africa", category: "Association of Training experts", location: "P.O.BOX 360 TECHIMAN BONO EAST GHANA", membersCount: 100, acreage: 120, hasDelegate: true },
-  { id: generateId("ABOFAP", "Ghana"), name: "Abrono Organic Farming Project - ABOFAP", website: "", country: "Ghana", subregion: "West Africa", category: "Organic Farmers' Association", location: "P.O.BOX 360 TECHIMAN BONO EAST GHANA", membersCount: 10500, acreage: 1200000, hasDelegate: false },
+  { id: generateId("NABOF AGRO", "Ghana"), name: "NABOF AGRO SERVICES AND TRAINING ASSOCIATION",  website: "", country: "Ghana", subregion: "Western Africa", category: "Association of Training experts", location: "P.O.BOX 360 TECHIMAN BONO EAST GHANA", membersCount: 100, acreage: 120, hasDelegate: true },
+  { id: generateId("ABOFAP", "Ghana"), name: "Abrono Organic Farming Project - ABOFAP", website: "", country: "Ghana", subregion: "Western Africa", category: "Organic Farmers' Association", location: "P.O.BOX 360 TECHIMAN BONO EAST GHANA", membersCount: 10500, acreage: 1200000, hasDelegate: false },
 
   // Central Africa - Chad
   { id: generateId("FAES", "Chad"), name: "Ferme Agroecologie (FAES)", website: "", country: "Chad", subregion: "Central Africa", category: "Association des farme agroecologie", location: "Milegana, Tchad", membersCount: 0, acreage: 0, hasDelegate: true },
 
   // North Africa - Mauritania
-  { id: generateId("CAJA MAURITANIE", "Mauritania"), name: "CAJA MAURITANIE",  website: "", country: "Mauritania", subregion: "North Africa", category: "Coopérative multidimensionnelle", location: "Noukachott, Mauritanie", membersCount: 0, acreage: 100, hasDelegate: true },
+  { id: generateId("CAJA MAURITANIE", "Mauritania"), name: "CAJA MAURITANIE",  website: "", country: "Mauritania", subregion: "Northern Africa", category: "Coopérative multidimensionnelle", location: "Noukachott, Mauritanie", membersCount: 0, acreage: 100, hasDelegate: true },
 
   // Eastern Africa - Ethiopia
   { id: generateId("Dire Cooperative", "Ethiopia"), name: "Dire Multipurpose Farmers' Cooperative Societies Union",  website: "", country: "Ethiopia", subregion: "Eastern Africa", category: "Organic Farmers' Cooperative", location: "Dire Dawa Administration", membersCount: 11000, acreage: 100000, hasDelegate: false },
