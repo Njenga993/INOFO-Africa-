@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import type { JSX } from 'react';
@@ -32,8 +31,6 @@ interface Pillar {
   description: string;
 }
 
-
-
 const AboutUsAfrica = () => {
   // Animation variants with proper typing
   const containerVariants: Variants = {
@@ -54,7 +51,7 @@ const AboutUsAfrica = () => {
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: [0.6, -0.05, 0.01, 0.99] // Using easing array instead of string
+        ease: [0.6, -0.05, 0.01, 0.99]
       }
     }
   };
@@ -67,19 +64,18 @@ const AboutUsAfrica = () => {
       bio: "Daniel Wanjama, representing Seed Savers Network Kenya, is a dedicated advocate for seed sovereignty and food security in Eastern Africa. He has spearheaded efforts to preserve indigenous seed varieties and empower farmers to sustain their own seed systems. With a strong focus on biodiversity and sustainability, Daniel ensures smallholder farmers access locally adapted, organic seeds. As Eastern Africa's representative on the INOFO Global Council, he brings his expertise and commitment to protecting farmers' rights and promoting resilient agricultural practices.",
       image: wanjamaImg
     },
-        {
+    {
       name: "Raoudath Bouaima",
       role: "West Africa Convenor",
-      bio: "Raoudath Bouraima, from Benin, is a prominent advocate for sustainable agriculture and organic farming in Western Africa. Through Les Jardins de l’Espoir, she has advanced community-driven organic systems focused on resilience and food security. A strong proponent of women’s involvement in agriculture, Raoudath champions initiatives that empower rural communities and protect the environment. As Western Africa's representative, she strives to amplify farmers' voices and promote organic agriculture across the region.",
+      bio: "Raoudath Bouraima, from Benin, is a prominent advocate for sustainable agriculture and organic farming in Western Africa. Through Les Jardins de l'Espoir, she has advanced community-driven organic systems focused on resilience and food security. A strong proponent of women's involvement in agriculture, Raoudath champions initiatives that empower rural communities and protect the environment. As Western Africa's representative, she strives to amplify farmers' voices and promote organic agriculture across the region.",
       image: raoudathImg
     },
-        {
+    {
       name: "Charles Mubanga",
       role: "Southern Africa Convenor",
-      bio: "Charles K. Mubanga, representing the Mpongwe Bulima Cooperative in Zambia, is a committed advocate for sustainable farming and cooperative development. With extensive experience, he drives change by improving livelihoods and promoting ecological practices. As the Southern Africa Convenor, Charles will focus on strengthening cooperative systems and amplifying smallholder farmers’ voices in policy-making. His leadership aims to foster resilient agricultural communities across Southern Africa.",
+      bio: "Charles K. Mubanga, representing the Mpongwe Bulima Cooperative in Zambia, is a committed advocate for sustainable farming and cooperative development. With extensive experience, he drives change by improving livelihoods and promoting ecological practices. As the Southern Africa Convenor, Charles will focus on strengthening cooperative systems and amplifying smallholder farmers' voices in policy-making. His leadership aims to foster resilient agricultural communities across Southern Africa.",
       image: charlesImg
     },
-    // Add other leaders here
   ];
 
   const pillars: Pillar[] = [
@@ -104,7 +100,6 @@ const AboutUsAfrica = () => {
       description: "We connect grassroots African farmers with regional and international allies to amplify their voices and innovations."
     }
   ];
-
 
   return (
     <motion.main 
@@ -199,7 +194,6 @@ const AboutUsAfrica = () => {
           <p>
             The Executive Secretariat based in East Africa coordinates programs, while our Technical Advisory Circle 
              informs policy positions and training programs.
-
           </p>
           <p>
             This multi-layered governance model ensures that every voice from the grassroots to the continental level
@@ -213,18 +207,18 @@ const AboutUsAfrica = () => {
       </motion.section>
 
       {/* Blog Grid Section */}
-<motion.section 
+      <motion.section 
         className="content-section image-left"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={containerVariants}
       >
-        <motion.div className="image-content" variants={itemVariants}>
+        <motion.div className="image-content-1" variants={itemVariants}>
           <img 
             src={governance} 
             alt="INOFO leadership meeting" 
-            className="content-image"
+            className="content-image-1"
           />
         </motion.div>
         <motion.div className="text-content" variants={itemVariants}>
@@ -242,7 +236,6 @@ const AboutUsAfrica = () => {
               By embracing traditional knowledge alongside innovative practices,
               our farmers are restoring ecosystems, enhancing biodiversity,
               and building resilient communities capable of withstanding climate shocks.
-
             </p>
             <p>
               Through organic agriculture, we're not only growing food but also
@@ -256,7 +249,7 @@ const AboutUsAfrica = () => {
         </motion.div>
       </motion.section>
 
-       {/* Pillars Section */}
+      {/* Pillars Section */}
       <motion.section 
         className="content-section image-right"
         initial="hidden"
@@ -288,119 +281,117 @@ const AboutUsAfrica = () => {
           </motion.div>
         </motion.div>
       </motion.section>
+
       {/* ================================
-   Governance Structure Section
-   ================================ */}
-<motion.section
-  className="governance-section"
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, margin: "-100px" }}
-  variants={containerVariants}
->
-  <motion.h2 variants={itemVariants}>INOFO Africa Organizational Structure</motion.h2>
+         UPDATED Governance Structure Section
+         ================================ */}
+      <motion.section
+        className="governance-section"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={containerVariants}
+      >
+        <motion.h2 variants={itemVariants}>INOFO Africa Organizational Structure</motion.h2>
 
-  <motion.div className="governance-container" variants={containerVariants}>
-
-    {/* Level 1 */}
-    <motion.div className="governance-level" variants={itemVariants}>
-      <div className="arrow-left">
-        <div className="arrow-down">↓</div>
-      </div>
-      
-      <div className="level-content">
-        <div className="title-box">
-          <h3>The African General Assembly (A.G.A) of OFOS at community level</h3>
-        </div>
-        <div className="desc-box">
-          <p>OFO's form a National Chapter with an elected coordinating team led by the National Convenor.</p>
-        </div>
-      </div>
-      
-      <div className="arrow-right">
-        <div className="arrow-down">↑</div>
-      </div>
-    </motion.div>
-
-    {/* Level 2 */}
-    <motion.div className="governance-level" variants={itemVariants}>
-      <div className="arrow-left">
-        <div className="arrow-up">↓</div>
-      </div>
-      
-      <div className="level-content">
-        <div className="title-box">
-          <h3>The African Council of Convenors (A.C.C) represented by a National Convenor from each Active Country.</h3>
-        </div>
-        <div className="desc-box">
-          <p>The A.C.C is the principle governance oversight body between the African General Assembly Sessions</p>
-        </div>
-      </div>
-      
-      <div className="arrow-right">
-        <div className="arrow-up">↑</div>
-      </div>
-    </motion.div>
-
-
-    {/* Level 4 */}
-    <motion.div className="governance-level" variants={itemVariants}>
-      <div className="arrow-left">
-        <div className="arrow-up">↓</div>
-      </div>
-      
-      <div className="level-content">
-        <div className="title-box">
-          <h3>The Executive Committee of the African Council of Convenors<p>5 representatives from 5 Regions of Africa</p> </h3>
-        </div>
-        <div className="desc-box">
-          <p>Representatives from this committee elected by the (A.G.A) connects the Regional Body to INOFO Global in the Global Council of Convenors.</p>
-        </div>
-        <div className="desc-box">
-          <p>This Committee supports the INOFO Africa Secretariats to Execute the Decisions taken by the (A.G.A) and the (A.C.C) by providing the governance Oversight Role.</p>
-        </div>
-      </div>
-      
-      <div className="arrow-right">
-        <div className="arrow-up">↑</div>
-      </div>
-    </motion.div>
-
-    {/* Level 5 */}
-    <motion.div className="governance-level" variants={itemVariants}>
-      <div className="arrow-left">
-        <div className="arrow-down">↓</div>
-      </div>
-      
-      <div className="level-content">
-        <div className="title-box">
-          <h3>The secretariat<p> led by the Executive Director </p></h3>
-        </div>
-        <div className="desc-box">
-          <div className="secretariat-roles">
-            <div className="role-item">
-              <span className="role-title">The Secretariate Performs the following functions: </span>
+        <motion.div className="governance-container" variants={containerVariants}>
+          
+          {/* Level 1 */}
+          <motion.div className="governance-level" variants={itemVariants}>
+            <div className="level-content">
+              <div className="title-box">
+                <h3>The African General Assembly (A.G.A) of OFOS at community level</h3>
+              </div>
+              <div className="desc-box">
+                <p>OFO's form a National Chapter with an elected coordinating team led by the National Convenor.</p>
+              </div>
             </div>
-            <div className="role-item">
-              <span className="role-title">. Admin & Finance Role</span>
+            
+            {/* Dual Arrows */}
+            <div className="arrows-container">
+              <div className="arrow-left">
+                <div className="arrow-down">↓</div>
+              </div>
+              <div className="arrow-right">
+                <div className="arrow-up">↑</div>
+              </div>
             </div>
-            <div className="role-item">
-              <span className="role-title">. Sub region Coordinating Role (5 sub regions)</span>
-            </div>
-            <div className="role-item">
-              <span className="role-title">. Communications & IT Role</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div className="arrow-right">
-        <div className="arrow-down">↑</div>
-      </div>
-    </motion.div>
+          </motion.div>
 
-  </motion.div>
-</motion.section>
+          {/* Level 2 */}
+          <motion.div className="governance-level" variants={itemVariants}>
+            <div className="level-content">
+              <div className="title-box">
+                <h3>The African Council of Convenors (A.C.C) represented by a National Convenor from each Active Country.</h3>
+              </div>
+              <div className="desc-box">
+                <p>The A.C.C is the principle governance oversight body between the African General Assembly Sessions</p>
+              </div>
+            </div>
+            
+            {/* Dual Arrows */}
+            <div className="arrows-container">
+              <div className="arrow-left">
+                <div className="arrow-down">↓</div>
+              </div>
+              <div className="arrow-right">
+                <div className="arrow-up">↑</div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Level 3 */}
+          <motion.div className="governance-level" variants={itemVariants}>
+            <div className="level-content">
+              <div className="title-box">
+                <h3>The Executive Committee of the African Council of Convenors<p>5 representatives from 5 Regions of Africa</p></h3>
+              </div>
+              <div className="desc-box">
+                <p>Representatives from this committee elected by the (A.G.A) connects the Regional Body to INOFO Global in the Global Council of Convenors.</p>
+              </div>
+              <div className="desc-box">
+                <p>This Committee supports the INOFO Africa Secretariats to Execute the Decisions taken by the (A.G.A) and the (A.C.C) by providing the governance Oversight Role.</p>
+              </div>
+            </div>
+            
+            {/* Dual Arrows */}
+            <div className="arrows-container">
+              <div className="arrow-left">
+                <div className="arrow-down">↓</div>
+              </div>
+              <div className="arrow-right">
+                <div className="arrow-up">↑</div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Level 4 */}
+          <motion.div className="governance-level" variants={itemVariants}>
+            <div className="level-content">
+              <div className="title-box">
+                <h3>The secretariat<p> led by the Executive Director </p></h3>
+              </div>
+              <div className="desc-box">
+                <div className="secretariat-roles">
+                  <div className="role-item">
+                    <span className="role-title">The Secretariate Performs the following functions: </span>
+                  </div>
+                  <div className="role-item">
+                    <span className="role-title">. Admin & Finance Role</span>
+                  </div>
+                  <div className="role-item">
+                    <span className="role-title">. Sub region Coordinating Role (5 sub regions)</span>
+                  </div>
+                  <div className="role-item">
+                    <span className="role-title">. Communications & IT Role</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+        </motion.div>
+      </motion.section>
 
       {/* Leadership Grid */}
       <motion.section 
@@ -437,10 +428,8 @@ const AboutUsAfrica = () => {
         </motion.div>
       </motion.section>
 
-
       <MembersTable />
-
-<Newsletter/>
+      <Newsletter/>
     </motion.main>
   );
 };

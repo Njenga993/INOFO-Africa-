@@ -1,6 +1,16 @@
 import { motion  } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { FaPaperPlane, FaLeaf, FaHandshake, FaDonate } from "react-icons/fa";
+import { 
+  FaPaperPlane, 
+  FaLeaf, 
+  FaHandshake, 
+  FaDonate, 
+  FaFacebook, 
+  FaTwitter, 
+  FaLinkedin, 
+  FaInstagram,
+  FaYoutube 
+} from "react-icons/fa";
 import "../styles/contact.css";
 import { useRef } from "react";
 import Newsletter from "../components/Newsletter";
@@ -222,40 +232,132 @@ const ContactSection = () => {
         </div>
       </motion.section>
 
-      {/* Donate Section */}
+      {/* Enhanced Donate Section */}
       <motion.section
-        className="content-section image-left donate-section"
+        className="donate-section-enhanced"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
       >
-        <motion.div className="text-content" variants={itemVariants}>
-          <h2>Support the Voice of African Organic Farmers</h2>
-          <p>
-            Your donation fuels farmer-led solutions, sustainable agriculture,
-            and food sovereignty across the continent. Help us scale impact and
-            nurture the land for generations to come.
-          </p>
-          <div className="M_donate-buttons">
-            <a
-              href="https://www.paypal.com/donate"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="M_btn-primary"
-            >
-              <FaDonate className="M_btn-icon" />
-              <span>Donate Using PayPal- </span>
-            </a>
-          </div>
-        </motion.div>
+        <div className="donate-container">
+          <motion.div className="donate-content" variants={itemVariants}>
+            <div className="donate-header">
+              <h2>Support the Voice of African Organic Farmers</h2>
+              <p>
+                Your donation fuels farmer-led solutions, sustainable agriculture,
+                and food sovereignty across the continent. Help us scale impact and
+                nurture the land for generations to come.
+              </p>
+            </div>
+            
+            {/* Impact Cards */}
+            <div className="impact-cards">
+              <div className="impacts-card">
+                <span className="impact-amount">$25</span>
+                <span className="impact-text">Provides seeds for one farmer</span>
+              </div>
+              <div className="impacts-card">
+                <span className="impact-amount">$50</span>
+                <span className="impact-text">Funds training workshop</span>
+              </div>
+              <div className="impacts-card">
+                <span className="impact-amount">$100</span>
+                <span className="impact-text">Supports organic certification</span>
+              </div>
+            </div>
 
-        <motion.div className="image-content" variants={itemVariants}>
-          <img
-            src= {journeyImg}
-            alt="African farmers working together"
-            className="content-image"
-          />
+            <div className="M_donate-buttons">
+              <a
+                href="https://www.paypal.com/donate"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="M_btn-primary donate-btn"
+              >
+                <FaDonate className="M_btn-icon" />
+                <span>Donate Using PayPal</span>
+              </a>
+            </div>
+          </motion.div>
+
+          <motion.div className="donate-image" variants={itemVariants}>
+            <img
+              src={journeyImg}
+              alt="African farmers working together"
+              className="content-image"
+            />
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Social Media Section */}
+      <motion.section
+        className="social-section"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <motion.div className="social-container" variants={itemVariants}>
+          <h2>Follow Our Journey</h2>
+          <p>Stay connected with INOFO Africa across social media platforms</p>
+          
+          <div className="social-grid">
+            <motion.a
+              href="#"
+              className="social-link facebook"
+              variants={itemVariants}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaFacebook />
+              <span>Facebook</span>
+            </motion.a>
+            
+            <motion.a
+              href="#"
+              className="social-link twitter"
+              variants={itemVariants}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaTwitter />
+              <span>Twitter</span>
+            </motion.a>
+            
+            <motion.a
+              href="#"
+              className="social-link linkedin"
+              variants={itemVariants}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaLinkedin />
+              <span>LinkedIn</span>
+            </motion.a>
+            
+            <motion.a
+              href="#"
+              className="social-link instagram"
+              variants={itemVariants}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaInstagram />
+              <span>Instagram</span>
+            </motion.a>
+            
+            <motion.a
+              href="#"
+              className="social-link youtube"
+              variants={itemVariants}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaYoutube />
+              <span>YouTube</span>
+            </motion.a>
+          </div>
         </motion.div>
       </motion.section>
 

@@ -269,19 +269,19 @@ const MembersTable: React.FC = () => {
       <div className="quick-stats">
         <div className="stat-card">
           <div className="stat-number">{members.length}</div>
-          <div className="stat-label">Total Organizations</div>
+          <div className="stats-label">Total Organizations</div>
         </div>
         <div className="stat-card">
           <div className="stat-number">{formatNumber(totalMembers)}</div>
-          <div className="stat-label">Total Members</div>
+          <div className="stats-label">Total Members</div>
         </div>
         <div className="stat-card">
           <div className="stat-number">{formatNumber(totalAcreage)}</div>
-          <div className="stat-label">Total Acreage</div>
+          <div className="stats-label">Total Acreage</div>
         </div>
         <div className="stat-card">
           <div className="stat-number">{totalDelegates}</div>
-          <div className="stat-label">2024 GA Delegates</div>
+          <div className="stats-label">2024 GA Delegates</div>
         </div>
       </div>
 
