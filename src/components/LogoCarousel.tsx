@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaSearch, FaFilter, FaTimes } from "react-icons/fa";
 import "../styles/MembersTable.css";
 
 type Member = {
@@ -19,7 +20,7 @@ const generateId = (name: string, country: string) => {
   return `${country}-${name.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase()}`;
 };
 
-// Complete extracted data from Excel
+// Complete extracted data from Excel (keeping all your existing data)
 const members: Member[] = [
   // Western Africa - Benin
   { id: generateId("Agbagodo", "Benin"), name: "Agbagodo",  website: "", country: "Benin", subregion: "Western Africa", category: "Association des agriculteurs biologiques", location: "ADJOHOUN/Azowlissè", membersCount: 12, acreage: 2, hasDelegate: true },
@@ -57,7 +58,7 @@ const members: Member[] = [
   { id: generateId("Homa Cooperative", "Ethiopia"), name: "Homa Multipurpose Farmers Cooperative (HMPFC)",  website: "", country: "Ethiopia", subregion: "Eastern Africa", category: "Organic Farmers' Cooperative", location: "West Guji Zone, Abaya district, Logge Kebele, Oromia", membersCount: 2000, acreage: 1585.44, hasDelegate: false },
   { id: generateId("Kelecha Gudina", "Ethiopia"), name: "Kelecha Gudina praymar cooperative",  website: "", country: "Ethiopia", subregion: "Eastern Africa", category: "Organic Farmers' Cooperative", location: "Oromia . Bule Hora", membersCount: 511, acreage: 600, hasDelegate: true },
   { id: generateId("Koba Mulatu", "Ethiopia"), name: "Koba Mulatu", website: "", country: "Ethiopia", subregion: "Eastern Africa", category: "Organic Farmers' Cooperative", location: "Oromia region, west guji zone kercha woreda, suke chiga kebele", membersCount: 654, acreage: 1962, hasDelegate: false },
-  { id: generateId("Oromia Coffee", "Ethiopia"), name: "Oromia coffee farmers cooperative union",  website: "", country: "Ethiopia", subregion: "Eastern Africa", category: "Organic Farmers' Cooperative", location: "Oromia, Gelan", membersCount: 35000, acreage: 30900, hasDelegate: false },
+  { id: generateId("Oromia Coffee", "Ethiopia"), name: "Oromia coffee farmers cooperative union", website: "", country: "Ethiopia", subregion: "Eastern Africa", category: "Organic Farmers' Cooperative", location: "Oromia, Gelan", membersCount: 35000, acreage: 30900, hasDelegate: false },
   { id: generateId("Yirgacheffe Coffee", "Ethiopia"), name: "yirgacheffe coffee farmers cooperatives union", website: "", country: "Ethiopia", subregion: "Eastern Africa", category: "Organic Farmers' Cooperative", location: "Addis Ababa Akaki kality sub city woreda 05", membersCount: 44736, acreage: 92592, hasDelegate: false },
 
   // Eastern Africa - Kenya
@@ -156,7 +157,7 @@ const members: Member[] = [
   { id: generateId("Copperbelt Avocado", "Zambia"), name: "Copperbelt Organic Avocado Growers Cooperative",website: "", country: "Zambia", subregion: "Southern Africa", category: "Organic Farmers' Cooperative", location: "Farm No. LS/45/Luanshya", membersCount: 324, acreage: 65, hasDelegate: true },
   { id: generateId("Fili uko tuya", "Zambia"), name: "Fili uko tuya",  website: "", country: "Zambia", subregion: "Southern Africa", category: "Organic Farmers' Cooperative", location: "Kalaba village", membersCount: 30, acreage: 12, hasDelegate: true },
   { id: generateId("Ibala organic", "Zambia"), name: "Ibala organic cooperative",  website: "", country: "Zambia", subregion: "Southern Africa", category: "Organic Farmers' Cooperative", location: "Mpongwe, Copperbelt", membersCount: 25, acreage: 12, hasDelegate: true },
-  { id: generateId("Kakunama woman", "Zambia"), name: "Kakunama woman Group",website: "", country: "Zambia", subregion: "Southern Africa", category: "Organic Farmers' association", location: "Lambwe chomba", membersCount: 100, acreage: 1300, hasDelegate: true },
+  { id: generateId("Kakunama woman", "Zambia"), name: "Kakunama woman Group",website: "", country: "Zambia", subregion: "Southern Africa", category: "Organic Farmers' association", location: "Lambwe chomba", membersCount: 100, acreage: 1300, hasDelegate: false },
   { id: generateId("Kalumolumo", "Zambia"), name: "Kalumolumo small scale farmers Group",  website: "", country: "Zambia", subregion: "Southern Africa", category: "Organic Farmers' association", location: "Lambwe chomba", membersCount: 150, acreage: 2500, hasDelegate: true },
   { id: generateId("Kansampa farming", "Zambia"), name: "Kansampa farming group", website: "", country: "Zambia", subregion: "Southern Africa", category: "Organic Farmers' association", location: "Lambwe chomba", membersCount: 120, acreage: 120, hasDelegate: true },
   { id: generateId("Lambwe chomba", "Zambia"), name: "Lambwe chomba cooperative", website: "", country: "Zambia", subregion: "Southern Africa", category: "Organic Farmers' Cooperative", location: "Lambwe chomba", membersCount: 200, acreage: 3000, hasDelegate: true },
@@ -173,7 +174,7 @@ const members: Member[] = [
   { id: generateId("Tigwirizane", "Zambia"), name: "Tigwirizane Multipurpose Cooperative Society/Twigwirizane Women Development Club", website: "", country: "Zambia", subregion: "Southern Africa", category: "Organic Farmers' Cooperative", location: "Mtuta village chief Kalindawalo Petauke", membersCount: 108, acreage: 500, hasDelegate: true },
   { id: generateId("Twapokelela Kaputa", "Zambia"), name: "Twapokelela Kaputa multipurpose cooperative", website: "", country: "Zambia", subregion: "Southern Africa", category: "Organic Farmers' Cooperative", location: "Malitati - Kaputa District- Northern", membersCount: 15, acreage: 10, hasDelegate: true },
   { id: generateId("Twikatane farming", "Zambia"), name: "Twikatane farming group", website: "", country: "Zambia", subregion: "Southern Africa", category: "Organic Farmers' association", location: "Lambwe chomba", membersCount: 130, acreage: 1500, hasDelegate: false },
-  { id: generateId("Twishibane youth", "Zambia"), name: "Twishibane youth group", website: "", country: "Zambia", subregion: "Southern Africa", category: "Organic Farmers' association", location: "Kaputa", membersCount: 120, acreage: 1500, hasDelegate: true },
+  { id: generateId("Twishibane youth", "Zambia"), name: "Twishibane youth group", website: "", country: "Zambia", subregion: "Southern Africa", category: "Organic Farmers' association", location: "Kaputa", membersCount: 120, acreage: 1500, hasDelegate: false },
 ];
 
 // Function to group members by region and country
@@ -188,42 +189,79 @@ const groupByRegion = (members: Member[]) => {
     regions[member.subregion][member.country].push(member);
     return regions;
   }, {} as Record<string, Record<string, Member[]>>);
-}
+};
 
 // Helper function to get country flag emoji
 const getCountryFlag = (country: string) => {
   const flagEmojis: Record<string, string> = {
-    'Benin': '🇧🇯',
-    'Togo': '🇹🇬',
-    'Mali': '🇲🇱',
-    'Ghana': '🇬🇭',
-    'Chad': '🇹🇩',
-    'Mauritania': '🇲🇷',
-    'Ethiopia': '🇪🇹',
-    'Kenya': '🇰🇪',
-    'Rwanda': '🇷🇼',
-    'Tanzania': '🇹🇿',
-    'Uganda': '🇺🇬',
-    'Namibia': '🇳🇦',
-    'South Africa': '🇿🇦',
-    'Zambia': '🇿🇲'
+    'Benin': '🇧🇯', 'Togo': '🇹🇬', 'Mali': '🇲🇱', 'Ghana': '🇬🇭',
+    'Chad': '🇹🇩', 'Mauritania': '🇲🇷', 'Ethiopia': '🇪🇹', 'Kenya': '🇰🇪',
+    'Rwanda': '🇷🇼', 'Tanzania': '🇹🇿', 'Uganda': '🇺🇬', 'Namibia': '🇳🇦',
+    'South Africa': '🇿🇦', 'Zambia': '🇿🇲'
   };
   return flagEmojis[country] || '🇦🇫';
 };
 
 const MembersTable: React.FC = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedRegion, setSelectedRegion] = useState<string>('all');
+  const [selectedCountry, setSelectedCountry] = useState<string>('all');
+  const [showFilters, setShowFilters] = useState(false);
+
+  // Group members by region
   const regions = React.useMemo(() => groupByRegion(members), []);
   
   // Initialize all regions as collapsed
   const [expandedRegions, setExpandedRegions] = useState<Record<string, boolean>>(() => {
     const initial: Record<string, boolean> = {};
     Object.keys(regions).forEach(region => {
-      initial[region] = false; // Changed to false - starts collapsed
+      initial[region] = false;
     });
     return initial;
   });
 
   const [expandedCountries, setExpandedCountries] = useState<Record<string, boolean>>({});
+
+  // Get unique regions and countries for filters
+  const uniqueRegions = React.useMemo(() => {
+    return Array.from(new Set(members.map(m => m.subregion))).sort();
+  }, []);
+
+  const uniqueCountries = React.useMemo(() => {
+    if (selectedRegion === 'all') {
+      return Array.from(new Set(members.map(m => m.country))).sort();
+    }
+    return Array.from(new Set(members.filter(m => m.subregion === selectedRegion).map(m => m.country))).sort();
+  }, [selectedRegion]);
+
+  // Filter members based on search and filters
+  const filteredMembers = React.useMemo(() => {
+    let filtered = members;
+
+    if (searchTerm) {
+      filtered = filtered.filter(member => 
+        member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        member.country.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        member.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        member.category.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    if (selectedRegion !== 'all') {
+      filtered = filtered.filter(member => member.subregion === selectedRegion);
+    }
+
+    if (selectedCountry !== 'all') {
+      filtered = filtered.filter(member => member.country === selectedCountry);
+    }
+
+    return filtered;
+  }, [searchTerm, selectedRegion, selectedCountry]);
+
+  // Group filtered members by region
+  const filteredRegions = React.useMemo(() => {
+    return groupByRegion(filteredMembers);
+  }, [filteredMembers]);
 
   const toggleRegion = (region: string) => {
     setExpandedRegions(prev => ({
@@ -257,19 +295,103 @@ const MembersTable: React.FC = () => {
   };
 
   // Calculate total statistics
-  const totalMembers = members.reduce((sum, member) => sum + member.membersCount, 0);
-  const totalAcreage = members.reduce((sum, member) => sum + member.acreage, 0);
-  const totalDelegates = members.filter(member => member.hasDelegate).length;
+  const totalMembers = filteredMembers.reduce((sum, member) => sum + member.membersCount, 0);
+  const totalAcreage = filteredMembers.reduce((sum, member) => sum + member.acreage, 0);
+  const totalDelegates = filteredMembers.filter(member => member.hasDelegate).length;
+
+  // Clear filters
+  const clearFilters = () => {
+    setSearchTerm('');
+    setSelectedRegion('all');
+    setSelectedCountry('all');
+  };
+
+  // Check if any filters are active
+  const hasActiveFilters = searchTerm || selectedRegion !== 'all' || selectedCountry !== 'all';
 
   return (
     <div className="text-content">
       <h2>INOFO Africa Member Organizations 2024</h2>
       
+      {/* Filter Controls */}
+      <div className="filter-controls">
+        <div className="filter-header">
+          <div className="filter-title">
+            <FaFilter />
+            <span>Filter Organizations</span>
+            {hasActiveFilters && (
+              <button className="clear-filters" onClick={clearFilters}>
+                <FaTimes /> Clear All
+              </button>
+            )}
+          </div>
+          <button 
+            className="toggle-filters"
+            onClick={() => setShowFilters(!showFilters)}
+          >
+            {showFilters ? 'Hide Filters' : 'Show Filters'}
+          </button>
+        </div>
+        
+        {showFilters && (
+          <div className="filter-options">
+            <div className="filter-group">
+              <label htmlFor="search">Search</label>
+              <div className="search-input-wrapper">
+                <FaSearch className="search-icon" />
+                <input
+                  id="search"
+                  type="text"
+                  placeholder="Search organizations, countries, locations..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="search-input"
+                />
+              </div>
+            </div>
+
+            <div className="filter-group">
+              <label htmlFor="region">Region</label>
+              <select 
+                id="region"
+                value={selectedRegion} 
+                onChange={(e) => {
+                  setSelectedRegion(e.target.value);
+                  setSelectedCountry('all'); // Reset country when region changes
+                }}
+                className="filter-select"
+              >
+                <option value="all">All Regions</option>
+                {uniqueRegions.map(region => (
+                  <option key={region} value={region}>{region}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="filter-group">
+              <label htmlFor="country">Country</label>
+              <select 
+                id="country"
+                value={selectedCountry} 
+                onChange={(e) => setSelectedCountry(e.target.value)}
+                className="filter-select"
+                disabled={selectedRegion === 'all'}
+              >
+                <option value="all">All Countries</option>
+                {uniqueCountries.map(country => (
+                  <option key={country} value={country}>{country}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+        )}
+      </div>
+
       {/* Quick Stats Overview */}
       <div className="quick-stats">
         <div className="stat-card">
-          <div className="stat-number">{members.length}</div>
-          <div className="stats-label">Total Organizations</div>
+          <div className="stat-number">{filteredMembers.length}</div>
+          <div className="stats-label">Organizations</div>
         </div>
         <div className="stat-card">
           <div className="stat-number">{formatNumber(totalMembers)}</div>
@@ -286,12 +408,19 @@ const MembersTable: React.FC = () => {
       </div>
 
       <p className="members-summary">
-        Representing {Object.keys(regions).length} regions across Africa
+        {hasActiveFilters && (
+          <span className="filter-indicator">
+            Showing filtered results: {filteredMembers.length} of {members.length} organizations
+          </span>
+        )}
+        {!hasActiveFilters && (
+          <span>Representing {Object.keys(regions).length} regions across Africa</span>
+        )}
       </p>
       
       {/* Regions Grid */}
       <div className="regions-grid">
-        {Object.keys(regions).map(region => (
+        {Object.keys(filteredRegions).map(region => (
           <div key={region} className="region-card">
             <div 
               className="region-header" 
@@ -313,19 +442,19 @@ const MembersTable: React.FC = () => {
               </div>
               <div className="region-stats">
                 <span className="stat-badge">
-                  {Object.keys(regions[region]).length} countries
+                  {Object.keys(filteredRegions[region]).length} countries
                 </span>
                 <span className="stat-badge">
-                  {Object.values(regions[region]).flat().length} organizations
+                  {Object.values(filteredRegions[region]).flat().length} organizations
                 </span>
               </div>
             </div>
 
             <div className={`countries-list ${expandedRegions[region] ? "expanded" : ""}`}>
-              {Object.keys(regions[region]).map(country => {
+              {Object.keys(filteredRegions[region]).map(country => {
                 const countryKey = `${region}-${country}`;
                 const isExpanded = isCountryExpanded(region, country);
-                const countryMembers = regions[region][country];
+                const countryMembers = filteredRegions[region][country];
                 
                 return (
                   <div key={countryKey} className="country-item">

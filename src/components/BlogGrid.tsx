@@ -1,4 +1,4 @@
-import { FaArrowRight, FaCalendarAlt, FaMapMarkerAlt, FaNewspaper, FaClock, FaTag } from "react-icons/fa";
+import { FaArrowRight, FaCalendarAlt, FaMapMarkerAlt,FaClock, FaTag } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
@@ -73,9 +73,7 @@ const BlogGrid = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="nexus-header-icon">
-            <FaNewspaper />
-          </div>
+          
           <h2 className="nexus-header-title">Updates</h2>
           <p className="nexus-header-subtitle">
             Stay informed about our activities, achievements, and impact across Africa
@@ -139,7 +137,7 @@ const BlogGrid = () => {
                   to={`#`} 
                   className="nexus-featured-link"
                 >
-                  <span>Read Full Article</span>
+                  <span>Full Article Coming soon...</span>
                   <FaArrowRight className="nexus-link-arrow" />
                 </Link>
               </div>
