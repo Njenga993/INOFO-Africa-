@@ -17,7 +17,7 @@ import progressImg6 from "../assets/Tshawekazi_.jpg";
 
 const ResourcesPage = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [_isExpanded, setIsExpanded] = useState(false);
 
   // Animation variants
   const containerVariants: Variants = {
@@ -221,7 +221,7 @@ const ResourcesPage = () => {
           className="gallery-grid"
           variants={containerVariants}
         >
-          {progressImages.map((image, index) => (
+          {progressImages.map((image) => (
             <motion.div
               key={image.id}
               className="gallery-item"
