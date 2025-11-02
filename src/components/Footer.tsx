@@ -155,18 +155,6 @@ const Footer = () => {
                   <span>info@inofo-africa.org</span>
                 </li>
               </ul>
-              
-              <div className="F-newsletter">
-                <h4>Subscribe to Newsletter</h4>
-                <form className="F-newsletter-form">
-                  <input 
-                    type="email" 
-                    placeholder="Your email address" 
-                    required 
-                  />
-                  <button type="submit">Subscribe</button>
-                </form>
-              </div>
             </div>
           </div>
         </div>

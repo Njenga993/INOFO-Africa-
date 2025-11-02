@@ -5,7 +5,7 @@ import type { Variants } from "framer-motion";
 import "../styles/BlogGrid.css";
 
 // Import images from assets
-import farmersTraining from "../assets/african.webp";
+import farmersTraining from "../assets/all.webp";
 
 interface BlogPost {
   id: number;
@@ -74,7 +74,7 @@ const BlogGrid = () => {
           transition={{ duration: 0.6 }}
         >
           
-          <h2 className="nexus-header-title">Updates</h2>
+          <h2 className="nexus-header-title">Insights</h2>
           <p className="nexus-header-subtitle">
             Stay informed about our activities, achievements, and impact across Africa
           </p>

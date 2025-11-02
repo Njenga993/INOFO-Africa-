@@ -1,34 +1,99 @@
-import { motion  } from "framer-motion";
+import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { 
-  FaPaperPlane, 
-  FaLeaf, 
-  FaHandshake, 
-  FaDonate, 
-  FaFacebook, 
-  FaTwitter, 
-  FaLinkedin, 
+import {
+  FaPaperPlane,
+  FaLeaf,
+  FaHandshake,
+  FaDonate,
+  FaFacebook,
+  FaTwitter,
+  FaLinkedin,
   FaInstagram,
-  FaYoutube 
+  FaYoutube,
 } from "react-icons/fa";
-import "../styles/contact.css";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import emailjs from "emailjs-com";
 import Newsletter from "../components/Newsletter";
+import "../styles/Contact.css";
 import heroImg from "../assets/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg";
-import journeyImg from "../assets/feet.webp";
+import journeyImg from "../assets/p.webp";
+
 
 const ContactSection = () => {
   const containerRef = useRef<HTMLElement | null>(null);
+  const formRef = useRef<HTMLFormElement | null>(null);
 
-  // Animation variants with proper TypeScript typing
+  const [sending, setSending] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+
+  const [formData, setFormData] = useState({
+    from_name: "",
+    from_email: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    // Clear error when user starts typing
+    if (error) setError("");
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!formRef.current) return;
+
+    // Basic validation
+    if (!formData.from_name.trim() || !formData.from_email.trim() || !formData.message.trim()) {
+      setError("Please fill in all required fields");
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.from_email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
+
+    setSending(true);
+    setSuccess(false);
+    setError("");
+
+    emailjs
+      .send(
+        "service_29mw7wa",
+        "template_zshzk8k",
+        formData,
+        "lEcqKKs_4Aar5QqYv"
+      )
+      .then(() => {
+        setSending(false);
+        setSuccess(true);
+        setFormData({
+          from_name: "",
+          from_email: "",
+          subject: "",
+          message: "",
+        });
+        setTimeout(() => setSuccess(false), 5000);
+      })
+      .catch((error) => {
+        console.error("EmailJS Error:", error);
+        setSending(false);
+        setError("Failed to send message. Please try again later.");
+      });
+  };
+
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
+      transition: { staggerChildren: 0.2, delayChildren: 0.3 },
     },
   };
 
@@ -37,10 +102,7 @@ const ContactSection = () => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
+      transition: { duration: 0.6, ease: "easeOut" },
     },
   };
 
@@ -79,49 +141,29 @@ const ContactSection = () => {
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
       >
-        {/* Background elements */}
-        <div className="contact-bg-pattern">
-          <div className="organic-shape-1"></div>
-          <div className="organic-shape-2"></div>
-        </div>
-
         <div className="contact-container">
           {/* Contact Form */}
           <motion.div className="contact-form-box" variants={itemVariants}>
-            <motion.h2 variants={itemVariants}>
+            <h2>
               <span className="title-gradient">Get in Touch With Us</span>
-            </motion.h2>
-            <motion.p className="lead" variants={itemVariants}>
+            </h2>
+            <p className="lead">
               We're here to support organic farmer organizations across Africa.
               Reach out for partnerships, questions, or collaboration.
-            </motion.p>
+            </p>
 
-            <form
-              action="https://formsubmit.co/your@email.com"
-              method="POST"
-              className="contact-form"
-            >
-              {/* Hidden fields */}
-              <input type="hidden" name="_captcha" value="false" />
-              <input
-                type="hidden"
-                name="_subject"
-                value="New Contact Message from INOFO Africa Website"
-              />
-              <input
-                type="hidden"
-                name="_next"
-                value="https://inofo-africa.org/thank-you"
-              />
-
+            <form ref={formRef} onSubmit={handleSubmit} className="contact-form">
               <div className="form-group">
                 <label htmlFor="full-name">Full Name *</label>
                 <input
                   type="text"
                   id="full-name"
-                  name="Full Name"
+                  name="from_name"
                   placeholder="Your full name"
                   required
+                  value={formData.from_name}
+                  onChange={handleChange}
+                  className="form-input"
                 />
               </div>
 
@@ -130,9 +172,12 @@ const ContactSection = () => {
                 <input
                   type="email"
                   id="email"
-                  name="Email"
+                  name="from_email"
                   placeholder="Your email address"
                   required
+                  value={formData.from_email}
+                  onChange={handleChange}
+                  className="form-input"
                 />
               </div>
 
@@ -141,8 +186,11 @@ const ContactSection = () => {
                 <input
                   type="text"
                   id="subject"
-                  name="Subject"
+                  name="subject"
                   placeholder="Message subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  className="form-input"
                 />
               </div>
 
@@ -150,30 +198,59 @@ const ContactSection = () => {
                 <label htmlFor="message">Your Message *</label>
                 <textarea
                   id="message"
-                  name="Message"
+                  name="message"
                   placeholder="How can we help you?"
                   rows={5}
                   required
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="form-textarea"
                 ></textarea>
               </div>
 
-              <button type="submit" className="M_btn-primary">
-                <span>Send Message</span>
-                <FaPaperPlane className="M_btn-icon" />
+              <button type="submit" className="M_btn-primary" disabled={sending}>
+                {sending ? (
+                  <div className="sending-btn-content">
+                    <div className="spinner"></div>
+                    <span>Sending...</span>
+                  </div>
+                ) : (
+                  <>
+                    <span>Send Message</span>
+                    <FaPaperPlane className="M_btn-icon" />
+                  </>
+                )}
               </button>
             </form>
+
+            {success && (
+              <motion.div
+                className="success-message"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4 }}
+              >
+                ✅ Message sent successfully!
+              </motion.div>
+            )}
+
+            {error && (
+              <motion.div
+                className="error-message"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4 }}
+              >
+                ❌ {error}
+              </motion.div>
+            )}
           </motion.div>
 
           {/* Contact Info Cards */}
-          <motion.div
-            className="contact-info-box"
-            variants={containerVariants}
-          >
-            <motion.div
-              className="info-card"
-              variants={itemVariants}
-              whileHover={{ scale: 1.03 }}
-            >
+          <motion.div className="contact-info-box" variants={containerVariants}>
+            <motion.div className="info-card" variants={itemVariants}>
               <div className="info-icon">
                 <FaLeaf />
               </div>
@@ -182,19 +259,12 @@ const ContactSection = () => {
                 Explore collaboration opportunities with African organic farmer
                 organizations.
               </p>
-              <a
-                href="mailto:partnerships@inofoafrica.org"
-                className="info-link"
-              >
+              <a href="mailto:partnerships@inofoafrica.org" className="info-link">
                 partnerships@inofoafrica.org
               </a>
             </motion.div>
 
-            <motion.div
-              className="info-card"
-              variants={itemVariants}
-              whileHover={{ scale: 1.03 }}
-            >
+            <motion.div className="info-card" variants={itemVariants}>
               <div className="info-icon">
                 <FaHandshake />
               </div>
@@ -203,19 +273,12 @@ const ContactSection = () => {
                 Learn how to join our continental network of organic farmer
                 organizations.
               </p>
-              <a
-                href="mailto:membership@inofoafrica.org"
-                className="info-link"
-              >
+              <a href="mailto:membership@inofoafrica.org" className="info-link">
                 membership@inofoafrica.org
               </a>
             </motion.div>
 
-            <motion.div
-              className="info-card"
-              variants={itemVariants}
-              whileHover={{ scale: 1.03 }}
-            >
+            <motion.div className="info-card" variants={itemVariants}>
               <div className="info-icon">
                 <FaPaperPlane />
               </div>
@@ -232,7 +295,7 @@ const ContactSection = () => {
         </div>
       </motion.section>
 
-      {/* Enhanced Donate Section */}
+      {/* Donate Section */}
       <motion.section
         className="donate-section-enhanced"
         variants={containerVariants}
@@ -246,24 +309,24 @@ const ContactSection = () => {
               <h2>Support the Voice of African Organic Farmers</h2>
               <p>
                 Your donation fuels farmer-led solutions, sustainable agriculture,
-                and food sovereignty across the continent. Help us scale impact and
-                nurture the land for generations to come.
+                and food sovereignty across the continent.
               </p>
             </div>
-            
-            {/* Impact Cards */}
+
             <div className="impact-cards">
-              <div className="impacts-card">
+              <div className="impact-card">
                 <span className="impact-amount">$25</span>
                 <span className="impact-text">Provides seeds for one farmer</span>
               </div>
-              <div className="impacts-card">
+              <div className="impact-card">
                 <span className="impact-amount">$50</span>
                 <span className="impact-text">Funds training workshop</span>
               </div>
-              <div className="impacts-card">
+              <div className="impact-card">
                 <span className="impact-amount">$100</span>
-                <span className="impact-text">Supports organic certification</span>
+                <span className="impact-text">
+                  Supports organic certification
+                </span>
               </div>
             </div>
 
@@ -301,62 +364,27 @@ const ContactSection = () => {
         <motion.div className="social-container" variants={itemVariants}>
           <h2>Follow Our Journey</h2>
           <p>Stay connected with INOFO Africa across social media platforms</p>
-          
+
           <div className="social-grid">
-            <motion.a
-              href="#"
-              className="social-link facebook"
-              variants={itemVariants}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FaFacebook />
-              <span>Facebook</span>
-            </motion.a>
-            
-            <motion.a
-              href="#"
-              className="social-link twitter"
-              variants={itemVariants}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FaTwitter />
-              <span>Twitter</span>
-            </motion.a>
-            
-            <motion.a
-              href="#"
-              className="social-link linkedin"
-              variants={itemVariants}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FaLinkedin />
-              <span>LinkedIn</span>
-            </motion.a>
-            
-            <motion.a
-              href="#"
-              className="social-link instagram"
-              variants={itemVariants}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FaInstagram />
-              <span>Instagram</span>
-            </motion.a>
-            
-            <motion.a
-              href="#"
-              className="social-link youtube"
-              variants={itemVariants}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FaYoutube />
-              <span>YouTube</span>
-            </motion.a>
+            {[
+              { icon: <FaFacebook />, name: "Facebook" },
+              { icon: <FaTwitter />, name: "Twitter" },
+              { icon: <FaLinkedin />, name: "LinkedIn" },
+              { icon: <FaInstagram />, name: "Instagram" },
+              { icon: <FaYoutube />, name: "YouTube" },
+            ].map((s, i) => (
+              <motion.a
+                key={i}
+                href="#"
+                className="social-link"
+                variants={itemVariants}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {s.icon}
+                <span>{s.name}</span>
+              </motion.a>
+            ))}
           </div>
         </motion.div>
       </motion.section>

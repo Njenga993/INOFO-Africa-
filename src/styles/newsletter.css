@@ -1,6 +1,180 @@
 /* =======================
    NEWSLETTER SECTION
    ======================= */
+  #mc_embed_signup {
+  background: #fff;
+  font: 14px Helvetica, Arial, sans-serif;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+#mc_embed_signup h2 {
+  color: #1a4d2e;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+#mc-embedded-subscribe {
+  background-color: #1a4d2e;
+  color: #fff;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#mc-embedded-subscribe:hover {
+  background-color: #157a47;
+}
+/* 🌿 Newsletter Signup Container */
+#mc_embed_signup {
+  background: #ffffff;
+  font-family: "Poppins", Arial, sans-serif;
+  color: #1a4d2e;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(26, 77, 46, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle green gradient background pattern */
+#mc_embed_signup::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle at top right, rgba(26, 77, 46, 0.1), transparent 70%);
+  z-index: 0;
+}
+
+/* Headings */
+#mc_embed_signup h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.8rem;
+  color: #1a4d2e;
+  position: relative;
+  z-index: 1;
+}
+
+#mc_embed_signup .indicates-required {
+  font-size: 0.85rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  z-index: 1;
+  position: relative;
+}
+
+/* Field Groups */
+#mc_embed_signup .mc-field-group {
+  margin-bottom: 1.2rem;
+  position: relative;
+  z-index: 1;
+}
+
+#mc_embed_signup label {
+  display: block;
+  font-weight: 500;
+  color: #1a4d2e;
+  margin-bottom: 0.4rem;
+}
+
+#mc_embed_signup input[type="email"],
+#mc_embed_signup input[type="text"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid #157a47;
+  border-radius: 10px;
+  outline: none;
+  background-color: #f9fff9;
+  color: #1a4d2e;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+#mc_embed_signup input[type="email"]:focus,
+#mc_embed_signup input[type="text"]:focus {
+  border-color: #1a4d2e;
+  background-color: #ffffff;
+  box-shadow: 0 0 6px rgba(26, 77, 46, 0.25);
+}
+
+/* Subscribe Button */
+#mc-embedded-subscribe {
+  background-color: #1a4d2e;
+  color: #ffffff;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: block;
+  margin: 1.2rem auto 0;
+}
+
+#mc-embedded-subscribe:hover {
+  background-color: #157a47;
+  transform: translateY(-2px);
+}
+
+/* Success and Error Messages */
+#mce-error-response,
+#mce-success-response {
+  text-align: center;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+#mce-success-response {
+  color: #157a47;
+}
+
+#mce-error-response {
+  color: #c62828;
+}
+
+/* Footer + Mailchimp Logo */
+#mc_embed_signup .optionalParent {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+#mc_embed_signup .refferal_badge {
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+#mc_embed_signup .refferal_badge:hover {
+  opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  #mc_embed_signup {
+    padding: 1.5rem 1rem;
+  }
+
+  #mc_embed_signup h2 {
+    font-size: 1.4rem;
+  }
+}
+/* =======================
+   NEWSLETTER SECTION
+   ======================= */
 .newsletter-section {
   background: var(--neutral-light);
   padding: 4rem 1.5rem;

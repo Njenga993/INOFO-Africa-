@@ -81,37 +81,18 @@ const Navbar = () => {
     {
       path: "/about",
       label: "Who We Are",
-      dropdown: [
-        { path: "/about/mission", label: "Our Mission" },
-        { path: "/about/team", label: "Our Team" },
-        { path: "/about/partners", label: "Partners" },
-      ],
     },
     {
       path: "/membership",
       label: "Membership",
-      dropdown: [
-        { path: "/membership/benefits", label: "Benefits" },
-        { path: "/membership/apply", label: "Apply Now" },
-      ],
     },
     {
       path: "/services",
       label: "Our Work",
-      dropdown: [
-        { path: "/services/training", label: "Training Programs" },
-        { path: "/services/advocacy", label: "Policy Advocacy" },
-        { path: "/services/markets", label: "Market Access" },
-      ],
     },
     {
       path: "/resources",
       label: "Resources",
-      dropdown: [
-        { path: "/resources/news", label: "News & Events" },
-        { path: "/resources/publications", label: "Publications" },
-        { path: "/resources/#tools", label: "Farmer Tools" },
-      ],
     },
     { path: "/contact", label: "Contact" },
   ];

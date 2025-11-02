@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import "../styles/Herosection.css";
 
 // ✅ Import hero images directly from assets
-import HeroImage1 from "../assets/fresh-sprouts-in-agricultural-field-6165476.jpg";
-import HeroImage2 from "../assets/mesmerizing-african-sunset-over-the-savanna-71028880.jpg";
-import HeroImage3 from "../assets/joyful-harvest-in-the-fields-101239609.jpg";
+import HeroImage1 from "../assets/Evaluation des pairs  des producteurs biologique une fois par an.webp";
+import HeroImage2 from "../assets/njoro.webp";
+import HeroImage3 from "../assets/IMG-20251020-WA0003.webp";
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);

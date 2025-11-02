@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import AfricaLoader from './components/AfricaLoader';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import MembershipForm from './pages/MembershipForm';
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home';
 import About from './pages/About';
@@ -38,7 +37,6 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/membership" element={<MembershipAfrica />} />
-            <Route path="/membership-form" element={<MembershipForm />} />
             <Route path="/services" element={<ServicesAfrica />} />
             <Route path="/resources" element={<ResourcesPage />} />
             <Route path="/contact" element={<Contact />} />
