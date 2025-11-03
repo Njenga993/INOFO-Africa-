@@ -4,15 +4,21 @@ const AfricaLoader = () => {
 
 
 
+
   return (
-    <div className="simple-loader-container">
-      <div className="simple-loader">
-        <div className="loader-spinner"></div>
+    <div className="ring-loader-container">
+      <div className="ring-loader">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
       <p className="loader-text">Loading content...</p>
     </div>
   );
 };
+
+
 
 
 
