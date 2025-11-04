@@ -353,41 +353,41 @@ const ContactSection = () => {
         </div>
       </motion.section>
 
-      {/* Social Media Section */}
-      <motion.section
-        className="social-section"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        <motion.div className="social-container" variants={itemVariants}>
-          <h2>Follow Our Journey</h2>
-          <p>Stay connected with INOFO Africa across social media platforms</p>
+     {/* Social Media Section */}
+<motion.section
+  className="social-section"
+  variants={containerVariants}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, margin: "-100px" }}
+>
+  <motion.div className="social-container" variants={itemVariants}>
+    <h2>Follow Our Journey</h2>
+    <p>Stay connected with INOFO Africa across social media platforms</p>
 
-          <div className="social-grid">
-            {[
-              { icon: <FaFacebook />, name: "Facebook" },
-              { icon: <FaTwitter />, name: "Twitter" },
-              { icon: <FaLinkedin />, name: "LinkedIn" },
-              { icon: <FaInstagram />, name: "Instagram" },
-              { icon: <FaYoutube />, name: "YouTube" },
-            ].map((s, i) => (
-              <motion.a
-                key={i}
-                href="#"
-                className="social-link"
-                variants={itemVariants}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {s.icon}
-                <span>{s.name}</span>
-              </motion.a>
-            ))}
-          </div>
-        </motion.div>
-      </motion.section>
+    <div className="social-grid">
+      {[
+        { icon: <FaFacebook />, name: "Facebook", className: "facebook" },
+        { icon: <FaTwitter />, name: "Twitter", className: "twitter" },
+        { icon: <FaLinkedin />, name: "LinkedIn", className: "linkedin" },
+        { icon: <FaInstagram />, name: "Instagram", className: "instagram" },
+        { icon: <FaYoutube />, name: "YouTube", className: "youtube" },
+      ].map((s, i) => (
+        <motion.a
+          key={i}
+          href="#"
+          className={`social-link ${s.className}`}
+          variants={itemVariants}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          {s.icon}
+          <span>{s.name}</span>
+        </motion.a>
+      ))}
+    </div>
+  </motion.div>
+</motion.section>
 
       <Newsletter />
     </motion.main>

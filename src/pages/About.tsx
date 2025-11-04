@@ -140,9 +140,7 @@ const AboutUsAfrica = () => {
           <p>
             Born in 2008 under the global INOFO umbrella, INOFO Africa has blossomed into an
              autonomous regional entity  with its membership currently present in
-              20+ countries . From the baobab-dotted savannas to lush highland farms, 
-             we've woven a network that honors local knowledge while
-             confronting continental challenges in solidarity.
+              20+ countries .
           </p>
           <p>
             Our journey is one of resilience, innovation, and unwavering commitment to 
