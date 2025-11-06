@@ -48,7 +48,7 @@ const BlogGrid = () => {
       image: farmersTraining,
       featured: true,
       category: "Conference",
-      readTime: "5 min read"
+      readTime: "6 min read"
     },
     
   ];
