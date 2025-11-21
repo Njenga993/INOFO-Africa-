@@ -375,13 +375,13 @@ const AboutUsAfrica = () => {
                     <span className="role-title">The Secretariate Performs the following functions: </span>
                   </div>
                   <div className="role-item">
-                    <span className="role-title">. Admin & Finance Role</span>
+                    <span className="role-title">. Adminstration & Finance Role</span>
                   </div>
                   <div className="role-item">
                     <span className="role-title">. Sub region Coordinating Role (5 sub regions)</span>
                   </div>
                   <div className="role-item">
-                    <span className="role-title">. Communications & IT Role</span>
+                    <span className="role-title">. Communications & Information Technology Role</span>
                   </div>
                 </div>
               </div>

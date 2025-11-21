@@ -33,7 +33,7 @@ interface Service {
 const services: Service[] = [
   {
     icon: <FaHandshake size={28} />,
-    title: "Advocacy & Policy Support",
+    title: "Advocacy & Policy Engagement",
     description:
       "Championing organic agriculture policies at national & continental forums",
     features: ["Land rights advocacy", "Certification standards", "Climate justice"],
@@ -67,7 +67,7 @@ const services: Service[] = [
     icon: <FaUsers size={28} />,
     title: "Marketing & Market Access",
     description:
-      "Supporting organic producer groups in accessing markets",
+      "Promoting agroecology producer groups in accessing markets",
     features: ["Regional markets", "Export opportunities", "Fair-value marketing"],
     color: "#4c7031",
   },
@@ -146,9 +146,9 @@ const ServicesAfrica = () => {
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
-          <h2>Comprehensive Support for Organic Agriculture</h2>
+          <h2>Comprehensive Guide for Organic Agriculture</h2>
           <p>
-            We provide holistic support to organic farmers across Africa through our six key service areas. 
+            We provide holistic guide to organic farmers across Africa through our six key service areas. 
             Each service is designed to address specific challenges while building a resilient, 
             sustainable organic farming ecosystem across the continent.
           </p>
@@ -278,10 +278,10 @@ const ServicesAfrica = () => {
               </div>
             </div>
             <Link
-              to="/about"
+              to="#"
               className="btn-primary featured-btn"
             >
-              <span>Explore Training Programs</span>
+              <span> Training Programs Coming Soon...</span>
               <FaArrowRight className="btn-icon" />
             </Link>
           </motion.div>

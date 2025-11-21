@@ -1,4 +1,4 @@
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaYoutube, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaLeaf, FaPlus, FaMinus } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaYoutube, FaMapMarkerAlt, FaEnvelope, FaLeaf, FaPlus, FaMinus } from 'react-icons/fa';
 import '../styles/footer.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
@@ -11,11 +11,11 @@ const Footer = () => {
     [
       { 
         question: "What is INOFO Africa?", 
-        answer: "INOFO Africa is a network of organic farmers across Africa dedicated to promoting organic farming practices and sustainable agriculture." 
+        answer: "INOFO Africa is a network of organic farmers across Africa dedicated to promoting Agro-Ecological practices for sustainable agriculture." 
       },
       { 
         question: "How can I become a member?", 
-        answer: "You can become a member by visiting our membership page and filling out the application form. We welcome all organic farmers and supporters." 
+        answer: "You can become a member by being in an organic farmer Organization and visit our membership page and filling out the application form. We welcome all organic farmer Organization." 
       },
       { 
         question: "What are the benefits of membership?", 
@@ -24,10 +24,6 @@ const Footer = () => {
       { 
         question: "Do you offer training programs?", 
         answer: "Yes, we offer various training programs on organic farming techniques, certification, and sustainable practices throughout the year." 
-      },
-      { 
-        question: "How is organic certification obtained?", 
-        answer: "Organic certification is obtained through approved certification bodies after meeting specific organic standards and undergoing inspections." 
       },
       { 
         question: "Can small-scale farmers join?", 
@@ -44,22 +40,6 @@ const Footer = () => {
     ],
     [
       { 
-        question: "What crops do you focus on?", 
-        answer: "We support organic farming of all crops, with special attention to indigenous and traditional African crops." 
-      },
-      { 
-        question: "Is organic farming profitable?", 
-        answer: "Yes, organic farming can be highly profitable due to premium prices, lower input costs, and growing market demand." 
-      },
-      { 
-        question: "How do you ensure quality?", 
-        answer: "We maintain strict quality standards through training, peer reviews, and adherence to international organic regulations." 
-      },
-      { 
-        question: "Do you help with market access?", 
-        answer: "Yes, we facilitate market linkages for our members through partnerships with buyers and organic markets." 
-      },
-      { 
         question: "What's your stance on GMOs?", 
         answer: "We promote non-GMO agriculture in line with organic principles that prohibit genetically modified organisms." 
       },
@@ -73,7 +53,7 @@ const Footer = () => {
       },
       { 
         question: "How do I contact regional offices?", 
-        answer: "Visit our contact page for regional office details or email info@inofo-africa.org for assistance." 
+        answer: "Visit our contact page for regional office details or email info@inofoafrica.org for assistance." 
       }
     ]
   ];
@@ -144,15 +124,11 @@ const Footer = () => {
               <ul className="footer-contact">
                 <li>
                   <FaMapMarkerAlt />
-                  <span>123 Organic Street, Nairobi, Kenya</span>
-                </li>
-                <li>
-                  <FaPhoneAlt />
-                  <span>+254 700 123 456</span>
+                  <span>334 -20116 , Gilgil, Kenya</span>
                 </li>
                 <li>
                   <FaEnvelope />
-                  <span>info@inofo-africa.org</span>
+                  <span>info@inofoafrica.org</span>
                 </li>
               </ul>
             </div>

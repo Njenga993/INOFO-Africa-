@@ -27,7 +27,7 @@ const MissionVision = () => {
   const hoverVariants: Variants = {
     rest: {
       scale: 0,
-      borderRadius: "50%",
+      borderRadius: "70%",
       opacity: 0,
       transition: {
         duration: 0.3,
@@ -36,7 +36,7 @@ const MissionVision = () => {
     },
     hover: {
       scale: 4,
-      borderRadius: "24px", // Match the card border-radius
+      borderRadius: "30px", // Match the card border-radius
       opacity: 1,
       transition: {
         duration: 0.6,
@@ -133,7 +133,9 @@ const MissionVision = () => {
           <div className="card-content">
             <h2 className="mv-title">Our Vision</h2>
             <p className="mv-text">
-              Improved livelihoods, healthy and resilient environments for current and future generations.
+              Improved livelihoods, healthy and resilient environments 
+              for future 
+              generations.
             </p>
           </div>
         </motion.div>

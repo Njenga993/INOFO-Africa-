@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { FaImages, FaExpand, FaCompress, FaArrowRight } from "react-icons/fa";
-import { useState } from "react";
+import { FaImages, FaExpand, FaCompress, FaArrowRight, FaArrowLeft, FaPlay, FaPause } from "react-icons/fa";
+import { useState, useEffect, useRef } from "react";
 import "../styles/ResourcesPage.css";
 import Newsletter from "../components/Newsletter";
 import heroImg from "../assets/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg";
@@ -16,8 +16,10 @@ import progressImg5 from "../assets/all.webp";
 import progressImg6 from "../assets/Tshawekazi_.jpg";
 
 const ResourcesPage = () => {
-  const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const [_isExpanded, setIsExpanded] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const intervalRef = useRef<number | null>(null);
 
   // Animation variants
   const containerVariants: Variants = {
@@ -37,7 +39,7 @@ const ResourcesPage = () => {
     },
   };
 
-  // Progress gallery images
+  // Extended progress gallery images with 20+ photos
   const progressImages = [
     {
       id: 1,
@@ -80,32 +82,205 @@ const ResourcesPage = () => {
       title: "Conference Highlights",
       description: "Key moments from our annual farmers' conference",
       category: "Events"
+    },
+    // Adding more images to reach 20+
+    {
+      id: 7,
+      src: progressImg1,
+      title: "Water Conservation Project",
+      description: "Installing new irrigation systems to conserve water resources",
+      category: "Infrastructure"
+    },
+    {
+      id: 8,
+      src: progressImg2,
+      title: "Women Farmers Initiative",
+      description: "Empowering women farmers through education and resources",
+      category: "Community"
+    },
+    {
+      id: 9,
+      src: progressImg3,
+      title: "Soil Testing Workshop",
+      description: "Farmers learning to test soil for optimal crop growth",
+      category: "Training"
+    },
+    {
+      id: 10,
+      src: progressImg4,
+      title: "Organic Certification",
+      description: "Celebrating our first batch of certified organic produce",
+      category: "Achievement"
+    },
+    {
+      id: 11,
+      src: progressImg5,
+      title: "Equipment Distribution",
+      description: "Providing modern farming equipment to rural communities",
+      category: "Resources"
+    },
+    {
+      id: 12,
+      src: progressImg6,
+      title: "School Garden Program",
+      description: "Teaching children about agriculture through school gardens",
+      category: "Education"
+    },
+    {
+      id: 13,
+      src: progressImg1,
+      title: "Pest Management Training",
+      description: "Natural pest control methods to protect crops without chemicals",
+      category: "Training"
+    },
+    {
+      id: 14,
+      src: progressImg2,
+      title: "Community Kitchen",
+      description: "Building a community kitchen for processing farm produce",
+      category: "Infrastructure"
+    },
+    {
+      id: 15,
+      src: progressImg3,
+      title: "Digital Farming Tools",
+      description: "Introducing mobile apps for weather forecasting and market prices",
+      category: "Technology"
+    },
+    {
+      id: 16,
+      src: progressImg4,
+      title: "Beekeeping Initiative",
+      description: "Starting beekeeping projects to supplement farmer income",
+      category: "Diversification"
+    },
+    {
+      id: 17,
+      src: progressImg5,
+      title: "Renewable Energy Installation",
+      description: "Solar panels to power irrigation systems and storage facilities",
+      category: "Sustainability"
+    },
+    {
+      id: 18,
+      src: progressImg6,
+      title: "Farmers' Cooperative",
+      description: "Establishing a cooperative for better market access and bargaining power",
+      category: "Community"
+    },
+    {
+      id: 19,
+      src: progressImg1,
+      title: "Nutrition Education",
+      description: "Teaching communities about nutrition and diverse diets",
+      category: "Health"
+    },
+    {
+      id: 20,
+      src: progressImg2,
+      title: "Climate Resilience Workshop",
+      description: "Helping farmers adapt to changing climate patterns",
+      category: "Training"
+    },
+    {
+      id: 21,
+      src: progressImg3,
+      title: "Microfinance Program",
+      description: "Small loans to help farmers invest in their operations",
+      category: "Finance"
+    },
+    {
+      id: 22,
+      src: progressImg4,
+      title: "Export Market Development",
+      description: "Connecting local farmers with international buyers",
+      category: "Market"
+    },
+    {
+      id: 23,
+      src: progressImg5,
+      title: "Food Processing Training",
+      description: "Adding value to crops through processing techniques",
+      category: "Training"
+    },
+    {
+      id: 24,
+      src: progressImg6,
+      title: "Research Partnership",
+      description: "Collaborating with agricultural researchers to improve crop yields",
+      category: "Research"
     }
   ];
 
-  const openLightbox = (imageId: number) => {
-    setSelectedImage(imageId);
-    setIsExpanded(true);
+  // Auto-play functionality
+  useEffect(() => {
+    if (isPlaying) {
+      intervalRef.current = setInterval(() => {
+        setCurrentImageIndex((prevIndex) => 
+          prevIndex === progressImages.length - 1 ? 0 : prevIndex + 1
+        );
+      }, 3000); // Change image every 3 seconds
+    } else {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [isPlaying, progressImages.length]);
+
+  const openLightbox = (index: number) => {
+    setCurrentImageIndex(index);
+    setIsLightboxOpen(true);
   };
 
   const closeLightbox = () => {
-    setSelectedImage(null);
-    setIsExpanded(false);
+    setIsLightboxOpen(false);
+    setIsPlaying(false);
   };
 
   const navigateImage = (direction: 'prev' | 'next') => {
-    if (selectedImage === null) return;
-    
-    const currentIndex = progressImages.findIndex(img => img.id === selectedImage);
-    let newIndex;
-    
     if (direction === 'prev') {
-      newIndex = currentIndex === 0 ? progressImages.length - 1 : currentIndex - 1;
+      setCurrentImageIndex(currentImageIndex === 0 ? progressImages.length - 1 : currentImageIndex - 1);
     } else {
-      newIndex = currentIndex === progressImages.length - 1 ? 0 : currentIndex + 1;
+      setCurrentImageIndex(currentImageIndex === progressImages.length - 1 ? 0 : currentImageIndex + 1);
+    }
+  };
+
+  const goToImage = (index: number) => {
+    setCurrentImageIndex(index);
+  };
+
+  const togglePlayPause = () => {
+    setIsPlaying(!isPlaying);
+  };
+
+  // Get visible thumbnails (current, 3 before, 3 after)
+  const getVisibleThumbnails = () => {
+    const thumbnails = [];
+    const range = 3;
+    
+    for (let i = -range; i <= range; i++) {
+      let index = currentImageIndex + i;
+      
+      // Handle wrap-around
+      if (index < 0) {
+        index = progressImages.length + index;
+      } else if (index >= progressImages.length) {
+        index = index % progressImages.length;
+      }
+      
+      thumbnails.push({
+        index,
+        isActive: i === 0
+      });
     }
     
-    setSelectedImage(progressImages[newIndex].id);
+    return thumbnails;
   };
 
   return (
@@ -196,7 +371,7 @@ const ResourcesPage = () => {
         </div>
       </motion.section>
 
-      {/* Progress Gallery Section */}
+      {/* Progress Gallery Section - Redesigned */}
       <motion.section
         className="progress-gallery-section"
         initial="hidden"
@@ -217,42 +392,96 @@ const ResourcesPage = () => {
           </motion.div>
         </div>
 
+        {/* Main Gallery Display */}
         <motion.div 
-          className="gallery-grid"
-          variants={containerVariants}
+          className="slideshow-container"
+          variants={itemVariants}
         >
-          {progressImages.map((image) => (
-            <motion.div
-              key={image.id}
-              className="gallery-item"
-              variants={itemVariants}
-              whileHover={{ scale: 1.03 }}
-              onClick={() => openLightbox(image.id)}
+          <div className="main-image-container">
+            <img 
+              src={progressImages[currentImageIndex].src} 
+              alt={progressImages[currentImageIndex].title}
+              className="main-image"
+              onClick={() => openLightbox(currentImageIndex)}
+            />
+            
+            <div className="image-info">
+              <h3>{progressImages[currentImageIndex].title}</h3>
+              <p>{progressImages[currentImageIndex].description}</p>
+              <span className="category-tag">{progressImages[currentImageIndex].category}</span>
+            </div>
+            
+            <div className="view-indicator" onClick={() => openLightbox(currentImageIndex)}>
+              <FaExpand />
+            </div>
+          </div>
+          
+          {/* Navigation Controls */}
+          <div className="slideshow-controls">
+            <button 
+              className="nav-btn prev-btn"
+              onClick={() => navigateImage('prev')}
+              aria-label="Previous image"
             >
-              <div className="gallery-image-container">
-                <img 
-                  src={image.src} 
-                  alt={image.title}
-                  className="gallery-image"
+              <FaArrowLeft />
+            </button>
+            
+            <div className="play-pause-container">
+              <button 
+                className="play-pause-btn"
+                onClick={togglePlayPause}
+                aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
+              >
+                {isPlaying ? <FaPause /> : <FaPlay />}
+              </button>
+            </div>
+            
+            <button 
+              className="nav-btn next-btn"
+              onClick={() => navigateImage('next')}
+              aria-label="Next image"
+            >
+              <FaArrowRight />
+            </button>
+          </div>
+          
+          {/* Thumbnail Navigation */}
+          <div className="thumbnail-container">
+            <div className="thumbnail-scroll">
+              {getVisibleThumbnails().map((thumb) => (
+                <div
+                  key={thumb.index}
+                  className={`thumbnail ${thumb.isActive ? 'active' : ''}`}
+                  onClick={() => goToImage(thumb.index)}
+                >
+                  <img 
+                    src={progressImages[thumb.index].src} 
+                    alt={progressImages[thumb.index].title}
+                  />
+                </div>
+              ))}
+            </div>
+            
+            <div className="thumbnail-indicators">
+              {progressImages.map((_, index) => (
+                <button
+                  key={index}
+                  className={`indicator ${index === currentImageIndex ? 'active' : ''}`}
+                  onClick={() => goToImage(index)}
+                  aria-label={`Go to image ${index + 1}`}
                 />
-                <div className="image-overlay">
-                  <div className="overlay-content">
-                    <h3>{image.title}</h3>
-                    <p>{image.description}</p>
-                    <span className="category-tag">{image.category}</span>
-                  </div>
-                </div>
-                <div className="view-indicator">
-                  <FaExpand />
-                </div>
-              </div>
-            </motion.div>
-          ))}
+              ))}
+            </div>
+          </div>
+          
+          <div className="image-counter">
+            {currentImageIndex + 1} / {progressImages.length}
+          </div>
         </motion.div>
       </motion.section>
 
       {/* Lightbox */}
-      {selectedImage && (
+      {isLightboxOpen && (
         <motion.div 
           className="lightbox-overlay"
           initial={{ opacity: 0 }}
@@ -268,7 +497,7 @@ const ResourcesPage = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="lightbox-header">
-              <h3>{progressImages.find(img => img.id === selectedImage)?.title}</h3>
+              <h3>{progressImages[currentImageIndex].title}</h3>
               <button 
                 className="close-lightbox"
                 onClick={closeLightbox}
@@ -280,22 +509,22 @@ const ResourcesPage = () => {
             
             <div className="lightbox-image-container">
               <img 
-                src={progressImages.find(img => img.id === selectedImage)?.src} 
-                alt={progressImages.find(img => img.id === selectedImage)?.title}
+                src={progressImages[currentImageIndex].src} 
+                alt={progressImages[currentImageIndex].title}
                 className="lightbox-image"
               />
             </div>
             
             <div className="lightbox-info">
               <p className="lightbox-description">
-                {progressImages.find(img => img.id === selectedImage)?.description}
+                {progressImages[currentImageIndex].description}
               </p>
               <div className="lightbox-meta">
                 <span className="lightbox-category">
-                  {progressImages.find(img => img.id === selectedImage)?.category}
+                  {progressImages[currentImageIndex].category}
                 </span>
                 <span className="lightbox-counter">
-                  {progressImages.findIndex(img => img.id === selectedImage) + 1} / {progressImages.length}
+                  {currentImageIndex + 1} / {progressImages.length}
                 </span>
               </div>
             </div>
@@ -306,8 +535,17 @@ const ResourcesPage = () => {
                 onClick={() => navigateImage('prev')}
                 aria-label="Previous image"
               >
-                <FaArrowRight />
+                <FaArrowLeft />
               </button>
+              
+              <button 
+                className="play-pause-btn"
+                onClick={togglePlayPause}
+                aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
+              >
+                {isPlaying ? <FaPause /> : <FaPlay />}
+              </button>
+              
               <button 
                 className="nav-btn next-btn"
                 onClick={() => navigateImage('next')}
@@ -315,6 +553,22 @@ const ResourcesPage = () => {
               >
                 <FaArrowRight />
               </button>
+            </div>
+            
+            {/* Thumbnail Navigation in Lightbox */}
+            <div className="lightbox-thumbnails">
+              {progressImages.map((image, index) => (
+                <div
+                  key={image.id}
+                  className={`lightbox-thumbnail ${index === currentImageIndex ? 'active' : ''}`}
+                  onClick={() => goToImage(index)}
+                >
+                  <img 
+                    src={image.src} 
+                    alt={image.title}
+                  />
+                </div>
+              ))}
             </div>
           </motion.div>
         </motion.div>

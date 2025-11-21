@@ -16,7 +16,7 @@ const Hero = () => {
     {
       image: HeroImage1,
       title: "Empowering communities, cultivating safe food & nurturing mother earth.",
-      highlight: "Representation for Africa's organic farmers,",
+      highlight: "Representation for Africa's organic and Agroecology farmers,",
       description:
         "We are Africa’s organic farmers proud smallholder agroecological farmer owned organizations dedicated to nurturing the land without harmful chemicals. By working...",
       cta: "Get Involved",
@@ -24,7 +24,7 @@ const Hero = () => {
     {
       image: HeroImage2,
       title: "Farmer-led policy advocacy",
-      highlight: "Building resilience through organic farming practices",
+      highlight: "Building resilience through organic and Agroecology farming practices",
       description:
         "Together, we strengthen food sovereignty, protect biodiversity, and create better livelihoods for millions of farming families across Africa.",
       cta: "Get Involved",
@@ -32,9 +32,9 @@ const Hero = () => {
     {
       image: HeroImage3,
       title: "Farming in harmony with nature",
-      highlight: "Organic Farming for a sustainable future",
+      highlight: "Organic and Agroecolgy Farming for a sustainable future",
       description:
-        "Organic Farming integrates traditional knowledge with modern practices to build climate-resilient farms, restore ecosystems, and strengthen community food sovereignty.",
+        "Organic and Agroecology Farming integrates traditional knowledge with modern practices to build climate-resilient farms, restore ecosystems, and strengthen community food sovereignty.",
       cta: "Get Involved",
     },
   ];

@@ -311,7 +311,7 @@ const MembersTable: React.FC = () => {
 
   return (
     <div className="text-content">
-      <h2>INOFO Africa Member Organizations 2024</h2>
+      <h2>INOFO Africa Member Organizations since 2017</h2>
       
       {/* Filter Controls */}
       <div className="filter-controls">
@@ -390,19 +390,19 @@ const MembersTable: React.FC = () => {
       {/* Quick Stats Overview */}
       <div className="quick-stats">
         <div className="stat-card">
-          <div className="stat-number">{filteredMembers.length}</div>
+          <div className="stat-number">+{filteredMembers.length}</div>
           <div className="stats-label">Organizations</div>
         </div>
         <div className="stat-card">
-          <div className="stat-number">{formatNumber(totalMembers)}</div>
+          <div className="stat-number">+{formatNumber(totalMembers)}</div>
           <div className="stats-label">Total Members</div>
         </div>
         <div className="stat-card">
-          <div className="stat-number">{formatNumber(totalAcreage)}</div>
+          <div className="stat-number">+{formatNumber(totalAcreage)}</div>
           <div className="stats-label">Total Acreage</div>
         </div>
         <div className="stat-card">
-          <div className="stat-number">{totalDelegates}</div>
+          <div className="stat-number">+{totalDelegates}</div>
           <div className="stats-label">2024 GA Delegates</div>
         </div>
       </div>
