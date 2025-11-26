@@ -5,6 +5,8 @@
   --border-light: #e5e7eb;
   --green-light: #f0f5ec;
   --green-lighter: #f8faf6;
+  --green-dark: #3a5725;
+  --green-darker: #2d4420;
 }
 
 .text-content {
@@ -14,12 +16,32 @@
   min-height: 100vh;
 }
 
+/* Header Section */
+.header-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
 .text-content h2 {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   color: var(--primary-green);
   font-size: 2rem;
   font-weight: 700;
+}
+
+.header-subtitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: #666;
+  font-size: 1rem;
+}
+
+.header-icon {
+  color: var(--primary-green);
+  font-size: 1.2rem;
 }
 
 /* ===========================================
@@ -68,7 +90,7 @@
 }
 
 .clear-filters:hover {
-  background: #3a5725;
+  background: var(--green-dark);
 }
 
 .toggle-filters {
@@ -84,7 +106,7 @@
 }
 
 .toggle-filters:hover {
-  background: #3a5725;
+  background: var(--green-dark);
 }
 
 .filter-options {
@@ -159,11 +181,66 @@
 }
 
 /* ===========================================
-   ORIGINAL STYLING (KEPT THE SAME)
+   QUICK STATS
+   =========================================== */
+.quick-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+  border: 1px solid var(--border-light);
+  transition: transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--primary-green);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+}
+
+.stat-icon {
+  color: var(--primary-green);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-green);
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+/* ===========================================
+   MEMBERS SUMMARY
    =========================================== */
 .members-summary {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   color: #666;
   font-size: 1.1rem;
   padding: 1rem;
@@ -184,15 +261,80 @@
   display: inline-block;
 }
 
-/* Modern grid layout */
+/* ===========================================
+   TAB NAVIGATION
+   =========================================== */
+.tab-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  background: white;
+  padding: 0.75rem;
+  border-radius: 10px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border-light);
+}
+
+.tab-button {
+  padding: 0.75rem 1.25rem;
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tab-button:hover {
+  background: var(--green-light);
+  border-color: var(--primary-green);
+}
+
+.tab-button.active {
+  background: var(--primary-green);
+  color: white;
+  border-color: var(--primary-green);
+}
+
+.tab-badge {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.2rem 0.5rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.tab-button.active .tab-badge {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ===========================================
+   TAB CONTENT
+   =========================================== */
+.tab-content {
+  background: white;
+  border-radius: 10px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border-light);
+  padding: 1.5rem;
+  min-height: 300px;
+}
+
+/* ===========================================
+   REGIONS GRID (ALL REGIONS VIEW)
+   =========================================== */
 .regions-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 1.5rem;
-  margin-bottom: 2rem;
 }
 
-/* Region card styling */
 .region-card {
   background: white;
   border-radius: 12px;
@@ -209,22 +351,12 @@
 
 .region-header {
   padding: 1.5rem;
-  background: linear-gradient(135deg, var(--primary-green), #3a5725);
+  background: linear-gradient(135deg, var(--primary-green), var(--green-dark));
   color: white;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  user-select: none;
 }
 
-.region-header:hover {
-  background: linear-gradient(135deg, #3a5725, #2d4420);
-}
-
-.region-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0;
+.region-header h3 {
+  margin: 0 0 0.75rem 0;
   font-size: 1.3rem;
   font-weight: 600;
 }
@@ -232,7 +364,6 @@
 .region-stats {
   display: flex;
   gap: 1rem;
-  margin-top: 0.75rem;
   font-size: 0.9rem;
   opacity: 0.9;
 }
@@ -244,75 +375,91 @@
   backdrop-filter: blur(10px);
 }
 
-.expand-icon {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.region-details {
+  padding: 1.5rem;
+  background: var(--green-lighter);
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
   font-size: 0.9rem;
 }
 
-.expand-icon.expanded {
-  transform: rotate(180deg);
-}
-
-/* Countries list */
-.countries-list {
-  padding: 0;
-  background: var(--green-lighter);
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
-}
-
-.countries-list.expanded {
-  max-height: 5000px;
-  padding: 1rem;
-}
-
-.country-item {
-  background: white;
-  border-radius: 8px;
-  margin-bottom: 0.75rem;
-  border: 1px solid var(--border-light);
-  overflow: hidden;
-  transition: all 0.2s ease;
-}
-
-.country-item:last-child {
+.detail-row:last-child {
   margin-bottom: 0;
 }
 
-.country-item:hover {
-  border-color: var(--primary-green);
+.detail-value {
+  font-weight: 600;
+  color: var(--primary-green);
+}
+
+.region-countries {
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.country-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  border: 1px solid var(--border-light);
+}
+
+.country-flag {
+  font-size: 1rem;
+}
+
+/* ===========================================
+   REGION CONTENT (SINGLE REGION VIEW)
+   =========================================== */
+.region-content {
+  padding: 0;
+}
+
+.region-title {
+  margin: 0 0 1.5rem 0;
+  color: var(--primary-green);
+  font-size: 1.5rem;
+  font-weight: 600;
+  border-bottom: 2px solid var(--green-light);
+  padding-bottom: 0.75rem;
+}
+
+.country-section {
+  margin-bottom: 2rem;
 }
 
 .country-header {
-  padding: 1rem 1.25rem;
-  background: var(--green-light);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  cursor: pointer;
-  transition: background 0.2s ease;
-  user-select: none;
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--green-light);
+  border-radius: 8px;
 }
 
-.country-header:hover {
-  background: #e3ebde;
-}
-
-.country-name {
-  font-weight: 600;
+.country-header h4 {
+  margin: 0;
   color: var(--primary-green);
+  font-size: 1.2rem;
+  font-weight: 600;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.country-flag {
-  font-size: 1.2rem;
-}
-
 .country-org-count {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: #666;
   background: white;
   padding: 0.25rem 0.75rem;
@@ -320,35 +467,19 @@
   font-weight: 500;
 }
 
-/* Members grid - enhanced */
 .members-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1rem;
-  padding: 0;
-  background: #fdfdfd;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
-}
-
-.members-grid.expanded {
-  max-height: 5000px;
-  padding: 1.25rem;
-  border-top: 1px solid var(--border-light);
 }
 
 .member-card {
-  display: flex;
   padding: 1.25rem;
   border-radius: 10px;
   background: white;
   border: 1px solid var(--border-light);
   transition: all 0.3s ease;
-  text-decoration: none;
-  color: inherit;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-  position: relative;
 }
 
 .member-card:hover {
@@ -358,54 +489,30 @@
   border-color: var(--primary-green);
 }
 
-.member-logo-container {
-  position: relative;
-  margin-right: 1.25rem;
-  flex-shrink: 0;
-}
-
-.member-logo {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-  border-radius: 8px;
-  background: #f8f9fa;
-  padding: 6px;
-  border: 1px solid var(--border-light);
-}
-
-.delegate-badge {
-  position: absolute;
-  top: -6px;
-  right: -6px;
-  background: #10b981;
-  color: white;
-  border-radius: 50%;
-  width: 22px;
-  height: 22px;
-  font-size: 12px;
+.member-header {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.member-info {
-  flex: 1;
-  min-width: 0;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
 }
 
 .member-name {
-  margin: 0 0 0.5rem 0;
+  margin: 0;
   font-size: 1.05rem;
   font-weight: 600;
   color: #1f2937;
   line-height: 1.3;
+  flex: 1;
+}
+
+.delegate-badge {
+  color: #10b981;
+  font-size: 1rem;
+  margin-left: 0.5rem;
 }
 
 .member-category {
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.75rem 0;
   font-size: 0.85rem;
   color: var(--primary-green);
   font-weight: 500;
@@ -428,57 +535,39 @@
 .member-stats {
   display: flex;
   gap: 1.5rem;
-  font-size: 0.8rem;
+  margin-top: 0.75rem;
 }
 
 .stat {
-  color: #4b5563;
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 0.25rem;
+  font-size: 0.8rem;
+  color: #4b5563;
 }
 
-.stat strong {
-  color: var(--primary-green);
+.stat-value {
   font-weight: 600;
-}
-
-/* Quick stats overview */
-.quick-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.stat-card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: var(--shadow-soft);
-  text-align: center;
-  border: 1px solid var(--border-light);
-  transition: transform 0.2s ease;
-}
-
-.stat-card:hover {
-  transform: translateY(-2px);
-}
-
-.stat-number {
-  font-size: 2rem;
-  font-weight: 700;
   color: var(--primary-green);
-  margin-bottom: 0.5rem;
+  font-size: 1rem;
 }
 
 .stat-label {
-  font-size: 0.9rem;
-  color: #666;
-  font-weight: 500;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-/* Responsive Design */
+.no-results {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+/* ===========================================
+   RESPONSIVE DESIGN
+   =========================================== */
 @media (max-width: 768px) {
   .text-content {
     padding: 1rem;
@@ -503,38 +592,22 @@
     grid-template-columns: 1fr;
   }
   
-  .region-header {
-    padding: 1.25rem;
-  }
-  
-  .region-title {
-    font-size: 1.1rem;
-  }
-  
   .quick-stats {
     grid-template-columns: 1fr;
   }
   
-  .member-card {
-    padding: 1rem;
+  .members-grid {
+    grid-template-columns: 1fr;
   }
   
-  .member-logo {
-    width: 50px;
-    height: 50px;
+  .tab-navigation {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 0.5rem;
   }
   
-  .member-stats {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .countries-list.expanded {
-    padding: 0.75rem;
-  }
-  
-  .members-grid.expanded {
-    padding: 1rem;
+  .tab-button {
+    white-space: nowrap;
   }
 }
 

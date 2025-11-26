@@ -16,7 +16,7 @@ import emailjs from "emailjs-com";
 import Newsletter from "../components/Newsletter";
 import "../styles/Contact.css";
 import heroImg from "../assets/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg";
-import journeyImg from "../assets/p.webp";
+import journeyImg from "../assets/joyful-harvest-in-the-fields-101239609.jpg";
 
 
 const ContactSection = () => {

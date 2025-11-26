@@ -274,13 +274,13 @@ const MembershipAfrica = () => {
               <span>General Inquiries
                 : info@inofoafrica.org</span>
             </Link>
-            <a href="tel:+1234567890" className="btn-secondary">
+            <Link to="mailto:membership@inofoafrica.org" className="btn-secondary">
               <svg className="btn-icon" viewBox="0 0 24 24">
                 <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" />
               </svg>
               <span>Membership Inquiries
                  : membership@inofoafrica.org </span>
-            </a>
+            </Link>
           </div>
         </motion.div>
       </motion.section>

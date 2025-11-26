@@ -110,10 +110,6 @@ const Footer = () => {
               <h3 className="footer-title">Resources</h3>
               <ul className="footer-links">
                 <li><a href="#">Publications</a></li>
-                <li><a href="#">Research Papers</a></li>
-                <li><a href="#">Organic Standards</a></li>
-                <li><a href="#">Training Materials</a></li>
-                <li><a href="#">Success Stories</a></li>
                 <li><a href="#">FAQ</a></li>
               </ul>
             </div>

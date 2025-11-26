@@ -384,7 +384,7 @@ const ServicesAfrica = () => {
             <div className="cta-buttons">
               <Link
                 to="/contact"
-                className="btn-primary primary-btn"
+                className="btn-secondary secondary-btn"
               >
                 <span>Get Involved Today!</span>
                 <FaHandshake className="btn-icon" />

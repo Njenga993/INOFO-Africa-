@@ -2,8 +2,6 @@ import { FaArrowRight } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import "../styles/WhoWeAre.css";
-
-// ✅ Import the image from assets
 import WhoWeAreImage from "../assets/busi.webp";
 
 const WhoWeAre = () => {
@@ -16,59 +14,61 @@ const WhoWeAre = () => {
 
   return (
     <motion.section
-      className="who-we-are-section"
+      className="nwa-section"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6 }}
     >
-      <div className="who-we-are-container">
-        {/* Left: Image */}
+      <div className="nwa-wrapper">
+
+        {/* Left Image */}
         <motion.div
-          className="who-we-are-image"
+          className="nwa-image-wrapper"
           initial={{ x: -40, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
-          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <img src={WhoWeAreImage} alt="Farmers Working Together" />
+          <div className="nwa-image-card">
+            <img src={WhoWeAreImage} alt="Farmers" />
+          </div>
         </motion.div>
 
-        {/* Right: Content */}
+        {/* Right Content */}
         <motion.div
-          className="who-we-are-content"
+          className="nwa-content"
           initial={{ x: 40, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
-          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2>Who We Are</h2>
-          <p className="subtitle">
+          <h2 className="nwa-title">Who We Are</h2>
+          <p className="nwa-subtitle">
             Cultivating African Collaboration for Sustainable Agriculture
           </p>
-          <p>
-            Across Africa's diverse landscapes, INOFO Africa weaves together
-            the wisdom of farmers, the resilience of tradition, and the power
-            of global solidarity.
+
+          <p className="nwa-text">
+            Across Africa’s diverse landscapes, INOFO Africa connects farmer wisdom, 
+            indigenous knowledge, and collective strength to build sustainable futures.
           </p>
-          <p>
-            Together, we're cultivating more than food we're growing a
-            movement where every community thrives in harmony with nature,
-            today and for the future.
+
+          <p className="nwa-text">
+            Together, we are cultivating more than food—we are nurturing a movement 
+            that allows every community to thrive in harmony with nature.
           </p>
-          <div className="who-cta">
-            <Link to="/about" className="btn-primary">
-              Learn More <FaArrowRight className="icon-arrow" />
+
+          <div className="nwa-btn-wrapper">
+            <Link to="/about" className="nwa-btn">
+              Learn More <FaArrowRight className="nwa-icon" />
             </Link>
           </div>
 
           {/* Stats */}
-          <div className="impact-stats">
-            {stats.map((stat, i) => (
+          <div className="nwa-stats-grid">
+            {stats.map((stat, index) => (
               <motion.div
-                key={i}
-                className="stat-card"
-                whileHover={{ scale: 1.05 }}
+                key={index}
+                whileHover={{ scale: 1.08 }}
+                className="nwa-stat-card"
               >
                 <h3>{stat.value}</h3>
                 <p>{stat.label}</p>

@@ -12,7 +12,7 @@ import raoudathImg from "../assets/Roudath.jpg";
 import charlesImg from "../assets/charles.jpg";
 
 // ✅ Import section images from assets
-import journeyImg from "../assets/p.webp";
+import journeyImg from "../assets/njoro.webp";
 import governance from "../assets/3.webp";
 import governanceImg from "../assets/all.webp";
 import heroImg from "../assets/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg";

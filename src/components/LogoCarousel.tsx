@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaSearch, FaFilter, FaTimes } from "react-icons/fa";
+import { FaSearch, FaFilter, FaTimes, FaGlobeAfrica, FaUsers, FaSeedling, FaCheckCircle } from "react-icons/fa";
 import "../styles/MembersTable.css";
 
 type Member = {
@@ -206,21 +206,11 @@ const MembersTable: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedRegion, setSelectedRegion] = useState<string>('all');
   const [selectedCountry, setSelectedCountry] = useState<string>('all');
+  const [activeTab, setActiveTab] = useState<string>('all');
   const [showFilters, setShowFilters] = useState(false);
 
   // Group members by region
   const regions = React.useMemo(() => groupByRegion(members), []);
-  
-  // Initialize all regions as collapsed
-  const [expandedRegions, setExpandedRegions] = useState<Record<string, boolean>>(() => {
-    const initial: Record<string, boolean> = {};
-    Object.keys(regions).forEach(region => {
-      initial[region] = false;
-    });
-    return initial;
-  });
-
-  const [expandedCountries, setExpandedCountries] = useState<Record<string, boolean>>({});
 
   // Get unique regions and countries for filters
   const uniqueRegions = React.useMemo(() => {
@@ -255,33 +245,17 @@ const MembersTable: React.FC = () => {
       filtered = filtered.filter(member => member.country === selectedCountry);
     }
 
+    if (activeTab !== 'all') {
+      filtered = filtered.filter(member => member.subregion === activeTab);
+    }
+
     return filtered;
-  }, [searchTerm, selectedRegion, selectedCountry]);
+  }, [searchTerm, selectedRegion, selectedCountry, activeTab]);
 
   // Group filtered members by region
   const filteredRegions = React.useMemo(() => {
     return groupByRegion(filteredMembers);
   }, [filteredMembers]);
-
-  const toggleRegion = (region: string) => {
-    setExpandedRegions(prev => ({
-      ...prev,
-      [region]: !prev[region]
-    }));
-  };
-
-  const toggleCountry = (region: string, country: string) => {
-    const uniqueKey = `${region}-${country}`;
-    setExpandedCountries(prev => ({
-      ...prev,
-      [uniqueKey]: !prev[uniqueKey]
-    }));
-  };
-
-  const isCountryExpanded = (region: string, country: string): boolean => {
-    const uniqueKey = `${region}-${country}`;
-    return expandedCountries[uniqueKey] || false;
-  };
 
   const formatNumber = (num: number): string => {
     if (num === 0) return '-';
@@ -304,14 +278,38 @@ const MembersTable: React.FC = () => {
     setSearchTerm('');
     setSelectedRegion('all');
     setSelectedCountry('all');
+    setActiveTab('all');
   };
 
   // Check if any filters are active
-  const hasActiveFilters = searchTerm || selectedRegion !== 'all' || selectedCountry !== 'all';
+  const hasActiveFilters = searchTerm || selectedRegion !== 'all' || selectedCountry !== 'all' || activeTab !== 'all';
+
+  // Get statistics for each region
+  const getRegionStats = (regionName: string) => {
+    const regionMembers = members.filter(m => m.subregion === regionName);
+    const totalMembers = regionMembers.reduce((sum, member) => sum + member.membersCount, 0);
+    const totalAcreage = regionMembers.reduce((sum, member) => sum + member.acreage, 0);
+    const totalDelegates = regionMembers.filter(member => member.hasDelegate).length;
+    const countries = new Set(regionMembers.map(m => m.country)).size;
+    
+    return {
+      organizations: regionMembers.length,
+      members: totalMembers,
+      acreage: totalAcreage,
+      delegates: totalDelegates,
+      countries
+    };
+  };
 
   return (
     <div className="text-content">
-      <h2>INOFO Africa Member Organizations since 2017</h2>
+      <div className="header-section">
+        <h2>INOFO Africa Member Organizations since 2017</h2>
+        <div className="header-subtitle">
+          <FaGlobeAfrica className="header-icon" />
+          <span>Connecting organic farming communities across Africa</span>
+        </div>
+      </div>
       
       {/* Filter Controls */}
       <div className="filter-controls">
@@ -390,18 +388,30 @@ const MembersTable: React.FC = () => {
       {/* Quick Stats Overview */}
       <div className="quick-stats">
         <div className="stat-card">
+          <div className="stat-icon">
+            <FaUsers />
+          </div>
           <div className="stat-number">+{filteredMembers.length}</div>
           <div className="stats-label">Organizations</div>
         </div>
         <div className="stat-card">
+          <div className="stat-icon">
+            <FaUsers />
+          </div>
           <div className="stat-number">+{formatNumber(totalMembers)}</div>
           <div className="stats-label">Total Members</div>
         </div>
         <div className="stat-card">
+          <div className="stat-icon">
+            <FaSeedling />
+          </div>
           <div className="stat-number">+{formatNumber(totalAcreage)}</div>
           <div className="stats-label">Total Acreage</div>
         </div>
         <div className="stat-card">
+          <div className="stat-icon">
+            <FaCheckCircle />
+          </div>
           <div className="stat-number">+{totalDelegates}</div>
           <div className="stats-label">2024 GA Delegates</div>
         </div>
@@ -418,101 +428,137 @@ const MembersTable: React.FC = () => {
         )}
       </p>
       
-      {/* Regions Grid */}
-      <div className="regions-grid">
-        {Object.keys(filteredRegions).map(region => (
-          <div key={region} className="region-card">
-            <div 
-              className="region-header" 
-              onClick={() => toggleRegion(region)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  toggleRegion(region);
-                }
-              }}
+      {/* Tab Navigation */}
+      <div className="tab-navigation">
+        <button 
+          className={`tab-button ${activeTab === 'all' ? 'active' : ''}`}
+          onClick={() => setActiveTab('all')}
+        >
+          All Regions
+        </button>
+        {uniqueRegions.map(region => {
+          const stats = getRegionStats(region);
+          return (
+            <button 
+              key={region}
+              className={`tab-button ${activeTab === region ? 'active' : ''}`}
+              onClick={() => setActiveTab(region)}
             >
-              <div className="region-title">
-                {region}
-                <span className={`expand-icon ${expandedRegions[region] ? "expanded" : ""}`}>
-                  ▼
-                </span>
-              </div>
-              <div className="region-stats">
-                <span className="stat-badge">
-                  {Object.keys(filteredRegions[region]).length} countries
-                </span>
-                <span className="stat-badge">
-                  {Object.values(filteredRegions[region]).flat().length} organizations
-                </span>
-              </div>
-            </div>
+              {region}
+              <span className="tab-badge">{stats.organizations}</span>
+            </button>
+          );
+        })}
+      </div>
 
-            <div className={`countries-list ${expandedRegions[region] ? "expanded" : ""}`}>
-              {Object.keys(filteredRegions[region]).map(country => {
-                const countryKey = `${region}-${country}`;
-                const isExpanded = isCountryExpanded(region, country);
-                const countryMembers = filteredRegions[region][country];
-                
-                return (
-                  <div key={countryKey} className="country-item">
-                    <div 
-                      className="country-header" 
-                      onClick={() => toggleCountry(region, country)}
-                      role="button"
-                      tabIndex={0}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                          e.preventDefault();
-                          toggleCountry(region, country);
-                        }
-                      }}
-                    >
-                      <span className="country-name">
-                        <span className="country-flag">{getCountryFlag(country)}</span>
-                        {country}
+      {/* Tab Content */}
+      <div className="tab-content">
+        {activeTab === 'all' ? (
+          // All regions view - show region cards
+          <div className="regions-grid">
+            {Object.keys(filteredRegions).map(region => {
+              const stats = getRegionStats(region);
+              return (
+                <div key={region} className="region-card">
+                  <div className="region-header">
+                    <h3>{region}</h3>
+                    <div className="region-stats">
+                      <span className="stat-badge">
+                        {stats.countries} countries
                       </span>
-                      <span className="country-org-count">
-                        {countryMembers.length} orgs
+                      <span className="stat-badge">
+                        {stats.organizations} organizations
                       </span>
-                    </div>
-
-                    <div className={`members-grid ${isExpanded ? "expanded" : ""}`}>
-                      {countryMembers.map((member) => (
-                        <div key={member.id} className="member-card">
-                          <div className="member-logo-container">
-                            {member.hasDelegate && (
-                              <span className="delegate-badge" title="Has delegate for 2024 GA">✓</span>
-                            )}
-                          </div>
-                          <div className="member-info">
-                            <h4 className="member-name">{member.name}</h4>
-                            {member.category && (
-                              <p className="member-category">{member.category}</p>
-                            )}
-                            <p className="member-location">
-                              📍 {member.location}
-                            </p>
-                            <div className="member-stats">
-                              <span className="stat">
-                                👥 <strong>{formatNumber(member.membersCount)}</strong> members
-                              </span>
-                              <span className="stat">
-                                🌱 <strong>{formatNumber(member.acreage)}</strong> acres
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
                     </div>
                   </div>
-                );
-              })}
-            </div>
+                  <div className="region-details">
+                    <div className="detail-row">
+                      <span>Members:</span>
+                      <span className="detail-value">{formatNumber(stats.members)}</span>
+                    </div>
+                    <div className="detail-row">
+                      <span>Acreage:</span>
+                      <span className="detail-value">{formatNumber(stats.acreage)}</span>
+                    </div>
+                    <div className="detail-row">
+                      <span>Delegates:</span>
+                      <span className="detail-value">{stats.delegates}</span>
+                    </div>
+                  </div>
+                  <div className="region-countries">
+                    {Object.keys(filteredRegions[region]).map(country => (
+                      <div key={country} className="country-tag">
+                        <span className="country-flag">{getCountryFlag(country)}</span>
+                        <span>{country}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
-        ))}
+        ) : (
+          // Single region view - show country cards with member details
+          <div className="region-content">
+            <h3 className="region-title">{activeTab}</h3>
+            {Object.keys(filteredRegions).length === 0 ? (
+              <div className="no-results">
+                <p>No organizations found for the selected filters.</p>
+              </div>
+            ) : (
+              Object.keys(filteredRegions).map(region => (
+                <div key={region}>
+                  {Object.keys(filteredRegions[region]).map(country => {
+                    const countryMembers = filteredRegions[region][country];
+                    return (
+                      <div key={country} className="country-section">
+                        <div className="country-header">
+                          <h4>
+                            <span className="country-flag">{getCountryFlag(country)}</span>
+                            {country}
+                          </h4>
+                          <span className="country-org-count">{countryMembers.length} organizations</span>
+                        </div>
+                        <div className="members-grid">
+                          {countryMembers.map((member) => (
+                            <div key={member.id} className="member-card">
+                              <div className="member-header">
+                                <h5 className="member-name">{member.name}</h5>
+                                {member.hasDelegate && (
+                                  <span className="delegate-badge" title="Has delegate for 2024 GA">
+                                    <FaCheckCircle />
+                                  </span>
+                                )}
+                              </div>
+                              {member.category && (
+                                <p className="member-category">{member.category}</p>
+                              )}
+                              <p className="member-location">
+                                📍 {member.location}
+                              </p>
+                              <div className="member-stats">
+                                <div className="stat">
+                                  <FaUsers />
+                                  <span className="stat-value">{formatNumber(member.membersCount)}</span>
+                                  <span className="stat-label">members</span>
+                                </div>
+                                <div className="stat">
+                                  <FaSeedling />
+                                  <span className="stat-value">{formatNumber(member.acreage)}</span>
+                                  <span className="stat-label">acres</span>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              ))
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

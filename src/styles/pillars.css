@@ -1,19 +1,68 @@
-/* Update your pillars.css with these styles */
 :root {
-  --primary-green: #2ecc71; /* Your primary green color */
-  --secondary-green: #27ae60; /* Your secondary green */
-  --teal-accent: #1abc9c; /* Your teal color */
+  --primary-green: #2e7d32; /* Your primary green color */
+  --secondary-green: #1b5e20; /* Your secondary green */
+  --teal-accent: #4caf50; /* Your teal color */
   --text-dark: #333333;
   --text-medium: #666666;
+  --bg-light: #f9f9f9;
+  --card-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  --card-hover-shadow: 0 10px 28px rgba(0,0,0,0.12);
 }
 
-/* Update your pillars.css */
-
+/* Section styling */
 .mv-section {
   padding: 5rem 0;
-  background: #f9f9f9;
+  background: var(--bg-light);
+  position: relative;
+  overflow: hidden;
 }
 
+.mv-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 235px;
+  background: linear-gradient(135deg, rgba(46, 204, 113, 0.1) 0%, rgba(26, 188, 156, 0.1) 100%);
+  z-index: 0;
+}
+
+/* Header styling */
+.mv-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.mv-main-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--primary-green);
+  position: relative;
+}
+
+.mv-main-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  margin: 0.8rem auto 0;
+  background:  var(--primary-green);
+  border-radius: 2px;
+}
+
+.mv-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-medium);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Mission and Vision blocks */
 .mv-container {
   max-width: 1100px;
   margin: 0 auto;
@@ -21,16 +70,18 @@
   gap: 2rem;
   padding: 0 1.5rem;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
 }
 
 .mv-block {
   flex: 1;
   min-width: 300px;
   padding: 2.5rem 2rem;
-  border-radius: 14px;
+  border-radius: 16px;
   background: #fff;
   text-align: center;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  box-shadow: var(--card-shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -39,39 +90,47 @@
 
 .mv-block:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+  box-shadow: var(--card-hover-shadow);
 }
 
 .mission-block {
-  border-top: 5px solid var(--secondary-green);
+  border-left: 5px solid white;
 }
 
 .vision-block {
-  border-top: 5px solid var(--teal-accent);
+  border-left: 5px solid white;
 }
 
-/* Circular Overlay - This will expand and morph to cover the card */
-.circular-overlay {
+/* Gradient Overlay */
+.gradient-overlay {
   position: absolute;
-  top: 50%;
-  left: 40%;
-  width: 100px;
-  height: 100px;
-  background: var(--primary-green);
-  border-radius: 50%;
-  transform: translate(-50%, -50%) scale(0);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:  var(--primary-green);
   z-index: 1;
   pointer-events: none;
-  transform-origin: center;
 }
 
+/* Card content */
 .card-content {
   position: relative;
   z-index: 2;
   transition: color 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-/* Text styles that change on hover */
+.card-icon {
+  font-size: 3rem;
+  color: var(--primary-green);
+  margin-bottom: 1.5rem;
+  transition: color 0.3s ease;
+}
+
 .mv-title {
   font-size: 1.9rem;
   font-weight: 700;
@@ -88,17 +147,20 @@
 }
 
 /* Change text color to white when card is hovered */
+.mv-block:hover .card-icon,
 .mv-block:hover .card-content .mv-title,
 .mv-block:hover .card-content .mv-text {
   color: #fff;
 }
 
-/* Values */
+/* Values section */
 .values-section {
   width: 100%;
   margin: 4rem auto 0;
   padding: 0 1.5rem;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .values-title {
@@ -146,6 +208,13 @@
   box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
 
+.value-icon {
+  font-size: 2rem;
+  color: var(--primary-green);
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
 .value-item h4 {
   font-size: 1.3rem;
   font-weight: 600;
@@ -162,6 +231,7 @@
 }
 
 /* Change text color to white when value item is hovered */
+.value-item:hover .value-icon,
 .value-item:hover .card-content h4,
 .value-item:hover .card-content p {
   color: #fff;
@@ -169,6 +239,14 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .mv-main-title {
+    font-size: 2rem;
+  }
+  
+  .mv-subtitle {
+    font-size: 1rem;
+  }
+  
   .values-title {
     font-size: 1.6rem;
   }
@@ -197,8 +275,15 @@
   .mv-text {
     font-size: 1rem;
   }
+  
+  .card-icon {
+    font-size: 2.5rem;
+  }
+  
+  .value-icon {
+    font-size: 1.5rem;
+  }
 }
-/* Add these to your existing pillars.css */
 
 /* Better touch support for mobile devices */
 .mv-block, .value-item {
@@ -208,8 +293,10 @@
 
 /* Ensure text remains visible during touch on mobile */
 @media (max-width: 768px) {
+  .mv-block:active .card-icon,
   .mv-block:active .card-content .mv-title,
   .mv-block:active .card-content .mv-text,
+  .value-item:active .value-icon,
   .value-item:active .card-content h4,
   .value-item:active .card-content p {
     color: #fff;

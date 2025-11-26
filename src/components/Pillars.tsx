@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import { useState } from 'react';
+import { FaSeedling, FaHandshake, FaBalanceScale, FaClipboardList } from 'react-icons/fa';
 import '../styles/pillars.css';
 
 const MissionVision = () => {
-  const [touchedCard, setTouchedCard] = useState<string | null>(null);
+  const [activeCard, setActiveCard] = useState<string | null>(null);
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -23,68 +24,64 @@ const MissionVision = () => {
     }
   };
 
-  // Hover animation variants for the circular effect
-  const hoverVariants: Variants = {
+  // Animation for the gradient overlay
+  const overlayVariants: Variants = {
     rest: {
-      scale: 0,
-      borderRadius: "70%",
       opacity: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut"
-      }
+      transition: { duration: 0.3 }
     },
     hover: {
-      scale: 4,
-      borderRadius: "30px", // Match the card border-radius
       opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  // For value items which have different border-radius
-  const valueHoverVariants: Variants = {
-    rest: {
-      scale: 0,
-      borderRadius: "50%",
-      opacity: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut"
-      }
-    },
-    hover: {
-      scale: 4,
-      borderRadius: "12px", // Match the value item border-radius
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
+      transition: { duration: 0.4 }
     }
   };
 
   const values = [
-    { title: "Farmer-Centered", text: "Putting organic farmers at the heart of everything we do." },
-    { title: "Collaboration", text: "Working together for greater impact." },
-    { title: "Equity", text: "Commitment to ecological balance and fairness." },
-    { title: "Transparency", text: "Open and honest in all our dealings." }
+    { 
+      title: "Farmer-Centered", 
+      text: "Putting organic farmers at the heart of everything we do.",
+      icon: <FaSeedling />
+    },
+    { 
+      title: "Collaboration", 
+      text: "Working together for greater impact.",
+      icon: <FaHandshake />
+    },
+    { 
+      title: "Equity", 
+      text: "Commitment to ecological balance and fairness.",
+      icon: <FaBalanceScale />
+    },
+    { 
+      title: "Transparency", 
+      text: "Open and honest in all our dealings.",
+      icon: <FaClipboardList />
+    }
   ];
-
-  // Touch event handlers
-  const handleTouchStart = (cardId: string) => {
-    setTouchedCard(cardId);
-  };
-
-  const handleTouchEnd = () => {
-    setTimeout(() => setTouchedCard(null), 150);
-  };
 
   return (
     <section className="mv-section">
+      <div className="mv-header">
+        <motion.h1 
+          className="mv-main-title"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          Our Purpose & Values
+        </motion.h1>
+        <motion.p 
+          className="mv-subtitle"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          Guiding principles that shape our commitment to organic farming in Africa
+        </motion.p>
+      </div>
+
       <motion.div 
         className="mv-container"
         initial="hidden"
@@ -96,18 +93,18 @@ const MissionVision = () => {
         <motion.div 
           className="mv-block mission-block"
           variants={itemVariants}
-          whileHover="hover"
-          initial="rest"
-          animate="rest"
-          onTouchStart={() => handleTouchStart('mission')}
-          onTouchEnd={handleTouchEnd}
+          onMouseEnter={() => setActiveCard('mission')}
+          onMouseLeave={() => setActiveCard(null)}
+          onTouchStart={() => setActiveCard('mission')}
+          onTouchEnd={() => setActiveCard(null)}
         >
           <motion.div 
-            className="circular-overlay"
-            variants={hoverVariants}
-            animate={touchedCard === 'mission' ? 'hover' : undefined}
+            className="gradient-overlay"
+            variants={overlayVariants}
+            animate={activeCard === 'mission' ? 'hover' : 'rest'}
           />
           <div className="card-content">
+            
             <h2 className="mv-title">Our Mission</h2>
             <p className="mv-text">
               Empowering farming communities in Africa in organic agriculture for a just transition towards sustainable food systems.
@@ -119,23 +116,22 @@ const MissionVision = () => {
         <motion.div 
           className="mv-block vision-block"
           variants={itemVariants}
-          whileHover="hover"
-          initial="rest"
-          animate="rest"
-          onTouchStart={() => handleTouchStart('vision')}
-          onTouchEnd={handleTouchEnd}
+          onMouseEnter={() => setActiveCard('vision')}
+          onMouseLeave={() => setActiveCard(null)}
+          onTouchStart={() => setActiveCard('vision')}
+          onTouchEnd={() => setActiveCard(null)}
         >
           <motion.div 
-            className="circular-overlay"
-            variants={hoverVariants}
-            animate={touchedCard === 'vision' ? 'hover' : undefined}
+            className="gradient-overlay"
+            variants={overlayVariants}
+            animate={activeCard === 'vision' ? 'hover' : 'rest'}
           />
           <div className="card-content">
+            
             <h2 className="mv-title">Our Vision</h2>
             <p className="mv-text">
               Improved livelihoods, healthy and resilient environments 
-              for future 
-              generations.
+              for future generations.
             </p>
           </div>
         </motion.div>
@@ -165,18 +161,20 @@ const MissionVision = () => {
               key={i} 
               className="value-item"
               variants={itemVariants}
-              whileHover="hover"
-              initial="rest"
-              animate="rest"
-              onTouchStart={() => handleTouchStart(`value-${i}`)}
-              onTouchEnd={handleTouchEnd}
+              onMouseEnter={() => setActiveCard(`value-${i}`)}
+              onMouseLeave={() => setActiveCard(null)}
+              onTouchStart={() => setActiveCard(`value-${i}`)}
+              onTouchEnd={() => setActiveCard(null)}
             >
               <motion.div 
-                className="circular-overlay value-overlay"
-                variants={valueHoverVariants}
-                animate={touchedCard === `value-${i}` ? 'hover' : undefined}
+                className="gradient-overlay"
+                variants={overlayVariants}
+                animate={activeCard === `value-${i}` ? 'hover' : 'rest'}
               />
               <div className="card-content">
+                <div className="value-icon">
+                  {val.icon}
+                </div>
                 <h4>{val.title}</h4>
                 <p>{val.text}</p>
               </div>

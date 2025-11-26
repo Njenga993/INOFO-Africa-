@@ -1,89 +1,136 @@
-.who-we-are-section {
+/* SECTION */
+.nwa-section {
   padding: 6rem 0;
-  background: #fff;
+  background: #ffffff;
 }
 
-.who-we-are-container {
-  max-width: 1200px;
+.nwa-wrapper {
+  max-width: 1300px;
   margin: 0 auto;
   padding: 0 2rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 4rem;
   align-items: center;
 }
 
-.who-we-are-image img {
-  width: 100%;
-  border-radius: 16px;
+/* IMAGE */
+.nwa-image-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
   box-shadow: var(--shadow-medium);
+  transform: translateY(0);
+  transition: 0.3s ease;
+}
+
+.nwa-image-card:hover {
+  transform: translateY(-6px);
+}
+
+.nwa-image-card img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
-.who-we-are-content h2 {
-  font-size: 2.8rem;
+/* CONTENT */
+.nwa-title {
+  font-size: 3rem;
   color: var(--jungle-green);
   margin-bottom: 1rem;
-  position: relative;
+  font-weight: 700;
 }
 
-.who-we-are-content .subtitle {
-  font-size: 1.4rem;
+.nwa-subtitle {
+  font-size: 1.35rem;
   color: var(--light-jungle);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.8rem;
+  font-weight: 500;
 }
 
-.who-we-are-content p {
+.nwa-text {
   font-size: 1.1rem;
   color: var(--text-dark);
-  margin-bottom: 1.2rem;
   line-height: 1.7;
+  margin-bottom: 1.2rem;
 }
 
-.who-cta {
+/* BUTTON */
+.nwa-btn-wrapper {
   margin-top: 2rem;
 }
 
-.impact-stats {
+.nwa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.9rem 1.8rem;
+  background: var(--jungle-green);
+  color: #fff;
+  border-radius: 50px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.nwa-btn:hover {
+  background: var(--jungle-dark);
+}
+
+.nwa-icon {
+  font-size: 1.1rem;
+}
+
+/* STATS */
+.nwa-stats-grid {
   margin-top: 3rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 1.5rem;
 }
 
-.stat-card {
-  background: var(--muted-green);
-  padding: 1.5rem;
-  border-radius: 12px;
+.nwa-stat-card {
+  padding: 1.7rem;
+  border-radius: 14px;
   text-align: center;
+  background: var(--muted-green);
   box-shadow: var(--shadow-light);
+  transition: 0.3s ease;
 }
 
-.stat-card h3 {
+.nwa-stat-card h3 {
   font-size: 2rem;
   color: var(--jungle-green);
-  margin-bottom: 0.5rem;
+  font-weight: 700;
 }
 
-.stat-card p {
+.nwa-stat-card p {
   font-size: 1rem;
   color: var(--text-medium);
 }
 
-@media (max-width: 768px) {
-  .who-we-are-container {
+/* MOBILE */
+@media (max-width: 900px) {
+  .nwa-wrapper {
     grid-template-columns: 1fr;
   }
-  .who-we-are-image {
-    order: -1;
+
+  .nwa-title {
+    font-size: 2.4rem;
   }
 }
-    .who-we-are-section {
-        padding: 4rem 0;
-    }
-    .who-we-are-content h2 {
-        font-size: 2.2rem;
-    }
-    .who-we-are-content .subtitle {
-        font-size: 1.2rem;
-    }
+
+@media (max-width: 600px) {
+  .nwa-title {
+    font-size: 2rem;
+  }
+
+  .nwa-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .nwa-section {
+    padding: 4rem 0;
+  }
+}
