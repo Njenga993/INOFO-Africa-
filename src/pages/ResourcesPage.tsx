@@ -14,6 +14,21 @@ import progressImg3 from "../assets/uganda.jpg";
 import progressImg4 from "../assets/p.webp";
 import progressImg5 from "../assets/all.webp";
 import progressImg6 from "../assets/Tshawekazi_.jpg";
+import progressImg7 from "../assets/AM.jpeg";
+import progressImg8 from "../assets/AM_1.jpeg";
+import progressImg9 from "../assets/AM_2.jpeg";
+import progressImg10 from "../assets/AM_3.jpeg";
+import progressImg11 from "../assets/AM_4.jpeg";
+import progressImg12 from "../assets/AM_5.jpeg";
+import progressImg13 from "../assets/AM_6.jpeg";
+import progressImg14 from "../assets/AM_7.jpeg";
+import progressImg15 from "../assets/AM_8.jpeg";
+import progressImg16 from "../assets/AM_11.jpeg";
+import progressImg17 from "../assets/AM_10.jpeg";
+import progressImg18 from "../assets/AM_11.jpeg";
+import progressImg19 from "../assets/AM_12.jpeg";
+import progressImg20 from "../assets/A_9M.jpeg";
+
 
 const ResourcesPage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -86,130 +101,102 @@ const ResourcesPage = () => {
     // Adding more images to reach 20+
     {
       id: 7,
-      src: progressImg1,
+      src: progressImg7,
       title: "Water Conservation Project",
       description: "Installing new irrigation systems to conserve water resources",
       category: "Infrastructure"
     },
     {
       id: 8,
-      src: progressImg2,
+      src: progressImg8,
       title: "Women Farmers Initiative",
       description: "Empowering women farmers through education and resources",
       category: "Community"
     },
     {
       id: 9,
-      src: progressImg3,
+      src: progressImg9,
       title: "Soil Testing Workshop",
       description: "Farmers learning to test soil for optimal crop growth",
       category: "Training"
     },
     {
       id: 10,
-      src: progressImg4,
+      src: progressImg10,
       title: "Organic Certification",
       description: "Celebrating our first batch of certified organic produce",
       category: "Achievement"
     },
     {
       id: 11,
-      src: progressImg5,
+      src: progressImg11,
       title: "Equipment Distribution",
       description: "Providing modern farming equipment to rural communities",
       category: "Resources"
     },
     {
       id: 12,
-      src: progressImg6,
+      src: progressImg12,
       title: "School Garden Program",
       description: "Teaching children about agriculture through school gardens",
       category: "Education"
     },
     {
       id: 13,
-      src: progressImg1,
+      src: progressImg13,
       title: "Pest Management Training",
       description: "Natural pest control methods to protect crops without chemicals",
       category: "Training"
     },
     {
       id: 14,
-      src: progressImg2,
+      src: progressImg14,
       title: "Community Kitchen",
       description: "Building a community kitchen for processing farm produce",
       category: "Infrastructure"
     },
     {
       id: 15,
-      src: progressImg3,
+      src: progressImg15,
       title: "Digital Farming Tools",
       description: "Introducing mobile apps for weather forecasting and market prices",
       category: "Technology"
     },
     {
       id: 16,
-      src: progressImg4,
+      src: progressImg16,
       title: "Beekeeping Initiative",
       description: "Starting beekeeping projects to supplement farmer income",
       category: "Diversification"
     },
     {
       id: 17,
-      src: progressImg5,
+      src: progressImg17,
       title: "Renewable Energy Installation",
       description: "Solar panels to power irrigation systems and storage facilities",
       category: "Sustainability"
     },
     {
       id: 18,
-      src: progressImg6,
+      src: progressImg18,
       title: "Farmers' Cooperative",
       description: "Establishing a cooperative for better market access and bargaining power",
       category: "Community"
     },
     {
       id: 19,
-      src: progressImg1,
+      src: progressImg19,
       title: "Nutrition Education",
       description: "Teaching communities about nutrition and diverse diets",
       category: "Health"
     },
     {
       id: 20,
-      src: progressImg2,
+      src: progressImg20,
       title: "Climate Resilience Workshop",
       description: "Helping farmers adapt to changing climate patterns",
       category: "Training"
     },
-    {
-      id: 21,
-      src: progressImg3,
-      title: "Microfinance Program",
-      description: "Small loans to help farmers invest in their operations",
-      category: "Finance"
-    },
-    {
-      id: 22,
-      src: progressImg4,
-      title: "Export Market Development",
-      description: "Connecting local farmers with international buyers",
-      category: "Market"
-    },
-    {
-      id: 23,
-      src: progressImg5,
-      title: "Food Processing Training",
-      description: "Adding value to crops through processing techniques",
-      category: "Training"
-    },
-    {
-      id: 24,
-      src: progressImg6,
-      title: "Research Partnership",
-      description: "Collaborating with agricultural researchers to improve crop yields",
-      category: "Research"
-    }
   ];
 
   // Auto-play functionality
