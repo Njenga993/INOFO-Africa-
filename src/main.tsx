@@ -7,7 +7,7 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter basename="/INOFO-Africa-/">  {/* 👈 Important for GitHub Pages */}
+    <BrowserRouter basename="/">  {/* 👈 Important for GitHub Pages */}
       <App />
     </BrowserRouter>
   </React.StrictMode>
