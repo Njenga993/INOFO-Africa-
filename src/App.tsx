@@ -11,6 +11,7 @@ import MembershipAfrica from './pages/MembershipAfrica';
 import Contact from './pages/Contact';
 import ScrollToTopButton from './components/ScrollToTopButton';
 import ResourcesPage from './pages/ResourcesPage';
+import Snowfall from 'react-snowfall';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -32,6 +33,19 @@ function App() {
       ) : (
        <div className="App">
           {/* Main Application Layout */}
+          <Snowfall 
+  snowflakeCount={150} 
+  color="white"
+  style={{
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100vw',
+    height: '100vh',
+    zIndex: 9999, // very high
+    pointerEvents: 'none'
+  }}
+/>
           <Navbar/>
           <Routes>
             <Route path="/" element={<Home />} />

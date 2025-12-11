@@ -4,6 +4,7 @@ import { FaImages, FaExpand, FaCompress, FaArrowRight, FaArrowLeft, FaPlay, FaPa
 import { useState, useEffect, useRef } from "react";
 import "../styles/ResourcesPage.css";
 import Newsletter from "../components/Newsletter";
+import SEO from "../components/SEO"; // Import the SEO component
 import heroImg from "../assets/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg";
 import comingSoonImg from "../assets/talk.webp";
 
@@ -28,7 +29,6 @@ import progressImg17 from "../assets/AM_10.jpeg";
 import progressImg18 from "../assets/AM_11.jpeg";
 import progressImg19 from "../assets/AM_12.jpeg";
 import progressImg20 from "../assets/A_9M.jpeg";
-
 
 const ResourcesPage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -270,253 +270,187 @@ const ResourcesPage = () => {
     return thumbnails;
   };
 
+  // Schema for the resources page
+  const resourcesSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Resources - INOFO Africa",
+    "description": "Educational resources, publications, and tools for African organic farmers to enhance sustainable farming practices and improve food sovereignty.",
+    "url": "https://www.inofoafrica.org/resources",
+    "mainEntity": {
+      "@type": "ItemList",
+      "numberOfItems": progressImages.length,
+      "itemListElement": progressImages.map((image, index) => ({
+        "@type": "ImageObject",
+        "position": index + 1,
+        "name": image.title,
+        "description": image.description,
+        "url": image.src,
+        "category": image.category
+      }))
+    }
+  };
+
   return (
-    <motion.main
-      className="resources-page"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      {/* Hero Section */}
-      <motion.header
-        className="R-hero-header"
-        style={{ backgroundImage: `url(${heroImg})` }}
+    <>
+      {/* Add the SEO component with custom props for the Resources page */}
+      <SEO
+        title="Resources | INOFO Africa"
+        description="INOFO Africa provides valuable resources for indigenous organic farmers including educational publications, practical tools, market insights, and sustainable practices guides to enhance farming productivity and food sovereignty."
+        keywords={[
+          "INOFO Africa Resources",
+          "Organic Farming Resources Africa",
+          "Farmer Education Africa",
+          "Sustainable Agriculture Guides",
+          "African Farming Tools",
+          "Agroecology Resources",
+          "Food Sovereignty Materials",
+          "Organic Certification Resources",
+          "Farmer Training Materials Africa",
+          "Climate Resilience Resources",
+          "Indigenous Knowledge Resources",
+          "Agricultural Publications Africa"
+        ]}
+        canonical="https://www.inofoafrica.org/resources"
+        image={heroImg}
+        type="website"
+        schema={resourcesSchema}
+      />
+      
+      <motion.main
+        className="resources-page"
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
       >
-        <div className="hero-overlay">
-          <motion.h1
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            Resources
-          </motion.h1>
-        </div>
-      </motion.header>
-
-      {/* Coming Soon Section */}
-      <motion.section
-        className="coming-soon-section"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={containerVariants}
-      >
-        <div className="coming-soon-container">
-          <motion.div 
-            className="coming-soon-content"
-            variants={itemVariants}
-          >
-            <div className="coming-soon-icon">
-              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <path d="M50,10 A40,40 0 1,1 50,90 A40,40 0 1,1 50,10 Z" fill="none" stroke="var(--primary-green)" strokeWidth="8"/>
-                <path d="M30,50 L45,65 L70,35" fill="none" stroke="var(--accent-gold)" strokeWidth="8" strokeLinecap="round"/>
-              </svg>
-            </div>
-            <h2> Something Amazing is Coming Soon...</h2>
-            <p>
-              We're carefully cultivating valuable resources to help farmers and agricultural 
-              professionals thrive. Our team is working diligently to bring you:
-            </p>
-            
-            <ul className="resource-list">
-              <li> News & Events updates</li>
-              <li> Educational Publications</li>
-              <li> Practical Farmer Tools</li>
-              <li> Market Insights</li>
-              <li> Sustainable Practices Guides</li>
-            </ul>
-            
-            <p className="coming-soon-message">
-              <strong>Check back soon!</strong> We're planting the seeds for your success 
-              and can't wait to share these resources with you.
-            </p>
-            
-            <div className="progress-container">
-              <div className="progress-text">Resource development in progress</div>
-              <div className="progress-bar">
-                <motion.div 
-                  className="progress-fill"
-                  initial={{ width: 0 }}
-                  animate={{ width: "65%" }}
-                  transition={{ duration: 2, delay: 0.5 }}
-                />
-              </div>
-              <div className="progress-percentage">65% done</div>
-            </div>
-          </motion.div>
-          
-          <motion.div 
-            className="coming-soon-image"
-            variants={itemVariants}
-          >
-            <img src={comingSoonImg} alt="Resources coming soon" />
-            <div className="floating-tag">Coming Soon</div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Progress Gallery Section - Redesigned */}
-      <motion.section
-        className="progress-gallery-section"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={containerVariants}
-      >
-        <div className="gallery-header">
-          <motion.div variants={itemVariants}>
-            <h2 className="gallery-title">
-              <FaImages className="gallery-icon" />
-              Our Progress Gallery
-            </h2>
-            <p className="gallery-subtitle">
-              Enjoy the pictures below as we finalize on the resources. 
-              These images showcase our ongoing work and the impact we're making together.
-            </p>
-          </motion.div>
-        </div>
-
-        {/* Main Gallery Display */}
-        <motion.div 
-          className="slideshow-container"
-          variants={itemVariants}
+        {/* Hero Section */}
+        <motion.header
+          className="R-hero-header"
+          style={{ backgroundImage: `url(${heroImg})` }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
         >
-          <div className="main-image-container">
-            <img 
-              src={progressImages[currentImageIndex].src} 
-              alt={progressImages[currentImageIndex].title}
-              className="main-image"
-              onClick={() => openLightbox(currentImageIndex)}
-            />
-            
-            <div className="image-info">
-              <h3>{progressImages[currentImageIndex].title}</h3>
-              <p>{progressImages[currentImageIndex].description}</p>
-              <span className="category-tag">{progressImages[currentImageIndex].category}</span>
-            </div>
-            
-            <div className="view-indicator" onClick={() => openLightbox(currentImageIndex)}>
-              <FaExpand />
-            </div>
-          </div>
-          
-          {/* Navigation Controls */}
-          <div className="slideshow-controls">
-            <button 
-              className="nav-btn prev-btn"
-              onClick={() => navigateImage('prev')}
-              aria-label="Previous image"
+          <div className="hero-overlay">
+            <motion.h1
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
             >
-              <FaArrowLeft />
-            </button>
-            
-            <div className="play-pause-container">
-              <button 
-                className="play-pause-btn"
-                onClick={togglePlayPause}
-                aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
-              >
-                {isPlaying ? <FaPause /> : <FaPlay />}
-              </button>
-            </div>
-            
-            <button 
-              className="nav-btn next-btn"
-              onClick={() => navigateImage('next')}
-              aria-label="Next image"
-            >
-              <FaArrowRight />
-            </button>
+              Resources
+            </motion.h1>
           </div>
-          
-          {/* Thumbnail Navigation */}
-          <div className="thumbnail-container">
-            <div className="thumbnail-scroll">
-              {getVisibleThumbnails().map((thumb) => (
-                <div
-                  key={thumb.index}
-                  className={`thumbnail ${thumb.isActive ? 'active' : ''}`}
-                  onClick={() => goToImage(thumb.index)}
-                >
-                  <img 
-                    src={progressImages[thumb.index].src} 
-                    alt={progressImages[thumb.index].title}
+        </motion.header>
+
+        {/* Coming Soon Section */}
+        <motion.section
+          className="coming-soon-section"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
+          <div className="coming-soon-container">
+            <motion.div 
+              className="coming-soon-content"
+              variants={itemVariants}
+            >
+              <div className="coming-soon-icon">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M50,10 A40,40 0 1,1 50,90 A40,40 0 1,1 50,10 Z" fill="none" stroke="var(--primary-green)" strokeWidth="8"/>
+                  <path d="M30,50 L45,65 L70,35" fill="none" stroke="var(--accent-gold)" strokeWidth="8" strokeLinecap="round"/>
+                </svg>
+              </div>
+              <h2> Something Amazing is Coming Soon...</h2>
+              <p>
+                We're carefully cultivating valuable resources to help farmers and agricultural 
+                professionals thrive. Our team is working diligently to bring you:
+              </p>
+              
+              <ul className="resource-list">
+                <li> News & Events updates</li>
+                <li> Educational Publications</li>
+                <li> Practical Farmer Tools</li>
+                <li> Market Insights</li>
+                <li> Sustainable Practices Guides</li>
+              </ul>
+              
+              <p className="coming-soon-message">
+                <strong>Check back soon!</strong> We're planting the seeds for your success 
+                and can't wait to share these resources with you.
+              </p>
+              
+              <div className="progress-container">
+                <div className="progress-text">Resource development in progress</div>
+                <div className="progress-bar">
+                  <motion.div 
+                    className="progress-fill"
+                    initial={{ width: 0 }}
+                    animate={{ width: "65%" }}
+                    transition={{ duration: 2, delay: 0.5 }}
                   />
                 </div>
-              ))}
-            </div>
+                <div className="progress-percentage">65% done</div>
+              </div>
+            </motion.div>
             
-            <div className="thumbnail-indicators">
-              {progressImages.map((_, index) => (
-                <button
-                  key={index}
-                  className={`indicator ${index === currentImageIndex ? 'active' : ''}`}
-                  onClick={() => goToImage(index)}
-                  aria-label={`Go to image ${index + 1}`}
-                />
-              ))}
-            </div>
+            <motion.div 
+              className="coming-soon-image"
+              variants={itemVariants}
+            >
+              <img src={comingSoonImg} alt="Resources coming soon" />
+              <div className="floating-tag">Coming Soon</div>
+            </motion.div>
           </div>
-          
-          <div className="image-counter">
-            {currentImageIndex + 1} / {progressImages.length}
-          </div>
-        </motion.div>
-      </motion.section>
+        </motion.section>
 
-      {/* Lightbox */}
-      {isLightboxOpen && (
-        <motion.div 
-          className="lightbox-overlay"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={closeLightbox}
+        {/* Progress Gallery Section - Redesigned */}
+        <motion.section
+          className="progress-gallery-section"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
         >
+          <div className="gallery-header">
+            <motion.div variants={itemVariants}>
+              <h2 className="gallery-title">
+                <FaImages className="gallery-icon" />
+                Our Progress Gallery
+              </h2>
+              <p className="gallery-subtitle">
+                Enjoy the pictures below as we finalize on the resources. 
+                These images showcase our ongoing work and the impact we're making together.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Main Gallery Display */}
           <motion.div 
-            className="lightbox-content"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
-            onClick={(e) => e.stopPropagation()}
+            className="slideshow-container"
+            variants={itemVariants}
           >
-            <div className="lightbox-header">
-              <h3>{progressImages[currentImageIndex].title}</h3>
-              <button 
-                className="close-lightbox"
-                onClick={closeLightbox}
-                aria-label="Close lightbox"
-              >
-                <FaCompress />
-              </button>
-            </div>
-            
-            <div className="lightbox-image-container">
+            <div className="main-image-container">
               <img 
                 src={progressImages[currentImageIndex].src} 
                 alt={progressImages[currentImageIndex].title}
-                className="lightbox-image"
+                className="main-image"
+                onClick={() => openLightbox(currentImageIndex)}
               />
-            </div>
-            
-            <div className="lightbox-info">
-              <p className="lightbox-description">
-                {progressImages[currentImageIndex].description}
-              </p>
-              <div className="lightbox-meta">
-                <span className="lightbox-category">
-                  {progressImages[currentImageIndex].category}
-                </span>
-                <span className="lightbox-counter">
-                  {currentImageIndex + 1} / {progressImages.length}
-                </span>
+              
+              <div className="image-info">
+                <h3>{progressImages[currentImageIndex].title}</h3>
+                <p>{progressImages[currentImageIndex].description}</p>
+                <span className="category-tag">{progressImages[currentImageIndex].category}</span>
+              </div>
+              
+              <div className="view-indicator" onClick={() => openLightbox(currentImageIndex)}>
+                <FaExpand />
               </div>
             </div>
             
-            <div className="lightbox-navigation">
+            {/* Navigation Controls */}
+            <div className="slideshow-controls">
               <button 
                 className="nav-btn prev-btn"
                 onClick={() => navigateImage('prev')}
@@ -525,13 +459,15 @@ const ResourcesPage = () => {
                 <FaArrowLeft />
               </button>
               
-              <button 
-                className="play-pause-btn"
-                onClick={togglePlayPause}
-                aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
-              >
-                {isPlaying ? <FaPause /> : <FaPlay />}
-              </button>
+              <div className="play-pause-container">
+                <button 
+                  className="play-pause-btn"
+                  onClick={togglePlayPause}
+                  aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
+                >
+                  {isPlaying ? <FaPause /> : <FaPlay />}
+                </button>
+              </div>
               
               <button 
                 className="nav-btn next-btn"
@@ -542,28 +478,139 @@ const ResourcesPage = () => {
               </button>
             </div>
             
-            {/* Thumbnail Navigation in Lightbox */}
-            <div className="lightbox-thumbnails">
-              {progressImages.map((image, index) => (
-                <div
-                  key={image.id}
-                  className={`lightbox-thumbnail ${index === currentImageIndex ? 'active' : ''}`}
-                  onClick={() => goToImage(index)}
-                >
-                  <img 
-                    src={image.src} 
-                    alt={image.title}
+            {/* Thumbnail Navigation */}
+            <div className="thumbnail-container">
+              <div className="thumbnail-scroll">
+                {getVisibleThumbnails().map((thumb) => (
+                  <div
+                    key={thumb.index}
+                    className={`thumbnail ${thumb.isActive ? 'active' : ''}`}
+                    onClick={() => goToImage(thumb.index)}
+                  >
+                    <img 
+                      src={progressImages[thumb.index].src} 
+                      alt={progressImages[thumb.index].title}
+                    />
+                  </div>
+                ))}
+              </div>
+              
+              <div className="thumbnail-indicators">
+                {progressImages.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`indicator ${index === currentImageIndex ? 'active' : ''}`}
+                    onClick={() => goToImage(index)}
+                    aria-label={`Go to image ${index + 1}`}
                   />
-                </div>
-              ))}
+                ))}
+              </div>
+            </div>
+            
+            <div className="image-counter">
+              {currentImageIndex + 1} / {progressImages.length}
             </div>
           </motion.div>
-        </motion.div>
-      )}
+        </motion.section>
 
-      {/* Newsletter Signup */}
-      <Newsletter />
-    </motion.main>
+        {/* Lightbox */}
+        {isLightboxOpen && (
+          <motion.div 
+            className="lightbox-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeLightbox}
+          >
+            <motion.div 
+              className="lightbox-content"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="lightbox-header">
+                <h3>{progressImages[currentImageIndex].title}</h3>
+                <button 
+                  className="close-lightbox"
+                  onClick={closeLightbox}
+                  aria-label="Close lightbox"
+                >
+                  <FaCompress />
+                </button>
+              </div>
+              
+              <div className="lightbox-image-container">
+                <img 
+                  src={progressImages[currentImageIndex].src} 
+                  alt={progressImages[currentImageIndex].title}
+                  className="lightbox-image"
+                />
+              </div>
+              
+              <div className="lightbox-info">
+                <p className="lightbox-description">
+                  {progressImages[currentImageIndex].description}
+                </p>
+                <div className="lightbox-meta">
+                  <span className="lightbox-category">
+                    {progressImages[currentImageIndex].category}
+                  </span>
+                  <span className="lightbox-counter">
+                    {currentImageIndex + 1} / {progressImages.length}
+                  </span>
+                </div>
+              </div>
+              
+              <div className="lightbox-navigation">
+                <button 
+                  className="nav-btn prev-btn"
+                  onClick={() => navigateImage('prev')}
+                  aria-label="Previous image"
+                >
+                  <FaArrowLeft />
+                </button>
+                
+                <button 
+                  className="play-pause-btn"
+                  onClick={togglePlayPause}
+                  aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
+                >
+                  {isPlaying ? <FaPause /> : <FaPlay />}
+                </button>
+                
+                <button 
+                  className="nav-btn next-btn"
+                  onClick={() => navigateImage('next')}
+                  aria-label="Next image"
+                >
+                  <FaArrowRight />
+                </button>
+              </div>
+              
+              {/* Thumbnail Navigation in Lightbox */}
+              <div className="lightbox-thumbnails">
+                {progressImages.map((image, index) => (
+                  <div
+                    key={image.id}
+                    className={`lightbox-thumbnail ${index === currentImageIndex ? 'active' : ''}`}
+                    onClick={() => goToImage(index)}
+                  >
+                    <img 
+                      src={image.src} 
+                      alt={image.title}
+                    />
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+
+        {/* Newsletter Signup */}
+        <Newsletter />
+      </motion.main>
+    </>
   );
 };
 
