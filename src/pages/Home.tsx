@@ -36,7 +36,7 @@ const Home = () => {
   return (
     <div className="home">
       <SEO
-        title="INOFO Africa | Indigenous Organic Farmers Federation of Africa"
+        title="INOFO Africa | Intercontinental Network of Organic Farmer Organizations in Africa (INOFO Africa)"
         description="INOFO Africa is the continental body representing indigenous organic farmers across Africa. We promote agroecology, food sovereignty, climate resilience, and farmer-led governance through regional country networks."
         canonical="https://www.inofoafrica.org/"
         keywords={[
