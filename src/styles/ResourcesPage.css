@@ -12,7 +12,7 @@
 
 /* Hero Section */
 .R-hero-header {
-  height: clamp(15vh, 25vh, 35vh);
+   height: clamp(27vh, 37vh, 47vh);
   margin-top: 1.7rem;
   width: 100%;
   background-size: cover;
