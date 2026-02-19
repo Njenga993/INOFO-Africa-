@@ -8,24 +8,13 @@ import "../styles/AboutUsAfrica.css";
 import SEO from "../components/SEO";
 import MembersTable from "../components/LogoCarousel";
 import Newsletter from "../components/Newsletter";
-
-// Leader images
-import wanjamaImg from "../assets/wanjama.jpg";
-import raoudathImg from "../assets/Roudath.jpg";
-import charlesImg from "../assets/charles.jpg";
+import LeadershipTeam from "../components/LeadershipTeam";
 
 // Section images
 import journeyImg from "../assets/njoro.webp";
 import governance from "../assets/3.webp";
 import governanceImg from "../assets/all.webp";
 import heroImg from "../assets/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg";
-
-interface Leader {
-  name: string;
-  role: string;
-  bio: string;
-  image: string;
-}
 
 interface Pillar {
   icon: JSX.Element;
@@ -51,31 +40,6 @@ const AboutUsAfrica: React.FC = () => {
       transition: { duration: 0.6, ease: [0.6, -0.05, 0.01, 0.99] }
     }
   };
-
-  // Leadership data
-  const leaders: Leader[] = useMemo(() => [
-    {
-      name: "Daniel Wanjama",
-      role: "East Africa Regional Convenor",
-      bio:
-        "Daniel Wanjama (Seed Savers Network Kenya) champions seed sovereignty and food security in Eastern Africa. He leads initiatives to preserve indigenous seed varieties, strengthen biodiversity, and empower farmers with locally adapted, organic seed systems. As East Africa Convenor on the INOFO Africa Council, Daniel brings deep grassroots experience and commitment to farmer-led resilience.",
-      image: wanjamaImg
-    },
-    {
-      name: "Raoudath Bouaima",
-      role: "West Africa Regional Convenor",
-      bio:
-        "Raoudath Bouraima (Benin) advances sustainable agriculture and organic farming across West Africa through community-driven projects. A strong advocate for women's leadership in agriculture, she supports resilience-building programs that amplify rural voices and promote environmental stewardship.",
-      image: raoudathImg
-    },
-    {
-      name: "Charles Mubanga",
-      role: "Southern Africa Regional Convenor",
-      bio:
-        "Charles K. Mubanga (Mpongwe Bulima Cooperative, Zambia) promotes cooperative development and ecological farming practices. He focuses on strengthening farmer cooperatives, advocacy, and policy engagement to improve livelihoods and amplify smallholder voices across Southern Africa.",
-      image: charlesImg
-    }
-  ], []);
 
   const pillars: Pillar[] = useMemo(() => [
     {
@@ -104,15 +68,12 @@ const AboutUsAfrica: React.FC = () => {
     }
   ], []);
 
-  // --- COMPREHENSIVE SEO ENHANCEMENTS ---
-
-  // 1. Breadcrumbs for About Page
+  // --- SEO ENHANCEMENTS ---
   const aboutPageBreadcrumbs = useMemo(() => [
     { name: "Home", url: "https://www.inofoafrica.org/" },
     { name: "About Us", url: "https://www.inofoafrica.org/about" }
   ], []);
 
-  // 2. Enhanced About Page FAQs
   const aboutPageFaqs = useMemo(() => [
     {
       question: "What is the governance structure and leadership of INOFO Africa?",
@@ -140,7 +101,6 @@ const AboutUsAfrica: React.FC = () => {
     }
   ], []);
 
-  // 3. Enhanced About Page Schema
   const aboutPageCustomSchema = useMemo(() => ({
     "@context": "https://schema.org",
     "@type": "AboutPage",
@@ -190,22 +150,6 @@ const AboutUsAfrica: React.FC = () => {
       "areaServed": {
         "@type": "Continent",
         "name": "Africa"
-      },
-      "membership": {
-        "@type": "ProgramMembership",
-        "programName": "INOFO Africa Membership",
-        "member": {
-          "@type": "OrganizationRole",
-          "roleName": "Regional Convenor",
-          "member": leaders.map(leader => ({
-            "@type": "Person",
-            "name": leader.name,
-            "jobTitle": leader.role,
-            "image": leader.image,
-            "description": leader.bio,
-            "knowsAbout": ["Organic Farming", "Agroecology", "Farmer Empowerment", "Agricultural Policy"]
-          }))
-        }
       }
     },
     "about": {
@@ -217,9 +161,8 @@ const AboutUsAfrica: React.FC = () => {
       "@type": "Audience",
       "audienceType": ["Farmers", "Agricultural Organizations", "Researchers", "Policy Makers", "Development Partners", "Environmentalists", "Food Sovereignty Advocates"]
     }
-  }), [leaders]);
+  }), []);
 
-  // 4. Organization Schema
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -244,25 +187,6 @@ const AboutUsAfrica: React.FC = () => {
       }
     }
   };
-
-  // 5. Person Schemas for Leaders
-  const leaderSchemas = leaders.map(leader => ({
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": leader.name,
-    "jobTitle": leader.role,
-    "worksFor": {
-      "@type": "Organization",
-      "name": "INOFO Africa"
-    },
-    "description": leader.bio,
-    "image": leader.image,
-    "knowsAbout": ["Organic Agriculture", "Agroecology", "Farmers' Rights", "Sustainable Development", "Agricultural Policy"],
-    "memberOf": {
-      "@type": "Organization",
-      "name": "INOFO Africa"
-    }
-  }));
 
   return (
     <>
@@ -300,15 +224,10 @@ const AboutUsAfrica: React.FC = () => {
         customSchema={aboutPageCustomSchema}
       />
 
-      {/* Additional Structured Data */}
+      {/* Organization Schema */}
       <script type="application/ld+json">
         {JSON.stringify(organizationSchema)}
       </script>
-      {leaderSchemas.map((schema, index) => (
-        <script key={index} type="application/ld+json">
-          {JSON.stringify(schema)}
-        </script>
-      ))}
 
       <motion.main
         className="about-africa"
@@ -712,59 +631,11 @@ const AboutUsAfrica: React.FC = () => {
           </motion.div>  
         </motion.section>
 
-        {/* Leadership Team */}
-        <motion.section
-          className="text-content"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={containerVariants}
-          aria-labelledby="leadership-title"
-          itemScope
-          itemType="https://schema.org/ItemList"
-        >
-          <motion.h2 variants={itemVariants} id="leadership-title" itemProp="name">
-            INOFO Africa Leadership Team
-          </motion.h2>
-
-          <motion.div className="leaders-grid" variants={containerVariants}>
-            {leaders.map((leader, index) => (
-              <motion.article
-                className="leader-card"
-                key={index}
-                variants={itemVariants}
-                whileHover={{ scale: 1.03 }}
-                aria-labelledby={`leader-name-${index}`}
-                role="article"
-                itemProp="itemListElement"
-                itemScope
-                itemType="https://schema.org/Person"
-              >
-                <meta itemProp="position" content={String(index + 1)} />
-                <div className="leader-image" aria-hidden={false} itemProp="image" itemScope itemType="https://schema.org/ImageObject">
-                  <img
-                    src={leader.image}
-                    alt={`${leader.name} — ${leader.role} at INOFO Africa`}
-                    loading="lazy"
-                    itemProp="url"
-                  />
-                  <meta itemProp="caption" content={`${leader.name}, ${leader.role}`} />
-                  <div className="leader-overlay">
-                    <h4 id={`leader-name-${index}`} itemProp="name">{leader.name}</h4>
-                    <p itemProp="jobTitle">{leader.role}</p>
-                  </div>
-                </div>
-
-                <div className="leader-bio">
-                  <p itemProp="description">{leader.bio}</p>
-                  <meta itemProp="worksFor" content="INOFO Africa" />
-                  <meta itemProp="knowsAbout" content="Organic Agriculture, Agroecology, Farmer Empowerment, Agricultural Policy" />
-                </div>
-              </motion.article>
-            ))}
-          </motion.div>
-          <meta itemProp="numberOfItems" content={String(leaders.length)} />
-        </motion.section>
+        {/* Leadership Team - Using the imported component */}
+        <LeadershipTeam 
+          title="INOFO Africa Leadership Team"
+          showBio={true}
+        />
 
         {/* Partners / Members and Newsletter */}
         <MembersTable />

@@ -1,0 +1,521 @@
+/* LeadershipTeam.css */
+:root {
+  --jungle-green: #4c7031;
+  --jungle-green-light: #5a8a3a;
+  --jungle-green-dark: #2e4d1f;
+  --jungle-green-soft: rgba(76, 112, 49, 0.1);
+  --gold-accent: #ffc107;
+  --gold-light: #fff3cd;
+  --text-dark: #333;
+  --text-medium: #555;
+  --text-light: #777;
+  --bg-light: #f9f9f9;
+  --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.05);
+  --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 12px 30px rgba(76, 112, 49, 0.15);
+  --border-radius: 12px;
+  --border-radius-sm: 8px;
+  --transition-base: all 0.3s ease;
+}
+
+/* Main Container */
+.leadership-team {
+  max-width: 1400px;
+  margin: 3rem auto;
+  padding: 2rem 1.5rem;
+  background: #ffffff;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.leadership-team::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--jungle-green);
+  z-index: 1;
+}
+
+/* Header Styles */
+.leadership-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.leadership-header h2 {
+  color: var(--jungle-green-dark);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.leadership-underline {
+  width: 100px;
+  height: 4px;
+  background: var(--jungle-green);
+  margin: 0 auto 1rem;
+  border-radius: 2px;
+}
+
+.leadership-subtitle {
+  color: var(--text-medium);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Levels Container */
+.leadership-levels-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* Level Header */
+.leadership-level {
+  margin-bottom: 1rem;
+}
+
+.level-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.level-badge {
+  display: inline-block;
+  padding: 0.3rem 1.2rem;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.level-1-badge { background: #1e3a5f; }  /* Dark blue */
+.level-2-badge { background: #2e5a3a; }  /* Forest green */
+.level-3-badge { background: #8b6b4d; }  /* Brown */
+.level-4-badge { background: #5f4b3a; }  /* Dark brown */
+
+.level-title {
+  color: var(--jungle-green-dark);
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.level-description {
+  color: var(--text-medium);
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+/* Grid Layouts */
+.leaders-grid {
+  display: grid;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Leader Card - Base Styles */
+.leader-card {
+  background: white;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-light);
+  transition: var(--transition-base);
+  border: 1px solid rgba(76, 112, 49, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.leader-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--jungle-green);
+}
+
+/* Card sizes by level */
+.level-1-card { max-width: 380px; margin: 0 auto; }
+.level-2-card { max-width: 450px; margin: 0 auto; }
+.level-3-card { max-width: 320px; margin: 0 auto; }
+.level-4-card { max-width: 350px; margin: 0 auto; }
+
+/* Image Wrapper */
+.leader-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-light);
+}
+
+.leader-image {
+  width: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+}
+
+.leader-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.leader-card:hover .leader-image img {
+  transform: scale(1.08);
+}
+
+.leader-level-indicator {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 2;
+}
+
+/* Leader Info */
+.leader-info {
+  padding: 1.2rem 1rem;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  background: white;
+}
+
+.leader-info h3 {
+  color: var(--jungle-green-dark);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.level-1-card .leader-info h3 { font-size: 1.3rem; }
+.level-2-card .leader-info h3 { font-size: 1.2rem; }
+.level-3-card .leader-info h3 { font-size: 1rem; }
+.level-4-card .leader-info h3 { font-size: 1rem; }
+
+.leader-role {
+  color: var(--jungle-green);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  background: rgba(76, 112, 49, 0.1);
+  padding: 0.2rem 0.8rem;
+  border-radius: 20px;
+  display: inline-block;
+  align-self: center;
+}
+
+.level-1-card .leader-role { font-size: 0.9rem; }
+
+.leader-region {
+  margin: 0.1rem 0;
+}
+
+.region-badge {
+  background: var(--gold-light);
+  color: var(--text-dark);
+  padding: 0.15rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-block;
+  border: 1px solid var(--gold-accent);
+}
+
+/* Bio Styles */
+.leader-bio {
+  margin-top: 0.5rem;
+  text-align: left;
+  border-top: 1px solid rgba(76, 112, 49, 0.1);
+  padding-top: 0.5rem;
+}
+
+.leader-bio p {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-medium);
+  margin: 0;
+}
+
+.compact-bio p {
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.level-1-card .leader-bio p { font-size: 0.9rem; }
+
+/* Expertise Tags */
+.leader-expertise {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  justify-content: center;
+  margin-top: 0.3rem;
+}
+
+.expertise-tag {
+  background: var(--jungle-green-soft);
+  color: var(--jungle-green-dark);
+  padding: 0.2rem 0.5rem;
+  border-radius: 15px;
+  font-size: 0.65rem;
+  font-weight: 500;
+  border: 1px solid rgba(76, 112, 49, 0.2);
+  white-space: nowrap;
+}
+
+.level-1-card .expertise-tag { font-size: 0.7rem; }
+
+/* Responsive Design */
+
+/* Large Desktop */
+@media (min-width: 1400px) {
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Desktop */
+@media (max-width: 1200px) {
+  .grid-4 { grid-template-columns: repeat(3, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  
+  .level-3-card,
+  .level-4-card {
+    max-width: 100%;
+  }
+}
+
+/* Tablet Landscape */
+@media (max-width: 992px) {
+  .leadership-team {
+    padding: 2rem 1rem;
+  }
+
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .level-1-card,
+  .level-2-card,
+  .level-3-card,
+  .level-4-card {
+    max-width: 100%;
+  }
+
+  .level-1 .grid-3,
+  .level-4 .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Tablet Portrait */
+@media (max-width: 768px) {
+  .leadership-team {
+    margin: 2rem auto;
+    padding: 1.5rem 1rem;
+  }
+
+  .leadership-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .leadership-subtitle {
+    font-size: 1rem;
+  }
+
+  .level-title {
+    font-size: 1.2rem;
+  }
+
+  .grid-2,
+  .grid-3,
+  .grid-4,
+  .level-1 .grid-3,
+  .level-4 .grid-3 {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    margin: 0 auto;
+  }
+
+  .leader-card {
+    max-width: 100%;
+  }
+
+  .leader-info h3 {
+    font-size: 1.1rem;
+  }
+
+  .level-1-card .leader-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .leader-role {
+    font-size: 0.8rem;
+  }
+
+  .leader-bio p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile Landscape */
+@media (max-width: 576px) {
+  .leadership-team {
+    padding: 1rem 0.75rem;
+    margin: 1.5rem auto;
+  }
+
+  .leadership-header h2 {
+    font-size: 1.4rem;
+  }
+
+  .leadership-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .level-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .level-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 1rem;
+  }
+
+  .level-title {
+    font-size: 1.1rem;
+  }
+
+  .level-description {
+    font-size: 0.85rem;
+  }
+
+  .leaders-grid {
+    gap: 1rem;
+  }
+
+  .leader-info {
+    padding: 1rem 0.75rem;
+  }
+
+  .leader-info h3 {
+    font-size: 1rem;
+  }
+
+  .leader-role {
+    font-size: 0.75rem;
+    padding: 0.15rem 0.6rem;
+  }
+
+  .region-badge {
+    font-size: 0.7rem;
+  }
+
+  .expertise-tag {
+    font-size: 0.6rem;
+    padding: 0.15rem 0.4rem;
+  }
+
+  .compact-bio p {
+    font-size: 0.75rem;
+  }
+}
+
+/* Mobile Portrait */
+@media (max-width: 375px) {
+  .leadership-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .leader-info h3 {
+    font-size: 0.95rem;
+  }
+
+  .leader-role {
+    font-size: 0.7rem;
+  }
+
+  .expertise-tag {
+    font-size: 0.55rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .leader-card,
+  .leader-image img {
+    transition: none;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .leadership-team {
+    background: none;
+    box-shadow: none;
+    padding: 1rem 0;
+  }
+
+  .leader-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+
+  .leader-level-indicator {
+    background: #f0f0f0;
+    color: black;
+  }
+}
+
+/* Dark mode support - removed to follow main page */
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .leader-card {
+    border: 2px solid var(--jungle-green);
+  }
+  
+  .level-badge {
+    border: 1px solid white;
+  }
+}
