@@ -102,7 +102,6 @@
 .level-1-badge { background: #1e3a5f; }  /* Dark blue */
 .level-2-badge { background: #2e5a3a; }  /* Forest green */
 .level-3-badge { background: #8b6b4d; }  /* Brown */
-.level-4-badge { background: #5f4b3a; }  /* Dark brown */
 
 .level-title {
   color: var(--jungle-green-dark);
@@ -120,11 +119,39 @@
 /* Grid Layouts */
 .leaders-grid {
   display: grid;
-  gap: 1.5rem;
+  gap: 1.2rem;
   justify-content: center;
   align-items: stretch;
 }
 
+/* Hierarchy Grid Layouts for Level 1 */
+.grid-hierarchy-top {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 900px;
+  margin: 0 auto 1.5rem;
+  padding: 0 1rem;
+}
+
+.grid-hierarchy-bottom {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+}
+
+.grid-hierarchy-bottom::before {
+  content: '';
+  position: absolute;
+  top: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 0.75rem;
+  background: var(--jungle-green);
+}
+
+/* Regular Grid Layouts */
 .grid-2 {
   grid-template-columns: repeat(2, 1fr);
   max-width: 800px;
@@ -137,6 +164,10 @@
 
 .grid-4 {
   grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-5 {
+  grid-template-columns: repeat(5, 1fr);
 }
 
 /* Leader Card - Base Styles */
@@ -159,11 +190,32 @@
   border-color: var(--jungle-green);
 }
 
+/* Hierarchy Card Styles */
+.hierarchy-top {
+  max-width: 280px;
+  margin: 0 auto;
+  border: 2px solid rgba(30, 58, 95, 0.2); /* Subtle blue border for top hierarchy */
+}
+
+.hierarchy-bottom {
+  max-width: 300px;
+  margin: 0 auto;
+  border: 1px solid rgba(76, 112, 49, 0.15);
+}
+
 /* Card sizes by level */
-.level-1-card { max-width: 380px; margin: 0 auto; }
-.level-2-card { max-width: 450px; margin: 0 auto; }
-.level-3-card { max-width: 320px; margin: 0 auto; }
-.level-4-card { max-width: 350px; margin: 0 auto; }
+.level-1-card { 
+  max-width: 280px; 
+  margin: 0 auto;
+}
+.level-2-card { 
+  max-width: 320px; 
+  margin: 0 auto;
+}
+.level-3-card { 
+  max-width: 260px; 
+  margin: 0 auto;
+}
 
 /* Image Wrapper */
 .leader-image-wrapper {
@@ -204,45 +256,75 @@
   z-index: 2;
 }
 
+/* Hierarchy Badges */
+.hierarchy-badge-top {
+  background: rgba(30, 58, 95, 0.9); /* Dark blue for senior */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.hierarchy-badge-bottom {
+  background: rgba(46, 90, 58, 0.9); /* Forest green for regional */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
 /* Leader Info */
 .leader-info {
-  padding: 1.2rem 1rem;
+  padding: 0.9rem 0.8rem;
   text-align: center;
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.3rem;
   background: white;
 }
 
 .leader-info h3 {
   color: var(--jungle-green-dark);
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   margin: 0;
   line-height: 1.3;
 }
 
-.level-1-card .leader-info h3 { font-size: 1.3rem; }
-.level-2-card .leader-info h3 { font-size: 1.2rem; }
-.level-3-card .leader-info h3 { font-size: 1rem; }
-.level-4-card .leader-info h3 { font-size: 1rem; }
+.level-1-card .leader-info h3 { font-size: 1.1rem; }
+.level-2-card .leader-info h3 { font-size: 1rem; }
+.level-3-card .leader-info h3 { font-size: 0.9rem; }
+
+.hierarchy-top .leader-info h3 {
+  font-size: 1.05rem;
+  color: #1e3a5f; /* Dark blue for top hierarchy */
+}
+
+.hierarchy-bottom .leader-info h3 {
+  font-size: 1rem;
+  color: var(--jungle-green-dark);
+}
 
 .leader-role {
   color: var(--jungle-green);
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 600;
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.3px;
   background: rgba(76, 112, 49, 0.1);
-  padding: 0.2rem 0.8rem;
+  padding: 0.15rem 0.6rem;
   border-radius: 20px;
   display: inline-block;
   align-self: center;
 }
 
-.level-1-card .leader-role { font-size: 0.9rem; }
+.level-1-card .leader-role { font-size: 0.8rem; }
+
+.hierarchy-top .leader-role {
+  background: rgba(30, 58, 95, 0.1);
+  color: #1e3a5f;
+}
+
+.hierarchy-bottom .leader-role {
+  background: rgba(46, 90, 58, 0.1);
+  color: #2e5a3a;
+}
 
 .leader-region {
   margin: 0.1rem 0;
@@ -251,9 +333,9 @@
 .region-badge {
   background: var(--gold-light);
   color: var(--text-dark);
-  padding: 0.15rem 0.8rem;
+  padding: 0.1rem 0.6rem;
   border-radius: 20px;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
   display: inline-block;
   border: 1px solid var(--gold-accent);
@@ -261,31 +343,36 @@
 
 /* Bio Styles */
 .leader-bio {
-  margin-top: 0.5rem;
+  margin-top: 0.4rem;
   text-align: left;
   border-top: 1px solid rgba(76, 112, 49, 0.1);
-  padding-top: 0.5rem;
+  padding-top: 0.4rem;
 }
 
 .leader-bio p {
-  font-size: 0.85rem;
-  line-height: 1.5;
+  font-size: 0.75rem;
+  line-height: 1.4;
   color: var(--text-medium);
   margin: 0;
 }
 
 .compact-bio p {
-  font-size: 0.8rem;
-  line-height: 1.4;
+  font-size: 0.7rem;
+  line-height: 1.3;
 }
 
-.level-1-card .leader-bio p { font-size: 0.9rem; }
+.level-1-card .leader-bio p { font-size: 0.8rem; }
+
+.hierarchy-top .leader-bio p {
+  font-size: 0.78rem;
+  color: #2c3e50;
+}
 
 /* Expertise Tags */
 .leader-expertise {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.3rem;
+  gap: 0.25rem;
   justify-content: center;
   margin-top: 0.3rem;
 }
@@ -293,30 +380,47 @@
 .expertise-tag {
   background: var(--jungle-green-soft);
   color: var(--jungle-green-dark);
-  padding: 0.2rem 0.5rem;
+  padding: 0.15rem 0.4rem;
   border-radius: 15px;
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: 500;
   border: 1px solid rgba(76, 112, 49, 0.2);
   white-space: nowrap;
 }
 
-.level-1-card .expertise-tag { font-size: 0.7rem; }
+.level-1-card .expertise-tag { font-size: 0.65rem; }
+
+.hierarchy-top .expertise-tag {
+  background: rgba(30, 58, 95, 0.1);
+  color: #1e3a5f;
+  border-color: rgba(30, 58, 95, 0.2);
+}
+
+.hierarchy-bottom .expertise-tag {
+  background: rgba(46, 90, 58, 0.1);
+  color: #2e5a3a;
+  border-color: rgba(46, 90, 58, 0.2);
+}
 
 /* Responsive Design */
 
 /* Large Desktop */
 @media (min-width: 1400px) {
+  .grid-5 { grid-template-columns: repeat(5, 1fr); }
   .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .grid-hierarchy-top { grid-template-columns: repeat(3, 1fr); }
+  .grid-hierarchy-bottom { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* Desktop */
 @media (max-width: 1200px) {
+  .grid-5 { grid-template-columns: repeat(4, 1fr); }
   .grid-4 { grid-template-columns: repeat(3, 1fr); }
-  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-hierarchy-top { grid-template-columns: repeat(3, 1fr); }
+  .grid-hierarchy-bottom { grid-template-columns: repeat(2, 1fr); }
   
-  .level-3-card,
-  .level-4-card {
+  .level-3-card {
     max-width: 100%;
   }
 }
@@ -327,23 +431,28 @@
     padding: 2rem 1rem;
   }
 
-  .grid-2,
-  .grid-3,
-  .grid-4 {
-    grid-template-columns: repeat(2, 1fr);
+  .grid-5,
+  .grid-4,
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
+  }
+
+  .grid-hierarchy-top {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 650px;
+    gap: 1rem;
+  }
+
+  .grid-hierarchy-bottom {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 650px;
   }
 
   .level-1-card,
   .level-2-card,
-  .level-3-card,
-  .level-4-card {
+  .level-3-card {
     max-width: 100%;
-  }
-
-  .level-1 .grid-3,
-  .level-4 .grid-3 {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -366,14 +475,23 @@
     font-size: 1.2rem;
   }
 
-  .grid-2,
-  .grid-3,
+  .grid-5,
   .grid-4,
-  .level-1 .grid-3,
-  .level-4 .grid-3 {
-    grid-template-columns: 1fr;
-    max-width: 450px;
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 600px;
     margin: 0 auto;
+  }
+
+  .grid-hierarchy-top,
+  .grid-hierarchy-bottom {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .grid-hierarchy-bottom {
+    margin-bottom: 1.5rem;
   }
 
   .leader-card {
@@ -381,19 +499,19 @@
   }
 
   .leader-info h3 {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
   }
 
   .level-1-card .leader-info h3 {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .leader-role {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 
   .leader-bio p {
-    font-size: 0.85rem;
+    font-size: 0.7rem;
   }
 }
 
@@ -433,30 +551,44 @@
     gap: 1rem;
   }
 
+  .grid-5,
+  .grid-4,
+  .grid-3,
+  .grid-hierarchy-top,
+  .grid-hierarchy-bottom {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    margin: 0 auto;
+  }
+
+  .grid-hierarchy-bottom {
+    margin-top: 1rem;
+  }
+
   .leader-info {
-    padding: 1rem 0.75rem;
+    padding: 0.8rem 0.6rem;
   }
 
   .leader-info h3 {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .leader-role {
-    font-size: 0.75rem;
-    padding: 0.15rem 0.6rem;
+    font-size: 0.65rem;
+    padding: 0.1rem 0.5rem;
   }
 
   .region-badge {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
 
   .expertise-tag {
-    font-size: 0.6rem;
-    padding: 0.15rem 0.4rem;
+    font-size: 0.55rem;
+    padding: 0.1rem 0.3rem;
   }
 
   .compact-bio p {
-    font-size: 0.75rem;
+    font-size: 0.65rem;
   }
 }
 
@@ -467,15 +599,15 @@
   }
 
   .leader-info h3 {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
   }
 
   .leader-role {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
   }
 
   .expertise-tag {
-    font-size: 0.55rem;
+    font-size: 0.5rem;
   }
 }
 
@@ -505,9 +637,12 @@
     background: #f0f0f0;
     color: black;
   }
-}
 
-/* Dark mode support - removed to follow main page */
+  .hierarchy-top,
+  .hierarchy-bottom {
+    border-color: #333;
+  }
+}
 
 /* High Contrast Mode */
 @media (prefers-contrast: high) {
@@ -517,5 +652,13 @@
   
   .level-badge {
     border: 1px solid white;
+  }
+
+  .hierarchy-top {
+    border-color: #1e3a5f;
+  }
+
+  .hierarchy-bottom {
+    border-color: #2e5a3a;
   }
 }
