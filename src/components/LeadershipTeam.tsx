@@ -9,7 +9,7 @@ import MatovuImg from '../assets/Matovu_image.png';
 import NanaImg from '../assets/Nana_image.png';
 import BusiImg from '../assets/Bus_image.png';
 import NeemaImg from '../assets/Neema_image.png';
-import Derejeimg from '../assets/Black_Day.png';
+import Derejeimg1 from '../assets/dereje.jpeg'
 import '../styles/LeadershipTeam.css';
 
 interface Leader {
@@ -138,17 +138,9 @@ const LeadershipTeam: React.FC<LeadershipTeamProps> = ({
       level: 2,
       expertise: ["Organic Farming Advocacy", "Farmer Representation", "Strategic Planning"],
       bio: "A dedicated leader in organic farming advocacy and one of the founding members of INOFO Africa. Representing Ethiopia and the Oromia Coffee Farmers Cooperatives Union (OCFCU), Dereje has played a pivotal role in shaping the vision and strategic direction of INOFO Africa, ensuring that the voices of organic farmers are heard at national and international levels.",
-      image:  Derejeimg // Using placeholder - replace with actual image
+      image:  Derejeimg1 // Using placeholder - replace with actual image
     },
-    {
-      name: "Pierre Kagame",
-      role: "Communications Director",
-      region: "Central Africa",
-      level: 2,
-      expertise: ["Communications", "Digital Media", "Storytelling"],
-      bio: "Manages communications strategy, amplifying farmer voices through digital media.",
-      image: Derejeimg // Using placeholder - replace with actual image
-    },
+   
     // Level 3 - National Convenors (15 cards)
     {
       name: "Neema ",
@@ -159,132 +151,7 @@ const LeadershipTeam: React.FC<LeadershipTeamProps> = ({
       bio: "I’m a dedicated organic farmer and women's leader in sustainable agriculture, championing eco-friendly practices, and empowering rural communities. Iam a farmer leader in Missão da Misericórdia Abrangente em Moçambique (MIMAMO), located at Sanjala, Lichinga city, Niassa Pronvice in Mozambique.",
       image: NeemaImg // Using placeholder - replace with actual image
     },
-    {
-      name: "Theophilus Abebe",
-      role: "Ethiopia National Convenor",
-      region: "Ethiopia",
-      level: 3,
-      expertise: ["Youth Engagement", "Agripreneurship", "Digital Agriculture"],
-      bio: "Leads youth engagement initiatives, promoting agripreneurship and digital agriculture.",
-      image: Derejeimg // Using placeholder - replace with actual image
-    },
-    {
-      name: "Catherine Mumba",
-      role: "Zambia National Convenor",
-      region: "Zambia",
-      level: 3,
-      expertise: ["Seed Banks", "Biodiversity", "Farmer Training"],
-      bio: "Coordinates seed sovereignty programs, managing community seed banks.",
-      image: Derejeimg // Using placeholder - replace with actual image
-    },
-    {
-      name: "Mohamed Al-Farouq",
-      role: "Egypt National Convenor",
-      region: "Egypt",
-      level: 3,
-      expertise: ["Water Management", "Desert Farming", "Irrigation Systems"],
-      bio: "Specializes in water conservation and sustainable farming in arid regions.",
-      image: Derejeimg // Using placeholder - replace with actual image
-    },
-    {
-      name: "Ngozi Okoro",
-      role: "Nigeria National Convenor",
-      region: "Nigeria",
-      level: 3,
-      expertise: ["Agroforestry", "Land Rights", "Community Organizing"],
-      bio: "Leads community-based agroforestry initiatives and land rights advocacy.",
-      image: Derejeimg // Using placeholder - replace with actual image
-    },
-    {
-      name: "Ahmed Diallo",
-      role: "Mali National Convenor",
-      region: "Mali",
-      level: 3,
-      expertise: ["Sustainable Farming", "Food Security", "Indigenous Knowledge"],
-      bio: "Focuses on preserving traditional farming practices and ensuring food security.",
-      image: Derejeimg // Using placeholder - replace with actual image
-    },
-    {
-      name: "Fatoumata Bah",
-      role: "Senegal National Convenor",
-      region: "Senegal",
-      level: 3,
-      expertise: ["Organic Farming", "Cooperatives", "Market Access"],
-      bio: "Supports organic farming cooperatives and improves market access for farmers.",
-      image: Derejeimg // Using placeholder - replace with actual image
-    },
-    {
-      name: "Thabo Mokoena",
-      role: "South Africa National Convenor",
-      region: "South Africa",
-      level: 3,
-      expertise: ["Policy Reform", "Land Reform", "Agricultural Economics"],
-      bio: "Advocates for policy and land reform to support smallholder farmers.",
-      image: Derejeimg // Using placeholder - replace with actual image
-    },
-    {
-      name: "Mariam Kamara",
-      role: "Niger National Convenor",
-      region: "Niger",
-      level: 3,
-      expertise: ["Pastoral Systems", "Climate Resilience", "Livestock Management"],
-      bio: "Specializes in pastoral systems and climate resilience for livestock farmers.",
-      image: Derejeimg // Using placeholder - replace with actual image
-    },
-    {
-      name: "Joseph Kikwete",
-      role: "Tanzania National Convenor",
-      region: "Tanzania",
-      level: 3,
-      expertise: ["Coffee Farming", "Export Crops", "Fair Trade"],
-      bio: "Supports coffee farmers and promotes fair trade practices.",
-      image: Derejeimg // Using placeholder - replace with actual image
-    },
-    {
-      name: "Yaa Asantewaa",
-      role: "Ghana National Convenor",
-      region: "Ghana",
-      level: 3,
-      expertise: ["Cocoa Production", "Women Farmers", "Value Addition"],
-      bio: "Empowers women cocoa farmers and promotes value addition in cocoa production.",
-      image: Derejeimg // Using placeholder - replace with actual image
-    },
-    {
-      name: "Jean-Pierre Mbebe",
-      role: "Cameroon National Convenor",
-      region: "Cameroon",
-      level: 3,
-      expertise: ["Forest Farming", "Biodiversity", "Agroecology"],
-      bio: "Promotes forest-friendly farming practices and biodiversity conservation.",
-      image: Derejeimg // Using placeholder - replace with actual image
-    },
-    {
-      name: "Aisha Mohammed",
-      role: "Sudan National Convenor",
-      region: "Sudan",
-      level: 3,
-      expertise: ["Sorghum Production", "Smallholder Support", "Irrigation"],
-      bio: "Focuses on sorghum production and improving irrigation for smallholders.",
-      image: Derejeimg // Using placeholder - replace with actual image
-    },
-    {
-      name: "Miriam Makeba",
-      role: "Zimbabwe National Convenor",
-      region: "Zimbabwe",
-      level: 3,
-      expertise: ["Conservation Agriculture", "Seed Systems", "Farmer Training"],
-      bio: "Promotes conservation agriculture and strengthens local seed systems.",
-      image: Derejeimg // Using placeholder - replace with actual image
-    },
-    {
-      name: "Omar Hassan",
-      role: "Morocco National Convenor",
-      region: "Morocco",
-      level: 3,
-      expertise: ["Mediterranean Farming", "Traditional Crops", "Water Conservation"],
-      bio: "Specializes in Mediterranean farming systems and traditional crop varieties.",
-      image: Derejeimg // Using placeholder - replace with actual image
-    }
+    
   ], []);
 
   // Group leaders by level
