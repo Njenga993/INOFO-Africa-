@@ -11,7 +11,7 @@ import MembershipAfrica from './pages/MembershipAfrica';
 import Contact from './pages/Contact';
 import ScrollToTopButton from './components/ScrollToTopButton';
 import ResourcesPage from './pages/ResourcesPage';
-import EventPopup from './components/Eventpopup';
+/*import EventPopup from './components/Eventpopup';*/
 /*import Snowfall from 'react-snowfall';*/
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
       ) : (
        <div className="App">
           {/* Main Application Layout */}
-           <EventPopup />
+           {/*<EventPopup />*/}
           <Navbar/>
           <Routes>
             <Route path="/" element={<Home />} />
