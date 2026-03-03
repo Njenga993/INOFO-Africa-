@@ -634,7 +634,7 @@ const AboutUsAfrica: React.FC = () => {
         {/* Leadership Team - Using the imported component */}
         <LeadershipTeam 
           title="INOFO Africa Leadership Team"
-          showBio={true}
+          
         />
 
         {/* Partners / Members and Newsletter */}
