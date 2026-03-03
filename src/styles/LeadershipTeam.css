@@ -1,21 +1,26 @@
 /* LeadershipTeam.css */
 :root {
-  --jungle-green: #4c7031;
-  --jungle-green-light: #5a8a3a;
-  --jungle-green-dark: #2e4d1f;
-  --jungle-green-soft: rgba(76, 112, 49, 0.1);
-  --gold-accent: #ffc107;
+  --primary-green: #4c7031;
+  --primary-green-light: #5a8a3a;
+  --primary-green-dark: #2e4d1f;
+  --primary-green-soft: rgba(76, 112, 49, 0.1);
+  --gold: #ffc107;
   --gold-light: #fff3cd;
-  --text-dark: #333;
-  --text-medium: #555;
-  --text-light: #777;
-  --bg-light: #f9f9f9;
-  --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.05);
-  --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.1);
-  --shadow-hover: 0 12px 30px rgba(76, 112, 49, 0.15);
+  --blue-dark: #1e3a5f;
+  --green-forest: #2e5a3a;
+  --brown: #8b6b4d;
+  --text-primary: #333333;
+  --text-secondary: #555555;
+  --text-light: #777777;
+  --background-light: #f9f9f9;
+  --white: #ffffff;
+  --border-light: #e0e0e0;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
   --border-radius: 12px;
   --border-radius-sm: 8px;
-  --transition-base: all 0.3s ease;
+  --transition: all 0.2s ease;
 }
 
 /* Main Container */
@@ -23,32 +28,17 @@
   max-width: 1400px;
   margin: 3rem auto;
   padding: 2rem 1.5rem;
-  background: #ffffff;
-  border-radius: 20px;
+  background: var(--white);
   position: relative;
-  overflow: hidden;
 }
 
-.leadership-team::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--jungle-green);
-  z-index: 1;
-}
-
-/* Header Styles */
 .leadership-header {
   text-align: center;
   margin-bottom: 3rem;
-  position: relative;
 }
 
 .leadership-header h2 {
-  color: var(--jungle-green-dark);
+  color: var(--primary-green-dark);
   font-size: clamp(1.8rem, 3vw, 2.4rem);
   font-weight: 700;
   margin-bottom: 1rem;
@@ -58,13 +48,12 @@
 .leadership-underline {
   width: 100px;
   height: 4px;
-  background: var(--jungle-green);
+  background: var(--primary-green);
   margin: 0 auto 1rem;
-  border-radius: 2px;
 }
 
 .leadership-subtitle {
-  color: var(--text-medium);
+  color: var(--text-secondary);
   font-size: 1.1rem;
   max-width: 600px;
   margin: 0 auto;
@@ -74,18 +63,13 @@
 .leadership-levels-container {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 4rem;
 }
 
 /* Level Header */
-.leadership-level {
-  margin-bottom: 1rem;
-}
-
 .level-header {
   text-align: center;
   margin-bottom: 2rem;
-  position: relative;
 }
 
 .level-badge {
@@ -95,48 +79,59 @@
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 1px;
-  margin-bottom: 0.5rem;
-  color: white;
+  margin-bottom: 0.75rem;
+  color: var(--white);
 }
 
-.level-1-badge { background: #1e3a5f; }  /* Dark blue */
-.level-2-badge { background: #2e5a3a; }  /* Forest green */
-.level-3-badge { background: #8b6b4d; }  /* Brown */
+.level-1-badge { background: var(--blue-dark); }
+.level-2-badge { background: var(--green-forest); }
+.level-3-badge { background: var(--brown); }
 
 .level-title {
-  color: var(--jungle-green-dark);
+  color: var(--primary-green-dark);
   font-size: clamp(1.3rem, 2vw, 1.8rem);
   margin-bottom: 0.3rem;
   font-weight: 600;
 }
 
 .level-description {
-  color: var(--text-medium);
+  color: var(--text-secondary);
   font-size: 0.95rem;
   font-style: italic;
+  margin-bottom: 0.75rem;
+}
+
+.level-full-description {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.5;
+  padding: 0 1rem;
+}
+
+/* Level 1 Hierarchy */
+.level-1-hierarchy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 /* Grid Layouts */
 .leaders-grid {
   display: grid;
-  gap: 1.2rem;
+  gap: 1.5rem;
   justify-content: center;
-  align-items: stretch;
 }
 
-/* Hierarchy Grid Layouts for Level 1 */
 .grid-hierarchy-top {
-  grid-template-columns: repeat(3, 1fr);
-  max-width: 900px;
-  margin: 0 auto 1.5rem;
-  padding: 0 1rem;
+  grid-template-columns: repeat(3, minmax(250px, 280px));
+  justify-content: center;
 }
 
 .grid-hierarchy-bottom {
-  grid-template-columns: repeat(2, 1fr);
-  max-width: 650px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  grid-template-columns: repeat(2, minmax(250px, 300px));
+  justify-content: center;
   position: relative;
 }
 
@@ -148,80 +143,211 @@
   transform: translateX(-50%);
   width: 2px;
   height: 0.75rem;
-  background: var(--jungle-green);
-}
-
-/* Regular Grid Layouts */
-.grid-2 {
-  grid-template-columns: repeat(2, 1fr);
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.grid-3 {
-  grid-template-columns: repeat(3, 1fr);
+  background: var(--primary-green);
 }
 
 .grid-4 {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(220px, 1fr));
 }
 
-.grid-5 {
-  grid-template-columns: repeat(5, 1fr);
+/* Level 3 Split Layout */
+.level-3-split-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
 }
 
-/* Leader Card - Base Styles */
+/* Level 3 List - Non-clickable */
+.level-3-list {
+  background: var(--background-light);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-light);
+}
+
+.list-title {
+  color: var(--primary-green-dark);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--primary-green);
+}
+
+.convenors-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.convenors-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.convenors-list::-webkit-scrollbar-track {
+  background: var(--border-light);
+  border-radius: 10px;
+}
+
+.convenors-list::-webkit-scrollbar-thumb {
+  background: var(--primary-green);
+  border-radius: 10px;
+}
+
+.convenor-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.8rem;
+  background: var(--white);
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--border-light);
+  transition: var(--transition);
+}
+
+.convenor-list-item:hover {
+  border-color: var(--primary-green);
+  box-shadow: var(--shadow-sm);
+}
+
+.list-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+.list-country {
+  color: var(--text-light);
+  font-size: 0.8rem;
+  background: var(--background-light);
+  padding: 0.15rem 0.5rem;
+  border-radius: 20px;
+}
+
+/* Level 3 Placeholder Cards */
+.level-3-placeholder-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.placeholder-card {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  border: 1px dashed var(--border-light);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.placeholder-card:hover {
+  border-color: var(--primary-green);
+  border-style: dashed;
+}
+
+.placeholder-image {
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(110deg, 
+    var(--background-light) 30%, 
+    #eaeaea 50%, 
+    var(--background-light) 70%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.placeholder-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.placeholder-line {
+  height: 16px;
+  background: var(--background-light);
+  border-radius: 8px;
+  width: 100%;
+}
+
+.placeholder-line.short {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.placeholder-button {
+  height: 30px;
+  width: 100px;
+  background: var(--background-light);
+  border-radius: 30px;
+  margin: 0.5rem auto 0;
+}
+
+.placeholder-note {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 0.85rem;
+  font-style: italic;
+  padding: 0.5rem;
+  background: var(--background-light);
+  border-radius: 30px;
+  margin-top: 0.5rem;
+}
+
+/* Leader Card Styles */
 .leader-card {
-  background: white;
+  background: var(--white);
   border-radius: var(--border-radius);
   overflow: hidden;
-  box-shadow: var(--shadow-light);
-  transition: var(--transition-base);
-  border: 1px solid rgba(76, 112, 49, 0.1);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  border: 1px solid var(--border-light);
   display: flex;
   flex-direction: column;
   height: 100%;
-  position: relative;
 }
 
 .leader-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
-  border-color: var(--jungle-green);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-green);
 }
 
-/* Hierarchy Card Styles */
 .hierarchy-top {
-  max-width: 280px;
-  margin: 0 auto;
-  border: 2px solid rgba(30, 58, 95, 0.2); /* Subtle blue border for top hierarchy */
+  border-top: 3px solid var(--blue-dark);
 }
 
 .hierarchy-bottom {
-  max-width: 300px;
-  margin: 0 auto;
-  border: 1px solid rgba(76, 112, 49, 0.15);
+  border-top: 3px solid var(--green-forest);
 }
 
-/* Card sizes by level */
-.level-1-card { 
-  max-width: 280px; 
-  margin: 0 auto;
-}
-.level-2-card { 
-  max-width: 320px; 
-  margin: 0 auto;
-}
-.level-3-card { 
-  max-width: 260px; 
-  margin: 0 auto;
+.level-2 {
+  border-top: 3px solid var(--primary-green);
 }
 
-/* Image Wrapper */
+.level-3 {
+  border-top: 3px solid var(--brown);
+}
+
 .leader-image-wrapper {
   position: relative;
   overflow: hidden;
-  background: var(--bg-light);
+  background: var(--background-light);
 }
 
 .leader-image {
@@ -234,431 +360,490 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.3s ease;
 }
 
 .leader-card:hover .leader-image img {
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 
-.leader-level-indicator {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 0.2rem 0.6rem;
-  border-radius: 20px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  z-index: 2;
-}
-
-/* Hierarchy Badges */
-.hierarchy-badge-top {
-  background: rgba(30, 58, 95, 0.9); /* Dark blue for senior */
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.hierarchy-badge-bottom {
-  background: rgba(46, 90, 58, 0.9); /* Forest green for regional */
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-/* Leader Info */
 .leader-info {
-  padding: 0.9rem 0.8rem;
+  padding: 1rem;
   text-align: center;
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
-  background: white;
+  gap: 0.5rem;
 }
 
 .leader-info h3 {
-  color: var(--jungle-green-dark);
-  font-size: 0.95rem;
+  color: var(--primary-green-dark);
+  font-size: 1rem;
   font-weight: 700;
   margin: 0;
   line-height: 1.3;
 }
 
-.level-1-card .leader-info h3 { font-size: 1.1rem; }
-.level-2-card .leader-info h3 { font-size: 1rem; }
-.level-3-card .leader-info h3 { font-size: 0.9rem; }
-
 .hierarchy-top .leader-info h3 {
-  font-size: 1.05rem;
-  color: #1e3a5f; /* Dark blue for top hierarchy */
-}
-
-.hierarchy-bottom .leader-info h3 {
-  font-size: 1rem;
-  color: var(--jungle-green-dark);
+  color: var(--blue-dark);
 }
 
 .leader-role {
-  color: var(--jungle-green);
+  color: var(--primary-green);
   font-size: 0.75rem;
   font-weight: 600;
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.3px;
-  background: rgba(76, 112, 49, 0.1);
-  padding: 0.15rem 0.6rem;
+  background: var(--primary-green-soft);
+  padding: 0.2rem 0.75rem;
   border-radius: 20px;
   display: inline-block;
   align-self: center;
 }
 
-.level-1-card .leader-role { font-size: 0.8rem; }
-
 .hierarchy-top .leader-role {
   background: rgba(30, 58, 95, 0.1);
-  color: #1e3a5f;
+  color: var(--blue-dark);
 }
 
 .hierarchy-bottom .leader-role {
   background: rgba(46, 90, 58, 0.1);
-  color: #2e5a3a;
+  color: var(--green-forest);
 }
 
 .leader-region {
-  margin: 0.1rem 0;
+  margin: 0;
 }
 
 .region-badge {
   background: var(--gold-light);
-  color: var(--text-dark);
-  padding: 0.1rem 0.6rem;
+  color: var(--text-primary);
+  padding: 0.15rem 0.75rem;
   border-radius: 20px;
   font-size: 0.7rem;
   font-weight: 600;
   display: inline-block;
-  border: 1px solid var(--gold-accent);
+  border: 1px solid var(--gold);
 }
 
-/* Bio Styles */
-.leader-bio {
-  margin-top: 0.4rem;
-  text-align: left;
-  border-top: 1px solid rgba(76, 112, 49, 0.1);
-  padding-top: 0.4rem;
-}
-
-.leader-bio p {
+/* Show Bio Button */
+.show-bio-button {
+  background: transparent;
+  border: 1px solid var(--primary-green);
+  color: var(--primary-green);
+  padding: 0.4rem 1rem;
+  border-radius: 30px;
   font-size: 0.75rem;
-  line-height: 1.4;
-  color: var(--text-medium);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 0.5rem;
+  width: fit-content;
+  align-self: center;
+}
+
+.show-bio-button:hover {
+  background: var(--primary-green);
+  color: var(--white);
+}
+
+.hierarchy-top .show-bio-button {
+  border-color: var(--blue-dark);
+  color: var(--blue-dark);
+}
+
+.hierarchy-top .show-bio-button:hover {
+  background: var(--blue-dark);
+  color: var(--white);
+}
+
+.hierarchy-bottom .show-bio-button {
+  border-color: var(--green-forest);
+  color: var(--green-forest);
+}
+
+.hierarchy-bottom .show-bio-button:hover {
+  background: var(--green-forest);
+  color: var(--white);
+}
+
+/* Modal Styles - No image */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.modal-content {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--background-light);
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: var(--transition);
+}
+
+.modal-close:hover {
+  background: var(--primary-green);
+  color: var(--white);
+}
+
+.modal-body {
+  padding: 2rem;
+}
+
+.modal-info h3 {
+  color: var(--primary-green-dark);
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem;
+  padding-right: 2rem;
+}
+
+.modal-role {
+  color: var(--primary-green);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.modal-region {
+  margin: 0 0 1rem;
+}
+
+.modal-region-badge {
+  background: var(--gold-light);
+  color: var(--text-primary);
+  padding: 0.25rem 1rem;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-block;
+  border: 1px solid var(--gold);
+}
+
+.modal-country {
+  color: var(--text-secondary);
+  margin: 0 0 1.5rem;
+  font-size: 0.95rem;
+}
+
+.modal-bio,
+.modal-expertise {
+  margin-bottom: 1.5rem;
+}
+
+.modal-bio h4,
+.modal-expertise h4 {
+  color: var(--primary-green-dark);
+  font-size: 1.1rem;
+  margin: 0 0 0.75rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid var(--primary-green);
+}
+
+.modal-bio p {
+  color: var(--text-secondary);
+  line-height: 1.6;
   margin: 0;
 }
 
-.compact-bio p {
-  font-size: 0.7rem;
-  line-height: 1.3;
-}
-
-.level-1-card .leader-bio p { font-size: 0.8rem; }
-
-.hierarchy-top .leader-bio p {
-  font-size: 0.78rem;
-  color: #2c3e50;
-}
-
-/* Expertise Tags */
-.leader-expertise {
+.modal-expertise-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.25rem;
-  justify-content: center;
-  margin-top: 0.3rem;
+  gap: 0.5rem;
 }
 
-.expertise-tag {
-  background: var(--jungle-green-soft);
-  color: var(--jungle-green-dark);
-  padding: 0.15rem 0.4rem;
-  border-radius: 15px;
-  font-size: 0.6rem;
+.modal-expertise-tag {
+  background: var(--primary-green-soft);
+  color: var(--primary-green-dark);
+  padding: 0.3rem 0.8rem;
+  border-radius: 30px;
+  font-size: 0.85rem;
   font-weight: 500;
   border: 1px solid rgba(76, 112, 49, 0.2);
-  white-space: nowrap;
-}
-
-.level-1-card .expertise-tag { font-size: 0.65rem; }
-
-.hierarchy-top .expertise-tag {
-  background: rgba(30, 58, 95, 0.1);
-  color: #1e3a5f;
-  border-color: rgba(30, 58, 95, 0.2);
-}
-
-.hierarchy-bottom .expertise-tag {
-  background: rgba(46, 90, 58, 0.1);
-  color: #2e5a3a;
-  border-color: rgba(46, 90, 58, 0.2);
 }
 
 /* Responsive Design */
 
 /* Large Desktop */
 @media (min-width: 1400px) {
-  .grid-5 { grid-template-columns: repeat(5, 1fr); }
   .grid-4 { grid-template-columns: repeat(4, 1fr); }
-  .grid-hierarchy-top { grid-template-columns: repeat(3, 1fr); }
-  .grid-hierarchy-bottom { grid-template-columns: repeat(2, 1fr); }
+  .grid-hierarchy-top { grid-template-columns: repeat(3, 280px); }
+  .grid-hierarchy-bottom { grid-template-columns: repeat(2, 300px); }
 }
 
 /* Desktop */
 @media (max-width: 1200px) {
-  .grid-5 { grid-template-columns: repeat(4, 1fr); }
   .grid-4 { grid-template-columns: repeat(3, 1fr); }
-  .grid-3 { grid-template-columns: repeat(3, 1fr); }
-  .grid-hierarchy-top { grid-template-columns: repeat(3, 1fr); }
-  .grid-hierarchy-bottom { grid-template-columns: repeat(2, 1fr); }
-  
-  .level-3-card {
-    max-width: 100%;
-  }
 }
 
 /* Tablet Landscape */
 @media (max-width: 992px) {
-  .leadership-team {
-    padding: 2rem 1rem;
-  }
-
-  .grid-5,
-  .grid-4,
-  .grid-3 {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-
   .grid-hierarchy-top {
     grid-template-columns: repeat(2, 1fr);
-    max-width: 650px;
-    gap: 1rem;
   }
-
-  .grid-hierarchy-bottom {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 650px;
+  
+  .level-3-split-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
-
-  .level-1-card,
-  .level-2-card,
-  .level-3-card {
-    max-width: 100%;
+  
+  .level-3-placeholder-grid {
+    max-width: 500px;
+    margin: 0 auto;
   }
 }
 
 /* Tablet Portrait */
 @media (max-width: 768px) {
   .leadership-team {
-    margin: 2rem auto;
     padding: 1.5rem 1rem;
   }
-
-  .leadership-header h2 {
-    font-size: 1.6rem;
-  }
-
-  .leadership-subtitle {
-    font-size: 1rem;
-  }
-
-  .level-title {
-    font-size: 1.2rem;
-  }
-
-  .grid-5,
-  .grid-4,
-  .grid-3 {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
+  
   .grid-hierarchy-top,
   .grid-hierarchy-bottom {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 600px;
+    grid-template-columns: 1fr;
+    max-width: 400px;
     margin: 0 auto;
   }
-
-  .grid-hierarchy-bottom {
-    margin-bottom: 1.5rem;
+  
+  .grid-hierarchy-bottom::before {
+    display: none;
   }
-
-  .leader-card {
-    max-width: 100%;
+  
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
   }
-
-  .leader-info h3 {
-    font-size: 0.9rem;
+  
+  .level-3-placeholder-grid {
+    max-width: 400px;
   }
-
-  .level-1-card .leader-info h3 {
-    font-size: 1rem;
-  }
-
-  .leader-role {
-    font-size: 0.7rem;
-  }
-
-  .leader-bio p {
-    font-size: 0.7rem;
+  
+  .modal-body {
+    padding: 1.5rem;
   }
 }
 
-/* Mobile Landscape */
+/* Mobile */
 @media (max-width: 576px) {
-  .leadership-team {
-    padding: 1rem 0.75rem;
-    margin: 1.5rem auto;
-  }
-
   .leadership-header h2 {
     font-size: 1.4rem;
   }
-
+  
   .leadership-subtitle {
     font-size: 0.9rem;
   }
-
-  .level-header {
-    margin-bottom: 1.5rem;
+  
+  .level-title {
+    font-size: 1.2rem;
   }
+  
+  .level-full-description {
+    font-size: 0.85rem;
+  }
+  
+  .grid-4 {
+    grid-template-columns: 1fr;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  
+  .level-3-placeholder-grid {
+    max-width: 350px;
+  }
+  
+  .convenor-list-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+  
+  .list-country {
+    align-self: flex-start;
+  }
+  
+  .modal-info h3 {
+    font-size: 1.2rem;
+  }
+  
+  .modal-role {
+    font-size: 0.9rem;
+  }
+  
+  .modal-bio p {
+    font-size: 0.9rem;
+  }
+}
 
+/* Small Mobile */
+@media (max-width: 375px) {
   .level-badge {
     font-size: 0.7rem;
     padding: 0.2rem 1rem;
   }
-
-  .level-title {
-    font-size: 1.1rem;
-  }
-
-  .level-description {
-    font-size: 0.85rem;
-  }
-
-  .leaders-grid {
-    gap: 1rem;
-  }
-
-  .grid-5,
-  .grid-4,
-  .grid-3,
-  .grid-hierarchy-top,
-  .grid-hierarchy-bottom {
-    grid-template-columns: 1fr;
-    max-width: 450px;
-    margin: 0 auto;
-  }
-
-  .grid-hierarchy-bottom {
-    margin-top: 1rem;
-  }
-
-  .leader-info {
-    padding: 0.8rem 0.6rem;
-  }
-
+  
   .leader-info h3 {
     font-size: 0.9rem;
   }
-
+  
   .leader-role {
-    font-size: 0.65rem;
-    padding: 0.1rem 0.5rem;
-  }
-
-  .region-badge {
-    font-size: 0.65rem;
-  }
-
-  .expertise-tag {
-    font-size: 0.55rem;
-    padding: 0.1rem 0.3rem;
-  }
-
-  .compact-bio p {
-    font-size: 0.65rem;
-  }
-}
-
-/* Mobile Portrait */
-@media (max-width: 375px) {
-  .leadership-header h2 {
-    font-size: 1.3rem;
-  }
-
-  .leader-info h3 {
-    font-size: 0.85rem;
-  }
-
-  .leader-role {
-    font-size: 0.6rem;
-  }
-
-  .expertise-tag {
-    font-size: 0.5rem;
+    font-size: 0.7rem;
   }
 }
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
   .leader-card,
-  .leader-image img {
+  .leader-image img,
+  .convenor-list-item,
+  .modal-overlay,
+  .modal-content,
+  .show-bio-button,
+  .modal-close,
+  .placeholder-image {
     transition: none;
+    animation: none;
   }
 }
 
 /* Print Styles */
 @media print {
-  .leadership-team {
+  .modal-overlay {
+    position: static;
     background: none;
-    box-shadow: none;
-    padding: 1rem 0;
+    display: block;
   }
-
-  .leader-card {
-    break-inside: avoid;
+  
+  .modal-content {
     box-shadow: none;
     border: 1px solid #ddd;
   }
-
-  .leader-level-indicator {
-    background: #f0f0f0;
-    color: black;
+  
+  .show-bio-button,
+  .modal-close,
+  .placeholder-card {
+    display: none;
   }
+  
+  .level-3-split-layout {
+    grid-template-columns: 1fr;
+  }
+  /* Add to LeadershipTeam.css */
 
-  .hierarchy-top,
-  .hierarchy-bottom {
-    border-color: #333;
+/* List count indicator */
+.list-count {
+  color: var(--text-light);
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  text-align: right;
+  font-style: italic;
+}
+
+/* Pagination Controls */
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.pagination-button {
+  background: transparent;
+  border: 1px solid var(--primary-green);
+  color: var(--primary-green);
+  padding: 0.4rem 1rem;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.pagination-button:hover:not(:disabled) {
+  background: var(--primary-green);
+  color: var(--white);
+}
+
+.pagination-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  border-color: var(--text-light);
+  color: var(--text-light);
+}
+
+.page-indicator {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Responsive adjustments for pagination */
+@media (max-width: 576px) {
+  .pagination-controls {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  
+  .pagination-button {
+    flex: 1;
+    min-width: 80px;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.5rem;
+  }
+  
+  .page-indicator {
+    order: -1;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.25rem;
   }
 }
 
-/* High Contrast Mode */
-@media (prefers-contrast: high) {
-  .leader-card {
-    border: 2px solid var(--jungle-green);
+@media (max-width: 375px) {
+  .pagination-controls {
+    flex-direction: column;
+    gap: 0.5rem;
   }
   
-  .level-badge {
-    border: 1px solid white;
+  .pagination-button {
+    width: 100%;
   }
-
-  .hierarchy-top {
-    border-color: #1e3a5f;
-  }
-
-  .hierarchy-bottom {
-    border-color: #2e5a3a;
-  }
+}
 }
