@@ -9,7 +9,7 @@ import './index.css';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <HelmetProvider>   {/* 👈 Wrap the entire app */}
-      <BrowserRouter basename="/">
+      <BrowserRouter basename="/INOFO-Africa-/">
         <App />
       </BrowserRouter>
     </HelmetProvider>
