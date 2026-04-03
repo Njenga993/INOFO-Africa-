@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <HelmetProvider>
       {" "}
       {/* 👈 Wrap the entire app */}
-      <BrowserRouter basename="/">
+      <BrowserRouter basename="/INOFO-Africa-/">
         <App />
       </BrowserRouter>
     </HelmetProvider>
