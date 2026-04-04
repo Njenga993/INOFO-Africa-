@@ -1,10 +1,6 @@
-import '../styles/AfricaLoader.css';
+import "../styles/AfricaLoader.css";
 
 const AfricaLoader = () => {
-
-
-
-
   return (
     <div className="ring-loader-container">
       <div className="ring-loader">
@@ -13,13 +9,9 @@ const AfricaLoader = () => {
         <div></div>
         <div></div>
       </div>
-      <p className="loader-text">Loading...</p>
+      <p className="loader-text">Loading....</p>
     </div>
   );
 };
-
-
-
-
 
 export default AfricaLoader;
