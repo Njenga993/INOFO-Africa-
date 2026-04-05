@@ -9,7 +9,7 @@ const AfricaLoader = () => {
         <div></div>
         <div></div>
       </div>
-      <p className="loader-text">Loading....</p>
+      <p className="loader-text">Loading...</p>
     </div>
   );
 };
