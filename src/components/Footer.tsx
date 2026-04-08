@@ -107,9 +107,9 @@ const Footer = () => {
 
             {/* Resources Column */}
             <div className="footer-col">
-              <h3 className="footer-title">Resources</h3>
+              <h3 className="footer-title">Resource</h3>
               <ul className="footer-links">
-                <li><a href="#">Publications</a></li>
+                <li><a href="#">Publication</a></li>
                 <li><a href="#">FAQ</a></li>
               </ul>
             </div>
