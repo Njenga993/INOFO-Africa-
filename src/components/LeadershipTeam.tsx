@@ -18,10 +18,15 @@ interface Leader {
   bio: string;
   image: string;
   region?: string;
+  country?: string;
+  organization?: string;
+  language?: string;
   level: 1 | 2 | 3;
   expertise?: string[];
   hierarchyPosition?: "top" | "bottom";
-  country?: string;
+  sn?: number;
+  subRegion?: string;
+  gender?: string;
 }
 
 interface LeadershipTeamProps {
@@ -33,13 +38,300 @@ const LeadershipTeam: React.FC<LeadershipTeamProps> = ({
 }) => {
   const [selectedLeader, setSelectedLeader] = useState<Leader | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterSubRegion, setFilterSubRegion] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
-  // Leadership data with levels and hierarchy positions
-  const leaders: Leader[] = useMemo(
+  // Country Leaders Data from the Word document (as a table)
+  const countryLeadersData: Leader[] = useMemo(
     () => [
-      // Level 1 - Top Leadership
+      {
+        sn: 1,
+        name: "Samba Doulo FOFANA",
+        subRegion: "North Africa",
+        country: "Mauritania",
+        gender: "Male",
+        organization:
+          "CAJA MAURITANIE (COOPERATIVE AGRICOLE DES JEUNES AFRICAINS - MAURITANIE)",
+        language: "French",
+        level: 3,
+        role: "Country Contact Person - Mauritania",
+        expertise: [
+          "Agricultural Cooperatives",
+          "Youth in Agriculture",
+          "French-speaking Africa",
+        ],
+        bio: "Samba Doulo FOFANA serves as the INOFO National Convenor for Mauritania, leading CAJA MAURITANIE, a cooperative focused on empowering young African farmers in Mauritania through sustainable agricultural practices and cooperative development.",
+        image: wanjamaImg,
+      },
+      {
+        sn: 2,
+        name: "Raoudath Bouraima",
+        subRegion: "West Africa",
+        country: "Benin",
+        gender: "Female",
+        organization: "LES JARDINS DE L'ESPOIR",
+        language: "French",
+        level: 3,
+        role: "Country Contact Person - Benin",
+        expertise: [
+          "Agroecology",
+          "Organic Farming",
+          "Women's Leadership",
+          "Community Gardens",
+        ],
+        bio: "Raoudath Bouraima (Benin) advances sustainable agriculture and organic farming across West Africa through community-driven projects. A strong advocate for women's leadership in agriculture, she supports resilience-building programs that amplify rural voices.",
+        image: raoudathImg,
+      },
+      {
+        sn: 3,
+        name: "Hamidou A Diowora",
+        subRegion: "West Africa",
+        country: "Mali",
+        gender: "Male",
+        organization:
+          "Association Malienne pour la Solidarité et le Développement (AMSD)",
+        language: "French",
+        level: 3,
+        role: "Country Contact Person - Mali",
+        expertise: [
+          "Solidarity Economics",
+          "Community Development",
+          "Food Sovereignty",
+        ],
+        bio: "Hamidou A Diowora leads the Malian Association for Solidarity and Development (AMSD) as the INOFO National Convenor for Mali, working to promote sustainable development and solidarity-based initiatives across the country.",
+        image: raoudathImg,
+      },
+      {
+        sn: 4,
+        name: "Dr ANANI Combé",
+        subRegion: "West Africa",
+        country: "Togo",
+        gender: "Male",
+        organization: "ANA-BIO TOGO",
+        language: "French",
+        level: 3,
+        role: "Country Contact Person - Togo",
+        expertise: [
+          "Organic Certification",
+          "Biodynamic Farming",
+          "Agricultural Research",
+        ],
+        bio: "Dr. ANANI Combé serves as the INOFO National Convenor for Togo, leading ANA-BIO TOGO in promoting organic farming standards, certification, and sustainable agricultural practices throughout the country.",
+        image: charlesImg,
+      },
+      {
+        sn: 5,
+        name: "Adams Nana Kwaw",
+        subRegion: "West Africa",
+        country: "Ghana",
+        gender: "Male",
+        organization: "NABOF AGRO SERVICES AND TRAINING ASSOCIATION",
+        language: "English",
+        level: 3,
+        role: "Country Contact Person - Ghana",
+        expertise: [
+          "Agroecology Training",
+          "Sacred Groves Promotion",
+          "Food Sovereignty",
+        ],
+        bio: "Nana Kwaw Adams is a Farmer and Agroecology Trainer. Promoter of Sacred groves, Indigenous Knowledge, Organic Food production, Food Sovereignty and Ecotourism development in Ghana. He is the Executive Director of Abrono Organic Farming Project (ABOFAP). INOFO National Convenor for Ghana and a member of INOFO Africa Taskforce.",
+        image: NanaImg,
+      },
+      {
+        sn: 6,
+        name: "JOUS CLEMENT",
+        subRegion: "Central Africa",
+        country: "Chad",
+        gender: "Male",
+        organization: "Ferme Agroecologie (FAES)",
+        language: "French",
+        level: 3,
+        role: "Country Contact Person - Chad",
+        expertise: [
+          "Agroecology",
+          "Farm Management",
+          "Sustainable Agriculture",
+        ],
+        bio: "JOUS CLEMENT leads the Agroecology Farm (FAES) in Chad as the INOFO National Convenor, working to establish resilient farming systems and promote ecological agriculture practices in Central Africa.",
+        image: charlesImg,
+      },
+      {
+        sn: 7,
+        name: "Dereje Hirpa Angasa",
+        subRegion: "East Africa",
+        country: "Ethiopia",
+        gender: "Male",
+        organization: "Oromia Coffee Farmers Cooperatives Union",
+        language: "English",
+        level: 3,
+        role: "Country Contact Person - Ethiopia",
+        expertise: [
+          "Organic Farming Advocacy",
+          "Coffee Cooperatives",
+          "Strategic Planning",
+        ],
+        bio: "A dedicated leader in organic farming advocacy and one of the founding members of INOFO Africa. Representing Ethiopia and the Oromia Coffee Farmers Cooperatives Union (OCFCU), Dereje has played a pivotal role in shaping the vision and strategic direction of INOFO Africa, ensuring that the voices of organic farmers are heard at national and international levels.",
+        image: Derejeimg1,
+      },
+      {
+        sn: 8,
+        name: "Wanjama Daniel",
+        subRegion: "East Africa",
+        country: "Kenya",
+        gender: "Male",
+        organization: "Seed Savers Network Kenya",
+        language: "English",
+        level: 3,
+        role: "Country Contact Person - Kenya",
+        expertise: [
+          "Seed Sovereignty",
+          "Food Security",
+          "Indigenous Seeds",
+          "Biodiversity",
+        ],
+        bio: "Daniel Wanjama (Seed Savers Network Kenya) champions seed sovereignty and food security in Eastern Africa. He leads initiatives to preserve indigenous seed varieties, strengthen biodiversity, and empower farmers with locally adapted, organic seed systems.",
+        image: wanjamaImg,
+      },
+      {
+        sn: 9,
+        name: "UWINGABIRE Marie Louise",
+        subRegion: "East Africa",
+        country: "Rwanda",
+        gender: "Female",
+        organization: "BAHONEZA INDIGENOUS COOPERATIVE",
+        language: "English and French",
+        level: 3,
+        role: "Country Contact Person - Rwanda",
+        expertise: [
+          "Indigenous Knowledge",
+          "Cooperative Development",
+          "Women's Empowerment",
+        ],
+        bio: "UWINGABIRE Marie Louise leads BAHONEZA INDIGENOUS COOPERATIVE as the INOFO National Convenor for Rwanda, promoting indigenous farming practices, cooperative development, and women's leadership in agriculture.",
+        image: raoudathImg,
+      },
+      {
+        sn: 10,
+        name: "Brighitta Didas M",
+        subRegion: "East Africa",
+        country: "Tanzania",
+        gender: "Female",
+        organization: "TOAM (Tanzania Organic Agriculture Movement)",
+        language: "English",
+        level: 3,
+        role: "Country Contact Person - Tanzania",
+        expertise: [
+          "Organic Agriculture Movement",
+          "Policy Advocacy",
+          "Farmer Networks",
+        ],
+        bio: "Brighitta Didas M represents TOAM (Tanzania Organic Agriculture Movement) as the INOFO National Convenor for Tanzania, working to strengthen organic farming networks and advocate for supportive agricultural policies.",
+        image: BusiImg,
+      },
+      {
+        sn: 11,
+        name: "Akullo Lucy",
+        subRegion: "East Africa",
+        country: "Uganda",
+        gender: "Female",
+        organization:
+          "Lira Organic Horticulture and Grains Cooperative Society",
+        language: "English",
+        level: 3,
+        role: "Country Contact Person - Uganda",
+        expertise: [
+          "Organic Horticulture",
+          "Grains Production",
+          "Cooperative Management",
+        ],
+        bio: "Akullo Lucy leads the Lira Organic Horticulture and Grains Cooperative Society in Uganda, promoting organic vegetable and grain production through cooperative structures that benefit smallholder farmers.",
+        image: MatovuImg,
+      },
+      {
+        sn: 12,
+        name: "Manoj Seeborun",
+        subRegion: "East Africa",
+        country: "Mauritius",
+        gender: "Male",
+        organization: "F.A.L.C.O.N Association",
+        language: "French and English",
+        level: 3,
+        role: "Country Contact Person - Mauritius",
+        expertise: [
+          "Organic Farming",
+          "Association Management",
+          "Sustainable Development",
+        ],
+        bio: "Manoj Seeborun serves as the INOFO National Convenor for Mauritius, leading the F.A.L.C.O.N Association in promoting organic farming and sustainable development initiatives across the island nation.",
+        image: charlesImg,
+      },
+      {
+        sn: 13,
+        name: "Charles K. Mubanga",
+        subRegion: "Southern Africa",
+        country: "Zambia",
+        gender: "Male",
+        organization: "Mpongwe Bulima Organic Cooperative",
+        language: "English",
+        level: 3,
+        role: "Country Contact Person - Zambia",
+        expertise: [
+          "Cooperatives",
+          "Policy Advocacy",
+          "Smallholder Support",
+          "Organic Certification",
+        ],
+        bio: "Charles K. Mubanga (Mpongwe Bulima Cooperative, Zambia) promotes cooperative development and ecological farming practices. He focuses on strengthening farmer cooperatives, advocacy, and policy engagement to improve livelihoods.",
+        image: charlesImg,
+      },
+      {
+        sn: 14,
+        name: "Busisiwe Mgangxela",
+        subRegion: "Southern Africa",
+        country: "South Africa",
+        gender: "Female",
+        organization: "Eastern Cape Agroecology Farmers Association",
+        language: "English",
+        level: 3,
+        role: "Country Contact Person - South Africa",
+        expertise: [
+          "Agroecology Farming",
+          "PGS Coordination",
+          "Information Sharing",
+          "Agroforestry",
+        ],
+        bio: "Agroecology farmer in South Africa using agroforest as a sustainable food system. PGS Pollinator Country Convener for INOFO Member of Task Force INOFO Africa who piloted organizational development of INOFO AFRICA, Passionate about sharing of information about care, health, fairness and ecology for the environment, people and animals including wild life.",
+        image: BusiImg,
+      },
+      {
+        sn: 15,
+        name: "Neema Kwagwanji Chilalika",
+        subRegion: "Southern Africa",
+        country: "Mozambique",
+        gender: "Female",
+        organization: "Mbetazigone Women's Group",
+        language: "English and Portuguese",
+        level: 3,
+        role: "Country Contact Person - Mozambique",
+        expertise: [
+          "Organic Farming",
+          "Seed Saving",
+          "Community Mobilization",
+          "Women's Leadership",
+        ],
+        bio: "I'm a dedicated organic farmer and women's leader in sustainable agriculture, championing eco-friendly practices, and empowering rural communities. I am a farmer leader in Missão da Misericórdia Abrangente em Moçambique (MIMAMO), located at Sanjala, Lichinga city, Niassa Province in Mozambique.",
+        image: NeemaImg,
+      },
+    ],
+    [],
+  );
+
+  // Level 1 and Level 2 leaders (Regional Convenors and Taskforce)
+  const regionalAndTaskforceLeaders: Leader[] = useMemo(
+    () => [
+      // Level 1 - Top Leadership (Regional Convenors)
       {
         name: "Daniel Wanjama",
         role: "East Africa Regional Convenor",
@@ -58,7 +350,7 @@ const LeadershipTeam: React.FC<LeadershipTeamProps> = ({
         country: "Benin",
         level: 1,
         hierarchyPosition: "top",
-        expertise: ["Agroecology", "organic farming"],
+        expertise: ["Agroecology", "Organic Farming"],
         bio: "Raoudath Bouraima (Benin) advances sustainable agriculture and organic farming across West Africa through community-driven projects. A strong advocate for women's leadership in agriculture, she supports resilience-building programs that amplify rural voices.",
         image: raoudathImg,
       },
@@ -85,7 +377,7 @@ const LeadershipTeam: React.FC<LeadershipTeamProps> = ({
           "Indigenous Knowledge",
           "Women's Leadership",
         ],
-        bio: "Julia Kamau is A seasoned food systems leader with vast experience in coordination and implementation of farmer-led initiatives both at local and international levels. She is the programs lead for Seed Savers Network (Host organization for INOFO AFRICA) and the admin support for INOFO AFRICA ensuring smooth administration of INOFO AFRICA operations.",
+        bio: "Julia Kamau is a seasoned food systems leader with vast experience in coordination and implementation of farmer-led initiatives both at local and international levels. She is the programs lead for Seed Savers Network (Host organization for INOFO AFRICA) and the admin support for INOFO AFRICA ensuring smooth administration of INOFO AFRICA operations.",
         image: JuliaImg,
       },
       {
@@ -103,7 +395,7 @@ const LeadershipTeam: React.FC<LeadershipTeamProps> = ({
         bio: "Julie is a daughter of a farmer, hails from a farming family near Kampala city, the Capital of Uganda, East Africa. She's passionate about organic farming as a true source of life, health and sustainable socio-economic transformation. She has studied Aquaculture, Agriculture and has a Master's Degree in Agro-ecology. She is both a Practitioner and a Professional in the field of Organic Agriculture and Sustainable Community Development as a vegetable farmer, farmer leader, trainer, author, researcher and consultant.",
         image: MatovuImg,
       },
-      // Level 2 - Task Team
+      // Level 2 - Taskforce Team Members
       {
         name: "Nana Kwaw Adams",
         role: "Taskforce Team Member",
@@ -156,101 +448,37 @@ const LeadershipTeam: React.FC<LeadershipTeamProps> = ({
         bio: "I'm a dedicated organic farmer and women's leader in sustainable agriculture, championing eco-friendly practices, and empowering rural communities. I am a farmer leader in Missão da Misericórdia Abrangente em Moçambique (MIMAMO), located at Sanjala, Lichinga city, Niassa Province in Mozambique.",
         image: NeemaImg,
       },
-      // Level 3 - National Convenors (Country Leaders)
-      {
-        name: "Neema Kwagwanji Chilalika",
-        role: "Mozambique Contact Person",
-        region: "Southern Africa",
-        country: "Mozambique",
-        level: 3,
-        expertise: ["Organic Farming", "Seed Saving", "Community Mobilization"],
-        bio: "I'm a dedicated organic farmer and women's leader in sustainable agriculture, championing eco-friendly practices, and empowering rural communities. I am a farmer leader in Missão da Misericórdia Abrangente em Moçambique (MIMAMO), located at Sanjala, Lichinga city, Niassa Province in Mozambique.",
-        image: NeemaImg,
-      },
-      {
-        name: "Dereje Hirpa Angasa",
-        role: "Kenya National Convenor",
-        region: "East Africa",
-        country: "Kenya",
-        level: 3,
-        expertise: ["Organic Certification", "Farmer Training"],
-        bio: "John Mwangi leads organic farming initiatives in Kenya, focusing on certification and training programs for smallholder farmers.",
-        image: wanjamaImg,
-      },
-      {
-        name: "Busisiwe Mgangxela",
-        role: "Tanzania National Convenor",
-        region: "East Africa",
-        country: "Tanzania",
-        level: 3,
-        expertise: ["Women's Cooperatives", "Sustainable Agriculture"],
-        bio: "Amina Suleiman coordinates organic farming cooperatives across Tanzania, with special focus on women's participation and leadership.",
-        image: raoudathImg,
-      },
-      {
-        name: "Nana Kwaw Adams",
-        role: "Zimbabwe National Convenor",
-        region: "Southern Africa",
-        country: "Zimbabwe",
-        level: 3,
-        expertise: ["Seed Saving", "Community Organizing"],
-        bio: "Grace Moyo works with rural communities in Zimbabwe to preserve traditional seed varieties and promote organic farming methods.",
-        image: BusiImg,
-      },
-      {
-        name: "Julie Matovu",
-        role: "Senegal National Convenor",
-        region: "West Africa",
-        country: "Senegal",
-        level: 3,
-        expertise: ["Agroforestry", "Food Sovereignty"],
-        bio: "Oumar Diallo promotes agroforestry and food sovereignty initiatives across Senegal, working with local farming communities.",
-        image: charlesImg,
-      },
-      {
-        name: "Daniel Wanjama",
-        role: "Senegal National Convenor",
-        region: "West Africa",
-        country: "Senegal",
-        level: 3,
-        expertise: ["Agroforestry", "Food Sovereignty"],
-        bio: "Oumar Diallo promotes agroforestry and food sovereignty initiatives across Senegal, working with local farming communities.",
-        image: charlesImg,
-      },
-      {
-        name: "Raoudath Bouraima",
-        role: "Senegal National Convenor",
-        region: "West Africa",
-        country: "Senegal",
-        level: 3,
-        expertise: ["Agroforestry", "Food Sovereignty"],
-        bio: "Oumar Diallo promotes agroforestry and food sovereignty initiatives across Senegal, working with local farming communities.",
-        image: charlesImg,
-      },
-      {
-        name: "Charles Mubanga",
-        role: "Senegal National Convenor",
-        region: "West Africa",
-        country: "Senegal",
-        level: 3,
-        expertise: ["Agroforestry", "Food Sovereignty"],
-        bio: "Oumar Diallo promotes agroforestry and food sovereignty initiatives across Senegal, working with local farming communities.",
-        image: charlesImg,
-      },
     ],
     [],
   );
 
-  // Get all country leaders (Level 3)
-  const countryLeaders = useMemo(() => {
-    return leaders.filter((l) => l.level === 3);
-  }, [leaders]);
+  // Get unique sub-regions for filter
+  const subRegions = useMemo(() => {
+    const regions = new Set(countryLeadersData.map((l) => l.subRegion));
+    return ["all", ...Array.from(regions).sort()];
+  }, [countryLeadersData]);
+
+  // Filter and search logic
+  const filteredLeaders = useMemo(() => {
+    return countryLeadersData.filter((leader) => {
+      const matchesSearch =
+        searchTerm === "" ||
+        leader.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        leader.country?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        leader.organization?.toLowerCase().includes(searchTerm.toLowerCase());
+
+      const matchesRegion =
+        filterSubRegion === "all" || leader.subRegion === filterSubRegion;
+
+      return matchesSearch && matchesRegion;
+    });
+  }, [countryLeadersData, searchTerm, filterSubRegion]);
 
   // Pagination logic
-  const totalPages = Math.ceil(countryLeaders.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredLeaders.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentLeaders = countryLeaders.slice(startIndex, endIndex);
+  const currentLeaders = filteredLeaders.slice(startIndex, endIndex);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -264,10 +492,20 @@ const LeadershipTeam: React.FC<LeadershipTeamProps> = ({
     }
   };
 
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+    setCurrentPage(1);
+  };
+
+  const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setFilterSubRegion(e.target.value);
+    setCurrentPage(1);
+  };
+
   // Group leaders by level for levels 1 and 2
   const leadersByLevel = {
-    1: leaders.filter((l) => l.level === 1),
-    2: leaders.filter((l) => l.level === 2),
+    1: regionalAndTaskforceLeaders.filter((l) => l.level === 1),
+    2: regionalAndTaskforceLeaders.filter((l) => l.level === 2),
   };
 
   const level1TopRow = leadersByLevel[1].filter(
@@ -288,13 +526,13 @@ const LeadershipTeam: React.FC<LeadershipTeamProps> = ({
       title: "TaskForce Team",
       description: "Coordination Team",
       fullDescription:
-        "The TaskForce team comprises of 9 Members 3 from the Regional convenors, 2 from the Secretariate and the other 4 from the task form cards below. The Task Force coordinates day-to-day operations, implements strategic initiatives, and ensures effective communication across all levels of the organization.",
+        "The TaskForce team comprises 4 members who coordinate day-to-day operations, implement strategic initiatives, and ensure effective communication across all levels of the organization.",
     },
     3: {
       title: "National Convenors",
-      description: "National Convenors and Contact Persons",
+      description: "Country Contact Persons Directory",
       fullDescription:
-        "Please Note that a few names appear here at the National Convenors and also other section of the leadership eg Regional Convenors. The National Convenors lead organic farming initiatives in their respective countries, mobilizing farmers and advocating for policies that support agroecology and food sovereignty.",
+        "The National Convenors lead organic farming initiatives in their respective countries, mobilizing farmers and advocating for policies that support agroecology and food sovereignty.",
     },
   };
 
@@ -450,7 +688,7 @@ const LeadershipTeam: React.FC<LeadershipTeamProps> = ({
             </motion.div>
           </motion.div>
 
-          {/* Level 3 - National Convenors with paginated list and placeholder cards */}
+          {/* Level 3 - National Convenors Table Design */}
           <motion.div
             className="leadership-level level-3"
             variants={levelTitleVariants}
@@ -464,83 +702,119 @@ const LeadershipTeam: React.FC<LeadershipTeamProps> = ({
               </p>
             </div>
 
-            <div className="level-3-split-layout">
-              {/* Left side - Paginated list of country leaders */}
-              <motion.div className="level-3-list" variants={containerVariants}>
-                <h4 className="list-title">Country Leaders Directory</h4>
-                <p className="list-count">
-                  Showing {startIndex + 1}-
-                  {Math.min(endIndex, countryLeaders.length)} of{" "}
-                  {countryLeaders.length} leaders
-                </p>
-                <ul className="convenors-list">
-                  {currentLeaders.map((leader, index) => (
-                    <motion.li
-                      key={`list-${startIndex + index}`}
-                      variants={itemVariants}
-                      className="convenor-list-item"
-                    >
-                      <span className="list-name">{leader.name}</span>
-                      <span className="list-country">{leader.country}</span>
-                    </motion.li>
+            {/* Search and Filter Controls */}
+            <div className="table-controls">
+              <div className="search-box">
+                <input
+                  type="text"
+                  placeholder="Search by name, country, or organization..."
+                  value={searchTerm}
+                  onChange={handleSearch}
+                  className="search-input"
+                />
+                <span className="search-icon">🔍</span>
+              </div>
+              <div className="filter-box">
+                <select
+                  value={filterSubRegion}
+                  onChange={handleFilterChange}
+                  className="filter-select"
+                >
+                  {subRegions.map((region) => (
+                    <option key={region} value={region}>
+                      {region === "all" ? "All Sub-Regions" : region}
+                    </option>
                   ))}
-                </ul>
-
-                {/* Pagination Controls */}
-                {totalPages > 1 && (
-                  <div className="pagination-controls">
-                    <button
-                      className="pagination-button"
-                      onClick={handlePrevPage}
-                      disabled={currentPage === 1}
-                    >
-                      Previous
-                    </button>
-                    <span className="page-indicator">
-                      Page {currentPage} of {totalPages}
-                    </span>
-                    <button
-                      className="pagination-button"
-                      onClick={handleNextPage}
-                      disabled={currentPage === totalPages}
-                    >
-                      Next
-                    </button>
-                  </div>
-                )}
-              </motion.div>
-
-              {/* Right side - Placeholder cards for future use */}
-              <motion.div
-                className="level-3-placeholder-grid"
-                variants={containerVariants}
-              >
-                <div className="placeholder-card">
-                  <div className="placeholder-image"></div>
-                  <div className="placeholder-content">
-                    <div className="placeholder-line"></div>
-                    <div className="placeholder-line short"></div>
-                    <div className="placeholder-button"></div>
-                  </div>
-                </div>
-                <div className="placeholder-card">
-                  <div className="placeholder-image"></div>
-                  <div className="placeholder-content">
-                    <div className="placeholder-line"></div>
-                    <div className="placeholder-line short"></div>
-                    <div className="placeholder-button"></div>
-                  </div>
-                </div>
-                <div className="placeholder-note">
-                  Additional featured cards coming soon
-                </div>
-              </motion.div>
+                </select>
+              </div>
             </div>
+
+            {/* Results Count */}
+            <div className="table-results-count">
+              Showing {filteredLeaders.length} of {countryLeadersData.length}{" "}
+              leaders
+            </div>
+
+            {/* Data Table */}
+            <div className="data-table-wrapper">
+              <table className="data-table">
+                <thead>
+                  <tr>
+                    <th>S/N</th>
+                    <th>Sub Region</th>
+                    <th>Country</th>
+                    <th>Convener/Contact Person</th>
+                    <th>Gender</th>
+                    <th>Name of OFO</th>
+                    <th>Language Preference</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {currentLeaders.map((leader) => (
+                    <tr key={leader.sn} className="data-table-row">
+                      <td data-label="S/N">{leader.sn}</td>
+                      <td data-label="Sub Region">{leader.subRegion}</td>
+                      <td data-label="Country">{leader.country}</td>
+                      <td data-label="Convener/Contact Person">
+                        <strong>{leader.name}</strong>
+                      </td>
+                      <td data-label="Gender">
+                        <span
+                          className={`gender-badge ${leader.gender === "Female" ? "gender-female" : "gender-male"}`}
+                        >
+                          {leader.gender}
+                        </span>
+                      </td>
+                      <td data-label="Name of OFO" className="ofo-cell">
+                        {leader.organization}
+                      </td>
+                      <td data-label="Language Preference">
+                        <span className="language-badge">
+                          {leader.language}
+                        </span>
+                      </td>
+                      <td data-label="Action">
+                        <button
+                          className="view-bio-btn"
+                          onClick={() => handleShowBio(leader)}
+                        >
+                          View Bio
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+              <div className="pagination-controls">
+                <button
+                  className="pagination-button"
+                  onClick={handlePrevPage}
+                  disabled={currentPage === 1}
+                >
+                  Previous
+                </button>
+                <span className="page-indicator">
+                  Page {currentPage} of {totalPages}
+                </span>
+                <button
+                  className="pagination-button"
+                  onClick={handleNextPage}
+                  disabled={currentPage === totalPages}
+                >
+                  Next
+                </button>
+              </div>
+            )}
           </motion.div>
         </div>
       </motion.section>
 
-      {/* Bio Modal - No image */}
+      {/* Bio Modal */}
       <AnimatePresence>
         {isModalOpen && selectedLeader && (
           <motion.div
@@ -574,10 +848,10 @@ const LeadershipTeam: React.FC<LeadershipTeamProps> = ({
                   <h3 id="modal-title">{selectedLeader.name}</h3>
                   <p className="modal-role">{selectedLeader.role}</p>
 
-                  {selectedLeader.region && (
+                  {selectedLeader.subRegion && (
                     <p className="modal-region">
                       <span className="modal-region-badge">
-                        {selectedLeader.region}
+                        {selectedLeader.subRegion}
                       </span>
                     </p>
                   )}
@@ -585,6 +859,25 @@ const LeadershipTeam: React.FC<LeadershipTeamProps> = ({
                   {selectedLeader.country && (
                     <p className="modal-country">
                       <strong>Country:</strong> {selectedLeader.country}
+                    </p>
+                  )}
+
+                  {selectedLeader.gender && (
+                    <p className="modal-gender">
+                      <strong>Gender:</strong> {selectedLeader.gender}
+                    </p>
+                  )}
+
+                  {selectedLeader.organization && (
+                    <p className="modal-organization">
+                      <strong>Organization:</strong>{" "}
+                      {selectedLeader.organization}
+                    </p>
+                  )}
+
+                  {selectedLeader.language && (
+                    <p className="modal-language">
+                      <strong>Language:</strong> {selectedLeader.language}
                     </p>
                   )}
 
