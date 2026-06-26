@@ -8,6 +8,16 @@ import {
   FaArrowLeft,
   FaPlay,
   FaPause,
+  FaCalendarAlt,
+  FaClock,
+  FaVideo,
+  FaMapMarkerAlt,
+  FaShareAlt,
+  FaExternalLinkAlt,
+  FaHandshake,
+  FaGraduationCap,
+  FaGlobe,
+  FaQuestionCircle,
 } from "react-icons/fa";
 import { useState, useEffect, useRef, useMemo } from "react";
 import "../styles/ResourcesPage.css";
@@ -18,6 +28,7 @@ import LatestNews from "../components/LatestNews";
 // ✅ Images
 import heroImg from "../assets/sunrise-harvest-a-glimpse-into-rural-life-4775877.jpg";
 import comingSoonImg from "../assets/talk.webp";
+import meetingInviteImg from "../assets/meeting-invite.png"; // Add your meeting invite image here
 
 // Sample progress images
 import progressImg1 from "../assets/african.webp";
@@ -45,6 +56,7 @@ const ResourcesPage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  //const [activeFilter, setActiveFilter] = useState("all");
   const intervalRef = useRef<number | null>(null);
 
   // Animation variants
@@ -64,6 +76,59 @@ const ResourcesPage = () => {
       transition: { duration: 0.6, ease: [0.6, -0.05, 0.01, 0.99] },
     },
   };
+
+  // ==========================================
+  // UPCOMING EVENTS DATA
+  // ==========================================
+  const upcomingEvents = useMemo(
+    () => [
+      {
+        id: 1,
+        title: "INOFO Africa National Convenors' Meeting",
+        date: "2026-06-29",
+        time: "3:00 PM - 4:30 PM (EAT)",
+        location: "Zoom Virtual Meeting",
+        type: "Meeting",
+        image: meetingInviteImg,
+        description:
+          "Join national convenors from across Africa for strategic coordination and planning discussions.",
+        meetingLink: "https://zoom.us/j/89820062241",
+        meetingId: "898 2006 2241",
+        passcode: "609247",
+      },
+    ],
+    [],
+  );
+
+
+
+  // Quick links data
+  const quickLinks = [
+    {
+      icon: <FaGlobe />,
+      title: "INOFO International",
+      description: "Connect with the global INOFO network",
+      url: "https://www.inofo.org",
+    },
+    {
+      icon: <FaGraduationCap />,
+      title: "Farmer Training Portal",
+      description: "Access online training modules",
+      url: "#",
+    },
+    {
+      icon: <FaQuestionCircle />,
+      title: "Ask an Expert",
+      description: "Get answers from agricultural specialists",
+      url: "#",
+    },
+    {
+      icon: <FaHandshake />,
+      title: "Join INOFO Africa",
+      description: "Become part of our growing network",
+      url: "/contact",
+    },
+  ];
 
   // Extended progress gallery images with 20+ photos
   const progressImages = useMemo(
@@ -297,15 +362,28 @@ const ResourcesPage = () => {
     setCurrentImageIndex(index);
   };
 
-  // --- ENHANCED SEO FEATURES ---
 
-  // 1. Breadcrumbs for Resources Page
+  // Helper function to format date
+  const formatDate = (dateStr: string) => {
+    const date = new Date(dateStr);
+    return {
+      day: date.getDate(),
+      month: date.toLocaleString("default", { month: "short" }),
+      year: date.getFullYear(),
+    };
+  };
+
+  // Helper to check if event is upcoming
+  const isUpcoming = (dateStr: string) => {
+    return new Date(dateStr) >= new Date();
+  };
+
+  // --- ENHANCED SEO FEATURES ---
   const resourcesPageBreadcrumbs = [
     { name: "Home", url: "https://www.inofoafrica.org/" },
     { name: "Resources", url: "https://www.inofoafrica.org/resources" },
   ];
 
-  // 2. Resources Page-Specific FAQs (enhanced for better rich snippets)
   const resourcesPageFaqs = [
     {
       question:
@@ -339,7 +417,6 @@ const ResourcesPage = () => {
     },
   ];
 
-  // 3. Enhanced Custom Structured Data for Resources Page
   const resourcesPageCustomSchema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -370,7 +447,6 @@ const ResourcesPage = () => {
       caption:
         "INOFO Africa Resources - Supporting Organic Farmers Across Africa",
     },
-    // Image gallery as ItemList with enhanced metadata
     hasPart: {
       "@type": "ItemList",
       name: "INOFO Africa Progress Gallery - Visual Documentation of Farmer Success",
@@ -396,7 +472,6 @@ const ResourcesPage = () => {
         acquireLicensePage: "https://www.inofoafrica.org/image-usage",
       })),
     },
-    // Additional schema for upcoming resources
     about: {
       "@type": "Thing",
       name: "Organic Farming Resources",
@@ -414,7 +489,6 @@ const ResourcesPage = () => {
     },
   };
 
-  // 4. Additional HowTo schema for resource usage
   const howToUseResourcesSchema = {
     "@context": "https://schema.org",
     "@type": "HowTo",
@@ -477,7 +551,6 @@ const ResourcesPage = () => {
 
   return (
     <>
-      {/* Enhanced SEO component with multiple schemas */}
       <SEO
         title="Resources & Progress Gallery | INOFO Africa - Organic Farming Materials"
         description="Access INOFO Africa's comprehensive organic farming resources, educational guides, and visual progress gallery. Explore training materials, market tools, and success stories from across Africa's farming communities."
@@ -511,7 +584,6 @@ const ResourcesPage = () => {
         customSchema={resourcesPageCustomSchema}
       />
 
-      {/* Additional HowTo schema */}
       <script type="application/ld+json">
         {JSON.stringify(howToUseResourcesSchema)}
       </script>
@@ -524,7 +596,7 @@ const ResourcesPage = () => {
         itemScope
         itemType="https://schema.org/CollectionPage"
       >
-        {/* Hero Section with Schema markup */}
+        {/* Hero Section */}
         <motion.header
           className="R-hero-header"
           style={{ backgroundImage: `url(${heroImg})` }}
@@ -552,8 +624,158 @@ const ResourcesPage = () => {
           />
         </motion.header>
 
-        {/* ✅ NEW: Latest News Component - placed right after hero */}
+        
+
+        {/* ==========================================
+            UPCOMING EVENTS SECTION
+            ========================================== */}
+        <motion.section
+          className="upcoming-events-section"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
+          <div className="events-header">
+            <motion.h2 className="events-title" variants={itemVariants}>
+              <FaCalendarAlt />
+              Upcoming Events
+            </motion.h2>
+            <motion.p className="events-subtitle" variants={itemVariants}>
+              Stay informed about upcoming meetings, workshops, and conferences
+              hosted by INOFO Africa
+            </motion.p>
+          </div>
+
+          <div className="events-grid">
+            {upcomingEvents.map((event) => {
+              const dateInfo = formatDate(event.date);
+              const isEventUpcoming = isUpcoming(event.date);
+              return (
+                <motion.div
+                  key={event.id}
+                  className="event-card"
+                  variants={itemVariants}
+                >
+                  <div className="event-card-image">
+                    <img
+                      src={event.image}
+                      alt={event.title}
+                      loading="lazy"
+                    />
+                    <div className="event-date-badge">
+                      <span className="date-day">{dateInfo.day}</span>
+                      <span className="date-month">{dateInfo.month}</span>
+                    </div>
+                    <span className="event-type-badge">{event.type}</span>
+                  </div>
+
+                  <div className="event-card-content">
+                    <h3>{event.title}</h3>
+
+                    <div className="event-details">
+                      <div className="event-detail">
+                        <FaClock className="event-detail-icon" />
+                        <span>{event.time}</span>
+                      </div>
+                      <div className="event-detail">
+                        <FaMapMarkerAlt className="event-detail-icon" />
+                        <span>{event.location}</span>
+                      </div>
+                      {event.meetingId && (
+                        <div className="event-detail">
+                          <FaVideo className="event-detail-icon" />
+                          <span>Meeting ID: {event.meetingId}</span>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="event-card-actions">
+                      {isEventUpcoming && event.meetingLink ? (
+                        <a
+                          href={event.meetingLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="event-btn event-btn-primary"
+                        >
+                          <FaExternalLinkAlt />
+                          Join Meeting
+                        </a>
+                      ) : (
+                        <button
+                          className="event-btn event-btn-primary"
+                          onClick={() =>
+                            alert(
+                              "Registration details will be available soon!",
+                            )
+                          }
+                        >
+                          Register Now
+                        </button>
+                      )}
+                      <button
+                        className="event-btn event-btn-secondary"
+                        onClick={() => {
+                          if (navigator.share) {
+                            navigator.share({
+                              title: event.title,
+                              text: event.description,
+                              url: window.location.href,
+                            });
+                          } else {
+                            navigator.clipboard.writeText(
+                              `${event.title} - ${event.date} - ${window.location.href}`,
+                            );
+                            alert("Event details copied to clipboard!");
+                          }
+                        }}
+                      >
+                        <FaShareAlt />
+                        Share
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.section>
+
+        {/* Latest News Component */}
         <LatestNews />
+
+
+        {/* ==========================================
+            QUICK LINKS SECTION
+            ========================================== */}
+        <motion.section
+          className="quick-links-section"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
+          <div className="quick-links-grid">
+            {quickLinks.map((link, index) => (
+              <motion.a
+                key={index}
+                href={link.url}
+                className="quick-link-card"
+                variants={itemVariants}
+                target={link.url.startsWith("http") ? "_blank" : undefined}
+                rel={
+                  link.url.startsWith("http")
+                    ? "noopener noreferrer"
+                    : undefined
+                }
+              >
+                <div className="quick-link-icon">{link.icon}</div>
+                <h3>{link.title}</h3>
+                <p>{link.description}</p>
+              </motion.a>
+            ))}
+          </div>
+        </motion.section>
 
         {/* Coming Soon Section */}
         <motion.section
@@ -584,39 +806,38 @@ const ResourcesPage = () => {
                   />
                 </svg>
               </div>
-              <h2 itemProp="name">Something Amazing is Coming Soon...</h2>
+              <h2 itemProp="name">More Resources Coming Soon...</h2>
               <p itemProp="description">
-                We're carefully cultivating valuable resources to help farmers
-                and agricultural professionals thrive. Our team is working
-                diligently to bring you:
+                We're continuously developing new resources to support farmers
+                and agricultural professionals. Currently in development:
               </p>
 
               <ul className="resource-list" itemProp="keywords">
-                <li>News & Events updates</li>
-                <li>Educational Publications</li>
-                <li>Practical Farmer Tools</li>
-                <li>Market Insights</li>
-                <li>Sustainable Practices Guides</li>
+                <li>Interactive training modules with quizzes</li>
+                <li>Video tutorial series in local languages</li>
+                <li>Mobile app for offline resource access</li>
+                <li>Farmer-to-farmer knowledge exchange platform</li>
+                <li>Seasonal planting calendars by region</li>
               </ul>
 
               <p className="coming-soon-message">
-                <strong>Check back soon!</strong> We're planting the seeds for
-                your success and can't wait to share these resources with you.
+                <strong>Subscribe to our newsletter</strong> to be the first to
+                know when new resources are available!
               </p>
 
               <div className="progress-container">
                 <div className="progress-text">
-                  Resource development in progress
+                  Next batch in development
                 </div>
                 <div className="progress-bar">
                   <motion.div
                     className="progress-fill"
                     initial={{ width: 0 }}
-                    animate={{ width: "65%" }}
+                    animate={{ width: "45%" }}
                     transition={{ duration: 2, delay: 0.5 }}
                   />
                 </div>
-                <div className="progress-percentage">65% done</div>
+                <div className="progress-percentage">45% done</div>
               </div>
               <meta itemProp="datePublished" content="2024-01-01" />
               <meta
@@ -632,12 +853,12 @@ const ResourcesPage = () => {
                 itemProp="image"
                 loading="lazy"
               />
-              <div className="floating-tag">Coming Soon</div>
+              <div className="floating-tag">In Development</div>
             </motion.div>
           </div>
         </motion.section>
 
-        {/* Progress Gallery Section with enhanced Schema markup */}
+        {/* Progress Gallery Section */}
         <motion.section
           className="progress-gallery-section"
           initial="hidden"
@@ -661,7 +882,6 @@ const ResourcesPage = () => {
             </motion.div>
           </div>
 
-          {/* Main Gallery Display */}
           <motion.div
             className="slideshow-container"
             variants={containerVariants}
@@ -699,7 +919,6 @@ const ResourcesPage = () => {
               </div>
             </div>
 
-            {/* Navigation Controls */}
             <div className="slideshow-controls">
               <button
                 className="nav-btn prev-btn"
@@ -728,7 +947,6 @@ const ResourcesPage = () => {
               </button>
             </div>
 
-            {/* Thumbnail Navigation */}
             <div className="thumbnail-container">
               {progressImages.map((image, index) => (
                 <button
@@ -745,7 +963,6 @@ const ResourcesPage = () => {
             </div>
           </motion.div>
 
-          {/* Hidden Schema markup for all images */}
           <div style={{ display: "none" }} itemProp="itemListElement">
             {progressImages.map((image, index) => (
               <div
