@@ -1,62 +1,12 @@
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaYoutube, FaMapMarkerAlt, FaEnvelope, FaLeaf, FaPlus, FaMinus } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaYoutube, FaMapMarkerAlt, FaEnvelope, FaLeaf } from 'react-icons/fa';
 import '../styles/footer.css';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+
 import LogoBlackDay from "../assets/Black_Day.png";
 const Footer = () => {
-  const [faqOpen, setFaqOpen] = useState(false);
+ 
   
-  // FAQ data
-  const faqs = [
-    [
-      { 
-        question: "What is INOFO Africa?", 
-        answer: "INOFO Africa is a network of organic farmers across Africa dedicated to promoting Agro-Ecological practices for sustainable agriculture." 
-      },
-      { 
-        question: "How can I become a member?", 
-        answer: "You can become a member by being in an organic farmer Organization and visit our membership page and filling out the application form. We welcome all organic farmer Organization." 
-      },
-      { 
-        question: "What are the benefits of membership?", 
-        answer: "Members gain access to training, resources, networking opportunities, and support in organic certification processes." 
-      },
-      { 
-        question: "Do you offer training programs?", 
-        answer: "Yes, we offer various training programs on organic farming techniques, certification, and sustainable practices throughout the year." 
-      },
-      { 
-        question: "Can small-scale farmers join?", 
-        answer: "Absolutely! We specifically support smallholder farmers in transitioning to and maintaining organic farming practices." 
-      },
-      { 
-        question: "Where do you operate?", 
-        answer: "We operate across Africa with member organizations in multiple countries and regional coordination centers." 
-      },
-      { 
-        question: "How can I support your work?", 
-        answer: "You can support us by becoming a member, donating, volunteering, or partnering with our organization." 
-      }
-    ],
-    [
-      { 
-        question: "What's your stance on GMOs?", 
-        answer: "We promote non-GMO agriculture in line with organic principles that prohibit genetically modified organisms." 
-      },
-      { 
-        question: "How do you handle pests organically?", 
-        answer: "We promote integrated pest management using natural predators, companion planting, and organic-approved treatments." 
-      },
-      { 
-        question: "Can urban farmers join?", 
-        answer: "Yes, we welcome urban farmers practicing organic methods in cities and peri-urban areas." 
-      },
-      { 
-        question: "How do I contact regional offices?", 
-        answer: "Visit our contact page for regional office details or email info@inofoafrica.org for assistance." 
-      }
-    ]
-  ];
+
 
   return (
     <footer className="footer">
@@ -131,7 +81,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="container">
-          {/* FAQ Section */}
+          {/* FAQ Section 
           <div className="faq-section">
             <button 
               className="faq-toggle" 
@@ -161,7 +111,7 @@ const Footer = () => {
                 </div>
               </div>
             )}
-          </div>
+          </div>*/}
       </div>
 
       <div className="footer-bottom"> 

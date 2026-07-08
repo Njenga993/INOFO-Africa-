@@ -4,7 +4,7 @@ import Pillars from '../components/Pillars';
 import BlogGrid from '../components/BlogGrid';
 import WhoWeAre from '../components/WhoWeAre';
 import MembersTable from '../components/LogoCarousel';
-import Newsletter from '../components/Newsletter';
+//import Newsletter from '../components/Newsletter';
 import SEO from '../components/SEO';
 
 const Home = () => {
@@ -263,7 +263,7 @@ const Home = () => {
         <Pillars />
         <BlogGrid />
         <MembersTable />
-        <Newsletter />
+        
 
         <section className="about-section" style={{ display: 'none' }}>
           {/* Hidden structured data for search engines */}
