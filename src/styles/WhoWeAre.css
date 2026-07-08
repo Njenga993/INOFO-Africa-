@@ -1,136 +1,230 @@
-/* SECTION */
+/* =====================
+   WHO WE ARE
+   ===================== */
+:root {
+  --primary-green: #4c7031;
+  --light-green: #5a8a3a;
+  --dark-green: #2e4d1f;
+  --gold-accent: #ffc107;
+  --text-dark: #333;
+  --text-medium: #555;
+  --text-light: #777;
+  --white: #ffffff;
+  --muted-green: #e8f5e9;
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.12);
+  --transition-base: all 0.3s ease;
+}
+
+/* Section */
 .nwa-section {
-  padding: 6rem 0;
-  background: #ffffff;
+  padding: clamp(3.5rem, 5vw, 5rem) 0;
+  background: var(--white);
 }
 
 .nwa-wrapper {
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 clamp(1rem, 2vw, 2rem);
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 4vw, 4rem);
   align-items: center;
 }
 
-/* IMAGE */
+/* Image */
 .nwa-image-card {
   position: relative;
-  border-radius: 20px;
+  border-radius: 18px;
   overflow: hidden;
   box-shadow: var(--shadow-medium);
-  transform: translateY(0);
-  transition: 0.3s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .nwa-image-card:hover {
   transform: translateY(-6px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
 }
 
 .nwa-image-card img {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
+  display: block;
 }
 
-/* CONTENT */
+/* Content */
 .nwa-title {
-  font-size: 3rem;
-  color: var(--jungle-green);
-  margin-bottom: 1rem;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  color: var(--primary-green);
+  margin-bottom: 0.5rem;
   font-weight: 700;
+  line-height: 1.2;
+  position: relative;
+  padding-bottom: 0.7rem;
+}
+
+.nwa-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 70px;
+  height: 4px;
+  background: var(--gold-accent);
+  border-radius: 2px;
 }
 
 .nwa-subtitle {
-  font-size: 1.35rem;
-  color: var(--light-jungle);
-  margin-bottom: 1.8rem;
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  color: var(--light-green);
+  margin-bottom: 1.5rem;
   font-weight: 500;
+  line-height: 1.4;
 }
 
 .nwa-text {
-  font-size: 1.1rem;
-  color: var(--text-dark);
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  color: var(--text-medium);
   line-height: 1.7;
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.85rem;
 }
 
-/* BUTTON */
+.nwa-text:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Button */
 .nwa-btn-wrapper {
-  margin-top: 2rem;
+  margin-top: 1.75rem;
 }
 
 .nwa-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 0.9rem 1.8rem;
-  background: var(--jungle-green);
-  color: #fff;
+  gap: 0.6rem;
+  padding: 0.85rem 1.75rem;
+  background: var(--primary-green);
+  color: var(--white);
   border-radius: 50px;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  transition: 0.3s ease;
+  text-decoration: none;
+  transition: var(--transition-base);
+  box-shadow: 0 4px 12px rgba(76, 112, 49, 0.25);
+  border: 2px solid var(--primary-green);
 }
 
 .nwa-btn:hover {
-  background: var(--jungle-dark);
+  background: transparent;
+  color: var(--primary-green);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(76, 112, 49, 0.15);
 }
 
 .nwa-icon {
-  font-size: 1.1rem;
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
 }
 
-/* STATS */
+.nwa-btn:hover .nwa-icon {
+  transform: translateX(3px);
+}
+
+/* Stats */
 .nwa-stats-grid {
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.85rem;
 }
 
 .nwa-stat-card {
-  padding: 1.7rem;
-  border-radius: 14px;
+  padding: 1.15rem 0.5rem;
+  border-radius: 12px;
   text-align: center;
   background: var(--muted-green);
-  box-shadow: var(--shadow-light);
-  transition: 0.3s ease;
+  border: 1px solid rgba(76, 112, 49, 0.08);
+  transition: var(--transition-base);
+}
+
+.nwa-stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+  border-color: var(--primary-green);
 }
 
 .nwa-stat-card h3 {
-  font-size: 2rem;
-  color: var(--jungle-green);
-  font-weight: 700;
+  font-size: clamp(1.3rem, 2vw, 1.75rem);
+  color: var(--primary-green);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 0.2rem;
 }
 
 .nwa-stat-card p {
-  font-size: 1rem;
-  color: var(--text-medium);
+  font-size: clamp(0.68rem, 0.8vw, 0.78rem);
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  font-weight: 500;
+  line-height: 1.3;
 }
 
-/* MOBILE */
-@media (max-width: 900px) {
+/* Responsive */
+@media (max-width: 1024px) {
+  .nwa-wrapper {
+    gap: 2.5rem;
+  }
+
+  .nwa-stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nwa-section {
+    padding: clamp(2.5rem, 4vw, 3.5rem) 0;
+  }
+
   .nwa-wrapper {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
 
-  .nwa-title {
-    font-size: 2.4rem;
+  .nwa-stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.6rem;
+  }
+
+  .nwa-stat-card {
+    padding: 0.9rem 0.35rem;
   }
 }
 
-@media (max-width: 600px) {
-  .nwa-title {
-    font-size: 2rem;
+@media (max-width: 576px) {
+  .nwa-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
   }
 
-  .nwa-subtitle {
-    font-size: 1.1rem;
+  .nwa-stat-card {
+    padding: 1rem 0.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .nwa-stat-card h3 {
+    font-size: 1.2rem;
   }
 
-  .nwa-section {
-    padding: 4rem 0;
+  .nwa-stat-card p {
+    font-size: 0.65rem;
+  }
+
+  .nwa-btn {
+    padding: 0.75rem 1.4rem;
+    font-size: 0.9rem;
   }
 }
